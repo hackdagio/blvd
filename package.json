@@ -1,0 +1,22 @@
+{
+  "name": "kaizen-concepto",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "prestart": "npm install",
+    "start": "node bin/www"
+  },
+  "dependencies": {
+    "body-parser": "^1.0.2",
+    "debug": "^2.0.0",
+    "errorhandler": "^1.1.1",
+    "express": "~4.1.1",
+    "jade": "~0.31.2",
+    "method-override": "^1.0.0",
+    "morgan": "^1.0.0",
+    "node-rest-client": "^1.0.3"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}
