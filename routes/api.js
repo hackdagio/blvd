@@ -1,14 +1,14 @@
 /*
  * Serve JSON to our AngularJS client
  */
-var express = require('express');
-var router = express.Router();
+ var express = require('express');
+ var router = express.Router();
 
-/* GET home page. */
-router.get('/name', function(req, res) {
-  res.json({
-    name: 'Concepto'
-  });
-});
+ /* GET home page. */
+ router.get('/name', function(req, res) {
+ 	res.json({
+ 		name: 'Concepto'
+ 	});
+ });
 
-module.exports = router;
+ module.exports = router;

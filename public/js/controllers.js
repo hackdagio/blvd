@@ -3,7 +3,7 @@
 /* Controllers */
 
 angular.module('kaizen-concepto.controllers', []).
-  controller('AppCtrl', function ($scope, $http) {
+  controller('kaizenControllers', function ($scope, $http) {
 
     $http({
       method: 'GET',
@@ -17,11 +17,10 @@ angular.module('kaizen-concepto.controllers', []).
     });
 
   }).
-  controller('MyCtrl1', function ($scope) {
-    // write Ctrl here
+  controller('usuariosController', function ($scope) {
 
   }).
-  controller('MyCtrl2', function ($scope) {
-    // write Ctrl here
+  controller('inicioController', function ($scope) {
+
 
   });

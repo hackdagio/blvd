@@ -10,16 +10,16 @@ angular.module('kaizen-concepto', [
 ]).
 config(function ($routeProvider, $locationProvider) {
   $routeProvider.
-    when('/view1', {
-      templateUrl: 'partials/partial1',
-      controller: 'MyCtrl1'
+    when('/usuarios', {
+      templateUrl: 'partials/usuarios',
+      controller: 'usuariosController'
     }).
-    when('/view2', {
-      templateUrl: 'partials/partial2',
-      controller: 'MyCtrl2'
+    when('/inicio', {
+      templateUrl: 'partials/inicio',
+      controller: 'inicioController'
     }).
     otherwise({
-      redirectTo: '/view1'
+      redirectTo: '/inicio'
     });
 
   $locationProvider.html5Mode(true);
