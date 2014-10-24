@@ -1,13 +1,13 @@
 var express = require('express'),
-  bodyParser = require('body-parser'),
-  methodOverride = require('method-override'),
-  errorHandler = require('errorhandler'),
-  morgan = require('morgan'),
-  routes = require('./routes'),
-  partials = require('./routes/partials'),
-  api = require('./routes/api'),
-  http = require('http'),
-  path = require('path');
+bodyParser = require('body-parser'),
+methodOverride = require('method-override'),
+errorHandler = require('errorhandler'),
+morgan = require('morgan'),
+routes = require('./routes'),
+partials = require('./routes/partials'),
+api = require('./routes/api'),
+http = require('http'),
+path = require('path');
 
 var app = module.exports = express();
 
@@ -61,23 +61,23 @@ app.get('*', function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
     });
+  });
 }
 
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
 });
 
 module.exports = app;
