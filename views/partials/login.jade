@@ -1,0 +1,8 @@
+﻿form(name='form', shake-that='', submitted='submitted', submit='submit()', ng-click='submit()')
+  .form-group(ng-class='{"has-error": form.username.$invalid && submitted}')
+    label.control-label(for='username') username
+    input#username.form-control(type='username', name='username', placeholder='username', ng-model='username', ng-model-options='{updateOn: "blur"}', required='')
+  .form-group(ng-class='{"has-error": form.password.$invalid && submitted}')
+    label.control-label(for='password') Password
+    input#password.form-control(type='password', name='password', placeholder='Password', ng-model='password', ng-model-options='{updateOn: "blur"}', required='')
+  button.btn.btn-primary.btn-block(type='submit') Login

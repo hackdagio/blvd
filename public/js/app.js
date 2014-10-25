@@ -10,6 +10,10 @@ angular.module('kaizen-concepto', [
 ]).
 config(function ($routeProvider, $locationProvider) {
   $routeProvider.
+    when('/login', {
+      templateUrl: 'partials/login',
+      controller: 'loginController'
+    }).
     when('/usuarios', {
       templateUrl: 'partials/usuarios',
       controller: 'usuariosController'
@@ -19,7 +23,7 @@ config(function ($routeProvider, $locationProvider) {
       controller: 'inicioController'
     }).
     otherwise({
-      redirectTo: '/inicio'
+      redirectTo: '/login'
     });
 
   $locationProvider.html5Mode(true);
