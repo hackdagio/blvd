@@ -69,6 +69,7 @@ controller('inicioController', function ($scope) {
           var headers = getHeaders();
 
           headers[ "Content-type" ] = "application/x-www-form-urlencoded; charset=utf-8";
+          headers[ "Access-Control-Allow-Origin" ] = "*";
 
           return( serializeData( data ) );
 
