@@ -7,24 +7,25 @@ angular.module('kaizen-concepto', [
   'kaizen-concepto.filters',
   'kaizen-concepto.services',
   'kaizen-concepto.directives'
-]).
-config(function ($routeProvider, $locationProvider) {
-  $routeProvider.
-    when('/login', {
-      templateUrl: 'partials/login',
-      controller: 'loginController'
-    }).
-    when('/usuarios', {
-      templateUrl: 'partials/usuarios',
-      controller: 'usuariosController'
-    }).
-    when('/inicio', {
-      templateUrl: 'partials/inicio',
-      controller: 'inicioController'
-    }).
-    otherwise({
-      redirectTo: '/login'
-    });
+  ])
+
+.config(function ($routeProvider, $locationProvider) {
+  $routeProvider
+  .when('/login', {
+    templateUrl: 'partials/login',
+    controller: 'loginController'
+  })
+  .when('/usuarios', {
+    templateUrl: 'partials/usuarios',
+    controller: 'usuariosController'
+  })
+  .when('/inicio', {
+    templateUrl: 'partials/inicio',
+    controller: 'inicioController'
+  })
+  .otherwise({
+    redirectTo: '/login'
+  });
 
   $locationProvider.html5Mode(true);
 });

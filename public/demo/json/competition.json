@@ -1,0 +1,52 @@
+{
+  "data" : [
+    {
+      "img": "demo/avatar/1.jpg",
+      "name" : "Andrea Jara",
+      "desc" : "Vendedora",
+      "kpi" : "98"
+    },
+    {
+      "img": "demo/avatar/2.jpg",
+      "name" : "Gabriela Rojas",
+      "desc" : "Vendedora",
+      "kpi" : "92"
+    },
+    {
+      "img": "demo/avatar/3.jpg",
+      "name" : "Victoria Sepúlveda",
+      "desc" : "Vendedora",
+      "kpi" : "14"
+    },
+    {
+      "img": "demo/avatar/4.jpg",
+      "name" : "Dania Trigueros",
+      "desc" : "Vendedora",
+      "kpi" : "87"
+    },
+    {
+      "img": "demo/avatar/5.jpg",
+      "name" : "Daniela Fuenzalida",
+      "desc" : "Vendedora",
+      "kpi" : "100"
+    },
+    {
+      "img": "demo/avatar/6.jpg",
+      "name" : "Jaime Oyarzún",
+      "desc" : "Vendedor",
+      "kpi" : "170"
+    },
+    {
+      "img": "demo/avatar/7.jpg",
+      "name" : "Paulina Cid",
+      "desc" : "Vendedora",
+      "kpi" : "98"
+    },
+    {
+      "img": "demo/avatar/8.jpg",
+      "name" : "Carlos Gómez",
+      "desc" : "Vendedor",
+      "kpi" : "98"
+    }
+  ]
+}

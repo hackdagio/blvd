@@ -14,14 +14,12 @@
 }
 
 .header-general {
-  background: rgba(0, 0, 0, 0.47);
-  position: absolute;
-  z-index: 99999;
+  background: rgba(0,0,0,0.6);
   width: 100%;
 }
 
 .header-row {
-  padding: 30px 0;
+  padding: 10px 0;
 }
 .top-bar {
   height: auto;

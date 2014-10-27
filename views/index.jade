@@ -1,15 +1,59 @@
 extends layout
 
 block body
-  div(ng-controller='kaizenControllers')
-    h2 Hello {{name}}
-    ul.menu
-      li
-        a(href='login') login
-      li
-        a(href='usuarios') usuarios
 
-    div(ng-view)
+  header.header-general(ng-controller='kaizenControllers')
+    div.row.header-row
+      div.large-12
+        div.general-logo
+          img(src='demo/logo.png')
+
+      nav.top-bar(data-topbar)
+        section.top-bar-section
+
+          ul.right
+            li.active
+              a(href='inicio') Index
+            li.has-dropdown
+              a(href='#') Concursos
+              ul.dropdown
+                li
+                  a(href='#') Concurso 1
+            li
+              a(href='usuarios') Usuarios
+            li
+              a(href='#') Promociones
+            li
+              a(href='#') Informaciones
+            li
+              a(href='login') Login
+
+  div.row(ng-view)
+
+  script(src='//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.5/js/foundation.min.js')
+  script.
+    $(document).foundation();
+
+  script.
+    $(document).ready(function() {
+    // http://www.owlgraphic.com/owlcarousel/index.html#customizing
+      $("#first-carousel").owlCarousel({
+        navigation : true, // Show next and prev buttons
+        slideSpeed : 300,
+        paginationSpeed : 400,
+        singleItem:true,
+        autoPlay:true,
+        autoHeight : true,
+        navigation: false,
+        responsiveRefreshRate: 50
+      });
+    
+      $("#carousel-competition").owlCarousel({
+        autoPlay: 3000, //Set AutoPlay to 3 seconds
+        items : 5,
+        stopOnHover: true,
+      });
+    });
 
   script(src='js/lib/angular/angular.js')
   script(src='js/app.js')
