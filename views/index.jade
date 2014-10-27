@@ -2,60 +2,35 @@ extends layout
 
 block body
 
-  header.header-general(ng-controller='kaizenControllers')
-    div.row.header-row
-      div.large-12
-        div.general-logo
-          img(src='demo/logo.png')
+  nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
+    div.container
+      div.navbar-header
+        button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand(href='#') Logo
+      div#bs-example-navbar-collapse-1.collapse.navbar-collapse
+        ul.nav.navbar-nav.navbar-right
+          li
+            a(href='inicio') Inicio
+          li
+            a(href='usuarios') Usuarios
+          li
+            a(href='acceder') Acceder
 
-      nav.top-bar(data-topbar)
-        section.top-bar-section
+  ng-view
 
-          ul.right
-            li.active
-              a(href='inicio') Index
-            li.has-dropdown
-              a(href='#') Concursos
-              ul.dropdown
-                li
-                  a(href='#') Concurso 1
-            li
-              a(href='usuarios') Usuarios
-            li
-              a(href='#') Promociones
-            li
-              a(href='#') Informaciones
-            li
-              a(href='login') Login
-
-  div.row(ng-view)
-
-  script(src='//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.5/js/foundation.min.js')
-  script.
-    $(document).foundation();
-
-  script.
-    $(document).ready(function() {
-    // http://www.owlgraphic.com/owlcarousel/index.html#customizing
-      $("#first-carousel").owlCarousel({
-        navigation : true, // Show next and prev buttons
-        slideSpeed : 300,
-        paginationSpeed : 400,
-        singleItem:true,
-        autoPlay:true,
-        autoHeight : true,
-        navigation: false,
-        responsiveRefreshRate: 50
-      });
-    
-      $("#carousel-competition").owlCarousel({
-        autoPlay: 3000, //Set AutoPlay to 3 seconds
-        items : 5,
-        stopOnHover: true,
-      });
-    });
+  script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+  script(src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js')
 
   script(src='js/lib/angular/angular.js')
+  script(src='js/lib/angularui/ui-bootstrap-tpls-0.9.0.min.js')
+  script(src='//cdnjs.cloudflare.com/ajax/libs/d3/3.4.13/d3.min.js')
+  script(src='js/lib/n3-charts/line-chart.min.js')
+  script(src='js/lib/n3-charts/pie-chart.min.js')
+
   script(src='js/app.js')
   script(src='js/services.js')
   script(src='js/controllers.js')

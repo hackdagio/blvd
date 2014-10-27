@@ -25,10 +25,10 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var env = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV || 'dev';
 
 // development only
-if (env === 'development') {
+if (env === 'dev') {
   app.use(errorHandler());
 }
 
@@ -59,7 +59,7 @@ app.get('*', function(req, res, next) {
 
 // development error handler
 // will print stacktrace
-if (app.get('env') === 'development') {
+if (app.get('env') === 'dev') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {

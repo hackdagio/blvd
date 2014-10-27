@@ -11,7 +11,7 @@ angular.module('kaizen-concepto', [
 
 .config(function ($routeProvider, $locationProvider) {
   $routeProvider
-  .when('/login', {
+  .when('/acceder', {
     templateUrl: 'partials/login',
     controller: 'loginController'
   })
@@ -24,7 +24,7 @@ angular.module('kaizen-concepto', [
     controller: 'inicioController'
   })
   .otherwise({
-    redirectTo: '/login'
+    redirectTo: '/inicio'
   });
 
   $locationProvider.html5Mode(true);

@@ -1,19 +1,30 @@
-ul.example-orbit-content(data-orbit)
-  li(data-orbit-slide='headline-1')
-    .text-center.panel
-      h2 Headline 1
-      h3 Subheadline
-      p
-        | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos animi, nobis illo. Repellendus atque dolorem, officia recusandae autem, laudantium consectetur, neque!
-  li(data-orbit-slide='headline-2')
-    .text-center.panel
-      h2 Headline 2
-      h3 Subheadline
-      p
-        | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos animi, nobis illo. Repellendus atque dolorem, officia recusandae autem, laudantium consectetur, neque!
-  li(data-orbit-slide='headline-3')
-    .text-center.panel
-      h2 Headline 3
-      h3 Subheadline
-      p
-        | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos animi, nobis illo. Repellendus atque dolorem, officia recusandae autem, laudantium consectetur, neque!
+div
+  div#slides_control(ng-controller='carouselController')
+      carousel(interval='interval')
+        slide(ng-repeat='slide in slides', active='slide.active')
+          img(ng-src='{{slide.image}}')
+          .carousel-caption
+            h4 imagen {{ $index+1 }}
+
+.content-section-a
+  .container
+    .row
+      .col-lg-5.col-sm-6
+        hr.section-heading-spacer
+        .clearfix
+        h2.section-heading
+          | <small>Tus indicadores</small>
+          br
+          | María Andrea
+        p.lead
+          | Vendedora
+      .col-lg-5.col-lg-offset-2.col-sm-6
+        img.img-responsive(src='/demo/avatar/4.jpg', style='width: 50%;', alt='María Andrea')
+
+.content-section-b
+  .container
+    .row
+      div(ng-controller='kpichartsController')
+        linechart(data='data', options='options')
+      div(ng-controller='kpipieController')
+        pie-chart(data='gauge_data', options='gauge_options')
