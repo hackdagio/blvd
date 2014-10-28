@@ -14,6 +14,10 @@ angular.module('kaizen-concepto', [
     templateUrl: 'partials/login',
     controller: 'loginController'
   })
+  .when('/concursos', {
+    templateUrl: 'partials/concursos',
+    controller: 'concursosController'
+  })
   .when('/usuarios', {
     templateUrl: 'partials/usuarios',
     controller: 'usuariosController'
