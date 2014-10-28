@@ -1,9 +1,8 @@
 'use strict';
 
-// Declare app level module which depends on filters, and services
-
 angular.module('kaizen-concepto', [
-  'kaizen-concepto.controllers',
+  'kaizen-concepto.controllers-views',
+  'kaizen-concepto.controllers-interactions',
   'kaizen-concepto.filters',
   'kaizen-concepto.services',
   'kaizen-concepto.directives'

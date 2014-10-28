@@ -1,129 +1,21 @@
 'use strict';
 
-/* Controllers */
-
-angular.module('kaizen-concepto.controllers', ['ui.bootstrap', 'n3-line-chart', 'n3-pie-chart'])
-
-// I provide a request-transformation method that is used to prepare the outgoing
-// request as a FORM post instead of a JSON packet.
-
-.factory("transformRequestAsFormPost", function() {
-  // I prepare the request data for the form post.
-  function transformRequest( data, getHeaders ) {
-    var headers = getHeaders();
-    headers[ "Content-type" ] = "application/x-www-form-urlencoded; charset=utf-8";
-    return( serializeData( data ) );
-  }
-
-  // Return the factory value.
-  return( transformRequest );
-
-  // ---
-  // PPRIVATE METHODS
-  // ---
-
-  // I serialize the given Object into a key-value pair string. This
-  // method expects an object and will default to the toString() method.
-  // --
-  // NOTE: This is an atered version of the jQuery.param() method which
-  // will serialize a data collection for Form posting.
-  // --
-  // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
-
-  function serializeData( data ) {
-
-    // If this is not an object, defer to native stringification.
-    if ( ! angular.isObject( data ) ) {
-      return( ( data == null ) ? "" : data.toString() );
-    }
-    var buffer = [];
-
-    // Serialize each key in the object.
-    for ( var name in data ) {
-      if ( ! data.hasOwnProperty( name ) ) {
-        continue;
-      }
-      var value = data[ name ];
-      buffer.push(
-        encodeURIComponent( name ) + "=" + encodeURIComponent( ( value == null ) ? "" : value )
-        );
-    }
-
-    // Serialize the buffer and clean it up for transportation.
-    var source = buffer.join( "&" ).replace( /%20/g, "+" );
-    return( source );
-  }
-})
-
-.controller('kaizenControllers', function ($scope, $http) {
-
-  $http({
-    method: 'GET',
-    url: '/api/name'
-  }).
-  success(function (data, status, headers, config) {
-    $scope.name = data.name;
-  }).
-  error(function (data, status, headers, config) {
-    $scope.name = 'Error!';
-  });
-
-})
-
-.controller('loginController', function ($scope, $http, transformRequestAsFormPost) {
-
-  // hide error messages until submit event
-  $scope.submitted = false;
-
-  $scope.showMessage = false;
-
-  $scope.submit = function() {
-
-    $http({
-      method: 'post',
-      url: 'http://demo.kaizen.link/api/users/login',
-      transformRequest: transformRequestAsFormPost,
-    })
-    .success(function (data, status, headers, config) {
-      $scope.username = data.username;
-      $scope.password = data.password;
-    })
-    .error(function (data, status, headers, config) {
-      $scope.data = 'Error';
-    })
-  };
-
-})
-
-.controller('usuariosController', function ($scope) {
-
-})
-
-.controller('inicioController', function ($scope) {
-
-})
-
+angular.module('kaizen-concepto.controllers-interactions', ['ui.bootstrap', 'n3-line-chart', 'n3-pie-chart'])
 
 .controller('carouselController', function ($scope) {
+  
   $scope.interval = 3000;
   $scope.slides = [
-  {
-    image: 'demo/carousel/1.jpg'
-  },
-  {
-    image: 'demo/carousel/2.jpg'
-  },
-  {
-    image: 'demo/carousel/3.jpg'
-  },
-  {
-    image: 'demo/carousel/4.jpg'
-  }
+  { image: 'demo/carousel/1.jpg' },
+  { image: 'demo/carousel/2.jpg' },
+  { image: 'demo/carousel/3.jpg' },
+  { image: 'demo/carousel/4.jpg' }
   ];
 })
 
 
 .controller('kpichartsController', function ($scope) {
+  
   $scope.data = [
   {x: 0, val_0: 0, val_1: 0, val_2: 0, val_3: 0},
   {x: 1, val_0: 0.993, val_1: 3.894, val_2: 8.47, val_3: 14.347},
@@ -205,6 +97,7 @@ angular.module('kaizen-concepto.controllers', ['ui.bootstrap', 'n3-line-chart', 
     columnsHGap: 1
   };
 })
+
 
 .controller('kpipieController', function ($scope) {
   

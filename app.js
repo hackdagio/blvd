@@ -1,21 +1,20 @@
 var express = require('express'),
-bodyParser = require('body-parser'),
-methodOverride = require('method-override'),
-errorHandler = require('errorhandler'),
-morgan = require('morgan'),
-routes = require('./routes'),
-partials = require('./routes/partials'),
-api = require('./routes/api'),
-http = require('http'),
-path = require('path');
+  bodyParser = require('body-parser'),
+  methodOverride = require('method-override'),
+  errorHandler = require('errorhandler'),
+  morgan = require('morgan'),
+  routes = require('./routes'),
+  partials = require('./routes/partials'),
+  api = require('./routes/api'),
+  http = require('http'),
+  path = require('path');
 
 var app = module.exports = express();
 
-/**
- * Configuration
- */
+/** 
+Config -- all envs
+**/
 
-// all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
@@ -24,36 +23,27 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
-
 var env = process.env.NODE_ENV || 'dev';
 
 // development only
-if (env === 'dev') {
-  app.use(errorHandler());
-}
-
+if (env === 'dev') { app.use(errorHandler()); }
 // production only
-if (env === 'production') {
-}
+if (env === 'production') { }
 
 
-/**
- * Routes
- */
+/** 
+Routes 
+**/
 
-// serve index  
 app.use('/', routes);
-
-// server view partials
 app.use('/partials', partials);
-
-// JSON API
 app.use('/api', api);
 
-// redirect all others to the index (HTML5 history)
+// Redirect all others to the index (HTML5 history)
 app.get('*', function(req, res, next) {
   res.render('index');
 });
+
 
 // error handlers
 
