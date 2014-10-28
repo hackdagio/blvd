@@ -6,10 +6,10 @@ angular.module('kaizen-concepto.controllers-interactions', ['ui.bootstrap', 'n3-
   
   $scope.interval = 3000;
   $scope.slides = [
-  { image: 'demo/carousel/1.jpg' },
-  { image: 'demo/carousel/2.jpg' },
-  { image: 'demo/carousel/3.jpg' },
-  { image: 'demo/carousel/4.jpg' }
+  { image: 'entel/images/carousel1.jpg' },
+  { image: 'entel/images/carousel2.jpg' },
+  { image: 'entel/images/carousel3.jpg' },
+  { image: 'entel/images/carousel4.jpg' }
   ];
 })
 
