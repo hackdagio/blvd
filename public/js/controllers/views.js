@@ -10,6 +10,9 @@ angular.module('kaizen-concepto.controllers-views', [])
   function transformRequest( data, getHeaders ) {
     var headers = getHeaders();
     headers[ "Content-type" ] = "application/x-www-form-urlencoded; charset=utf-8";
+    headers[ "Access-Control-Allow-Origin"] = "*";
+    headers[ "Allow-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
+
     return( serializeData( data ) );
   }
 
