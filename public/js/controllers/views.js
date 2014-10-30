@@ -10,6 +10,7 @@ angular.module('kaizen-concepto.controllers-views', [])
   function transformRequest( data, getHeaders ) {
     var headers = getHeaders();
     headers[ "Content-type" ] = "application/x-www-form-urlencoded; charset=utf-8";
+    headers[ "Origin"] = "http://www.kaizen.link";
     return( serializeData( data ) );
   }
 
