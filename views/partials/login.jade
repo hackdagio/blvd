@@ -7,14 +7,14 @@
   .login-or
     hr.hr-or
     span.span-or /
-  form(role='form')
-    .form-group
-      label(for='inputUsernameEmail') RUT
-      input#inputUsernameEmail.form-control(type='text')
-    .form-group
+  form(role='form', submitted='submitted', submit='submit()', ng-click='submit()')
+    .form-group(ng-class='{"has-error": form.username.$invalid && submitted}')
+      label(for='username') RUT
+      input#username.form-control(type='username', name='username', placeholder='RUT', ng-model='username', required='')
+    .form-group(ng-class='{"has-error": form.password.$invalid && submitted}')
       a.pull-right(href='#') ¿No recuerdas tu contraseña?
-      label(for='inputPassword') Contraseña
-      input#inputPassword.form-control(type='password')
+      label(for='password') Contraseña
+      input#password.form-control(type='password', name='password', placeholder='Contraseña', ng-model='password', required='')
     .checkbox.pull-right
       label
         input(type='checkbox')
