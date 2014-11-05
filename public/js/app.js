@@ -26,6 +26,10 @@ angular.module('kaizen-concepto', [
     templateUrl: 'partials/inicio',
     controller: 'inicioController'
   })
+  .when('/indicadores', {
+    templateUrl: 'partials/indicadores',
+    controller: 'indicadoresController'
+  })
   .otherwise({
     redirectTo: '/inicio'
   });
