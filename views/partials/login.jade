@@ -1,23 +1,18 @@
 ﻿.container
   .row
-  h3
-    | Por favor, inicia sesión o 
-    a(href='#') solicita acceso
-  .row
-  .login-or
-    hr.hr-or
-    span.span-or /
-  form(role='form', submitted='submitted', submit='submit()', ng-click='submit()')
-    .form-group(ng-class='{"has-error": form.username.$invalid && submitted}')
-      label(for='username') RUT
-      input#username.form-control(type='username', name='username', ng-model='username', required='')
-    .form-group(ng-class='{"has-error": form.password.$invalid && submitted}')
-      a.pull-right(href='#') ¿No recuerdas tu contraseña?
-      label(for='password') Contraseña
-      input#password.form-control(type='password', name='password', ng-model='password', required='')
-    .checkbox.pull-right
-      label
-        input(type='checkbox')
-        | Recuérdame
-    button.btn.btn.btn-primary(type='submit')
-      | Inicia sesión
+    .col-md-12(ng-controller='loginController')
+      .modal-dialog(style='margin-bottom:0')
+        .panel-heading
+          h3.panel-title Inicia sesión
+        .panel-body
+          form(role='form', submitted='submitted', submit='submit()', ng-submit='submit()')
+            fieldset
+              .form-group(ng-class='{"has-error": form.username.$invalid && submitted}')
+                input#username.form-control(type='username', name='username', ng-model='username', required='')
+              .form-group(ng-class='{"has-error": form.password.$invalid && submitted}')
+                input#password.form-control(type='password', name='password', ng-model='password', required='')
+              .checkbox
+                label
+                  input(name='remember', type='checkbox', value='Recuérdame')
+                  | Recuérdame
+              a.btn.btn-sm.btn-success(type='submit') Login
