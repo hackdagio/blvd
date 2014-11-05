@@ -2,7 +2,7 @@ extends layout
 
 block body
 
-  .navbar.navbar-default.navbar-fixed-top(role='navigation')
+  .navbar.navbar-kaizen.navbar-fixed-top(role='navigation')
     .container
       .navbar-header
         button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
@@ -11,8 +11,8 @@ block body
           span.icon-bar
           span.icon-bar
         a.navbar-brand(href='inicio')
-          // img(src='entel/images/logo.png', style='height:100%;')
-          a.navbar-brand(href='#') Logo
+          img(src='entel/images/logo-sonrisas.png', style='height:100%;')
+          // a.navbar-brand(href='#') Logo
       .collapse.navbar-collapse
         ul.nav.navbar-nav.navbar-right
           li
@@ -34,7 +34,7 @@ block body
                   .row
                     .col-lg-4
                       p.text-center
-                        img(src='demo/avatar/4.jpg', style='width:100%;')
+                        img(src='entel/avatar/10.jpg', style='width:100%;')
                     .col-lg-8
                       p.text-left
                         strong María Alejandra
@@ -51,6 +51,7 @@ block body
 
   div(ng-view)
 
+  include ./footer.jade
   include ./includes/footer-scripts.jade
 
   script(src='js/lib/n3-charts/line-chart.min.js')
