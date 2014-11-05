@@ -15,7 +15,9 @@
     "jade": "~0.31.2",
     "method-override": "^1.0.0",
     "morgan": "^1.0.0",
-    "body-parser": "^1.9.0"
+    "body-parser": "^1.9.0",
+    "nib": "*",
+    "stylus": "*"
   },
   "engines": {
     "node": "0.10.x"

@@ -6,10 +6,20 @@ morgan = require('morgan'),
 routes = require('./routes'),
 partials = require('./routes/partials'),
 api = require('./routes/api'),
-http = require('http');
+http = require('http'),
+stylus = require('stylus'),
+nib = require('nib');
 
 var debug = require('debug')('express');
 var app = module.exports = express();
+
+// compile .styl
+function compile(str, path) {
+  return stylus(str)
+    .set('compress', true)
+    .set('filename', path)
+    .use(nib())
+}
 
 
 // config
@@ -17,6 +27,11 @@ var app = module.exports = express();
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
+app.use(stylus.middleware(
+  { src: __dirname + '/public'
+  , compile: compile
+  }
+))
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
