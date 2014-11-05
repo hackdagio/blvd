@@ -64,6 +64,34 @@ block body
                     .col-lg-12
                       p
                         a.btn.btn-danger.btn-block(href='#') Salir
+          li.dropdown
+            a.dropdown-toggle.navbar-link(href='#', data-toggle='dropdown')
+              span.glyphicon.glyphicon-envelope.text-orange
+            ul.dropdown-menu.navbar-notifications(role='menu')
+              span.uppercase Notificaciones
+              li
+                a(href='#')
+                  .row
+                    .col-lg-2
+                      span.glyphicon.glyphicon-star
+                    .col-lg-10
+                      span Has logrado superar tu meta
+                      span
+                        small Te ganaste un premio
+                      span
+                        small Hace 2 minutos
+              li
+                a(href='#')
+                  .row
+                    .col-md-2
+                      img(src='entel/avatar/10.jpg', style='width:100%;')
+                    .col-md-10
+                      span Has logrado superar tu meta
+                      span
+                        small Te ganaste un premio
+                      span
+                        small Hace 2 minutos
+
 
   div(ng-view)
 
