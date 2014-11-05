@@ -102,12 +102,10 @@ angular.module('kaizen-concepto.controllers-interactions', ['ui.bootstrap', 'n3-
 .controller('kpipieController', function ($scope) {
   
   var colors = d3.scale.category10();
-  $scope.data = [
-  {label: "Ponderado", value: 12.2, color: colors(0)}, 
-  {label: "Meta", value: 45, color: colors(1)}
-  ];
-
-  $scope.options = {thickness: 10};
+  $scope.seguimientoData = [{label: "Seguimientos", value: 78, color: "#d62728", suffix: "%"}];
+  $scope.cotizacionesData = [{label: "Cotizaciones", value: 29, color: "#d62728", suffix: "%"}];
+  $scope.segurosData = [{label: "Seguros", value: 100, color: "#d62728", suffix: "%"}];
+  $scope.options = {thickness: 10, mode: "gauge", total: 100};
   
   $scope.gauge_data = [
   {label: "Ponderado", value: 75, suffix: "%", color: "steelblue"}

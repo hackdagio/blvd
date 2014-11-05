@@ -9,22 +9,24 @@ div
 .content-section-a
   .container
     .row
-      .col-lg-5.col-sm-6
+      .col-lg-12
+        h3.kaizen-titles
+          | Indicadores <span>{</span>
         hr.section-heading-spacer
         .clearfix
-        h2.section-heading
-          | <small>Tus indicadores</small>
-          br
-          | María Andrea
-        p.lead
-          | Vendedora
-      .col-lg-5.col-lg-offset-2.col-sm-6
-        img.img-responsive(src='/demo/avatar/4.jpg', style='width: 50%;', alt='María Andrea')
+      .col-lg-12
+        .col-md-4
+          div(ng-controller='kpipieController')
+            pie-chart(data='seguimientoData', options='options')
+        .col-md-4
+          div(ng-controller='kpipieController')
+            pie-chart(data='cotizacionesData', options='options')
+        .col-md-4
+          div(ng-controller='kpipieController')
+            pie-chart(data='segurosData', options='options')
 
 .content-section-b
   .container
     .row
       div(ng-controller='kpichartsController')
         linechart(data='data', options='options')
-      div(ng-controller='kpipieController')
-        pie-chart(data='gauge_data', options='gauge_options')
