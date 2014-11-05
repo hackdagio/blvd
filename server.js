@@ -1,19 +1,18 @@
 var express = require('express'),
-  bodyParser = require('body-parser'),
-  methodOverride = require('method-override'),
-  errorHandler = require('errorhandler'),
-  morgan = require('morgan'),
-  routes = require('./routes'),
-  partials = require('./routes/partials'),
-  api = require('./routes/api'),
-  http = require('http'),
-  path = require('path');
+bodyParser = require('body-parser'),
+methodOverride = require('method-override'),
+errorHandler = require('errorhandler'),
+morgan = require('morgan'),
+routes = require('./routes'),
+partials = require('./routes/partials'),
+api = require('./routes/api'),
+http = require('http');
 
+var debug = require('debug')('express');
 var app = module.exports = express();
 
-/** 
-Config -- all envs
-**/
+
+// config
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
@@ -22,7 +21,8 @@ app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(methodOverride());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname + '/public'));
+
 var env = process.env.NODE_ENV || 'dev';
 
 // development only
@@ -31,15 +31,12 @@ if (env === 'dev') { app.use(errorHandler()); }
 if (env === 'production') { }
 
 
-/** 
-Routes 
-**/
-
+// routes
 app.use('/', routes);
 app.use('/partials', partials);
 app.use('/api', api);
 
-// Redirect all others to the index (HTML5 history)
+// redirect all others to the index (html5 history)
 app.get('*', function(req, res, next) {
   res.render('index');
 });
@@ -70,11 +67,18 @@ app.use(function(err, req, res, next) {
 });
 
 
-// CORS inbound
+// cors inbound
 app.all('/*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, POST","PUT");
   next();
 });
+
+
+// runtime
+var server = app.listen(app.get('port'), function () {
+  console.log('Kaizen listening on port ' + server.address().port);
+});
+
 
 module.exports = app;
