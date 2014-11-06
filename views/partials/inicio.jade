@@ -1,5 +1,5 @@
 div
-  div#slides_control(ng-controller='carouselController')
+  div#kaizen-carousel-initial-promo(ng-controller='carouselController')
       carousel(interval='interval')
         slide(ng-repeat='slide in slides', active='slide.active')
           img(ng-src='{{slide.image}}')
