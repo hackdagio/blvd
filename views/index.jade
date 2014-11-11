@@ -38,43 +38,36 @@ block body
                 a(href='#') Ganadores
 
           li.dropdown
-            a.dropdown-toggle.navbar-link(href='#', data-toggle='dropdown')
-              span.glyphicon.glyphicon-user.text-orange
-              strong.text-orange  Francisca
-              span.glyphicon-chevron-user.text-orange
+            a.dropdown-toggle.navbar-link.navbar-user(href='#', data-toggle='dropdown')
+              span.glyphicon.glyphicon-user
+              strong  Francisca
+              span.glyphicon-chevron-user
             ul.dropdown-menu
               li
                 .navbar-login
                   .row
-                    .col-lg-5
+                    .col-xs-5
                       p.text-center
-                        img(src='entel/avatar/10.jpg', style='width:100%;')
-                    .col-lg-7
-                      p.text-left.text-orange
+                        img.navbar-user-avatar(src='entel/avatar/10.jpg')
+                    .col-xs-7.navbar-user-info
+                      p.text-left
                         strong Francisca Bilbao
                       p.text-left
-                        em _Vendedora
-                      p.text-left.small 18.123.123-k
-                      p.text-left
+                        em Vendedora
+                      p.text-left 18.123.123-k
+                      .navbar-user-link-account
                         a.btn.btn-primary.btn-block.btn-sm(href='#') Mi cuenta
-              li.divider
-              li
-                .navbar-login.navbar-login-session
-                  .row
-                    .col-lg-12
-                      p
-                        a.btn.btn-danger.btn-block(href='#') Salir
           li.dropdown
-            a.dropdown-toggle.navbar-link(href='#', data-toggle='dropdown')
-              span.glyphicon.glyphicon-envelope.text-orange
-            ul.dropdown-menu.navbar-notifications(role='menu')
+            a.dropdown-toggle.navbar-link.navbar-notifications(href='#', data-toggle='dropdown')
+              span.glyphicon.glyphicon-envelope
+            ul.dropdown-menu.navbar-notifications-box(role='menu')
               span.uppercase Notificaciones
               li
                 a(href='#')
                   .row
-                    .col-lg-2
+                    .col-xs-2
                       span.glyphicon.glyphicon-star
-                    .col-lg-10
+                    .col-xs-10
                       span Has logrado superar tu meta
                       span
                         small Te ganaste un premio
@@ -83,14 +76,17 @@ block body
               li
                 a(href='#')
                   .row
-                    .col-md-2
+                    .col-xs-2
                       img(src='entel/avatar/10.jpg', style='width:100%;')
-                    .col-md-10
+                    .col-xs-10
                       span Has logrado superar tu meta
                       span
                         small Te ganaste un premio
                       span
                         small Hace 2 minutos
+          li
+            a.navbar-link.navbar-logout(href='#')
+              span.glyphicon.glyphicon-off
 
 
   div(ng-view)
