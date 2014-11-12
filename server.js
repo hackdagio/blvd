@@ -8,7 +8,8 @@ partials = require('./routes/partials'),
 api = require('./routes/api'),
 http = require('http'),
 stylus = require('stylus'),
-nib = require('nib');
+nib = require('nib'),
+compress = require('compression');
 
 var debug = require('debug')('express');
 var app = module.exports = express();
@@ -28,14 +29,17 @@ app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(stylus.middleware(
-  { src: __dirname + '/public'
-  , compile: compile
+  { src: __dirname + '/views',
+    dest: __dirname + '/public',
+    compile: compile
   }
 ))
+
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(methodOverride());
+app.use(compress());
 app.use(express.static(__dirname + '/public'));
 
 var env = process.env.NODE_ENV || 'dev';
