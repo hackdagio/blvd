@@ -8,7 +8,8 @@ partials = require('./routes/partials'),
 api = require('./routes/api'),
 http = require('http'),
 stylus = require('stylus'),
-nib = require('nib');
+nib = require('nib'),
+compress = require('compression');
 
 var debug = require('debug')('express');
 var app = module.exports = express();
@@ -33,10 +34,12 @@ app.use(stylus.middleware(
     compile: compile
   }
 ))
+
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(methodOverride());
+app.use(compress());
 app.use(express.static(__dirname + '/public'));
 
 var env = process.env.NODE_ENV || 'dev';
