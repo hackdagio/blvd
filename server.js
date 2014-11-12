@@ -28,8 +28,9 @@ app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(stylus.middleware(
-  { src: __dirname + '/public'
-  , compile: compile
+  { src: __dirname + '/views',
+    dest: __dirname + '/public',
+    compile: compile
   }
 ))
 app.use(morgan('dev'));
