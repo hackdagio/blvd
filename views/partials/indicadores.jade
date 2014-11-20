@@ -1,19 +1,47 @@
-.container
-  .row
-    h2.text-center
-          | Indicadores <span class='text-orange'>{</span>
-  .row.row-indicadores-overview
-    .col-md-12
-      .kaizen-tiles.black
-        h4.uppercase.text-center [ En resumen_
-        hr.section-heading-spacer
-        
-  .row.row-indicadores
-    .col-md-6
-      .kaizen-tiles.orange
-        h4.uppercase [ Ventas_
-        hr.section-heading-spacer
-    .col-md-6
-      .kaizen-tiles.blue
-        h4.uppercase [ Seguimientos_
-        hr.section-heading-spacer
+#wrapper
+  #wrapper-sidebar
+    ul.sidebar-nav
+      li.sidebar-brand
+        a(href='#')
+          | Call Center
+      li
+        a(href='#') Ventas
+      li
+        a(href='#') Más ventas
+      li
+        a(href='#') Qué ventas
+      li
+        a(href='#') Wow, números
+      li
+        a(href='#') Muchos números
+      li
+        a(href='#') Ventísimas
+      li
+        a(href='#') Don Ventas
+
+  #wrapper-content
+    .container
+      .row
+        h2.text-center
+          a#menu-toggle(href='#') Indicadores
+      .row.row-indicadores-overview
+        .col-md-12
+          .kaizen-tiles.black
+            h4.uppercase.text-center [ En resumen_
+            hr.section-heading-spacer
+            
+      .row.row-indicadores
+        .col-md-6
+          .kaizen-tiles.orange
+            h4.uppercase [ Ventas_
+            hr.section-heading-spacer
+        .col-md-6
+          .kaizen-tiles.blue
+            h4.uppercase [ Seguimientos_
+            hr.section-heading-spacer
+
+script.
+  $("#menu-toggle").click(function(e) {
+  e.preventDefault();
+  $("#wrapper").toggleClass("toggled");
+  });

@@ -1,3 +1,81 @@
+wrapper-principal-size = 200px
+wrapper-principal-transitions = all 0.5s ease
+
+#wrapper
+  padding-left 0
+  transition all 0.5s ease
+  &.toggled
+    padding-left wrapper-principal-size
+    padding-left 0
+    #wrapper-sidebar
+      width wrapper-principal-size
+      width 0
+    #wrapper-content
+      position absolute
+      margin-right -(wrapper-principal-size)
+      position relative
+      margin-right 0
+      @media(min-width:768px)
+        position relative
+        margin-right 0
+    @media(min-width:768px)
+      padding-left 0
+  @media(min-width:768px)
+    padding-left wrapper-principal-size
+
+#wrapper-sidebar
+  z-index 1000
+  position fixed
+  left wrapper-principal-size
+  width 0
+  height 100%
+  margin-left -(wrapper-principal-size)
+  overflow-y auto
+  background rgb(248, 248, 248)
+  transition all 0.5s ease
+  width wrapper-principal-size
+  margin-top -20px
+  @media(min-width:768px)
+    width wrapper-principal-size
+
+#wrapper-content
+  width 100%
+  padding 15px
+  padding 20px
+  @media(min-width:768px)
+    padding 20px
+
+.sidebar-nav
+  position absolute
+  top 0
+  margin 0
+  padding 0
+  list-style none
+  li
+    text-indent 20px
+    line-height 40px
+    a
+      display block
+      text-decoration none
+      color #999999
+      &:hover
+        text-decoration none
+        color #fff
+        background rgba(255,255,255,0.2)
+  & > .sidebar-brand
+    height 65px
+    font-size 18px
+    line-height 60px
+    a
+      color #999999
+      &:hover
+        color #fff
+        background none
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus
+  text-decoration none
+
 .row-indicadores
   margin-top 25px
 
