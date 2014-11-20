@@ -5,7 +5,8 @@ angular.module('kaizen-concepto', [
   'kaizen-concepto.controllers-interactions',
   'kaizen-concepto.filters',
   'kaizen-concepto.services',
-  'kaizen-concepto.directives'
+  'kaizen-concepto.directives',
+  'ngRoute'
   ])
 
 .config(function ($routeProvider, $locationProvider) {
