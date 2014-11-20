@@ -1,18 +1,18 @@
-wrapper-principal-size = 200px
+wrapper-principal-size = 200
 wrapper-principal-transitions = all 0.5s ease
 
 #wrapper
   padding-left 0
   transition all 0.5s ease
   &.toggled
-    padding-left wrapper-principal-size
+    padding-left (wrapper-principal-size)px
     padding-left 0
     #wrapper-sidebar
-      width wrapper-principal-size
+      width (wrapper-principal-size)px
       width 0
     #wrapper-content
       position absolute
-      margin-right -(wrapper-principal-size)
+      margin-right -(wrapper-principal-size)px
       position relative
       margin-right 0
       @media(min-width:768px)
@@ -21,22 +21,24 @@ wrapper-principal-transitions = all 0.5s ease
     @media(min-width:768px)
       padding-left 0
   @media(min-width:768px)
-    padding-left wrapper-principal-size
+    padding-left (wrapper-principal-size)px
 
 #wrapper-sidebar
   z-index 1000
   position fixed
-  left wrapper-principal-size
+  left (wrapper-principal-size)px
   width 0
   height 100%
-  margin-left -(wrapper-principal-size)
+  margin-left -(wrapper-principal-size)px
   overflow-y auto
   background rgb(248, 248, 248)
   transition all 0.5s ease
-  width wrapper-principal-size
+  width (wrapper-principal-size)px
   margin-top -20px
-  @media(min-width:768px)
-    width wrapper-principal-size
+  @media(min-width:768px) and (max-width:979px)
+    width (wrapper-principal-size/2)px
+  @media(max-width:767px)
+    width (wrapper-principal-size/4)px
 
 #wrapper-content
   width 100%
