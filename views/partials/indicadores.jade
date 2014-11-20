@@ -1,39 +1,37 @@
 #wrapper
   #wrapper-sidebar
-    ul.sidebar-nav
-      li.sidebar-brand
-        a(href='#')
-          | Call Center
-      li
-        a(href='#') Ventas
-      li
-        a(href='#') Más ventas
-      li
-        a(href='#') Qué ventas
-      li
-        a(href='#') Wow, números
-      li
-        a(href='#') Muchos números
-      li
-        a(href='#') Ventísimas
-      li
-        a(href='#') Don Ventas
+      .container
+        ul.sidebar-nav
+          li.sidebar-brand
+            a(href='#')
+              | Call Center
+          li
+            a(href='#') Ventas
+          li
+            a(href='#') Más ventas
+          li
+            a(href='#') Qué ventas
+          li
+            a(href='#') Wow, números
+          li
+            a(href='#') Muchos números
+          li
+            a(href='#') Ventísimas
+          li
+            a(href='#') Don Ventas
 
   #wrapper-content
-    .container
+    .container-fluid
       .row
-        h2.text-center
-          a#menu-toggle(href='#') Indicadores
-      .row.row-indicadores-overview
-        .col-md-12
+        .col-md-6
           .kaizen-tiles.black
-            h4.uppercase.text-center [ En resumen_
+            h4.uppercase General
             hr.section-heading-spacer
             
       .row.row-indicadores
         .col-md-6
           .kaizen-tiles.orange
-            h4.uppercase [ Ventas_
+            h4.uppercase General
             hr.section-heading-spacer
         .col-md-6
           .kaizen-tiles.blue

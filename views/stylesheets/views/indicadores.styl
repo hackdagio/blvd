@@ -35,17 +35,13 @@ wrapper-principal-transitions = all 0.5s ease
   transition all 0.5s ease
   width (wrapper-principal-size)px
   margin-top -20px
-  @media(min-width:768px) and (max-width:979px)
-    width (wrapper-principal-size/2)px
   @media(max-width:767px)
-    width (wrapper-principal-size/4)px
+    width (wrapper-principal-size/2)px
 
 #wrapper-content
   width 100%
-  padding 15px
-  padding 20px
-  @media(min-width:768px)
-    padding 20px
+  @media(max-width:767px)
+    padding-left (wrapper-principal-size/2)px
 
 .sidebar-nav
   position absolute
@@ -78,12 +74,9 @@ wrapper-principal-transitions = all 0.5s ease
 .sidebar-nav li a:focus
   text-decoration none
 
-.row-indicadores
-  margin-top 25px
-
 .kaizen-tiles
   padding 25px
-  margin 25px 0
+  margin 0 0 25px 0
   &.orange
     background rgb(245, 121, 23)
     color white
@@ -91,5 +84,5 @@ wrapper-principal-transitions = all 0.5s ease
     background rgb(0,85,159)
     color white
   &.black
-    background rgba(0,0,0,.8)
+    background rgb(120,120,120)
     color white
