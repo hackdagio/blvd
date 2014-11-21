@@ -16,13 +16,13 @@ block body
       .collapse.navbar-collapse
         ul.nav.navbar-nav.navbar-right
           li
-            a(href='inicio') Inicio
+            a(href='inicio', data-ng-hide='!authentication.isAuth') Inicio
           li
-            a(href='indicadores') Indicadores
+            a(href='indicadores', data-ng-hide='!authentication.isAuth') Indicadores
           li
-            a(href='acceder') Acceder
+            a(href='acceder', data-ng-hide='authentication.isAuth') Iniciar sesión
           li.dropdown
-            a.dropdown-toggle(href='javascript:void(0)', aria-expanded='true')
+            a.dropdown-toggle(href='javascript:void(0)', aria-expanded='true', data-ng-hide='!authentication.isAuth')
               | Concursos
               span.caret
             ul.dropdown-menu(role='menu')
@@ -85,7 +85,7 @@ block body
                       span
                         small Hace 2 minutos
           li
-            a.navbar-link.navbar-logout(href='javascript:void(0)')
+            a.navbar-link.navbar-logout(href='javascript:void(0)', data-ng-click='logOut()')
               span.glyphicon.glyphicon-off
 
 
