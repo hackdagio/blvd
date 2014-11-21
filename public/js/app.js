@@ -7,31 +7,22 @@ var app = angular.module('kaizen-concepto', [
   'kaizen-concepto.services',
   'kaizen-concepto.directives',
   'ngRoute',
-  'LocalStorageModule',
-
+  'LocalStorageModule'
   ]);
 
 app.config(function ($routeProvider, $locationProvider) {
   $routeProvider
-  .when('/acceder', {
-    templateUrl: 'partials/login',
-    controller: 'loginController'
-  })
-  .when('/concursos', {
-    templateUrl: 'partials/concursos',
-    controller: 'concursosController'
-  })
-  .when('/usuarios', {
-    templateUrl: 'partials/usuarios',
-    controller: 'homeController'
-  })
   .when('/inicio', {
     templateUrl: 'partials/inicio',
-    controller: 'indexController'
+    controller: 'inicioController'
   })
   .when('/indicadores', {
     templateUrl: 'partials/indicadores',
     controller: 'indicadoresController'
+  })
+  .when('/acceder', {
+    templateUrl: 'partials/login',
+    controller: 'loginController'
   })
   .otherwise({
     redirectTo: '/inicio'

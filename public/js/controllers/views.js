@@ -2,17 +2,19 @@
 
 angular.module('kaizen-concepto.controllers-views', [])
 
-.controller('indexController', ['$scope', '$location', 'authService', function ($scope, $location, authService) {
+.controller('inicioController', ['$scope', '$location', 'authService', function ($scope, $location, authService) {
 
     $scope.logOut = function () {
         authService.logOut();
-        $location.path('/home');
+        $location.path('/acceder');
     }
 
     $scope.authentication = authService.authentication;
 
 }])
 
-.controller('homeController', ['$scope', function ($scope) {
+.controller('indicadoresController', ['$scope', function ($scope) {
    
 }]);
+
+
