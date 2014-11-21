@@ -1,26 +1,28 @@
-// important fixes to css and font-face
-
+// nib
 @import 'nib'
+
+// fonts
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400italic,400')
+global-font = 'Open Sans', sans-serif
+
+// global reset (reset.css alike)
 global-reset()
 
-// kaizen per sig customs
+// kaizen variables
+body-distance-from-top = 70
 
+// kaizen per sig customs
 @import 'custom/sig'
 
 // main site - always present
-
 @import 'main'
 @import 'navbar'
 
 // custom views
-
 @import 'views/acceder'
 @import 'views/inicio'
 @import 'views/indicadores'
 
 // footer - always present
-
 @import 'footer'
-
 @import 'custom/words'

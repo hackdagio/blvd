@@ -25,7 +25,7 @@ function compile(str, path) {
 
 // config
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3001);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(stylus.middleware(

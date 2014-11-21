@@ -1,9 +1,82 @@
-.row-indicadores
-  margin-top 25px
+wrapper-principal-size = 200
+wrapper-principal-transitions = all 0.5s ease
+
+#wrapper
+  padding-left 0
+  transition all 0.5s ease
+  &.toggled
+    padding-left (wrapper-principal-size)px
+    padding-left 0
+    #wrapper-sidebar
+      width (wrapper-principal-size)px
+      width 0
+    #wrapper-content
+      position absolute
+      margin-right -(wrapper-principal-size)px
+      position relative
+      margin-right 0
+      @media(min-width:768px)
+        position relative
+        margin-right 0
+    @media(min-width:768px)
+      padding-left 0
+  @media(min-width:768px)
+    padding-left (wrapper-principal-size)px
+
+#wrapper-sidebar
+  z-index 1000
+  position fixed
+  left (wrapper-principal-size)px
+  width 0
+  height 100%
+  margin-left -(wrapper-principal-size)px
+  overflow-y auto
+  background rgb(248, 248, 248)
+  transition all 0.5s ease
+  width (wrapper-principal-size)px
+  margin-top -20px
+  @media(max-width:767px)
+    width (wrapper-principal-size/2)px
+
+#wrapper-content
+  @media(max-width:767px)
+    padding-left (wrapper-principal-size/2)px
+
+.sidebar-nav
+  position absolute
+  top 0
+  margin 0
+  padding 0
+  list-style none
+  li
+    text-indent 20px
+    line-height 40px
+    a
+      display block
+      text-decoration none
+      color #999999
+      &:hover
+        text-decoration none
+        color #fff
+        background rgba(255,255,255,0.2)
+  & > .sidebar-brand
+    height 65px
+    font-size 18px
+    line-height 60px
+    a
+      color #999999
+      &:hover
+        color #fff
+        background none
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus
+  text-decoration none
 
 .kaizen-tiles
   padding 25px
-  margin 25px 0
+  margin 0 0 25px 0
+  box-shadow rgba(0, 0, 0, 0.07) 0 1px 1px 0
   &.orange
     background rgb(245, 121, 23)
     color white
@@ -11,5 +84,14 @@
     background rgb(0,85,159)
     color white
   &.black
-    background rgba(0,0,0,.8)
+    background rgb(30,30,30)
+    color white
+  &.grey
+    background rgb(215,215,215)
+    color black
+  &.red
+    background rgb(255,0,0)
+    color white
+  &.purple
+    background rgb(51,0,51)
     color white
