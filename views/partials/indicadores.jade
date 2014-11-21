@@ -1,24 +1,25 @@
 #wrapper
   #wrapper-sidebar
       .container
-        ul.sidebar-nav
-          li.sidebar-brand
-            a(href='#')
-              | Call Center
-          li
-            a(href='#') Ventas
-          li
-            a(href='#') Más ventas
-          li
-            a(href='#') Qué ventas
-          li
-            a(href='#') Wow, números
-          li
-            a(href='#') Muchos números
-          li
-            a(href='#') Ventísimas
-          li
-            a(href='#') Don Ventas
+        .row
+          ul.sidebar-nav
+            li.sidebar-brand
+              a(href='#')
+                | Call Center
+            li
+              a(href='#') Ventas
+            li
+              a(href='#') Más ventas
+            li
+              a(href='#') Qué ventas
+            li
+              a(href='#') Wow, números
+            li
+              a(href='#') Muchos números
+            li
+              a(href='#') Ventísimas
+            li
+              a(href='#') Don Ventas
 
   #wrapper-content
     .container-fluid
@@ -26,17 +27,25 @@
         .col-md-6
           .kaizen-tiles.black
             h4.uppercase General
-            hr.section-heading-spacer
-            
-      .row.row-indicadores
         .col-md-6
           .kaizen-tiles.orange
-            h4.uppercase General
-            hr.section-heading-spacer
-        .col-md-6
+            h4.uppercase Desviación de llamadas
+        .col-md-2
           .kaizen-tiles.blue
-            h4.uppercase [ Seguimientos_
-            hr.section-heading-spacer
+            h4.uppercase Nivel de servicio
+        .col-md-2
+          .kaizen-tiles.blue
+            h4.uppercase Nivel de atención
+        .col-md-2
+          .kaizen-tiles.blue
+            h4.uppercase EPA
+        .col-md-6
+          .kaizen-tiles.red
+            h4.uppercase TMO
+        .col-md-6
+          .kaizen-tiles.purple
+            h4.uppercase Ranking
+
 
 script.
   $("#menu-toggle").click(function(e) {

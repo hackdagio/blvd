@@ -12,7 +12,7 @@ block body
           span.icon-bar
         a.navbar-brand(href='inicio')
           img(src='entel/images/logo-sonrisas.png', style='height:100%;')
-          // a.navbar-brand(href='#') Logo
+          // a.navbar-brand(href='javascript:void(0)') Logo
       .collapse.navbar-collapse
         ul.nav.navbar-nav.navbar-right
           li
@@ -22,23 +22,23 @@ block body
           li
             a(href='acceder') Acceder
           li.dropdown
-            a.dropdown-toggle(href='#', data-toggle='dropdown', aria-expanded='true')
+            a.dropdown-toggle(href='javascript:void(0)', aria-expanded='true')
               | Concursos
               span.caret
             ul.dropdown-menu(role='menu')
               li
-                a(href='#') Concurso 1
+                a(href='javascript:void(0);') Concurso 1
               li
-                a(href='#') Concurso 2
+                a(href='javascript:void(0)') Concurso 2
               li.divider
               li.dropdown-header Otros
               li
-                a(href='#') Concursos históricos
+                a(href='javascript:void(0)') Concursos históricos
               li
-                a(href='#') Ganadores
+                a(href='javascript:void(0)') Ganadores
 
           li.dropdown
-            a.dropdown-toggle.navbar-link.navbar-user(href='#', data-toggle='dropdown')
+            a.dropdown-toggle.navbar-link.navbar-user(href='javascript:void(0)')
               span.glyphicon.glyphicon-user
               strong  Francisca
               span.glyphicon-chevron-user
@@ -56,14 +56,14 @@ block body
                         em Vendedora
                       p.text-left 18.123.123-k
                       .navbar-user-link-account
-                        a.btn.btn-primary.btn-block.btn-sm(href='#') Mi cuenta
+                        a.btn.btn-primary.btn-block.btn-sm(href='javascript:void(0)') Mi cuenta
           li.dropdown
-            a.dropdown-toggle.navbar-link.navbar-notifications(href='#', data-toggle='dropdown')
+            a.dropdown-toggle.navbar-link.navbar-notifications(href='javascript:void(0)')
               span.glyphicon.glyphicon-envelope
             ul.dropdown-menu.navbar-notifications-box(role='menu')
               span.uppercase Notificaciones
               li
-                a(href='#')
+                a(href='javascript:void(0)')
                   .row
                     .col-xs-2
                       span.glyphicon.glyphicon-star
@@ -74,7 +74,7 @@ block body
                       span
                         small Hace 2 minutos
               li
-                a(href='#')
+                a(href='javascript:void(0)')
                   .row
                     .col-xs-2
                       img(src='entel/avatar/10.jpg', style='width:100%;')
@@ -85,13 +85,13 @@ block body
                       span
                         small Hace 2 minutos
           li
-            a.navbar-link.navbar-logout(href='#')
+            a.navbar-link.navbar-logout(href='javascript:void(0)')
               span.glyphicon.glyphicon-off
 
 
   div(ng-view)
 
-  include ./footer.jade
+  // include ./footer.jade
   include ./includes/footer-scripts
 
   script(src='js/lib/n3-charts/line-chart.min.js')
