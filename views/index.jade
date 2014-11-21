@@ -2,7 +2,7 @@ extends layout
 
 block body
 
-  .navbar.navbar-kaizen.navbar-fixed-top(role='navigation')
+  .navbar.navbar-kaizen.navbar-fixed-top(role='navigation', data-ng-controller='inicioController')
     .container
       .navbar-header
         button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
@@ -16,13 +16,13 @@ block body
       .collapse.navbar-collapse
         ul.nav.navbar-nav.navbar-right
           li
-            a(href='inicio') Inicio
+            a(href='inicio', data-ng-hide='!authentication.isAuth') Inicio
           li
-            a(href='indicadores') Indicadores
+            a(href='indicadores', data-ng-hide='!authentication.isAuth') Indicadores
           li
-            a(href='acceder') Acceder
+            a(href='acceder', data-ng-hide='authentication.isAuth') Iniciar sesión
           li.dropdown
-            a.dropdown-toggle(href='javascript:void(0)', aria-expanded='true')
+            a.dropdown-toggle(href='javascript:void(0)', aria-expanded='true', data-ng-hide='!authentication.isAuth')
               | Concursos
               span.caret
             ul.dropdown-menu(role='menu')
@@ -38,9 +38,9 @@ block body
                 a(href='javascript:void(0)') Ganadores
 
           li.dropdown
-            a.dropdown-toggle.navbar-link.navbar-user(href='javascript:void(0)')
+            a.dropdown-toggle.navbar-link.navbar-user(href='javascript:void(0)', data-ng-hide='!authentication.isAuth')
               span.glyphicon.glyphicon-user
-              strong  Francisca
+              strong  {{authentication.userName}}
               span.glyphicon-chevron-user
             ul.dropdown-menu
               li
@@ -51,14 +51,14 @@ block body
                         img.navbar-user-avatar(src='entel/avatar/10.jpg')
                     .col-xs-7.navbar-user-info
                       p.text-left
-                        strong Francisca Bilbao
+                        strong {{authentication.userName}}
                       p.text-left
                         em Vendedora
                       p.text-left 18.123.123-k
                       .navbar-user-link-account
                         a.btn.btn-primary.btn-block.btn-sm(href='javascript:void(0)') Mi cuenta
           li.dropdown
-            a.dropdown-toggle.navbar-link.navbar-notifications(href='javascript:void(0)')
+            a.dropdown-toggle.navbar-link.navbar-notifications(href='javascript:void(0)', data-ng-hide='!authentication.isAuth')
               span.glyphicon.glyphicon-envelope
             ul.dropdown-menu.navbar-notifications-box(role='menu')
               span.uppercase Notificaciones
@@ -85,11 +85,11 @@ block body
                       span
                         small Hace 2 minutos
           li
-            a.navbar-link.navbar-logout(href='javascript:void(0)')
+            a.navbar-link.navbar-logout(href='javascript:void(0)', data-ng-hide='!authentication.isAuth', data-ng-click='logOut()')
               span.glyphicon.glyphicon-off
 
 
-  div(ng-view)
+  div(data-ng-view)
 
   include ./includes/footer-scripts
 

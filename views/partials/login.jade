@@ -5,14 +5,14 @@
         .panel-heading
           h3.panel-title Inicia sesión
         .panel-body
-          form(role='form', submitted='submitted', submit='submit()', ng-submit='submit()')
+          form(role='form')
             fieldset
-              .form-group(ng-class='{"has-error": form.username.$invalid && submitted}')
-                input#username.form-control(type='username', name='username', ng-model='username', required='')
-              .form-group(ng-class='{"has-error": form.password.$invalid && submitted}')
-                input#password.form-control(type='password', name='password', ng-model='password', required='')
+              .form-group
+                input#username.form-control(type='username', name='username', data-ng-model='loginData.userName', required='', autofocus='')
+              .form-group
+                input#password.form-control(type='password', name='password', data-ng-model='loginData.password', required='')
               .checkbox
                 label
                   input(name='remember', type='checkbox', value='Recuérdame')
                   | Recuérdame
-              a.btn.btn-sm.btn-success(type='submit') Login
+              a.btn.btn-sm.btn-success(type='submit', data-ng-click='login()') Login

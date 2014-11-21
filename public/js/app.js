@@ -1,28 +1,18 @@
 'use strict';
 
-angular.module('kaizen-concepto', [
+var app = angular.module('kaizen-concepto', [
   'kaizen-concepto.controllers-views',
   'kaizen-concepto.controllers-interactions',
   'kaizen-concepto.filters',
   'kaizen-concepto.services',
   'kaizen-concepto.directives',
-  'ngRoute'
-  ])
+  'ngRoute',
+  'LocalStorageModule'
+  ]);
 
-.config(function ($routeProvider, $locationProvider) {
+app.config(function ($routeProvider, $locationProvider) {
+
   $routeProvider
-  .when('/acceder', {
-    templateUrl: 'partials/login',
-    controller: 'loginController'
-  })
-  .when('/concursos', {
-    templateUrl: 'partials/concursos',
-    controller: 'concursosController'
-  })
-  .when('/usuarios', {
-    templateUrl: 'partials/usuarios',
-    controller: 'usuariosController'
-  })
   .when('/inicio', {
     templateUrl: 'partials/inicio',
     controller: 'inicioController'
@@ -31,9 +21,28 @@ angular.module('kaizen-concepto', [
     templateUrl: 'partials/indicadores',
     controller: 'indicadoresController'
   })
+  .when('/acceder', {
+    templateUrl: 'partials/login',
+    controller: 'loginController'
+  })
   .otherwise({
-    redirectTo: '/inicio'
+    redirectTo: '/acceder'
   });
 
   $locationProvider.html5Mode(true);
 });
+
+var serviceBase = 'http://demo.kaizen.link/';
+
+app.constant('ngAuthSettings', {
+    apiServiceBaseUri: serviceBase,
+    clientId: 'kaizen'
+});
+
+app.config(function ($httpProvider) {
+    $httpProvider.interceptors.push('authInterceptorService');
+});
+
+app.run(['authService', function (authService) {
+    authService.fillAuthData();
+}]);
