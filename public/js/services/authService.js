@@ -2,7 +2,7 @@
 
 app.factory('authService', ['$http', '$q', 'localStorageService', function ($http, $q, localStorageService) {
 
-    var serviceBase = 'http://ngauthenticationapi.azurewebsites.net/';
+    var serviceBase = 'http://demo.kaizen.link/';
     var authServiceFactory = {};
 
     var _authentication = {

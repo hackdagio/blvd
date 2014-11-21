@@ -23,11 +23,11 @@ app.config(function ($routeProvider, $locationProvider) {
   })
   .when('/usuarios', {
     templateUrl: 'partials/usuarios',
-    controller: 'usuariosController'
+    controller: 'homeController'
   })
   .when('/inicio', {
     templateUrl: 'partials/inicio',
-    controller: 'inicioController'
+    controller: 'indexController'
   })
   .when('/indicadores', {
     templateUrl: 'partials/indicadores',
@@ -40,3 +40,17 @@ app.config(function ($routeProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 });
 
+var serviceBase = 'http://demo.kaizen.link/';
+
+app.constant('ngAuthSettings', {
+    apiServiceBaseUri: serviceBase,
+    clientId: 'kaizen'
+});
+
+app.config(function ($httpProvider) {
+    $httpProvider.interceptors.push('authInterceptorService');
+});
+
+app.run(['authService', function (authService) {
+    authService.fillAuthData();
+}]);
