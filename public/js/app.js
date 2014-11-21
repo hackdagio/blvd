@@ -1,15 +1,17 @@
 'use strict';
 
-angular.module('kaizen-concepto', [
+var app = angular.module('kaizen-concepto', [
   'kaizen-concepto.controllers-views',
   'kaizen-concepto.controllers-interactions',
   'kaizen-concepto.filters',
   'kaizen-concepto.services',
   'kaizen-concepto.directives',
-  'ngRoute'
-  ])
+  'ngRoute',
+  'LocalStorageModule',
 
-.config(function ($routeProvider, $locationProvider) {
+  ]);
+
+app.config(function ($routeProvider, $locationProvider) {
   $routeProvider
   .when('/acceder', {
     templateUrl: 'partials/login',
@@ -37,3 +39,4 @@ angular.module('kaizen-concepto', [
 
   $locationProvider.html5Mode(true);
 });
+
