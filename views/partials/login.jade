@@ -4,6 +4,7 @@
       .modal-dialog(style='margin-bottom:0')
         .panel-heading
           h3.panel-title Inicia sesión
+        .alert.alert-danger(data-dismiss='alert', data-ng-hide="message == ''") {{ message }}
         .panel-body
           form(role='form')
             fieldset
@@ -15,4 +16,4 @@
                 label
                   input(name='remember', type='checkbox', value='Recuérdame')
                   | Recuérdame
-              a.btn.btn-sm.btn-success(type='submit', data-ng-click='login()') Login
+              button.btn.btn-sm.btn-success(type='submit', data-ng-click='login()') Entrar
