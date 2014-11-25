@@ -16,15 +16,18 @@ app.config(function ($routeProvider, $locationProvider) {
   $routeProvider
   .when('/inicio', {
     templateUrl: 'partials/inicio',
-    controller: 'inicioController'
+    controller: 'inicioController',
+    resolve: { loginRequired: loginRequired }
   })
   .when('/indicadores', {
     templateUrl: 'partials/indicadores',
-    controller: 'indicadoresController'
+    controller: 'indicadoresController',
+    resolve: { loginRequired: loginRequired }
   })
   .when('/acceder', {
     templateUrl: 'partials/login',
-    controller: 'loginController'
+    controller: 'loginController',
+    resolve: { redirectIfAuthenticated: redirectIfAuthenticated('/indicadores') }
   })
   .otherwise({
     redirectTo: '/acceder'
@@ -47,3 +50,33 @@ app.config(function ($httpProvider) {
 app.run(['authService', function (authService) {
     authService.fillAuthData();
 }]);
+
+
+var loginRequired = function($location, $q, authService) {  
+    var deferred = $q.defer();
+
+    if(! (authService.authentication.isAuth == true)) {
+        deferred.reject()
+        $location.path('/acceder');
+    } else {
+        deferred.resolve()
+    }
+
+    return deferred.promise;
+}
+
+var redirectIfAuthenticated = function(route) {  
+    return function($location, $q, authService) {
+
+        var deferred = $q.defer();
+
+        if (authService.authentication.isAuth == true) {
+            deferred.reject()
+            $location.path(route);
+        } else {
+            deferred.resolve()
+        }
+
+        return deferred.promise;
+    }
+}
