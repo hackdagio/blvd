@@ -16,12 +16,21 @@ angular.module('kaizen-concepto.controllers-views', [])
 
 	$scope.indicadores = [];
 
-	indicadoresService.getIndicadores().then(function (results) {
+	indicadoresService.getIndicadores('ongoing', 'general').then(function (results) {
 		$scope.indicadores = results.data;
 
 	}, function (error) {
 
 	});
+
+	$scope.ranking = [];
+	indicadoresService.getIndicadores('ranking', '').then(function (results) {
+		$scope.ranking = results.data;
+
+	}, function (error) {
+
+	});
+
 }]);
 
 

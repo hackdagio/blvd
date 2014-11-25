@@ -5,9 +5,9 @@ app.factory('indicadoresService', ['$http', 'ngAuthSettings', function ($http, n
 
     var indicadoresServiceFactory = {};
 
-    var _getIndicadores = function () {
+    var _getIndicadores = function (type, consult) {
 
-        return $http.get(serviceBase + 'api/kpis/ongoing/general').then(function (results) {
+        return $http.get(serviceBase + 'api/kpis/' + type + '/' + consult).then(function (results) {
             return results;
         });
     };

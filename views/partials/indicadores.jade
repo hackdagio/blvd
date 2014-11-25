@@ -6,9 +6,9 @@
             li.sidebar-brand
               a(href='indicadores/call-center')
                 img(src='entel/images/static/call-center.png')
-                span.hidden-sm.hidden-xs Call Center
+                span.hidden-sm.hidden-xs {{ indicadores.Id }}
             li
-              a(href='indicadores/presencial')
+              a(href='#')
                 img(src='entel/images/static/presencial.png')
                 span.hidden-sm.hidden-xs Presencial
             li
@@ -23,7 +23,7 @@
   #wrapper-content
     .container-fluid
       .row
-        .col-md-6
+        .col-md-8
           .kaizen-tiles.gray
             .kaizen-tiles-title
               .glyphicon-inline
@@ -37,11 +37,37 @@
               .info-kpi-diff
                 span 700 
                 span (+79,84%)
+            .fix-linechart
+              div(ng-controller='ponderadoController')
+                linechart(data='data', options='options')
 
-        .col-md-3
+        .col-md-4
           .kaizen-tiles.gray
-            h4.uppercase Desviación de llamadas
-            hr
+            .kaizen-tiles-title
+              .glyphicon-inline
+                span.glyphicon.glyphicon-asterisk
+              span.uppercase Ranking
+              .col-xs-12.ranks(data-ng-repeat='rank in ranking')
+                .col-xs-4
+                  h3.rank-name {{ rank.Id }}
+                  span.rank-weighted {{ rank.Ponderado }}
+                .col-xs-4
+                  .arrow-ranking.positive(ng-if='rank.Id != "SCCP"')
+                    span.glyphicon.glyphicon-chevron-up
+                  .arrow-ranking.negative(ng-if='rank.Id == "SCCP"')
+                    span.glyphicon.glyphicon-chevron-down
+                  span.rank-delta {{ rank.Delta }}
+                .col-xs-4
+                  span.rank-position {{ rank.Posicion }}
+                
+
+
+        .col-md-4
+          .kaizen-tiles.gray
+            .kaizen-tiles-title
+              .glyphicon-inline
+                span.glyphicon.glyphicon-asterisk
+              span.uppercase Desviación de llamadas
             .kaizen-kpi.weighted
               span.medium-kpi {{ indicadores.Kpi.DesviacionQLlamadas }}
             .kaizen-kpi.diff
@@ -51,21 +77,50 @@
                 span 700 
                 span (+79,84%)
 
-        .col-md-2
-          .kaizen-tiles.blue
-            h4.uppercase Nivel de servicio
-        .col-md-2
-          .kaizen-tiles.blue
-            h4.uppercase Nivel de atención
-        .col-md-2
-          .kaizen-tiles.blue
-            h4.uppercase EPA
-        .col-md-6
-          .kaizen-tiles.red
-            h4.uppercase TMO
-        .col-md-6
-          .kaizen-tiles.purple
-            h4.uppercase Ranking
+        .col-md-3
+          .kaizen-tiles.gray
+            .kaizen-tiles-title
+              .glyphicon-inline
+                span.glyphicon.glyphicon-asterisk
+              span.uppercase Nivel de servicio
+            .kaizen-kpi.weighted
+              span.medium-kpi {{ indicadores.Kpi.NivelServicio }}
+            .kaizen-kpi.diff
+              .arrow-kpi-diff.negative-kpi-change
+                span.glyphicon.glyphicon-chevron-down
+              .info-kpi-diff
+                span 700 
+                span (+79,84%)
+
+        .col-md-3
+          .kaizen-tiles.gray
+            .kaizen-tiles-title
+              .glyphicon-inline
+                span.glyphicon.glyphicon-asterisk
+              span.uppercase Nivel de atención
+            .kaizen-kpi.weighted
+              span.medium-kpi {{ indicadores.Kpi.NivelAtencion }}
+            .kaizen-kpi.diff
+              .arrow-kpi-diff.negative-kpi-change
+                span.glyphicon.glyphicon-chevron-down
+              .info-kpi-diff
+                span 700 
+                span (+79,84%)
+
+        .col-md-3
+          .kaizen-tiles.gray
+            .kaizen-tiles-title
+              .glyphicon-inline
+                span.glyphicon.glyphicon-asterisk
+              span.uppercase TMO
+            .kaizen-kpi.weighted
+              span.medium-kpi {{ indicadores.Kpi.TMO }}
+            .kaizen-kpi.diff
+              .arrow-kpi-diff.negative-kpi-change
+                span.glyphicon.glyphicon-chevron-down
+              .info-kpi-diff
+                span 700 
+                span (+79,84%)
 
 
 script.

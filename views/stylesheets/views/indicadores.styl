@@ -34,6 +34,7 @@ wrapper-principal-transitions = all 0.5s ease
   transition all 0.5s ease
   width (wrapper-principal-size)px
   margin-top -20px
+  font-weight 300
   @media(max-width:767px)
     width (wrapper-principal-size/2.5)px
 
@@ -79,8 +80,8 @@ wrapper-principal-transitions = all 0.5s ease
     font-size 1.2em
     margin 0 0 1em 0
     span
-      display inline-block
-      font-weight 400
+      display inline
+      font-weight 300
     .glyphicon-inline
       display inline-block
       vertical-align middle
@@ -90,6 +91,8 @@ wrapper-principal-transitions = all 0.5s ease
   padding 25px
   margin 0 0 25px 0
   line-height 2em
+  overflow hidden
+  box-shadow 2px 1px 3px -15px rgba(0,0,0,1)
   &.orange
     background rgb(245, 121, 23)
     color white
@@ -100,7 +103,7 @@ wrapper-principal-transitions = all 0.5s ease
     background rgb(30,30,30)
     color white
   &.gray
-    background rgb(250,250,250)
+    background rgb(238,238,238)
     color color-black-gray
   &.red
     background rgb(255,0,0)
@@ -131,4 +134,35 @@ wrapper-principal-transitions = all 0.5s ease
       display inline-block
       color primary-color-2
 
-    
+.ranks 
+  margin 1em 0
+  padding-right 0
+  padding-left 0
+
+.rank-position
+  color primary-color-1
+  float right
+  font-size 2.5em
+
+.rank-name
+  font-weight 400!important
+  color primary-color-1
+  font-size 1.4em
+
+.rank-weighted
+  font-weight 400!important
+  font-size 1.4em
+  color primary-color-2
+
+.arrow-ranking
+  vertical-align middle
+  display inline-block
+  &.positive
+    color color-green
+  &.negative
+    color color-red
+
+.rank-delta
+  color primary-color-2
+  margin-left .5em
+
