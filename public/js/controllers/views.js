@@ -10,11 +10,10 @@ angular.module('kaizen-concepto.controllers-views', [])
     }
 
     $scope.authentication = authService.authentication;
-
 }])
 
 .controller('indicadoresController', ['$scope', function ($scope) {
-   
+	
 }]);
 
 
