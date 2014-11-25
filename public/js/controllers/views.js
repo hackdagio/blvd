@@ -12,8 +12,16 @@ angular.module('kaizen-concepto.controllers-views', [])
     $scope.authentication = authService.authentication;
 }])
 
-.controller('indicadoresController', ['$scope', function ($scope) {
-	
+.controller('indicadoresController', ['$scope', 'indicadoresService', function ($scope, indicadoresService) {
+
+	$scope.indicadores = [];
+
+	indicadoresService.getIndicadores().then(function (results) {
+		$scope.indicadores = results.data;
+
+	}, function (error) {
+
+	});
 }]);
 
 
