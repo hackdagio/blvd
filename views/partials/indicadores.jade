@@ -4,32 +4,53 @@
         .row
           ul.sidebar-nav
             li.sidebar-brand
-              a(href='#')
-                | Call Center
+              a(href='indicadores/call-center')
+                img(src='entel/images/static/call-center.png')
+                span.hidden-sm.hidden-xs Call Center
             li
-              a(href='#') Ventas
+              a(href='indicadores/presencial')
+                img(src='entel/images/static/presencial.png')
+                span.hidden-sm.hidden-xs Presencial
             li
-              a(href='#') Más ventas
+              a(href='indicadores/terreno')
+                img(src='entel/images/static/terreno.png')
+                span.hidden-sm.hidden-xs Terreno
             li
-              a(href='#') Qué ventas
-            li
-              a(href='#') Wow, números
-            li
-              a(href='#') Muchos números
-            li
-              a(href='#') Ventísimas
-            li
-              a(href='#') Don Ventas
+              a(href='indicadores/remoto')
+                img(src='entel/images/static/remoto.png')
+                span.hidden-sm.hidden-xs Remoto
 
   #wrapper-content
     .container-fluid
       .row
         .col-md-6
           .kaizen-tiles.gray
-            h4.uppercase General
-        .col-md-6
-          .kaizen-tiles.orange
+            .kaizen-tiles-title
+              .glyphicon-inline
+                span.glyphicon.glyphicon-asterisk
+              span.uppercase General
+            .kaizen-kpi.weighted
+              span.big-kpi {{ indicadores.Kpi.Ponderado }}
+            .kaizen-kpi.diff
+              .arrow-kpi-diff.positive-kpi-change
+                span.glyphicon.glyphicon-chevron-up
+              .info-kpi-diff
+                span 700 
+                span (+79,84%)
+
+        .col-md-3
+          .kaizen-tiles.gray
             h4.uppercase Desviación de llamadas
+            hr
+            .kaizen-kpi.weighted
+              span.medium-kpi {{ indicadores.Kpi.DesviacionQLlamadas }}
+            .kaizen-kpi.diff
+              .arrow-kpi-diff.negative-kpi-change
+                span.glyphicon.glyphicon-chevron-down
+              .info-kpi-diff
+                span 700 
+                span (+79,84%)
+
         .col-md-2
           .kaizen-tiles.blue
             h4.uppercase Nivel de servicio
