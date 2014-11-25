@@ -37,9 +37,7 @@
               .info-kpi-diff
                 span 700 
                 span (+79,84%)
-            .fix-linechart
-              div(ng-controller='ponderadoController')
-                linechart(data='data', options='options')
+            .linecharts
 
         .col-md-4
           .kaizen-tiles.gray
@@ -128,3 +126,16 @@ script.
   e.preventDefault();
   $("#wrapper").toggleClass("toggled");
   });
+
+script.
+  d3.json('entel/ponderado.json', function(data) {
+  data_graphic({
+  description: "Yearly UFO sightings from the year 1945 to 2010.",
+  data: data,
+  markers: [{'year': 1964, 'label': '"The Creeping Terror" released'}],
+  height: 150,
+  target: '.linecharts',
+  x_accessor: 'Mes',
+  y_accessor: 'Ponderado'
+  })
+  })
