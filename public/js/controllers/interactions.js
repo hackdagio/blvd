@@ -120,3 +120,39 @@ angular.module('kaizen-concepto.controllers-interactions', ['ui.bootstrap', 'n3-
   $scope.pie_options = {thickness: 100};
 
 })
+
+.controller('ponderadoController', ['$scope', 'indicadoresService', function ($scope, indicadoresService) {
+
+$scope.options = {
+  lineMode: "cardinal",
+  tension: 0.7,
+  axes: {x: {type: "linear", key: "Mes"}, y: {type: "linear"}},
+  tooltipMode: "dots",
+  drawLegend: true,
+  drawDots: true,
+  stacks: [],
+  series: [
+    {
+      y: "Ponderado",
+      label: "Ponderado",
+      color: "#005f9f",
+      axis: "y",
+      type: "area",
+      visible: true,
+      id: "series_2",
+      thickness: "1px",
+      drawDots: true,
+      striped: false
+    }
+  ],
+  tooltip: {mode: "scrubber"},
+  columnsHGap: 5
+};
+
+  indicadoresService.getIndicadores('history', 'general').then(function (results) {
+    $scope.data = results.data;
+    }, function (error) {
+  
+  });
+
+}]);
