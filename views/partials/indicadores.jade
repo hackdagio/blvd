@@ -47,7 +47,7 @@
               .kaizen-tiles-title
                 .glyphicon-inline
                   span.glyphicon.glyphicon-asterisk
-                span.uppercase Desviación de llamadas
+                span.uppercase Desv. Q Llamadas
               .kaizen-kpi.weighted
                 span.medium-kpi {{ indicadores.Kpi.DesviacionQLlamadas.Valor }}
               .kaizen-kpi.diff
@@ -145,12 +145,11 @@ script.
   });
   data_graphic({
   data: data,
-  width: 800,
+  width: 960,
   height: 300,
   target: '#historic',
   x_accessor: 'Mes',
-  y_accessor: 'Ponderado',
-  small_text: true
+  y_accessor: 'Ponderado'
   });
   });
 
