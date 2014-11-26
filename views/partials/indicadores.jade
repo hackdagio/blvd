@@ -23,22 +23,76 @@
   #wrapper-content
     .container-fluid
       .row
-        .col-lg-8
-          .kaizen-tiles.gray
-            .col-lg-6
+        .col-lg-8.nopadding
+          .col-lg-12
+            .kaizen-tiles.gray
+              .col-lg-6
+                .kaizen-tiles-title
+                  .glyphicon-inline
+                    span.glyphicon.glyphicon-asterisk
+                  span.uppercase General
+                .kaizen-kpi.weighted
+                  span.big-kpi {{ indicadores.Kpi.Ponderado.Valor }}
+                .kaizen-kpi.diff
+                  .arrow-kpi-diff.positive-kpi-change
+                    span.glyphicon.glyphicon-chevron-up
+                  .info-kpi-diff
+                    span {{ indicadores.Kpi.Ponderado.Delta }}%
+              .col-lg-6
+                .linecharts
+
+
+          .col-lg-3
+            .kaizen-tiles.gray
               .kaizen-tiles-title
                 .glyphicon-inline
                   span.glyphicon.glyphicon-asterisk
-                span.uppercase General
+                span.uppercase Desviación de llamadas
               .kaizen-kpi.weighted
-                span.big-kpi {{ indicadores.Kpi.Ponderado.Valor }}
+                span.medium-kpi {{ indicadores.Kpi.DesviacionQLlamadas.Valor }}
+              .kaizen-kpi.diff
+                .arrow-kpi-diff.negative-kpi-change
+                  span.glyphicon.glyphicon-chevron-down
+                .info-kpi-diff
+                  span {{ indicadores.Kpi.DesviacionQLlamadas.Delta }}%
+
+          .col-lg-3
+            .kaizen-tiles.gray
+              .kaizen-tiles-title
+                .glyphicon-inline
+                  span.glyphicon.glyphicon-asterisk
+                span.uppercase Nivel de servicio
+              .kaizen-kpi.weighted
+                span.medium-kpi {{ indicadores.Kpi.NivelServicio.Valor }}
               .kaizen-kpi.diff
                 .arrow-kpi-diff.positive-kpi-change
                   span.glyphicon.glyphicon-chevron-up
                 .info-kpi-diff
-                  span {{ indicadores.Kpi.Ponderado.Delta }}%
-            .col-lg-6
-              .linecharts
+                  span {{ indicadores.Kpi.NivelServicio.Delta }}%
+
+          .col-lg-3
+            .kaizen-tiles.gray
+              .kaizen-tiles-title
+                .glyphicon-inline
+                  span.glyphicon.glyphicon-asterisk
+                span.uppercase Nivel de atención
+              .kaizen-kpi.weighted
+                span.medium-kpi {{ indicadores.Kpi.NivelAtencion.Valor }}
+              .kaizen-kpi.diff
+                .arrow-kpi-diff.positive-kpi-change
+                  span.glyphicon.glyphicon-chevron-up
+                .info-kpi-diff
+                  span {{ indicadores.Kpi.NivelAtencion.Delta }}%
+
+          .col-lg-3
+            .kaizen-tiles.gray
+              .kaizen-tiles-title
+                .glyphicon-inline
+                  span.glyphicon.glyphicon-asterisk
+                span.uppercase TMO
+              .kaizen-kpi.weighted
+                span.medium-kpi {{ indicadores.Kpi.TMO }}
+                | <small> seg</small>
 
         .col-lg-4
           .kaizen-tiles.gray
@@ -59,57 +113,6 @@
                 .col-xs-4
                   span.rank-position {{ rank.Posicion }}
               
-        .col-lg-3
-          .kaizen-tiles.gray
-            .kaizen-tiles-title
-              .glyphicon-inline
-                span.glyphicon.glyphicon-asterisk
-              span.uppercase Desviación de llamadas
-            .kaizen-kpi.weighted
-              span.medium-kpi {{ indicadores.Kpi.DesviacionQLlamadas.Valor }}
-            .kaizen-kpi.diff
-              .arrow-kpi-diff.negative-kpi-change
-                span.glyphicon.glyphicon-chevron-down
-              .info-kpi-diff
-                span {{ indicadores.Kpi.DesviacionQLlamadas.Delta }}%
-
-        .col-lg-3
-          .kaizen-tiles.gray
-            .kaizen-tiles-title
-              .glyphicon-inline
-                span.glyphicon.glyphicon-asterisk
-              span.uppercase Nivel de servicio
-            .kaizen-kpi.weighted
-              span.medium-kpi {{ indicadores.Kpi.NivelServicio.Valor }}
-            .kaizen-kpi.diff
-              .arrow-kpi-diff.positive-kpi-change
-                span.glyphicon.glyphicon-chevron-up
-              .info-kpi-diff
-                span {{ indicadores.Kpi.NivelServicio.Delta }}%
-
-        .col-lg-3
-          .kaizen-tiles.gray
-            .kaizen-tiles-title
-              .glyphicon-inline
-                span.glyphicon.glyphicon-asterisk
-              span.uppercase Nivel de atención
-            .kaizen-kpi.weighted
-              span.medium-kpi {{ indicadores.Kpi.NivelAtencion.Valor }}
-            .kaizen-kpi.diff
-              .arrow-kpi-diff.positive-kpi-change
-                span.glyphicon.glyphicon-chevron-up
-              .info-kpi-diff
-                span {{ indicadores.Kpi.NivelAtencion.Delta }}%
-
-        .col-lg-3
-          .kaizen-tiles.gray
-            .kaizen-tiles-title
-              .glyphicon-inline
-                span.glyphicon.glyphicon-asterisk
-              span.uppercase TMO
-            .kaizen-kpi.weighted
-              span.medium-kpi {{ indicadores.Kpi.TMO }}
-              | <small> seg</small>
 
         .col-lg-12
           .kaizen-tiles.gray
@@ -117,6 +120,7 @@
               .glyphicon-inline
                 span.glyphicon.glyphicon-asterisk
               span.uppercase Históricos
+              #historic
 
 
 
@@ -137,6 +141,18 @@ script.
   y_accessor: 'Ponderado',
   small_text: true,
   area: false,
-  x_axis: false,
-  })
-  })
+  x_axis: false
+  });
+  data_graphic({
+  data: data,
+  width: 800,
+  height: 300,
+  target: '#historic',
+  x_accessor: 'Mes',
+  y_accessor: 'Ponderado',
+  small_text: true
+  });
+  });
+
+
+
