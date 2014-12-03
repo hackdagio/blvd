@@ -6,7 +6,7 @@
             li.sidebar-brand
               a(href='indicadores/call-center')
                 img(src='entel/images/static/call-center.png')
-                span.hidden-sm.hidden-xs {{ indicadores.Id }}
+                span.hidden-sm.hidden-xs Contact Center
             li
               a(href='#')
                 img(src='entel/images/static/presencial.png')
@@ -26,7 +26,7 @@
         .col-lg-8.nopadding
           .col-lg-12.nopadding
             .col-lg-9
-              .kaizen-tiles.gray
+              .kaizen-tiles.h-level-1
                 .col-lg-4
                   .kaizen-tiles-title
                     .glyphicon-inline
@@ -40,17 +40,17 @@
                     .info-kpi-diff
                       span {{ indicadores.Kpi.Ponderado.Delta }}%
                 .col-lg-8(ng-controller='ponderadoController')
-                  metrics(ng-if='data', data='data', width='300', height='150')
+                  metrics(ng-if='data', data='data', width='300', height='150', hasxaxis='false', format='percentage', extendedticks='false')
 
             .col-lg-3
-              .kaizen-tiles.gray
+              .kaizen-tiles.h-level-1
                 .kaizen-tiles-title
                   .glyphicon-inline
                     span.glyphicon.glyphicon-asterisk
-                  span.uppercase Desv. Q Llamadas
-                .kaizen-kpi.weighted
+                  span.uppercase Desv. Llamadas
+                .kaizen-kpi.weighted.text-right
                   span.medium-kpi {{ indicadores.Kpi.DesviacionQLlamadas.Valor }}
-                .kaizen-kpi.diff
+                .kaizen-kpi.diff.text-right
                   .arrow-kpi-diff.negative-kpi-change
                     span.glyphicon.glyphicon-chevron-down
                   .info-kpi-diff
@@ -58,59 +58,59 @@
 
           .col-lg-12.nopadding
             .col-lg-3
-              .kaizen-tiles.gray
+              .kaizen-tiles.h-level-2
                 .kaizen-tiles-title
                   .glyphicon-inline
                     span.glyphicon.glyphicon-asterisk
-                  span.uppercase Nivel de servicio
-                .kaizen-kpi.weighted
+                  span.uppercase Servicio
+                .kaizen-kpi.weighted.text-right
                   span.medium-kpi {{ indicadores.Kpi.NivelServicio.Valor }}
-                .kaizen-kpi.diff
+                .kaizen-kpi.diff.text-right
                   .arrow-kpi-diff.positive-kpi-change
                     span.glyphicon.glyphicon-chevron-up
                   .info-kpi-diff
                     span {{ indicadores.Kpi.NivelServicio.Delta }}%
 
             .col-lg-3
-              .kaizen-tiles.gray
+              .kaizen-tiles.h-level-2
                 .kaizen-tiles-title
                   .glyphicon-inline
                     span.glyphicon.glyphicon-asterisk
-                  span.uppercase Nivel de atención
-                .kaizen-kpi.weighted
+                  span.uppercase Atención
+                .kaizen-kpi.weighted.text-right
                   span.medium-kpi {{ indicadores.Kpi.NivelAtencion.Valor }}
-                .kaizen-kpi.diff
+                .kaizen-kpi.diff.text-right
                   .arrow-kpi-diff.positive-kpi-change
                     span.glyphicon.glyphicon-chevron-up
                   .info-kpi-diff
                     span {{ indicadores.Kpi.NivelAtencion.Delta }}%
 
             .col-lg-3
-              .kaizen-tiles.gray
+              .kaizen-tiles.h-level-2
                 .kaizen-tiles-title
                   .glyphicon-inline
                     span.glyphicon.glyphicon-asterisk
                   span.uppercase EPA
-                .kaizen-kpi.weighted
+                .kaizen-kpi.weighted.text-right
                   span.medium-kpi {{ indicadores.Kpi.EPA.Valor }}
-                .kaizen-kpi.diff
+                .kaizen-kpi.diff.text-right
                   .arrow-kpi-diff.positive-kpi-change
                     span.glyphicon.glyphicon-chevron-up
                   .info-kpi-diff
                     span {{ indicadores.Kpi.EPA.Delta }}%
 
             .col-lg-3
-              .kaizen-tiles.gray
+              .kaizen-tiles.h-level-2
                 .kaizen-tiles-title
                   .glyphicon-inline
                     span.glyphicon.glyphicon-asterisk
                   span.uppercase TMO
-                .kaizen-kpi.weighted
+                .kaizen-kpi.weighted.text-right
                   span.medium-kpi {{ indicadores.Kpi.TMO }}
                   | <small> seg</small>
 
         .col-lg-4
-          .kaizen-tiles.gray
+          .kaizen-tiles.h-level-3
             .kaizen-tiles-title
               .glyphicon-inline
                 span.glyphicon.glyphicon-asterisk
@@ -130,12 +130,12 @@
               
 
         .col-lg-12
-          .kaizen-tiles.gray
+          .kaizen-tiles.h-level-3
             .kaizen-tiles-title(ng-controller='ponderadoController')
               .glyphicon-inline
                 span.glyphicon.glyphicon-asterisk
               span.uppercase Históricos
-              metrics.text-center(ng-if='data', data='data', width='960', height='300')
+              metrics.text-left(ng-if='data', data='data', width='1080', height='300', hasxaxis='true', format='percentage', extendedticks='true')
 
 script.
   $("#menu-toggle").click(function(e) {

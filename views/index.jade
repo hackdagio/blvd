@@ -16,8 +16,6 @@ block body
       .collapse.navbar-collapse
         ul.nav.navbar-nav.navbar-right
           li
-            a(href='inicio', data-ng-hide='!authentication.isAuth') Inicio
-          li
             a(href='indicadores', data-ng-hide='!authentication.isAuth') Indicadores
           li
             a(href='acceder', data-ng-hide='authentication.isAuth') Iniciar sesión
@@ -33,12 +31,12 @@ block body
                   .row
                     .col-xs-5
                       p.text-center
-                        img.navbar-user-avatar(src='entel/avatar/10.jpg')
+                        img.navbar-user-avatar.img-circle(src='entel/avatar/10.jpg')
                     .col-xs-7.navbar-user-info
                       p.text-left
                         strong {{ authentication.userName }}
                       p.text-left
-                        em Vendedora
+                        em Gerente
                       p.text-left 18.123.123-k
                       .navbar-user-link-account
                         a.btn.btn-primary.btn-block.btn-sm(href='javascript:void(0)') Mi cuenta
