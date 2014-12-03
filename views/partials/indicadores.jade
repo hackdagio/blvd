@@ -131,12 +131,11 @@
 
         .col-lg-12
           .kaizen-tiles.gray
-            .kaizen-tiles-title
+            .kaizen-tiles-title(ng-controller='ponderadoController')
               .glyphicon-inline
                 span.glyphicon.glyphicon-asterisk
               span.uppercase Históricos
-              metrics
-
+              metrics.text-center(ng-if='data', data='data')
 
 script.
   $("#menu-toggle").click(function(e) {
