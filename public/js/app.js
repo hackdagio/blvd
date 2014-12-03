@@ -3,9 +3,6 @@
 var app = angular.module('kaizen-concepto', [
   'kaizen-concepto.controllers-views',
   'kaizen-concepto.controllers-interactions',
-  'kaizen-concepto.filters',
-  'kaizen-concepto.services',
-  'kaizen-concepto.directives',
   'ngRoute',
   'LocalStorageModule',
   'angular-loading-bar'

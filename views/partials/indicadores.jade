@@ -131,41 +131,17 @@
 
         .col-lg-12
           .kaizen-tiles.gray
-            .kaizen-tiles-title
+            .kaizen-tiles-title(ng-controller='ponderadoController')
               .glyphicon-inline
                 span.glyphicon.glyphicon-asterisk
               span.uppercase Históricos
-              #historic
-
+              metrics(data='data')
 
 
 script.
   $("#menu-toggle").click(function(e) {
   e.preventDefault();
   $("#wrapper").toggleClass("toggled");
-  });
-
-script.
-  d3.json('entel/ponderado.json', function(data) {
-  data_graphic({
-  data: data,
-  width: 300,
-  height: 150,
-  target: '.linecharts',
-  x_accessor: 'Mes',
-  y_accessor: 'Ponderado',
-  small_text: true,
-  area: false,
-  x_axis: false
-  });
-  data_graphic({
-  data: data,
-  width: 960,
-  height: 300,
-  target: '#historic',
-  x_accessor: 'Mes',
-  y_accessor: 'Ponderado'
-  });
   });
 
 
