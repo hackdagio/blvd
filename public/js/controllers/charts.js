@@ -13,16 +13,20 @@ app.directive('metrics', function($http) {
   return {
     restrict: 'E',
     scope: {
-      data: '='
+      data: '=',
+      height: '=',
+      width: '='
     },
     link: function(scope, element) {
 
       data_graphic({
         data: scope.data,
-        height: 300,
+        height: scope.height,
+        width: scope.width,
         target: element[0],
-        x_accessor: "Mes",
-        y_accessor: "Ponderado"
+        x_accessor: 'Mes',
+        y_accessor: 'Ponderado',
+        animate_on_load: true
       });
     }
   };

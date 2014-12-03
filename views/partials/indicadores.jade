@@ -39,8 +39,8 @@
                       span.glyphicon.glyphicon-chevron-up
                     .info-kpi-diff
                       span {{ indicadores.Kpi.Ponderado.Delta }}%
-                .col-lg-8
-                  .linecharts
+                .col-lg-8(ng-controller='ponderadoController')
+                  metrics(ng-if='data', data='data', width='300', height='150')
 
             .col-lg-3
               .kaizen-tiles.gray
@@ -135,7 +135,7 @@
               .glyphicon-inline
                 span.glyphicon.glyphicon-asterisk
               span.uppercase Históricos
-              metrics.text-center(ng-if='data', data='data')
+              metrics.text-center(ng-if='data', data='data', width='960', height='300')
 
 script.
   $("#menu-toggle").click(function(e) {
