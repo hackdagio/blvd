@@ -18,15 +18,22 @@ app.directive('metrics', function($http) {
       width: '='
     },
     link: function(scope, element) {
+      
+      $(function(){
+        var data = convert_dates(scope.data, 'Mes', '%Y-%m-%d');
 
-      data_graphic({
-        data: scope.data,
-        height: scope.height,
-        width: scope.width,
-        target: element[0],
-        x_accessor: 'Mes',
-        y_accessor: 'Ponderado',
-        animate_on_load: true
+        data_graphic({
+          data: data,
+          height: scope.height,
+          width: scope.width,
+          target: element[0],
+          x_accessor: 'Mes',
+          y_accessor: 'Ponderado',
+          animate_on_load: true,
+          interpolate: 'basic',
+          min_y: 70,
+          max_y: 71
+        });
       });
     }
   };
