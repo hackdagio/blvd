@@ -1,5 +1,9 @@
 wrapper-principal-size = 140
 wrapper-principal-transitions = all 0.5s ease
+kaizen-tiles-background-color = color-gray-lighten
+kaizen-tiles-text-color = darken(primary-color-2, 10%)
+kaizen-positive-color-changes = lighten(color-green, 20%)
+kaizen-negative-color-changes = lighten(color-red, 20%)
 
 #wrapper
   padding-left 0
@@ -55,7 +59,7 @@ wrapper-principal-transitions = all 0.5s ease
     margin-top (wrapper-principal-size/15)px
     margin-bottom (wrapper-principal-size/15)px
     padding (wrapper-principal-size/10)px 0
-    border-bottom 1px solid rgba(255,255,255,0.2)
+    border-bottom 1px solid rgba(255,255,255,0.3)
     span
       display block
       text-decoration none
@@ -77,6 +81,22 @@ wrapper-principal-transitions = all 0.5s ease
   text-decoration none
 
 .kaizen-tiles
+  padding 20px
+  margin -5px -5px 25px -5px
+  line-height 2em
+  overflow hidden
+  border 1px solid rgba(0,0,0,0.05)
+
+  background kaizen-tiles-background-color
+  color kaizen-tiles-text-color
+
+  &.h-level-1
+    height 12em
+  &.h-level-2
+    height 10.8em
+  &.h-level-3
+    height 24em
+
   .kaizen-tiles-title
     font-size 1em
     margin 0 0 1em 0
@@ -89,37 +109,11 @@ wrapper-principal-transitions = all 0.5s ease
       margin-right .3em
       color primary-color-2
       font-weight 300
-  padding 25px
-  margin 0 0 25px 0
-  line-height 2em
-  overflow hidden
-  box-shadow 2px 1px 3px -15px rgba(0,0,0,1)
-  border-bottom 3px solid rgba(0, 0, 0, 0.05)
-  &.orange
-    background rgb(245, 121, 23)
-    color white
-  &.blue
-    background rgb(0,85,159)
-    color white
-  &.black
-    background rgb(30,30,30)
-    color white
-  &.gray
-    background rgb(238,238,238)
-    color color-black-gray
-  &.red
-    background rgb(255,0,0)
-    color white
-  &.purple
-    background rgb(51,0,51)
-    color white
-  &.fixed
-    height 200px
-    
 
 .kaizen-kpi
   &.weighted
     color primary-color-1
+    letter-spacing -2px
     .big-kpi
       font-size 3em
     .medium-kpi
@@ -131,9 +125,9 @@ wrapper-principal-transitions = all 0.5s ease
       display inline-block
       margin-right .5em
       &.positive-kpi-change
-       color color-green
+       color kaizen-positive-color-changes
       &.negative-kpi-change
-        color color-red
+        color kaizen-negative-color-changes
     .info-kpi-diff
       display inline-block
       color primary-color-2
@@ -168,14 +162,13 @@ wrapper-principal-transitions = all 0.5s ease
   vertical-align middle
   display inline-block
   &.positive
-    color color-green
+    color kaizen-positive-color-changes
   &.negative
-    color color-red
+    color kaizen-negative-color-changes
 
 .rank-delta
   color primary-color-2
   margin-left .5em
-
 
 metrics
   display block

@@ -9,19 +9,23 @@ app.controller('ponderadoController', ['$scope', 'indicadoresService', function 
 
 }]);
 
+
 app.directive('metrics', function($http) {
   return {
     restrict: 'E',
     scope: {
       data: '=',
       height: '=',
-      width: '='
+      width: '=',
+      hasxaxis: '=',
+      format: '=',
+      extendedticks: '='
     },
     link: function(scope, element) {
       
       $(function(){
-        var data = convert_dates(scope.data, 'Mes', '%Y-%m-%d');
 
+        var data = convert_dates(scope.data, 'Mes', '%Y-%m-%d');
         data_graphic({
           data: data,
           height: scope.height,
@@ -31,8 +35,12 @@ app.directive('metrics', function($http) {
           y_accessor: 'Ponderado',
           animate_on_load: true,
           interpolate: 'basic',
-          min_y: 70,
-          max_y: 71
+          min_y_from_data: true,
+          area: false,
+          x_axis: scope.hasxaxis,
+          format: scope.format,
+          decimals: 2,
+          x_extended_ticks: scope.extendedticks
         });
       });
     }
