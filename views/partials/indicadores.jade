@@ -28,7 +28,7 @@
 
             // kpi: general
             .col-lg-9
-              .kaizen-box.kaizen-kpi.h-level-1
+              .kaizen-box.kaizen-kpi.ok.h-level-1
                 .col-lg-4
                   .kpi
                     .name.big-size
@@ -40,14 +40,14 @@
                     .diff
                       .arrow.positive
                         span.glyphicon.glyphicon-chevron-up
-                      .info
+                      .delta
                         span {{ indicadores.Kpi.Ponderado.Delta }}%
                 .col-lg-8(ng-controller='ponderadoController')
                   metrics(ng-if='data', data='data', width='300', height='150', hasxaxis='false', format='percentage', extendedticks='false')
 
             // kpi: desv q llamadas
             .col-lg-3
-              .kaizen-box.kaizen-kpi.h-level-1
+              .kaizen-box.kaizen-kpi.ok.h-level-1
                 .kpi
                   .name
                     .glyphicon-inline
@@ -58,7 +58,7 @@
                   .diff.text-right
                     .arrow.negative
                       span.glyphicon.glyphicon-chevron-down
-                    .info
+                    .delta
                       span {{ indicadores.Kpi.DesviacionQLlamadas.Delta }}%
 
           // sublevel 2
@@ -66,7 +66,7 @@
 
             // kpi: n.s.
             .col-lg-3
-              .kaizen-box.kaizen-kpi.h-level-2
+              .kaizen-box.kaizen-kpi.red-alert.h-level-2
                 .kpi
                   .name
                     .glyphicon-inline
@@ -77,12 +77,12 @@
                   .diff.text-right
                     .arrow.positive
                       span.glyphicon.glyphicon-chevron-up
-                    .info
+                    .delta
                       span {{ indicadores.Kpi.NivelServicio.Delta }}%
 
             // kpi: n.a.
             .col-lg-3
-              .kaizen-box.kaizen-kpi.h-level-2
+              .kaizen-box.kaizen-kpi.ok.h-level-2
                 .kpi
                   .name
                     .glyphicon-inline
@@ -93,12 +93,12 @@
                   .diff.text-right
                     .arrow.positive
                       span.glyphicon.glyphicon-chevron-up
-                    .info
+                    .delta
                       span {{ indicadores.Kpi.NivelAtencion.Delta }}%
 
             // kpi: epa
             .col-lg-3
-              .kaizen-box.kaizen-kpi.h-level-2
+              .kaizen-box.kaizen-kpi.ok.h-level-2
                 .kpi
                   .name
                     .glyphicon-inline
@@ -109,12 +109,12 @@
                   .diff.text-right
                     .arrow.positive
                       span.glyphicon.glyphicon-chevron-up
-                    .info
+                    .delta
                       span {{ indicadores.Kpi.EPA.Delta }}%
 
             // kpi: tmo
             .col-lg-3
-              .kaizen-box.kaizen-kpi.h-level-2
+              .kaizen-box.kaizen-kpi.ok.h-level-2
                 .kpi
                   .name
                     .glyphicon-inline
@@ -152,10 +152,12 @@
                   .col-xs-3
                     .position
                       span {{ rank.Posicion }}
-              
 
+        // level 3
+
+        // history
         .col-lg-12
-          .kaizen-box.h-level-3
+          .kaizen-box.kaizen-history.h-level-3
             .name(ng-controller='ponderadoController')
               .glyphicon-inline
                 span.glyphicon.glyphicon-asterisk
