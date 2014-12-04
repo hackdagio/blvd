@@ -20,116 +20,143 @@
   #wrapper-content
     .container-fluid
       .row
+        // level 1
         .col-lg-8.nopadding
+
+          // sublevel 1
           .col-lg-12.nopadding
+
+            // kpi: general
             .col-lg-9
-              .kaizen-tiles.h-level-1
+              .kaizen-box.kaizen-kpi.h-level-1
                 .col-lg-4
-                  .kaizen-tiles-title.big-title
-                    .glyphicon-inline
-                      span.glyphicon.glyphicon-asterisk
-                    span.uppercase General
-                  .kaizen-kpi.weighted
-                    span.big-kpi {{ indicadores.Kpi.Ponderado.Valor }}
-                  .kaizen-kpi.diff
-                    .arrow-kpi-diff.positive-kpi-change
-                      span.glyphicon.glyphicon-chevron-up
-                    .info-kpi-diff
-                      span {{ indicadores.Kpi.Ponderado.Delta }}%
+                  .kpi
+                    .name.big-size
+                      .glyphicon-inline
+                        span.glyphicon.glyphicon-asterisk
+                      span.uppercase General
+                    .weighted
+                      span.big-size {{ indicadores.Kpi.Ponderado.Valor }}
+                    .diff
+                      .arrow.positive
+                        span.glyphicon.glyphicon-chevron-up
+                      .info
+                        span {{ indicadores.Kpi.Ponderado.Delta }}%
                 .col-lg-8(ng-controller='ponderadoController')
                   metrics(ng-if='data', data='data', width='300', height='150', hasxaxis='false', format='percentage', extendedticks='false')
 
+            // kpi: desv q llamadas
             .col-lg-3
-              .kaizen-tiles.h-level-1
-                .kaizen-tiles-title
-                  .glyphicon-inline
-                    span.glyphicon.glyphicon-asterisk
-                  span.uppercase Desv. Llamadas
-                .kaizen-kpi.weighted.text-right
-                  span.medium-kpi {{ indicadores.Kpi.DesviacionQLlamadas.Valor }}
-                .kaizen-kpi.diff.text-right
-                  .arrow-kpi-diff.negative-kpi-change
-                    span.glyphicon.glyphicon-chevron-down
-                  .info-kpi-diff
-                    span {{ indicadores.Kpi.DesviacionQLlamadas.Delta }}%
+              .kaizen-box.kaizen-kpi.h-level-1
+                .kpi
+                  .name
+                    .glyphicon-inline
+                      span.glyphicon.glyphicon-asterisk
+                    span.uppercase Desv. Llamadas
+                  .weighted.text-right
+                    span.normal-size {{ indicadores.Kpi.DesviacionQLlamadas.Valor }}
+                  .diff.text-right
+                    .arrow.negative
+                      span.glyphicon.glyphicon-chevron-down
+                    .info
+                      span {{ indicadores.Kpi.DesviacionQLlamadas.Delta }}%
 
+          // sublevel 2
           .col-lg-12.nopadding
-            .col-lg-3
-              .kaizen-tiles.h-level-2
-                .kaizen-tiles-title
-                  .glyphicon-inline
-                    span.glyphicon.glyphicon-asterisk
-                  span.uppercase Servicio
-                .kaizen-kpi.weighted.text-right.semaphore
-                  span.medium-kpi {{ indicadores.Kpi.NivelServicio.Valor }}
-                .kaizen-kpi.diff.text-right
-                  .arrow-kpi-diff.positive-kpi-change
-                    span.glyphicon.glyphicon-chevron-up
-                  .info-kpi-diff
-                    span {{ indicadores.Kpi.NivelServicio.Delta }}%
 
+            // kpi: n.s.
             .col-lg-3
-              .kaizen-tiles.h-level-2
-                .kaizen-tiles-title
-                  .glyphicon-inline
-                    span.glyphicon.glyphicon-asterisk
-                  span.uppercase Atención
-                .kaizen-kpi.weighted.text-right
-                  span.medium-kpi {{ indicadores.Kpi.NivelAtencion.Valor }}
-                .kaizen-kpi.diff.text-right
-                  .arrow-kpi-diff.positive-kpi-change
-                    span.glyphicon.glyphicon-chevron-up
-                  .info-kpi-diff
-                    span {{ indicadores.Kpi.NivelAtencion.Delta }}%
+              .kaizen-box.kaizen-kpi.h-level-2
+                .kpi
+                  .name
+                    .glyphicon-inline
+                      span.glyphicon.glyphicon-asterisk
+                    span.uppercase Servicio
+                  .weighted.text-right
+                    span.normal-size {{ indicadores.Kpi.NivelServicio.Valor }}
+                  .diff.text-right
+                    .arrow.positive
+                      span.glyphicon.glyphicon-chevron-up
+                    .info
+                      span {{ indicadores.Kpi.NivelServicio.Delta }}%
 
+            // kpi: n.a.
             .col-lg-3
-              .kaizen-tiles.h-level-2
-                .kaizen-tiles-title
-                  .glyphicon-inline
-                    span.glyphicon.glyphicon-asterisk
-                  span.uppercase EPA
-                .kaizen-kpi.weighted.text-right
-                  span.medium-kpi {{ indicadores.Kpi.EPA.Valor }}
-                .kaizen-kpi.diff.text-right
-                  .arrow-kpi-diff.positive-kpi-change
-                    span.glyphicon.glyphicon-chevron-up
-                  .info-kpi-diff
-                    span {{ indicadores.Kpi.EPA.Delta }}%
+              .kaizen-box.kaizen-kpi.h-level-2
+                .kpi
+                  .name
+                    .glyphicon-inline
+                      span.glyphicon.glyphicon-asterisk
+                    span.uppercase Atención
+                  .weighted.text-right
+                    span.normal-size {{ indicadores.Kpi.NivelAtencion.Valor }}
+                  .diff.text-right
+                    .arrow.positive
+                      span.glyphicon.glyphicon-chevron-up
+                    .info
+                      span {{ indicadores.Kpi.NivelAtencion.Delta }}%
 
+            // kpi: epa
             .col-lg-3
-              .kaizen-tiles.h-level-2
-                .kaizen-tiles-title
-                  .glyphicon-inline
-                    span.glyphicon.glyphicon-asterisk
-                  span.uppercase TMO
-                .kaizen-kpi.weighted.text-right
-                  span.medium-kpi {{ indicadores.Kpi.TMO }}
-                  | <small> seg</small>
+              .kaizen-box.kaizen-kpi.h-level-2
+                .kpi
+                  .name
+                    .glyphicon-inline
+                      span.glyphicon.glyphicon-asterisk
+                    span.uppercase EPA
+                  .weighted.text-right
+                    span.normal-size {{ indicadores.Kpi.EPA.Valor }}
+                  .diff.text-right
+                    .arrow.positive
+                      span.glyphicon.glyphicon-chevron-up
+                    .info
+                      span {{ indicadores.Kpi.EPA.Delta }}%
 
+            // kpi: tmo
+            .col-lg-3
+              .kaizen-box.kaizen-kpi.h-level-2
+                .kpi
+                  .name
+                    .glyphicon-inline
+                      span.glyphicon.glyphicon-asterisk
+                    span.uppercase TMO
+                  .weighted.text-right
+                    span.normal-size {{ indicadores.Kpi.TMO }}
+                    | <small> seg</small>
+
+        // level 2
+
+        // ranking
         .col-lg-4
-          .kaizen-tiles.h-level-3
-            .kaizen-tiles-title
-              .glyphicon-inline
-                span.glyphicon.glyphicon-asterisk
-              span.uppercase Ranking
-              .col-xs-12.ranks(data-ng-repeat='rank in ranking')
-                .col-xs-4
-                  h3.rank-name
-                    a(href='indicadores/{{ rank.Id | lowercase }}') {{ rank.Id }}
-                  span.rank-weighted {{ rank.Ponderado }}
-                .col-xs-4
-                  .arrow-ranking.positive(ng-if='rank.Id != "SCCP"')
-                    span.glyphicon.glyphicon-chevron-up
-                  .arrow-ranking.negative(ng-if='rank.Id == "SCCP"')
-                    span.glyphicon.glyphicon-chevron-down
-                  span.rank-delta {{ rank.Delta }}%
-                .col-xs-4
-                  span.rank-position {{ rank.Posicion }}
+          .kaizen-box.kaizen-ranking.h-level-3
+            .ranking
+              .name.big-size
+                .glyphicon-inline
+                  span.glyphicon.glyphicon-asterisk
+                span.uppercase Ranking
+              .col-xs-12.rank(ng-repeat='rank in ranking')
+                .each
+                  .col-xs-6
+                    .info
+                      a(href='indicadores/{{ rank.Id | lowercase }}') {{ rank.Id }}
+                      span.weighted {{ rank.Ponderado }}
+                  .col-xs-3
+                    .arrow.positive(ng-if='rank.Id != "SCCP"')
+                      .glyphicon-inline
+                        span.glyphicon.glyphicon-chevron-up
+                    .arrow.negative(ng-if='rank.Id == "SCCP"')
+                      .glyphicon-inline
+                        span.glyphicon.glyphicon-chevron-down
+                    .delta
+                      span {{ rank.Delta }}%
+                  .col-xs-3
+                    .position
+                      span {{ rank.Posicion }}
               
 
         .col-lg-12
-          .kaizen-tiles.h-level-3
-            .kaizen-tiles-title(ng-controller='ponderadoController')
+          .kaizen-box.h-level-3
+            .name(ng-controller='ponderadoController')
               .glyphicon-inline
                 span.glyphicon.glyphicon-asterisk
               span.uppercase Históricos
