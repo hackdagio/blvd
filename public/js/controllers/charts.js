@@ -9,6 +9,37 @@ app.controller('ponderadoController', ['$scope', 'indicadoresService', function 
 
 }]);
 
+app.controller('allusController', ['$scope', 'indicadoresService', function ($scope, indicadoresService) {
+
+  indicadoresService.getIndicadores('history', 'general').then(function (results) {
+    $scope.data = results.data;
+  }, function (error) {
+    console.log('Error.');
+  });
+
+}]);
+
+app.controller('eccController', ['$scope', 'indicadoresService', function ($scope, indicadoresService) {
+
+  indicadoresService.getIndicadores('history', 'general').then(function (results) {
+    $scope.data = results.data;
+  }, function (error) {
+    console.log('Error.');
+  });
+
+}]);
+
+app.controller('sccpController', ['$scope', 'indicadoresService', function ($scope, indicadoresService) {
+
+  indicadoresService.getIndicadores('history', 'general').then(function (results) {
+    $scope.data = results.data;
+  }, function (error) {
+    console.log('Error.');
+  });
+
+}]);
+
+
 
 app.directive('metrics', function($http) {
   return {

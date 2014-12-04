@@ -31,6 +31,29 @@ angular.module('kaizen-concepto.controllers-views', [])
 
 	});
 
+	$scope.allus = [];
+	indicadoresService.getIndicadores('ongoing', 'allus').then(function (results) {
+		$scope.allus = results.data;
+
+	}, function (error) {
+
+	});
+
+	$scope.ecc = [];
+	indicadoresService.getIndicadores('ongoing', 'ecc').then(function (results) {
+		$scope.ecc = results.data;
+
+	}, function (error) {
+
+	});
+
+	$scope.sccp = [];
+	indicadoresService.getIndicadores('ongoing', 'sccp').then(function (results) {
+		$scope.sccp = results.data;
+
+	}, function (error) {
+
+	});
 }]);
 
 

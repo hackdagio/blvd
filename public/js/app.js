@@ -11,13 +11,23 @@ var app = angular.module('kaizen-concepto', [
 app.config(function ($routeProvider, $locationProvider) {
 
   $routeProvider
-  .when('/inicio', {
-    templateUrl: 'partials/inicio',
-    controller: 'inicioController',
-    resolve: { loginRequired: loginRequired }
-  })
   .when('/indicadores', {
     templateUrl: 'partials/indicadores',
+    controller: 'indicadoresController',
+    resolve: { loginRequired: loginRequired }
+  })
+  .when('/indicadores/allus', {
+    templateUrl: 'partials/indicadores-allus',
+    controller: 'indicadoresController',
+    resolve: { loginRequired: loginRequired }
+  })
+  .when('/indicadores/ecc', {
+    templateUrl: 'partials/indicadores-ecc',
+    controller: 'indicadoresController',
+    resolve: { loginRequired: loginRequired }
+  })
+  .when('/indicadores/sccp', {
+    templateUrl: 'partials/indicadores-sccp',
     controller: 'indicadoresController',
     resolve: { loginRequired: loginRequired }
   })
