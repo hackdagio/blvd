@@ -27,7 +27,7 @@
           .col-lg-12.nopadding
 
             // kpi: general
-            .col-lg-9
+            .col-md-9
               .kaizen-box.kaizen-kpi.ok.h-level-1
                 .col-lg-4
                   .kpi
@@ -46,7 +46,7 @@
                   metrics(ng-if='data', data='data', width='300', height='150', hasxaxis='false', format='percentage', extendedticks='false')
 
             // kpi: desv q llamadas
-            .col-lg-3
+            .col-md-3
               .kaizen-box.kaizen-kpi.ok.h-level-1
                 .kpi
                   .name
@@ -65,7 +65,7 @@
           .col-lg-12.nopadding
 
             // kpi: n.s.
-            .col-lg-3
+            .col-md-3
               .kaizen-box.kaizen-kpi.red-alert.h-level-2
                 .kpi
                   .name
@@ -81,7 +81,7 @@
                       span {{ indicadores.Kpi.NivelServicio.Delta }}%
 
             // kpi: n.a.
-            .col-lg-3
+            .col-md-3
               .kaizen-box.kaizen-kpi.ok.h-level-2
                 .kpi
                   .name
@@ -97,7 +97,7 @@
                       span {{ indicadores.Kpi.NivelAtencion.Delta }}%
 
             // kpi: epa
-            .col-lg-3
+            .col-md-3
               .kaizen-box.kaizen-kpi.ok.h-level-2
                 .kpi
                   .name
@@ -113,7 +113,7 @@
                       span {{ indicadores.Kpi.EPA.Delta }}%
 
             // kpi: tmo
-            .col-lg-3
+            .col-md-3
               .kaizen-box.kaizen-kpi.ok.h-level-2
                 .kpi
                   .name
@@ -157,8 +157,8 @@
 
         // history
         .col-lg-12
-          .kaizen-box.kaizen-history.h-level-3
-            .name(ng-controller='ponderadoController')
+          .kaizen-box.kaizen-history.h-level-3(ng-controller='ponderadoController')
+            .name
               .glyphicon-inline
                 span.glyphicon.glyphicon-asterisk
               span.uppercase Históricos
