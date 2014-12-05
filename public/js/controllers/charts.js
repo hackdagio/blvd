@@ -1,7 +1,7 @@
 'use strict';
 app.controller('historicController', ['$scope', 'indicadoresService', function ($scope, indicadoresService) {
 
-  indicadoresService.getIndicadores('history-all', '').then(function (results) {
+  indicadoresService.getIndicadores('history-all', 'general').then(function (results) {
     $scope.data = results.data;
   }, function (error) {
     console.log('Error.');
@@ -89,7 +89,7 @@ app.directive('metrics', function($http) {
   };
 });
 
-app.directive('metricss', function($http) {
+app.directive('metricsgeneral', function() {
   return {
     restrict: 'E',
     scope: {
@@ -98,7 +98,109 @@ app.directive('metricss', function($http) {
     },
     link: function(scope, element) {
 
-      d3.json('entel/ponderado.json', function(data)  {
+      d3.json('entel/ponderado-general.json', function(data)  {
+        for(var i=0;i<data.length;i++) {
+            data[i] = convert_dates(data[i], 'fecha');
+        }
+
+        data_graphic({
+          data: data,
+          height: scope.height,
+          width: scope.width,
+          target: element[0],
+          x_accessor: 'fecha',
+          y_accessor: 'value',
+          animate_on_load: true,
+          linked: true,
+          min_y_from_data: true,
+          legend: ['Ponderado','EPA','Atención', 'Servicio'],
+          legend_target: '.legend',
+          decimals: 1,
+          xax_tick: 0,
+          y_label: '%'
+        });
+      });
+    }
+  };
+});
+
+app.directive('metricsallus', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      height: '=',
+      width: '='
+    },
+    link: function(scope, element) {
+
+      d3.json('entel/ponderado-allus.json', function(data)  {
+        for(var i=0;i<data.length;i++) {
+            data[i] = convert_dates(data[i], 'fecha');
+        }
+
+        data_graphic({
+          data: data,
+          height: scope.height,
+          width: scope.width,
+          target: element[0],
+          x_accessor: 'fecha',
+          y_accessor: 'value',
+          animate_on_load: true,
+          linked: true,
+          min_y_from_data: true,
+          legend: ['Ponderado','EPA','Atención', 'Servicio'],
+          legend_target: '.legend',
+          decimals: 1
+        });
+      });
+    }
+  };
+});
+
+app.directive('metricsecc', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      height: '=',
+      width: '='
+    },
+    link: function(scope, element) {
+
+      d3.json('entel/ponderado-ecc.json', function(data)  {
+        for(var i=0;i<data.length;i++) {
+            data[i] = convert_dates(data[i], 'fecha');
+        }
+
+        data_graphic({
+          data: data,
+          height: scope.height,
+          width: scope.width,
+          target: element[0],
+          x_accessor: 'fecha',
+          y_accessor: 'value',
+          animate_on_load: true,
+          linked: true,
+          min_y_from_data: true,
+          legend: ['Ponderado','EPA','Atención', 'Servicio'],
+          legend_target: '.legend',
+          decimals: 1
+        });
+      });
+    }
+  };
+});
+
+
+app.directive('metricssccp', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      height: '=',
+      width: '='
+    },
+    link: function(scope, element) {
+
+      d3.json('entel/ponderado-sccp.json', function(data)  {
         for(var i=0;i<data.length;i++) {
             data[i] = convert_dates(data[i], 'fecha');
         }
