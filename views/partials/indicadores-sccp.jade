@@ -128,30 +128,57 @@
 
         // habilidades
         .col-lg-4
-          .kaizen-box.kaizen-ranking.h-level-3
-            .ranking
+          .kaizen-box.kaizen-skills.h-level-3
+            .skills
               .name.big-size
                 .glyphicon-inline
                   span.glyphicon.glyphicon-asterisk
                 span.uppercase Habilidades
-              .col-xs-12.rank(ng-repeat='rank in ranking')
+              .col-xs-12.skill
                 .each
                   .col-xs-6
                     .info
-                      a(href='indicadores/{{ rank.Id | lowercase }}') {{ rank.Id }}
-                      span.weighted {{ rank.Ponderado }}
+                      a(href='habilidades/') Habilidad I
+                      span.weighted 56.2%
                   .col-xs-3
-                    .arrow.positive(ng-if='rank.Id != "SCCP"')
+                    .arrow.positive
                       .glyphicon-inline
                         span.glyphicon.glyphicon-chevron-up
-                    .arrow.negative(ng-if='rank.Id == "SCCP"')
+                    .delta
+                      span 1.2%
+                  .col-xs-3
+                    .position
+                      span 1
+              .col-xs-12.skill
+                .each
+                  .col-xs-6
+                    .info
+                      a(href='habilidades/') Habilidad II
+                      span.weighted 31.2%
+                  .col-xs-3
+                    .arrow.negative
                       .glyphicon-inline
                         span.glyphicon.glyphicon-chevron-down
                     .delta
-                      span {{ rank.Delta }}%
+                      span -0.9%
                   .col-xs-3
                     .position
-                      span {{ rank.Posicion }}
+                      span 2
+              .col-xs-12.skill
+                .each
+                  .col-xs-6
+                    .info
+                      a(href='habilidades/') Habilidad III
+                      span.weighted 23.1%
+                  .col-xs-3
+                    .arrow.positive
+                      .glyphicon-inline
+                        span.glyphicon.glyphicon-chevron-up
+                    .delta
+                      span 1.0%
+                  .col-xs-3
+                    .position
+                      span 3
 
         // level 3
 
