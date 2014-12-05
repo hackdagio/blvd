@@ -10,7 +10,7 @@
             li
               a(href='indicadores/allus')
                 span Allus
-            li.active
+            li.sidebar-brand.active
               a(href='indicadores/ecc')
                 span ECC
             li
@@ -20,120 +20,150 @@
   #wrapper-content
     .container-fluid
       .row
+        // level 1
         .col-lg-8.nopadding
+
+          // sublevel 1
           .col-lg-12.nopadding
-            .col-lg-9
-              .kaizen-tiles.h-level-1
+
+            // kpi: general
+            .col-md-9
+              .kaizen-box.kaizen-kpi.ok.h-level-1
                 .col-lg-4
-                  .kaizen-tiles-title.big-title
-                    .glyphicon-inline
-                      span.glyphicon.glyphicon-asterisk
-                    span.uppercase ECC
-                  .kaizen-kpi.weighted
-                    span.big-kpi {{ ecc.Kpi.Ponderado.Valor }}
-                  .kaizen-kpi.diff
-                    .arrow-kpi-diff.positive-kpi-change
-                      span.glyphicon.glyphicon-chevron-up
-                    .info-kpi-diff
-                      span {{ ecc.Kpi.Ponderado.Delta }}%
+                  .kpi
+                    .name.big-size
+                      .glyphicon-inline
+                        span.glyphicon.glyphicon-asterisk
+                      span.uppercase ECC
+                    .weighted
+                      span.big-size {{ ecc.Kpi.Ponderado.Valor }}
+                    .diff
+                      .arrow.positive
+                        span.glyphicon.glyphicon-chevron-up
+                      .delta
+                        span {{ ecc.Kpi.Ponderado.Delta }}%
                 .col-lg-8(ng-controller='eccController')
                   metrics(ng-if='data', data='data', width='300', height='150', hasxaxis='false', format='percentage', extendedticks='false')
 
-            .col-lg-3
-              .kaizen-tiles.h-level-1
-                .kaizen-tiles-title
-                  .glyphicon-inline
-                    span.glyphicon.glyphicon-asterisk
-                  span.uppercase Desv. Llamadas
-                .kaizen-kpi.weighted.text-right
-                  span.medium-kpi {{ ecc.Kpi.DesviacionQLlamadas.Valor }}
-                .kaizen-kpi.diff.text-right
-                  .arrow-kpi-diff.positive-kpi-change
-                    span.glyphicon.glyphicon-chevron-up
-                  .info-kpi-diff
-                    span {{ ecc.Kpi.DesviacionQLlamadas.Delta }}%
+            // kpi: desv q llamadas
+            .col-md-3
+              .kaizen-box.kaizen-kpi.ok.h-level-1
+                .kpi
+                  .name
+                    .glyphicon-inline
+                      span.glyphicon.glyphicon-asterisk
+                    span.uppercase Desv. Llamadas
+                  .weighted.text-right
+                    span.normal-size {{ ecc.Kpi.DesviacionQLlamadas.Valor }}
+                  .diff.text-right
+                    .arrow.positive
+                      span.glyphicon.glyphicon-chevron-up
+                    .delta
+                      span {{ ecc.Kpi.DesviacionQLlamadas.Delta }}%
 
+          // sublevel 2
           .col-lg-12.nopadding
-            .col-lg-3
-              .kaizen-tiles.h-level-2
-                .kaizen-tiles-title
-                  .glyphicon-inline
-                    span.glyphicon.glyphicon-asterisk
-                  span.uppercase Servicio
-                .kaizen-kpi.weighted.text-right
-                  span.medium-kpi {{ ecc.Kpi.NivelServicio.Valor }}
-                .kaizen-kpi.diff.text-right
-                  .arrow-kpi-diff.positive-kpi-change
-                    span.glyphicon.glyphicon-chevron-up
-                  .info-kpi-diff
-                    span {{ ecc.Kpi.NivelServicio.Delta }}%
 
-            .col-lg-3
-              .kaizen-tiles.h-level-2
-                .kaizen-tiles-title
-                  .glyphicon-inline
-                    span.glyphicon.glyphicon-asterisk
-                  span.uppercase Atención
-                .kaizen-kpi.weighted.text-right
-                  span.medium-kpi {{ ecc.Kpi.NivelAtencion.Valor }}
-                .kaizen-kpi.diff.text-right
-                  .arrow-kpi-diff.positive-kpi-change
-                    span.glyphicon.glyphicon-chevron-up
-                  .info-kpi-diff
-                    span {{ ecc.Kpi.NivelAtencion.Delta }}%
+            // kpi: n.s.
+            .col-md-3
+              .kaizen-box.kaizen-kpi.ok.h-level-2
+                .kpi
+                  .name
+                    .glyphicon-inline
+                      span.glyphicon.glyphicon-asterisk
+                    span.uppercase Servicio
+                  .weighted.text-right
+                    span.normal-size {{ ecc.Kpi.NivelServicio.Valor }}
+                  .diff.text-right
+                    .arrow.positive
+                      span.glyphicon.glyphicon-chevron-up
+                    .delta
+                      span {{ ecc.Kpi.NivelServicio.Delta }}%
 
-            .col-lg-3
-              .kaizen-tiles.h-level-2
-                .kaizen-tiles-title
-                  .glyphicon-inline
-                    span.glyphicon.glyphicon-asterisk
-                  span.uppercase EPA
-                .kaizen-kpi.weighted.text-right
-                  span.medium-kpi {{ ecc.Kpi.EPA.Valor }}
-                .kaizen-kpi.diff.text-right
-                  .arrow-kpi-diff.positive-kpi-change
-                    span.glyphicon.glyphicon-chevron-up
-                  .info-kpi-diff
-                    span {{ ecc.Kpi.EPA.Delta }}%
+            // kpi: n.a.
+            .col-md-3
+              .kaizen-box.kaizen-kpi.red-alert.h-level-2
+                .kpi
+                  .name
+                    .glyphicon-inline
+                      span.glyphicon.glyphicon-asterisk
+                    span.uppercase Atención
+                  .weighted.text-right
+                    span.normal-size {{ ecc.Kpi.NivelAtencion.Valor }}
+                  .diff.text-right
+                    .arrow.positive
+                      span.glyphicon.glyphicon-chevron-up
+                    .delta
+                      span {{ ecc.Kpi.NivelAtencion.Delta }}%
 
-            .col-lg-3
-              .kaizen-tiles.h-level-2
-                .kaizen-tiles-title
-                  .glyphicon-inline
-                    span.glyphicon.glyphicon-asterisk
-                  span.uppercase TMO
-                .kaizen-kpi.weighted.text-right
-                  span.medium-kpi {{ ecc.Kpi.TMO }}
-                  | <small> seg</small>
+            // kpi: epa
+            .col-md-3
+              .kaizen-box.kaizen-kpi.ok.h-level-2
+                .kpi
+                  .name
+                    .glyphicon-inline
+                      span.glyphicon.glyphicon-asterisk
+                    span.uppercase EPA
+                  .weighted.text-right
+                    span.normal-size {{ ecc.Kpi.EPA.Valor }}
+                  .diff.text-right
+                    .arrow.positive
+                      span.glyphicon.glyphicon-chevron-up
+                    .delta
+                      span {{ ecc.Kpi.EPA.Delta }}%
 
+            // kpi: tmo
+            .col-md-3
+              .kaizen-box.kaizen-kpi.ok.h-level-2
+                .kpi
+                  .name
+                    .glyphicon-inline
+                      span.glyphicon.glyphicon-asterisk
+                    span.uppercase TMO
+                  .weighted.text-right
+                    span.normal-size {{ ecc.Kpi.TMO }}
+                    | <small> seg</small>
+
+        // level 2
+
+        // ranking
         .col-lg-4
-          .kaizen-tiles.h-level-3
-            .kaizen-tiles-title
-              .glyphicon-inline
-                span.glyphicon.glyphicon-asterisk
-              span.uppercase Ranking
-              .col-xs-12.ranks(data-ng-repeat='rank in ranking')
-                .col-xs-4
-                  h3.rank-name
-                    a(href='indicadores/{{ rank.Id | lowercase }}') {{ rank.Id }}
-                  span.rank-weighted {{ rank.Ponderado }}
-                .col-xs-4
-                  .arrow-ranking.positive(ng-if='rank.Id != "SCCP"')
-                    span.glyphicon.glyphicon-chevron-up
-                  .arrow-ranking.negative(ng-if='rank.Id == "SCCP"')
-                    span.glyphicon.glyphicon-chevron-down
-                  span.rank-delta {{ rank.Delta }}%
-                .col-xs-4
-                  span.rank-position {{ rank.Posicion }}
-              
+          .kaizen-box.kaizen-ranking.h-level-3
+            .ranking
+              .name.big-size
+                .glyphicon-inline
+                  span.glyphicon.glyphicon-asterisk
+                span.uppercase Ranking
+              .col-xs-12.rank(ng-repeat='rank in ranking')
+                .each
+                  .col-xs-6
+                    .info
+                      a(href='indicadores/{{ rank.Id | lowercase }}') {{ rank.Id }}
+                      span.weighted {{ rank.Ponderado }}
+                  .col-xs-3
+                    .arrow.positive(ng-if='rank.Id != "SCCP"')
+                      .glyphicon-inline
+                        span.glyphicon.glyphicon-chevron-up
+                    .arrow.negative(ng-if='rank.Id == "SCCP"')
+                      .glyphicon-inline
+                        span.glyphicon.glyphicon-chevron-down
+                    .delta
+                      span {{ rank.Delta }}%
+                  .col-xs-3
+                    .position
+                      span {{ rank.Posicion }}
 
+        // level 3
+
+        // history
         .col-lg-12
-          .kaizen-tiles.h-level-3
-            .kaizen-tiles-title(ng-controller='ponderadoController')
+          .kaizen-box.kaizen-history.h-level-4(ng-controller='historicController')
+            .name
               .glyphicon-inline
                 span.glyphicon.glyphicon-asterisk
               span.uppercase Históricos
-              metrics.text-left(ng-if='data', data='data', width='1080', height='300', hasxaxis='true', format='percentage', extendedticks='true')
+              metricss.text-left(width='1080', height='300')
+              .legend
 
 script.
   $("#menu-toggle").click(function(e) {

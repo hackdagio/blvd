@@ -34,7 +34,7 @@
                     .name.big-size
                       .glyphicon-inline
                         span.glyphicon.glyphicon-asterisk
-                      span.uppercase General
+                      span.uppercase Total
                     .weighted
                       span.big-size {{ indicadores.Kpi.Ponderado.Valor }}
                     .diff
@@ -82,7 +82,7 @@
 
             // kpi: n.a.
             .col-md-3
-              .kaizen-box.kaizen-kpi.ok.h-level-2
+              .kaizen-box.kaizen-kpi.red-alert.h-level-2
                 .kpi
                   .name
                     .glyphicon-inline
@@ -157,12 +157,13 @@
 
         // history
         .col-lg-12
-          .kaizen-box.kaizen-history.h-level-3(ng-controller='ponderadoController')
+          .kaizen-box.kaizen-history.h-level-4(ng-controller='historicController')
             .name
               .glyphicon-inline
                 span.glyphicon.glyphicon-asterisk
               span.uppercase Históricos
-              metrics.text-left(ng-if='data', data='data', width='1080', height='300', hasxaxis='true', format='percentage', extendedticks='true')
+              metricss.text-left(width='1080', height='300')
+              .legend
 
 script.
   $("#menu-toggle").click(function(e) {
