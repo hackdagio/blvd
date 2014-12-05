@@ -126,6 +126,45 @@
 
         // level 2
 
+        // habilidades
+        .col-lg-4
+          .kaizen-box.kaizen-ranking.h-level-3
+            .ranking
+              .name.big-size
+                .glyphicon-inline
+                  span.glyphicon.glyphicon-asterisk
+                span.uppercase Habilidades
+              .col-xs-12.rank(ng-repeat='rank in ranking')
+                .each
+                  .col-xs-6
+                    .info
+                      a(href='indicadores/{{ rank.Id | lowercase }}') {{ rank.Id }}
+                      span.weighted {{ rank.Ponderado }}
+                  .col-xs-3
+                    .arrow.positive(ng-if='rank.Id != "SCCP"')
+                      .glyphicon-inline
+                        span.glyphicon.glyphicon-chevron-up
+                    .arrow.negative(ng-if='rank.Id == "SCCP"')
+                      .glyphicon-inline
+                        span.glyphicon.glyphicon-chevron-down
+                    .delta
+                      span {{ rank.Delta }}%
+                  .col-xs-3
+                    .position
+                      span {{ rank.Posicion }}
+
+        // level 3
+
+        // history
+        .col-lg-8
+          .kaizen-box.kaizen-history.h-level-3
+            .name
+              .glyphicon-inline
+                span.glyphicon.glyphicon-asterisk
+              span.uppercase Históricos ECC
+              metricsecc.text-left(width='690', height='240')
+              .legend
+
         // ranking
         .col-lg-4
           .kaizen-box.kaizen-ranking.h-level-3
@@ -152,18 +191,6 @@
                   .col-xs-3
                     .position
                       span {{ rank.Posicion }}
-
-        // level 3
-
-        // history
-        .col-lg-12
-          .kaizen-box.kaizen-history.h-level-4
-            .name
-              .glyphicon-inline
-                span.glyphicon.glyphicon-asterisk
-              span.uppercase Históricos ECC
-              metricsecc.text-left(width='1080', height='300')
-              .legend
 
 script.
   $("#menu-toggle").click(function(e) {
