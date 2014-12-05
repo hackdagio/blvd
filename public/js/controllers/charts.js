@@ -115,6 +115,7 @@ app.directive('metricss', function($http) {
           min_y_from_data: true,
           legend: ['Ponderado','EPA','Atención', 'Servicio'],
           legend_target: '.legend',
+          decimals: 1
         });
       });
     }
