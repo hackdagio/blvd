@@ -10,8 +10,17 @@
 
             // kpi: general
             .col-md-9
-              .kaizen-box.kaizen-kpi.ok.h-level-1
-                .col-lg-4
+              .kaizen-box.kaizen-kpi.ok.kaizen-self.h-level-1
+                .col-lg-7
+                  .col-lg-5
+                    .avatar
+                      img.img-circle(src='entel/avatar/10.jpg')
+                  .col-lg-7
+                    .self-info
+                      span.who Francisca Bilbao
+                      span.what Coordinador General
+                      span.where Sucursal Entel
+                .col-lg-5
                   .kpi
                     .name.big-size
                       .glyphicon-kpi
@@ -24,8 +33,6 @@
                         span.glyphicon.glyphicon-chevron-up
                       .delta
                         span {{ indicadores.Kpi.Ponderado.Delta }}%
-                .col-lg-8(ng-controller='ponderadoController')
-                  metrics(ng-if='data', data='data', width='300', height='150', hasxaxis='false', format='percentage', extendedticks='false')
 
             // kpi: desv q llamadas
             .col-md-3
@@ -177,7 +184,7 @@
 
         // history
         .col-lg-8.nopadding
-          .col-lg-6
+          .col-md-6
             .kaizen-box.kaizen-people-ranking.h-level-3
               .name
                 .glyphicon-kpi
@@ -186,7 +193,7 @@
                 .glyphicon-kpi.right-info
                   button.glyphicon.glyphicon-info-sign(popover-animation='true', popover='texto')
 
-          .col-lg-6
+          .col-md-6
             .kaizen-box.kaizen-people-ranking.h-level-3
               .name
                 .glyphicon-kpi
