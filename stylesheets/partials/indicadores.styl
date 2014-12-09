@@ -26,6 +26,9 @@ kaizen-radial-kpi-text-color = kaizen-kpi-ok-text-color
 kaizen-people-ranking-background-color = kaizen-kpi-ok-background-color
 kaizen-people-ranking-text-color = kaizen-kpi-ok-text-color
 
+kaizen-latest-news-background-color = rgb(58, 102, 121)
+kaizen-latest-news-text-color = rgb(226, 226, 226)
+
 grid-height = 12
 
 .wrapper
@@ -118,7 +121,7 @@ grid-height = 12
       border 0
       background none
       outline 0
-      padding 1px 0
+      padding 1px 1px
   
 .kaizen-box
   padding 20px
@@ -147,28 +150,32 @@ grid-height = 12
     span
       display inline
       font-weight 300
+      word-wrap break-word
+      white-space pre-wrap
       
 .kaizen-self
   .avatar
     float left
+    margin 0 20px 0 0
     img
       height 9.8em
       border 3px solid rgb(220, 220, 220)
   .self-info
     display block
+    padding 1.5em 0 0 0
     span
       display block
       font-weight 300
       &.who
         font-size 1.5em
-        color primary-color-1
+        color darken(primary-color-1, 10%)
       &.what
-        font-size 1.1em
-        color primary-color-2
+        font-size 1.0em
+        color darken(primary-color-2, 20%)
         margin .3em 0 0 0
       &.where
         font-size .9em
-        color primary-color-2
+        color darken(primary-color-2, 20%)
 
 .kaizen-kpi
   &.ok
@@ -306,15 +313,28 @@ grid-height = 12
 .kaizen-radial-kpi
   background kaizen-radial-kpi-background-color
   color kaizen-radial-kpi-text-color
-  .name
-    span
-      display inline
-      font-weight 300
   radial-plot
     svg
-      height 90%
+      height 85%
       
 .kaizen-people-ranking
   background kaizen-people-ranking-background-color
   color kaizen-people-ranking-text-color
   
+.kaizen-latest-news
+  background kaizen-latest-news-background-color
+  color kaizen-latest-news-text-color
+  .newsfeed
+    padding 0 15px
+    float left
+    width 100%
+    .news
+      font-weight 300
+      margin 0 0 1.5em 0
+      h2
+        font-size 1.3em
+        margin 0 0 .5em 0
+        color white
+      h5
+        font-size .9em
+        
