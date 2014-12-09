@@ -5,7 +5,8 @@ var app = angular.module('kaizen-concepto', [
   'kaizen-concepto.controllers-interactions',
   'ngRoute',
   'LocalStorageModule',
-  'angular-loading-bar'
+  'angular-loading-bar',
+  'ui.bootstrap'
   ]);
 
 app.config(function ($routeProvider, $locationProvider) {

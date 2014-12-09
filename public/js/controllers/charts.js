@@ -115,9 +115,9 @@ app.directive('metricsgeneral', function() {
           min_y_from_data: true,
           legend: ['Ponderado','EPA','Atención', 'Servicio'],
           legend_target: '.legend',
-          decimals: 1,
+          decimals: 2,
+          format: 'percentage',
           xax_tick: 0,
-          y_label: '%'
         });
       });
     }
@@ -150,7 +150,8 @@ app.directive('metricsallus', function() {
           min_y_from_data: true,
           legend: ['Ponderado','EPA','Atención', 'Servicio'],
           legend_target: '.legend',
-          decimals: 1
+          decimals: 2,
+          format: 'percentage'
         });
       });
     }
@@ -183,7 +184,8 @@ app.directive('metricsecc', function() {
           min_y_from_data: true,
           legend: ['Ponderado','EPA','Atención', 'Servicio'],
           legend_target: '.legend',
-          decimals: 1
+          decimals: 2,
+          format: 'percentage'
         });
       });
     }
@@ -217,9 +219,15 @@ app.directive('metricssccp', function() {
           min_y_from_data: true,
           legend: ['Ponderado','EPA','Atención', 'Servicio'],
           legend_target: '.legend',
-          decimals: 1
+          decimals: 2,
+          format: 'percentage'
         });
       });
     }
   };
+});
+
+app.controller('PopoverDemoCtrl', function ($scope) {
+  $scope.dynamicPopover = 'Hello, World!';
+  $scope.dynamicPopoverTitle = 'Title';
 });

@@ -102,6 +102,20 @@ kaizen-history-text-color = kaizen-kpi-ok-text-color
 .sidebar-nav li a:focus
   text-decoration none
   
+.glyphicon-kpi
+  display inline-block
+  vertical-align middle
+  margin-right .3em
+  color inherit
+  font-weight 300
+  &.right-info
+    float right
+    margin 0
+    button
+      border 0
+      background none
+      outline 0
+  
 .kaizen-box
   padding 20px
   margin -5px -5px 25px -5px
@@ -157,6 +171,8 @@ kaizen-history-text-color = kaizen-kpi-ok-text-color
         font-weight 300
     .weighted
       letter-spacing -2px
+      span
+        display block
       .big-size
         font-size 3em
       .normal-size
