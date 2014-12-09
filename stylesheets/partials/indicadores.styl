@@ -20,18 +20,24 @@ kaizen-skills-text-color = rgb(226, 226, 226)
 kaizen-history-background-color = kaizen-kpi-ok-background-color
 kaizen-history-text-color = kaizen-kpi-ok-text-color
 
+kaizen-radial-kpi-background-color = kaizen-kpi-ok-background-color
+kaizen-radial-kpi-text-color = kaizen-kpi-ok-text-color
 
+kaizen-people-ranking-background-color = kaizen-kpi-ok-background-color
+kaizen-people-ranking-text-color = kaizen-kpi-ok-text-color
 
-#wrapper
+grid-height = 12
+
+.wrapper
   padding-left 0
   transition all 0.5s ease
   &.toggled
     padding-left (wrapper-principal-size)px
     padding-left 0
-    #wrapper-sidebar
+    .wrapper-sidebar
       width (wrapper-principal-size)px
       width 0
-    #wrapper-content
+    .wrapper-content
       position absolute
       margin-right -(wrapper-principal-size)px
       position relative
@@ -41,66 +47,63 @@ kaizen-history-text-color = kaizen-kpi-ok-text-color
         margin-right 0
     @media(min-width:768px)
       padding-left 0
-  @media(min-width:768px)
-    padding-left (wrapper-principal-size)px
-
-#wrapper-sidebar
-  z-index 1000
-  position fixed
-  left (wrapper-principal-size)px
-  width 0
-  height 100%
-  margin-left -(wrapper-principal-size)px
-  background kaizen-sidebar-background-color
-  transition all 0.5s ease
-  width (wrapper-principal-size)px
-  margin-top -20px
-  font-weight 300
-  @media(max-width:767px)
-    width (wrapper-principal-size/2.5)px
-
-#wrapper-content
-  @media(max-width:767px)
-    padding-left (wrapper-principal-size/2.5)px
-
-.sidebar-nav
-  position absolute
-  width 100%
-  top 0
-  margin 0
-  padding 0
-  list-style none
-  li
-    width 100%
-    text-align center
-    padding (wrapper-principal-size/10)px 0
-    border-top 1px solid lighten(kaizen-sidebar-background-color, 5%)
-    border-bottom 1px solid darken(kaizen-sidebar-background-color, 90%)
-    background darken(kaizen-sidebar-background-color, 50%)
-    span
-      display block
+  &:not(.coordinador-view)
+    @media(min-width:768px)
+      padding-left (wrapper-principal-size)px
+    .wrapper-content
+      @media(max-width:767px)
+        padding-left (wrapper-principal-size/2.5)px
+  .wrapper-sidebar
+    z-index 1000
+    position fixed
+    left (wrapper-principal-size)px
+    width 0
+    height 100%
+    margin-left -(wrapper-principal-size)px
+    background kaizen-sidebar-background-color
+    transition all 0.5s ease
+    width (wrapper-principal-size)px
+    margin-top -20px
+    font-weight 300
+    @media(max-width:767px)
+      width (wrapper-principal-size/2.5)px
+    .sidebar-nav
+      position absolute
+      width 100%
+      top 0
+      margin 0
+      padding 0
+      list-style none
+      li
+        width 100%
+        text-align center
+        padding (wrapper-principal-size/10)px 0
+        border-top 1px solid lighten(kaizen-sidebar-background-color, 5%)
+        border-bottom 1px solid darken(kaizen-sidebar-background-color, 90%)
+        background darken(kaizen-sidebar-background-color, 50%)
+        span
+          display block
+          text-decoration none
+          color rgb(255,255,255)
+          font-size .9em
+          text-shadow 0 0 2px rgb(17, 17, 17)
+          &:hover
+            text-decoration none
+        &:last-child
+          border-bottom none
+      & > .sidebar-brand
+        font-size 18px
+        a
+          color rgb(255,255,255)
+          &:hover
+            text-decoration none
+      .active
+          border-left 2px solid primary-color-2
+      img
+        width 50%
+    .sidebar-nav li a:active,
+    .sidebar-nav li a:focus
       text-decoration none
-      color rgb(255,255,255)
-      font-size .9em
-      text-shadow 0 0 2px rgb(17, 17, 17)
-      &:hover
-        text-decoration none
-    &:last-child
-      border-bottom none
-  & > .sidebar-brand
-    font-size 18px
-    a
-      color rgb(255,255,255)
-      &:hover
-        text-decoration none
-  .active
-      border-left 2px solid primary-color-2
-  img
-    width 50%
-
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus
-  text-decoration none
   
 .glyphicon-kpi
   display inline-block
@@ -115,6 +118,7 @@ kaizen-history-text-color = kaizen-kpi-ok-text-color
       border 0
       background none
       outline 0
+      padding 1px 0
   
 .kaizen-box
   padding 20px
@@ -124,13 +128,25 @@ kaizen-history-text-color = kaizen-kpi-ok-text-color
   border 1px solid rgba(0,0,0,0.06)
 
   &.h-level-1
-    height 12em
+    height (grid-height)em
   &.h-level-2
     height 10.8em
   &.h-level-3
-    height 24em
+    height (grid-height*2)em
   &.h-level-4
     height 28em
+    
+  .name
+    margin 0 0 1em 0
+    float left
+    width 100%
+    &.normal-size
+      font-size 1em
+    &.big-size 
+      font-size 1.4em
+    span
+      display inline
+      font-weight 300
 
 .kaizen-kpi
   &.ok
@@ -160,15 +176,6 @@ kaizen-history-text-color = kaizen-kpi-ok-text-color
       .delta
         color kaizen-kpi-alert-text-color    
   .kpi
-    .name
-      margin 0 0 1em 0
-      &.normal-size
-        font-size 1em
-      &.big-size 
-        font-size 1.4em
-      span
-        display inline
-        font-weight 300
     .weighted
       letter-spacing -2px
       span
@@ -185,19 +192,12 @@ kaizen-history-text-color = kaizen-kpi-ok-text-color
         margin-right .5em
       .delta
         display inline-block
+        margin-top .5em
 
 .kaizen-ranking
   background kaizen-ranking-background-color
   color kaizen-ranking-text-color
   .ranking
-    .name
-      &.normal-size
-        font-size 1em
-      &.big-size 
-        font-size 1.4em
-      span
-        display inline
-        font-weight 300
     .rank
       border-bottom 1px solid lighten(kaizen-ranking-background-color, 20%)
       padding 1em 0
@@ -238,14 +238,6 @@ kaizen-history-text-color = kaizen-kpi-ok-text-color
   background kaizen-skills-background-color
   color kaizen-skills-text-color
   .skills
-    .name
-      &.normal-size
-        font-size 1em
-      &.big-size 
-        font-size 1.4em
-      span
-        display inline
-        font-weight 300
     .skill
       border-bottom 1px solid lighten(kaizen-ranking-background-color, 20%)
       padding 1em 0
@@ -288,7 +280,19 @@ kaizen-history-text-color = kaizen-kpi-ok-text-color
   color kaizen-history-text-color
   metrics
     display block
+
+.kaizen-radial-kpi
+  background kaizen-radial-kpi-background-color
+  color kaizen-radial-kpi-text-color
   .name
     span
       display inline
       font-weight 300
+  radial-plot
+    svg
+      height 90%
+      
+.kaizen-people-ranking
+  background kaizen-people-ranking-background-color
+  color kaizen-people-ranking-text-color
+  

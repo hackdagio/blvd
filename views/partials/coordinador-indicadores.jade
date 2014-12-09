@@ -1,22 +1,4 @@
-.wrapper.vp-view
-  .wrapper-sidebar
-      .container
-        .row
-          ul.sidebar-nav
-            li.sidebar-brand.active
-              a(href='indicadores/call-center')
-                img(src='entel/images/static/call-center.png')
-                span.hidden-sm.hidden-xs Contact Center
-            li
-              a(href='indicadores/allus')
-                span Allus
-            li
-              a(href='indicadores/ecc')
-                span ECC
-            li
-              a(href='indicadores/sccp')
-                span SCCP
-
+.wrapper.coordinador-view
   .wrapper-content
     .container-fluid
       .row
@@ -191,44 +173,41 @@
                       span 3
 
 
-        // level 4
+        // level 3
 
         // history
-        .col-lg-8
-          .kaizen-box.kaizen-history.h-level-3
+        .col-lg-8.nopadding
+          .col-lg-6
+            .kaizen-box.kaizen-people-ranking.h-level-3
+              .name
+                .glyphicon-kpi
+                  span.glyphicon.glyphicon-asterisk
+                span.uppercase Mejores supervisores
+                .glyphicon-kpi.right-info
+                  button.glyphicon.glyphicon-info-sign(popover-animation='true', popover='texto')
+
+          .col-lg-6
+            .kaizen-box.kaizen-people-ranking.h-level-3
+              .name
+                .glyphicon-kpi
+                  span.glyphicon.glyphicon-asterisk
+                span.uppercase Mejores ejecutivos
+                .glyphicon-kpi.right-info
+                  button.glyphicon.glyphicon-info-sign(popover-animation='true', popover='texto')
+
+
+
+        // radial plot
+        .col-lg-4
+          .kaizen-box.kaizen-radial-kpi.h-level-3(ng-controller='radialPlotCtrl')
             .name
               .glyphicon-kpi
                 span.glyphicon.glyphicon-asterisk
-              span.uppercase Históricos Total
-              metricsgeneral.text-left(width='690', height='240')
-              .legend
+              span.uppercase Rendimiento comparado
+              .glyphicon-kpi.right-info
+                button.glyphicon.glyphicon-info-sign(popover-animation='true', popover='texto')
+            radial-plot(dsn="dataset_a", point-radius="1.2", labelled="true", compare='dataset_b', free="true", animate="true", play="others")
 
-        // ranking
-        .col-lg-4
-          .kaizen-box.kaizen-ranking.h-level-3
-            .ranking
-              .name.big-size
-                .glyphicon-kpi
-                  span.glyphicon.glyphicon-asterisk
-                span.uppercase Ranking
-              .col-xs-12.rank(ng-repeat='rank in ranking')
-                .each
-                  .col-xs-6
-                    .info
-                      a(href='indicadores/{{ rank.Id | lowercase }}') {{ rank.Id }}
-                      span.weighted {{ rank.Ponderado }}
-                  .col-xs-3
-                    .arrow.positive(ng-if='rank.Id != "SCCP"')
-                      .glyphicon-kpi
-                        span.glyphicon.glyphicon-chevron-up
-                    .arrow.negative(ng-if='rank.Id == "SCCP"')
-                      .glyphicon-kpi
-                        span.glyphicon.glyphicon-chevron-down
-                    .delta
-                      span {{ rank.Delta }}%
-                  .col-xs-3
-                    .position
-                      span {{ rank.Posicion }}
 
 script.
   $("#menu-toggle").click(function(e) {

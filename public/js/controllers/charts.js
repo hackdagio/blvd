@@ -64,7 +64,7 @@ app.directive('metrics', function($http) {
       extendedticks: '='
     },
     link: function(scope, element) {
-      
+
       $(function(){
 
         var data = convert_dates(scope.data, 'Mes', '%Y-%m-%d');
@@ -100,7 +100,7 @@ app.directive('metricsgeneral', function() {
 
       d3.json('entel/ponderado-general.json', function(data)  {
         for(var i=0;i<data.length;i++) {
-            data[i] = convert_dates(data[i], 'fecha');
+          data[i] = convert_dates(data[i], 'fecha');
         }
 
         data_graphic({
@@ -135,7 +135,7 @@ app.directive('metricsallus', function() {
 
       d3.json('entel/ponderado-allus.json', function(data)  {
         for(var i=0;i<data.length;i++) {
-            data[i] = convert_dates(data[i], 'fecha');
+          data[i] = convert_dates(data[i], 'fecha');
         }
 
         data_graphic({
@@ -169,7 +169,7 @@ app.directive('metricsecc', function() {
 
       d3.json('entel/ponderado-ecc.json', function(data)  {
         for(var i=0;i<data.length;i++) {
-            data[i] = convert_dates(data[i], 'fecha');
+          data[i] = convert_dates(data[i], 'fecha');
         }
 
         data_graphic({
@@ -204,7 +204,7 @@ app.directive('metricssccp', function() {
 
       d3.json('entel/ponderado-sccp.json', function(data)  {
         for(var i=0;i<data.length;i++) {
-            data[i] = convert_dates(data[i], 'fecha');
+          data[i] = convert_dates(data[i], 'fecha');
         }
 
         data_graphic({
@@ -230,4 +230,22 @@ app.directive('metricssccp', function() {
 app.controller('PopoverDemoCtrl', function ($scope) {
   $scope.dynamicPopover = 'Hello, World!';
   $scope.dynamicPopoverTitle = 'Title';
+});
+
+app.controller('radialPlotCtrl', function($scope) {
+  $scope.dataset_a =  [ 
+  { id: 0 , name: "Servicio" , value: 30 },
+  { id: 1 , name: "Atención" , value: 50 },
+  { id: 2 , name: "CROSS" , value: 20 },
+  { id: 3 , name: "TMO" , value: 15 },
+  { id: 4 , name: "EPA" , value: 55 }
+  ];
+
+  $scope.dataset_b =  [ 
+  { id: 0 , name: "Servicio" , value: 85 },
+  { id: 1 , name: "Atención" , value: 95 },
+  { id: 2 , name: "CROSS" , value: 100 },
+  { id: 3 , name: "TMO" , value: 50 },
+  { id: 4 , name: "EPA" , value: 65 }
+  ];
 });

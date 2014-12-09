@@ -6,36 +6,42 @@ var app = angular.module('kaizen-concepto', [
   'ngRoute',
   'LocalStorageModule',
   'angular-loading-bar',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'ui.radialplot'
   ]);
 
 app.config(function ($routeProvider, $locationProvider) {
 
   $routeProvider
-  .when('/indicadores', {
+  .when('/vp/indicadores', {
     templateUrl: 'partials/indicadores',
     controller: 'indicadoresController',
     resolve: { loginRequired: loginRequired }
   })
-  .when('/indicadores/allus', {
+  .when('/vp/indicadores/allus', {
     templateUrl: 'partials/indicadores-allus',
     controller: 'indicadoresController',
     resolve: { loginRequired: loginRequired }
   })
-  .when('/indicadores/ecc', {
+  .when('/vp/indicadores/ecc', {
     templateUrl: 'partials/indicadores-ecc',
     controller: 'indicadoresController',
     resolve: { loginRequired: loginRequired }
   })
-  .when('/indicadores/sccp', {
+  .when('/vp/indicadores/sccp', {
     templateUrl: 'partials/indicadores-sccp',
+    controller: 'indicadoresController',
+    resolve: { loginRequired: loginRequired }
+  })
+  .when('/coordinador/indicadores', {
+    templateUrl: 'partials/coordinador-indicadores',
     controller: 'indicadoresController',
     resolve: { loginRequired: loginRequired }
   })
   .when('/acceder', {
     templateUrl: 'partials/login',
     controller: 'loginController',
-    resolve: { redirectIfAuthenticated: redirectIfAuthenticated('/indicadores') }
+    resolve: { redirectIfAuthenticated: redirectIfAuthenticated('/vp/indicadores') }
   })
   .otherwise({
     redirectTo: '/acceder'
