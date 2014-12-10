@@ -14,7 +14,7 @@ app.config(function ($routeProvider, $locationProvider) {
 
   $routeProvider
   .when('/vp/indicadores', {
-    templateUrl: 'partials/indicadores',
+    templateUrl: 'partials/vp-indicadores',
     controller: 'indicadoresController',
     resolve: { loginRequired: loginRequired }
   })

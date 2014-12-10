@@ -15,15 +15,15 @@
                   .avatar
                     img.img-circle(src='entel/avatar/30.jpg')
                   .self-info
-                    span.who.capitalize Francisca bilbao
+                    span.who.capitalize Francisca Bilbao
                     span.what.uppercase Coordinador General
-                    span.where.uppercase Entel Call Center
+                    span.where.uppercase ECC
                 .col-lg-4
-                  .kpi.text-right
-                    .name.big-size
-                      .glyphicon-kpi
-                        span.glyphicon.glyphicon-asterisk
-                      span.uppercase Total
+                  .kaizen-box-name.big-size.text-right
+                    .glyphicon-kpi
+                      span.glyphicon.glyphicon-asterisk
+                    span.uppercase Total
+                  .kpi.kaizen-box-content.text-right
                     .weighted
                       span.big-size {{ indicadores.Kpi.Ponderado.Valor }}
                     .diff
@@ -35,13 +35,13 @@
             // kpi: desv q llamadas
             .col-md-3
               .kaizen-box.kaizen-kpi.ok.h-level-1
-                .kpi
-                  .name
-                    .glyphicon-kpi
-                      span.glyphicon.glyphicon-asterisk
-                    span.uppercase Desv. Llamadas
-                    .glyphicon-kpi.right-info
-                      button.glyphicon.glyphicon-info-sign(popover-animation='true', popover='{{ indicadores.Kpi.DesviacionQLlamadas.Valor }}')
+                .kaizen-box-name
+                  .glyphicon-kpi
+                    span.glyphicon.glyphicon-asterisk
+                  span.uppercase Desv. Llamadas
+                  .glyphicon-kpi.right-info
+                    button.glyphicon.glyphicon-question-sign(popover-animation='true', popover='{{ indicadores.Kpi.DesviacionQLlamadas.Valor }}')
+                .kpi.kaizen-box-content
                   .weighted.text-right
                     span.normal-size {{ indicadores.Kpi.DesviacionQLlamadas.Valor }}
                   .diff.text-right
@@ -56,13 +56,13 @@
             // kpi: n.s.
             .col-md-3
               .kaizen-box.kaizen-kpi.red-alert.h-level-2
-                .kpi
-                  .name
-                    .glyphicon-kpi
-                      span.glyphicon.glyphicon-asterisk
-                    span.uppercase Servicio
-                    .glyphicon-kpi.right-info
-                      button.glyphicon.glyphicon-info-sign(popover-animation='true', popover='{{ indicadores.Kpi.NivelServicio.Valor }}')
+                .kaizen-box-name
+                  .glyphicon-kpi
+                    span.glyphicon.glyphicon-asterisk
+                  span.uppercase Servicio
+                  .glyphicon-kpi.right-info
+                    button.glyphicon.glyphicon-question-sign(popover-animation='true', popover='{{ indicadores.Kpi.NivelServicio.Valor }}')
+                .kpi.kaizen-box-content
                   .weighted.text-right
                     span.normal-size {{ indicadores.Kpi.NivelServicio.Valor }}
                   .diff.text-right
@@ -74,13 +74,13 @@
             // kpi: n.a.
             .col-md-3
               .kaizen-box.kaizen-kpi.red-alert.h-level-2
-                .kpi
-                  .name
-                    .glyphicon-kpi
-                      span.glyphicon.glyphicon-asterisk
-                    span.uppercase Atención
-                    .glyphicon-kpi.right-info
-                      button.glyphicon.glyphicon-info-sign(popover-animation='true', popover='{{ indicadores.Kpi.NivelAtencion.Valor }}')
+                .kaizen-box-name
+                  .glyphicon-kpi
+                    span.glyphicon.glyphicon-asterisk
+                  span.uppercase Atención
+                  .glyphicon-kpi.right-info
+                    button.glyphicon.glyphicon-question-sign(popover-animation='true', popover='{{ indicadores.Kpi.NivelAtencion.Valor }}')
+                .kpi.kaizen-box-content
                   .weighted.text-right
                     span.normal-size {{ indicadores.Kpi.NivelAtencion.Valor }}
                   .diff.text-right
@@ -92,13 +92,13 @@
             // kpi: epa
             .col-md-3
               .kaizen-box.kaizen-kpi.ok.h-level-2
-                .kpi
-                  .name
-                    .glyphicon-kpi
-                      span.glyphicon.glyphicon-asterisk
-                    span.uppercase EPA
-                    .glyphicon-kpi.right-info
-                      button.glyphicon.glyphicon-info-sign(popover-animation='true', popover='{{ indicadores.Kpi.EPA.Valor }}')
+                .kaizen-box-name
+                  .glyphicon-kpi
+                    span.glyphicon.glyphicon-asterisk
+                  span.uppercase EPA
+                  .glyphicon-kpi.right-info
+                    button.glyphicon.glyphicon-question-sign(popover-animation='true', popover='{{ indicadores.Kpi.EPA.Valor }}')
+                .kpi.kaizen-box-content
                   .weighted.text-right
                     span.normal-size {{ indicadores.Kpi.EPA.Valor }}
                   .diff.text-right
@@ -110,13 +110,13 @@
             // kpi: tmo
             .col-md-3
               .kaizen-box.kaizen-kpi.ok.h-level-2
-                .kpi
-                  .name
-                    .glyphicon-kpi
-                      span.glyphicon.glyphicon-asterisk
-                    span.uppercase TMO
-                    .glyphicon-kpi.right-info
-                      button.glyphicon.glyphicon-info-sign(popover-animation='true', popover='{{ indicadores.Kpi.TMO }}')
+                .kaizen-box-name
+                  .glyphicon-kpi
+                    span.glyphicon.glyphicon-asterisk
+                  span.uppercase TMO
+                  .glyphicon-kpi.right-info
+                    button.glyphicon.glyphicon-question-sign(popover-animation='true', popover='{{ indicadores.Kpi.TMO }}')
+                .kpi.kaizen-box-content
                   .weighted.text-right
                     span.normal-size {{ indicadores.Kpi.TMO }}
                     | <small> seg</small>
@@ -126,12 +126,12 @@
         // rendimiento comparado
         .col-lg-4
           .kaizen-box.kaizen-radial-kpi.h-level-3(ng-controller='radialPlotCtrl')
-            .name.big-size
+            .kaizen-box-name.big-size
               .glyphicon-kpi
                 span.glyphicon.glyphicon-asterisk
               span.uppercase Rendimiento comparado
               .glyphicon-kpi.right-info
-                button.glyphicon.glyphicon-info-sign(popover-animation='true', popover='texto')
+                button.glyphicon.glyphicon-question-sign(popover-animation='true', popover='texto')
             radial-plot(dsn="dataset_a", point-radius="1.2", labelled="true", compare='dataset_b', free="true", animate="true", play="others")
 
         // level 3
@@ -140,32 +140,34 @@
         .col-lg-8.nopadding
           .col-md-6
             .kaizen-box.kaizen-people-ranking.h-level-3
-              .name
+              .kaizen-box-name
                 .glyphicon-kpi
                   span.glyphicon.glyphicon-asterisk
                 span.uppercase Mejores supervisores
                 .glyphicon-kpi.right-info
-                  button.glyphicon.glyphicon-info-sign(popover-animation='true', popover='texto')
+                  button.glyphicon.glyphicon-question-sign(popover-animation='true', popover='texto')
+              .kaizen-box-content
+                .each-people
 
           .col-md-6
             .kaizen-box.kaizen-people-ranking.h-level-3
-              .name
+              .kaizen-box-name
                 .glyphicon-kpi
                   span.glyphicon.glyphicon-asterisk
                 span.uppercase Mejores ejecutivos
                 .glyphicon-kpi.right-info
-                  button.glyphicon.glyphicon-info-sign(popover-animation='true', popover='texto')
+                  button.glyphicon.glyphicon-question-sign(popover-animation='true', popover='texto')
 
 
 
         // habilidades
         .col-lg-4
           .kaizen-box.kaizen-latest-news.h-level-3
-            .name
+            .kaizen-box-name
               .glyphicon-kpi
                 span.glyphicon.glyphicon-asterisk
               span.uppercase Últimas noticias
-            .newsfeed
+            .newsfeed.kaizen-box-content
               .news.latest
                 h2 Ganadores de Noviembre
                 h5 Hace 2 días · por Área de Ventas

@@ -1,6 +1,6 @@
 wrapper-principal-size = 140
 
-kaizen-positive-color-changes = lighten(color-green, 20%)
+kaizen-positive-color-changes = lighten(color-green, 10%)
 kaizen-negative-color-changes = lighten(color-red, 20%)
 
 kaizen-sidebar-background-color = darken(primary-color-1, 75%)
@@ -124,6 +124,7 @@ grid-height = 12
       padding 1px 1px
   
 .kaizen-box
+  
   padding 20px
   margin -5px -5px 25px -5px
   line-height 2em
@@ -139,10 +140,11 @@ grid-height = 12
   &.h-level-4
     height 28em
     
-  .name
-    margin 0 0 1em 0
+  .kaizen-box-name
     float left
     width 100%
+    margin 0
+    padding-bottom .5em
     &.normal-size
       font-size 1em
     &.big-size 
@@ -152,6 +154,10 @@ grid-height = 12
       font-weight 300
       word-wrap break-word
       white-space pre-wrap
+      
+  .kaizen-box-content
+    float left
+    width 100%
       
 .kaizen-self
   .avatar
@@ -230,6 +236,8 @@ grid-height = 12
     .rank
       border-bottom 1px solid lighten(kaizen-ranking-background-color, 20%)
       padding 1em 0
+      &:first-child
+        padding 0 0 1em 0
       .each
         .info
           font-weight 400
@@ -270,6 +278,8 @@ grid-height = 12
     .skill
       border-bottom 1px solid lighten(kaizen-ranking-background-color, 20%)
       padding 1em 0
+      &:first-child
+        padding 0 0 1em 0
       .each
         .info
           font-weight 300
@@ -320,14 +330,12 @@ grid-height = 12
 .kaizen-people-ranking
   background kaizen-people-ranking-background-color
   color kaizen-people-ranking-text-color
-  
+
 .kaizen-latest-news
   background kaizen-latest-news-background-color
   color kaizen-latest-news-text-color
   .newsfeed
     padding 0 15px
-    float left
-    width 100%
     .news
       font-weight 300
       margin 0 0 1.5em 0
