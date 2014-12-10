@@ -249,3 +249,7 @@ app.controller('radialPlotCtrl', function($scope) {
   { id: 4 , name: "EPA" , value: 65 }
   ];
 });
+
+app.controller('ProgressDemoCtrl', function ($scope) {
+  $scope.max = 100;
+});
