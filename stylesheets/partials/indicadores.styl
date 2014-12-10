@@ -333,18 +333,10 @@ grid-height = 12
   .rankings
     margin-top 1em
     .each-people
-      width 100%
-      float left
       .each-avatar
-        width 10%
-        float left
-        margin-right 1em
         img
-          width 100%
-          border 1px solid rgb(220, 220, 220)
+          height 48px
       .each-name-and-kpi
-        width 75%
-        float left
         h4
           font-weight 400
           margin 0 0 .5em 0
@@ -355,26 +347,25 @@ grid-height = 12
           border-radius 0px
           background rgb(240, 240, 240)
           i
-            font-weight 400
+            font-weight 300
             font-style normal
             color white
             letter-spacing 1px
-            text-shadow 0px 1px rgba(0, 0, 0, .7)
+            text-shadow 0px 1px rgb(0, 0, 0)
       .each-social-interactions
-        width 6%
-        float left
         .each-glyphicon-container
-          margin 1.4em 0 0 1em
+          margin 1.4em 0 0 0
           span
             display block
             font-size 1.4em
-            color darken(primary-color-2, 15%)
+            color rgb(210,210,210)
+            text-shadow 0px 1px 0px rgba(0,0,0,.4)
 
 .kaizen-latest-news
   background kaizen-latest-news-background-color
   color kaizen-latest-news-text-color
   .newsfeed
-    padding 0 15px
+    padding .5em 0 0 1em
     .news
       font-weight 300
       margin 0 0 1.5em 0

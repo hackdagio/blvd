@@ -252,4 +252,22 @@ app.controller('radialPlotCtrl', function($scope) {
 
 app.controller('ProgressDemoCtrl', function ($scope) {
   $scope.max = 100;
+
+  $scope.progressData = [
+  97,
+  75,
+  45,
+  21];
+
+  $scope.nameData = [
+  'Victoria Subercaseaux',
+  'Macarena Ugarte',
+  'Pedro Arancibia',
+  'Natalia Fuenzalida'];
+
+  $scope.ejecutivosData = [
+  'Alicia Valderrama',
+  'Juan Perez',
+  'Sonia Gerke',
+  'Alejandro Duarte'];
 });

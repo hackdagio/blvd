@@ -126,12 +126,10 @@
         // rendimiento comparado
         .col-lg-4
           .kaizen-box.kaizen-radial-kpi.h-level-3(ng-controller='radialPlotCtrl')
-            .kaizen-box-name.big-size
+            .kaizen-box-name
               .glyphicon-kpi
                 span.glyphicon.glyphicon-asterisk
               span.uppercase Rendimiento comparado
-              .glyphicon-kpi.right-info
-                button.glyphicon.glyphicon-question-sign(popover-animation='true', popover='texto')
             radial-plot(dsn="dataset_a", point-radius="1.2", labelled="true", compare='dataset_b', free="true", animate="true", play="others")
 
         //- level 3
@@ -147,44 +145,44 @@
                 .glyphicon-kpi.right-info
                   button.glyphicon.glyphicon-question-sign(popover-animation='true', popover='texto')
               .rankings.kaizen-box-content(ng-controller='ProgressDemoCtrl')
-                .each-people
-                  .each-avatar
-                    img.img-circle(src='entel/avatar/4.jpg')
-                  .each-name-and-kpi
-                    h4 Victoria Subercaseaux
-                    progressbar(max='max', value='97.4', type='success')
-                      i 97.4%
-                  .each-social-interactions
+                .each-people.col-md-12.nopadding
+                  .each-avatar.col-xs-2.nopadding
+                    img.img-circle.text-center(src='entel/avatar/4.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ nameData[0] }}
+                    progressbar(max='max', value='97', type='success')
+                      i 97
+                  .each-social-interactions.col-xs-1.nopadding
                     .each-glyphicon-container
                       span.glyphicon.glyphicon-share-alt
-                .each-people
-                  .each-avatar
+                .each-people.col-md-12.nopadding
+                  .each-avatar.col-xs-2.nopadding
                     img.img-circle(src='entel/avatar/3.jpg')
-                  .each-name-and-kpi
-                    h4 Alejandra Fuentes
-                    progressbar(max='max', value='85.3', type='info')
-                      i 85.3%
-                  .each-social-interactions
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ nameData[1] }}
+                    progressbar(max='max', value='75', type='info')
+                      i 75
+                  .each-social-interactions.col-xs-1.nopadding
                     .each-glyphicon-container
                       span.glyphicon.glyphicon-share-alt
-                .each-people
-                  .each-avatar
+                .each-people.col-md-12.nopadding
+                  .each-avatar.col-xs-2.nopadding
                     img.img-circle(src='entel/avatar/2.jpg')
-                  .each-name-and-kpi
-                    h4 Mauricio Sepulveda
-                    progressbar(max='max', value='54.2', type='warning')
-                      i 54.2%
-                  .each-social-interactions
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ nameData[2] }}
+                    progressbar(max='max', value='45', type='warning')
+                      i 45
+                  .each-social-interactions.col-xs-1.nopadding
                     .each-glyphicon-container
                       span.glyphicon.glyphicon-share-alt
-                .each-people
-                  .each-avatar
+                .each-people.col-md-12.nopadding
+                  .each-avatar.col-xs-2.nopadding
                     img.img-circle(src='entel/avatar/1.jpg')
-                  .each-name-and-kpi
-                    h4 Jennifer Perez
-                    progressbar(max='max', value='32.3', type='danger')
-                      i 32.3%
-                  .each-social-interactions
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ nameData[3] }}
+                    progressbar(max='max', value='21', type='danger')
+                      i 21
+                  .each-social-interactions.col-xs-1.nopadding
                     .each-glyphicon-container
                       span.glyphicon.glyphicon-share-alt
 
@@ -196,7 +194,47 @@
                 span.uppercase Mejores ejecutivos
                 .glyphicon-kpi.right-info
                   button.glyphicon.glyphicon-question-sign(popover-animation='true', popover='texto')
-
+              .rankings.kaizen-box-content(ng-controller='ProgressDemoCtrl')
+                .each-people.col-md-12.nopadding
+                  .each-avatar.col-xs-2.nopadding
+                    img.img-circle.text-center(src='entel/avatar/5.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ ejecutivosData[0] }}
+                    progressbar(max='max', value='91.3', type='success')
+                      i 91.3
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+                .each-people.col-md-12.nopadding
+                  .each-avatar.col-xs-2.nopadding
+                    img.img-circle(src='entel/avatar/3.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ ejecutivosData[1] }}
+                    progressbar(max='max', value='89.5', type='success')
+                      i 89.5
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+                .each-people.col-md-12.nopadding
+                  .each-avatar.col-xs-2.nopadding
+                    img.img-circle(src='entel/avatar/2.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ ejecutivosData[2] }}
+                    progressbar(max='max', value='74.5', type='info')
+                      i 74.5
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+                .each-people.col-md-12.nopadding
+                  .each-avatar.col-xs-2.nopadding
+                    img.img-circle(src='entel/avatar/1.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ ejecutivosData[3] }}
+                    progressbar(max='max', value='62.1', type='warning')
+                      i 62.1
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
 
 
         // habilidades
