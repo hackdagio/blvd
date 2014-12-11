@@ -11,7 +11,6 @@ var app = angular.module('kaizen-concepto', [
   ]);
 
 app.config(function ($routeProvider, $locationProvider) {
-
   $routeProvider
   .when('/vp/indicadores', {
     templateUrl: 'partials/vp-indicadores',
@@ -58,44 +57,44 @@ app.config(function ($routeProvider, $locationProvider) {
 var serviceBase = 'http://demo.kaizen.link/';
 
 app.constant('ngAuthSettings', {
-    apiServiceBaseUri: serviceBase,
-    clientId: 'kaizen'
+  apiServiceBaseUri: serviceBase,
+  clientId: 'kaizen'
 });
 
 app.config(function ($httpProvider) {
-    $httpProvider.interceptors.push('authInterceptorService');
+  $httpProvider.interceptors.push('authInterceptorService');
 });
 
 app.run(['authService', function (authService) {
-    authService.fillAuthData();
+  authService.fillAuthData();
 }]);
 
 
 var loginRequired = function($location, $q, authService) {  
-    var deferred = $q.defer();
+  var deferred = $q.defer();
 
-    if(! (authService.authentication.isAuth == true)) {
-        deferred.reject()
-        $location.path('/acceder');
-    } else {
-        deferred.resolve()
-    }
+  if(! (authService.authentication.isAuth == true)) {
+    deferred.reject()
+    $location.path('/acceder');
+  } else {
+    deferred.resolve()
+  }
 
-    return deferred.promise;
+  return deferred.promise;
 }
 
 var redirectIfAuthenticated = function(route) {  
-    return function($location, $q, authService) {
+  return function($location, $q, authService) {
 
-        var deferred = $q.defer();
+    var deferred = $q.defer();
 
-        if (authService.authentication.isAuth == true) {
-            deferred.reject()
-            $location.path(route);
-        } else {
-            deferred.resolve()
-        }
-
-        return deferred.promise;
+    if (authService.authentication.isAuth == true) {
+      deferred.reject()
+      $location.path(route);
+    } else {
+      deferred.resolve()
     }
+
+    return deferred.promise;
+  }
 }

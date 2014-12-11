@@ -32,6 +32,9 @@ kaizen-latest-news-text-color = rgb(216, 216, 216)
 kaizen-self-background-color = kaizen-kpi-ok-background-color
 kaizen-self-text-color = kaizen-kpi-ok-text-color
 
+kaizen-feedback-background-color = rgb(55, 83, 102)
+kaizen-feedback-text-color = white
+
 grid-height = 12
 
 .wrapper
@@ -134,16 +137,27 @@ grid-height = 12
   border 1px solid rgba(0,0,0,0.06)
   &.full-box
     padding 0
-
   &.h-level-1
     height (grid-height)em
+    @media(max-width:767px)
+      height inherit
   &.h-level-2
     height 10.8em
+    @media(max-width:767px)
+      height inherit
   &.h-level-3
     height (grid-height*2)em
+    @media(max-width:767px)
+      height inherit
   &.h-level-4
     height 28em
-    
+    @media(max-width:767px)
+      height inherit
+  &.h-level-5
+    height (grid-height + 6)em
+    @media(max-width:767px)
+      height inherit
+     
   .kaizen-box-name
     float left
     width 100%
@@ -158,7 +172,6 @@ grid-height = 12
       font-weight 300
       word-wrap break-word
       white-space pre-wrap
-      
   .kaizen-box-content
     float left
     width 100%
@@ -237,14 +250,16 @@ grid-height = 12
   .kpi
     .weighted
       letter-spacing -2px
+    .weighted,
+    .kpi-name
       span
         display block
-      .big-size
-        font-size 3em
-      .normal-size
-        font-size 2em
-      .small-size
-        font-size 1em
+        &.big-size
+          font-size 3em
+        &.normal-size
+          font-size 2em
+        &.small-size
+          font-size 1em
     .diff
       .arrow
         display inline-block
@@ -252,6 +267,7 @@ grid-height = 12
       .delta
         display inline-block
         margin-top .5em
+    
 
 .kaizen-ranking
   background kaizen-ranking-background-color
@@ -415,6 +431,9 @@ grid-height = 12
       img
         height 100%
         width 100%
+        
 .kaizen-feedback
-  &#feedback-ejecutivo  
-    background transparent
+  background kaizen-feedback-background-color
+  color kaizen-feedback-text-color
+  
+  

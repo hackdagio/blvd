@@ -9,9 +9,9 @@
           .col-md-2
             .kaizen-box.kaizen-self#self-ejecutivo.h-level-3
               .kaizen-box-content
-                .avatar.col-lg-12
+                .avatar.col-xs-12
                   img.img-circle(src='entel/avatar/5.jpg')
-                .self-info.col-lg-12.nopadding
+                .self-info.col-xs-12.nopadding
                   span.who.capitalize Claudia Rojas
                   span.what.uppercase Ejecutiva de Ventas
                   span.where.uppercase ALLUS
@@ -29,6 +29,35 @@
           //- feedback
           .col-lg-2
             .kaizen-box.kaizen-feedback#feedback-ejecutivo.h-level-3
+              .kaizen-box-name
+                .glyphicon-kpi
+                  span.glyphicon.glyphicon-asterisk
+                span.uppercase Feedback_
+
+        //- level 2
+        .col-lg-12.nopadding
+          .col-lg-12
+            .kaizen-box.kaizen-kpi.ok#kpi-ejecutivo.h-level-5
+              .kaizen-box-name.text-center.big-size
+                .glyphicon-kpi
+                  span.glyphicon.glyphicon-asterisk
+                span.uppercase Tus indicadores_
+              .kaizen-box-content.col-lg-12.nopadding(ng-controller='kpipieController')
+                .col-lg-2
+                  .kpi.text-center
+                    
+                    .kpi-name
+                      span.small-size TMO
+                .col-lg-2
+                  .kpi.text-center
+                    .weighted
+                      span.normal-size 93,1%
+                    .kpi-name
+                      span.small-size TMO
+
+
+
+
 
 
 
