@@ -1,0 +1,42 @@
+.wrapper.ejecutivo-view
+  .wrapper-content
+    .container-fluid
+      .row
+        //- level 1
+        .col-lg-12.nopadding
+
+          //- self
+          .col-md-2
+            .kaizen-box.kaizen-self#self-ejecutivo.h-level-3
+              .kaizen-box-content
+                .avatar.col-lg-12
+                  img.img-circle(src='entel/avatar/5.jpg')
+                .self-info.col-lg-12.nopadding
+                  span.who.capitalize Claudia Rojas
+                  span.what.uppercase Ejecutiva de Ventas
+                  span.where.uppercase ALLUS
+
+          //- carousel
+          .col-lg-8
+            .kaizen-box.kaizen-promo-carousel#carousel-ejecutivo.h-level-3.full-box
+              .kaizen-box-content.carousels(ng-controller='carouselController')
+                carousel(interval='interval')
+                  slide(ng-repeat='slide in slides', active='slide.active')
+                    img(ng-src='{{slide.image}}')
+                    .carousel-caption
+                      h4 imagen {{ $index+1 }}
+
+          //- feedback
+          .col-lg-2
+            .kaizen-box.kaizen-feedback#feedback-ejecutivo.h-level-3
+
+
+
+//- script.
+//-   $("#menu-toggle").click(function(e) {
+//-   e.preventDefault();
+//-   $("#wrapper").toggleClass("toggled");
+//-   });
+
+
+

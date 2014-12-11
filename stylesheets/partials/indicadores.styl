@@ -29,6 +29,9 @@ kaizen-people-ranking-text-color = kaizen-kpi-ok-text-color
 kaizen-latest-news-background-color = rgb(78, 87, 94)
 kaizen-latest-news-text-color = rgb(216, 216, 216)
 
+kaizen-self-background-color = kaizen-kpi-ok-background-color
+kaizen-self-text-color = kaizen-kpi-ok-text-color
+
 grid-height = 12
 
 .wrapper
@@ -50,7 +53,7 @@ grid-height = 12
         margin-right 0
     @media(min-width:768px)
       padding-left 0
-  &:not(.coordinador-view)
+  &.vp-view
     @media(min-width:768px)
       padding-left (wrapper-principal-size)px
     .wrapper-content
@@ -129,6 +132,8 @@ grid-height = 12
   line-height 2em
   overflow hidden
   border 1px solid rgba(0,0,0,0.06)
+  &.full-box
+    padding 0
 
   &.h-level-1
     height (grid-height)em
@@ -159,29 +164,48 @@ grid-height = 12
     width 100%
       
 .kaizen-self
-  .avatar
-    float left
-    margin 0 20px 0 0
-    img
-      height 9.8em
-      border 3px solid rgb(220, 220, 220)
+  background kaizen-self-background-color
+  color kaizen-self-text-color
   .self-info
-    display block
-    padding 1.5em 0 0 0
     span
       display block
       font-weight 300
+      font-family alternative-font
       &.who
         font-size 1.6em
         color darken(primary-color-1, 10%)
-        font-family alternative-font
       &.what
-        font-size 1.0em
+        font-size 1.1em
         color darken(primary-color-2, 20%)
         margin .3em 0 0 0
       &.where
-        font-size .9em
+        font-size 1em
         color darken(primary-color-2, 20%)
+  .avatar
+    img
+      border 3px solid rgb(220, 220, 220)
+  &#self-coordinador
+    .self-info
+      display block
+      padding 1.5em 0 0 0
+    .avatar
+      float left
+      margin 0 20px 0 0
+      img
+        height 9.8em
+  &#self-ejecutivo
+    .avatar
+      img
+        width 100%
+    .self-info
+      margin-top .5em
+      span
+        &.who,
+        &.what,
+        &.where
+          text-align center
+      
+
 
 .kaizen-kpi
   &.ok
@@ -376,3 +400,21 @@ grid-height = 12
       h5
         font-size .9em
         
+.kaizen-promo-carousel
+  .carousels
+    background-position center
+    background-size cover
+    width 100%
+    height 100%
+    .carousel
+      height 100%
+    .carousel-inner
+      height 100%
+      .item
+        height 100%
+      img
+        height 100%
+        width 100%
+.kaizen-feedback
+  &#feedback-ejecutivo  
+    background transparent

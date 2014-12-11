@@ -38,6 +38,11 @@ app.config(function ($routeProvider, $locationProvider) {
     controller: 'indicadoresController',
     resolve: { loginRequired: loginRequired }
   })
+  .when('/ejecutivo/indicadores', {
+    templateUrl: 'partials/ejecutivo-indicadores',
+    controller: 'indicadoresController',
+    resolve: { loginRequired: loginRequired }
+  })
   .when('/acceder', {
     templateUrl: 'partials/login',
     controller: 'loginController',
