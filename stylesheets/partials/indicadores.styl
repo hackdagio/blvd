@@ -1,20 +1,52 @@
 wrapper-principal-size = 140
-wrapper-principal-transitions = all 0.5s ease
-kaizen-tiles-background-color = color-gray-lighten
-kaizen-tiles-text-color = darken(primary-color-2, 10%)
-kaizen-positive-color-changes = lighten(color-green, 20%)
-kaizen-negative-color-changes = lighten(color-red, 20%)
 
-#wrapper
+kaizen-positive-color-changes = color-positive
+kaizen-negative-color-changes = color-negative
+
+kaizen-sidebar-background-color = darken(primary-color-1, 75%)
+
+kaizen-kpi-ok-background-color = color-gray-lighten
+kaizen-kpi-ok-text-color = darken(primary-color-2, 10%)
+
+kaizen-kpi-alert-background-color = rgb(208,8,8)
+kaizen-kpi-alert-text-color = rgb(255,255,255)
+
+kaizen-ranking-background-color = rgb(78, 87, 94)
+kaizen-ranking-text-color = rgb(216, 216, 216)
+
+kaizen-skills-background-color = rgb(90, 90, 90)
+kaizen-skills-text-color = rgb(226, 226, 226)
+
+kaizen-history-background-color = kaizen-kpi-ok-background-color
+kaizen-history-text-color = kaizen-kpi-ok-text-color
+
+kaizen-radial-kpi-background-color = kaizen-kpi-ok-background-color
+kaizen-radial-kpi-text-color = kaizen-kpi-ok-text-color
+
+kaizen-people-ranking-background-color = kaizen-kpi-ok-background-color
+kaizen-people-ranking-text-color = kaizen-kpi-ok-text-color
+
+kaizen-latest-news-background-color = rgb(78, 87, 94)
+kaizen-latest-news-text-color = rgb(216, 216, 216)
+
+kaizen-self-background-color = kaizen-kpi-ok-background-color
+kaizen-self-text-color = kaizen-kpi-ok-text-color
+
+kaizen-feedback-background-color = rgb(55, 83, 102)
+kaizen-feedback-text-color = white
+
+grid-height = 12
+
+.wrapper
   padding-left 0
   transition all 0.5s ease
   &.toggled
     padding-left (wrapper-principal-size)px
     padding-left 0
-    #wrapper-sidebar
+    .wrapper-sidebar
       width (wrapper-principal-size)px
       width 0
-    #wrapper-content
+    .wrapper-content
       position absolute
       margin-right -(wrapper-principal-size)px
       position relative
@@ -24,151 +56,384 @@ kaizen-negative-color-changes = lighten(color-red, 20%)
         margin-right 0
     @media(min-width:768px)
       padding-left 0
-  @media(min-width:768px)
-    padding-left (wrapper-principal-size)px
-
-#wrapper-sidebar
-  z-index 1000
-  position fixed
-  left (wrapper-principal-size)px
-  width 0
-  height 100%
-  margin-left -(wrapper-principal-size)px
-  background sidebar-background-color
-  transition all 0.5s ease
-  width (wrapper-principal-size)px
-  margin-top -20px
-  font-weight 300
-  @media(max-width:767px)
-    width (wrapper-principal-size/2.5)px
-
-#wrapper-content
-  @media(max-width:767px)
-    padding-left (wrapper-principal-size/2.5)px
-
-.sidebar-nav
-  position absolute
-  width 100%
-  top 0
-  margin 0
-  padding 0
-  list-style none
-  li
-    width 100%
-    text-align center
-    margin-top (wrapper-principal-size/15)px
-    margin-bottom (wrapper-principal-size/15)px
-    padding (wrapper-principal-size/10)px 0
-    border-bottom 1px solid rgba(255,255,255,0.3)
-    span
-      display block
+  &.vp-view
+    @media(min-width:768px)
+      padding-left (wrapper-principal-size)px
+    .wrapper-content
+      @media(max-width:767px)
+        padding-left (wrapper-principal-size/2.5)px
+  .wrapper-sidebar
+    z-index 1000
+    position fixed
+    left (wrapper-principal-size)px
+    width 0
+    height 100%
+    margin-left -(wrapper-principal-size)px
+    background kaizen-sidebar-background-color
+    transition all 0.5s ease
+    width (wrapper-principal-size)px
+    margin-top -20px
+    font-weight 300
+    @media(max-width:767px)
+      width (wrapper-principal-size/2.5)px
+    .sidebar-nav
+      position absolute
+      width 100%
+      top 0
+      margin 0
+      padding 0
+      list-style none
+      li
+        width 100%
+        text-align center
+        padding (wrapper-principal-size/10)px 0
+        border-top 1px solid lighten(kaizen-sidebar-background-color, 5%)
+        border-bottom 1px solid darken(kaizen-sidebar-background-color, 90%)
+        background darken(kaizen-sidebar-background-color, 50%)
+        span
+          display block
+          text-decoration none
+          color rgb(255,255,255)
+          font-size .9em
+          text-shadow 0 0 2px rgb(17, 17, 17)
+          &:hover
+            text-decoration none
+        &:last-child
+          border-bottom none
+      & > .sidebar-brand
+        font-size 18px
+        a
+          color rgb(255,255,255)
+          &:hover
+            text-decoration none
+      .active
+          border-left 2px solid primary-color-2
+      img
+        width 50%
+    .sidebar-nav li a:active,
+    .sidebar-nav li a:focus
       text-decoration none
-      color rgb(255,255,255)
-      font-size .9em
-      &:hover
-        text-decoration none
-  & > .sidebar-brand
-    font-size 18px
-    a
-      color rgb(255,255,255)
-      &:hover
-        text-decoration none
-  img
-    width 50%
-
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus
-  text-decoration none
-
-.kaizen-tiles
+  
+.glyphicon-kpi
+  display inline-block
+  vertical-align middle
+  margin-right .3em
+  color inherit
+  font-weight 300
+  &.right-info
+    float right
+    margin 0
+    button
+      border 0
+      background none
+      outline 0
+      padding 1px 1px
+  
+.kaizen-box
   padding 20px
   margin -5px -5px 25px -5px
   line-height 2em
   overflow hidden
-  border 1px solid rgba(0,0,0,0.05)
-
-  background kaizen-tiles-background-color
-  color kaizen-tiles-text-color
-
+  border 1px solid rgba(0,0,0,0.06)
+  &.full-box
+    padding 0
   &.h-level-1
-    height 12em
+    height (grid-height)em
+    @media(max-width:767px)
+      height inherit
   &.h-level-2
     height 10.8em
+    @media(max-width:767px)
+      height inherit
   &.h-level-3
-    height 24em
-
-  .kaizen-tiles-title
-    font-size 1em
-    margin 0 0 1em 0
+    height (grid-height*2)em
+    @media(max-width:767px)
+      height inherit
+  &.h-level-4
+    height 28em
+    @media(max-width:767px)
+      height inherit
+  &.h-level-5
+    height (grid-height + 6)em
+    @media(max-width:767px)
+      height inherit
+     
+  .kaizen-box-name
+    float left
+    width 100%
+    margin 0
+    padding-bottom .5em
+    &.normal-size
+      font-size 1em
+    &.big-size 
+      font-size 1.4em
     span
       display inline
       font-weight 300
-    .glyphicon-inline
-      display inline-block
-      vertical-align middle
-      margin-right .3em
-      color primary-color-2
+      word-wrap break-word
+      white-space pre-wrap
+  .kaizen-box-content
+    float left
+    width 100%
+      
+.kaizen-self
+  background kaizen-self-background-color
+  color kaizen-self-text-color
+  .self-info
+    span
+      display block
       font-weight 300
+      font-family alternative-font
+      &.who
+        font-size 1.6em
+        color darken(primary-color-1, 10%)
+      &.what
+        font-size 1.1em
+        color darken(primary-color-2, 20%)
+        margin .3em 0 0 0
+      &.where
+        font-size 1em
+        color darken(primary-color-2, 20%)
+  .avatar
+    img
+      border 3px solid rgb(220, 220, 220)
+  &#self-coordinador
+    .self-info
+      display block
+      padding 1.5em 0 0 0
+    .avatar
+      float left
+      margin 0 20px 0 0
+      img
+        height 9.8em
+  &#self-ejecutivo
+    .avatar
+      img
+        width 100%
+    .self-info
+      margin-top .5em
+      span
+        &.who,
+        &.what,
+        &.where
+          text-align center
+      
+
 
 .kaizen-kpi
-  &.weighted
-    color primary-color-1
-    letter-spacing -2px
-    .big-kpi
-      font-size 3em
-    .medium-kpi
-      font-size 2em
-    .small-kpi
-      font-size 1em
-  &.diff
-    .arrow-kpi-diff
-      display inline-block
-      margin-right .5em
-      &.positive-kpi-change
-       color kaizen-positive-color-changes
-      &.negative-kpi-change
-        color kaizen-negative-color-changes
-    .info-kpi-diff
-      display inline-block
-      color primary-color-2
+  &.ok
+    background kaizen-kpi-ok-background-color
+    color kaizen-kpi-ok-text-color
+    .weighted
+      color primary-color-1
+    .diff
+      .arrow
+        &.positive
+          color kaizen-positive-color-changes
+        &.negative
+          color kaizen-negative-color-changes
+      .delta
+        color primary-color-2
+  &.red-alert
+    background kaizen-kpi-alert-background-color
+    color kaizen-kpi-alert-text-color
+    .weighted
+      color kaizen-kpi-alert-text-color
+    .diff
+      .arrow
+        &.positive
+          color kaizen-kpi-alert-text-color
+        &.negative
+          color kaizen-kpi-alert-text-color
+      .delta
+        color kaizen-kpi-alert-text-color    
+  .kpi
+    .weighted
+      letter-spacing -2px
+    .weighted,
+    .kpi-name
+      span
+        display block
+        &.big-size
+          font-size 3em
+        &.normal-size
+          font-size 2em
+        &.small-size
+          font-size 1em
+    .diff
+      .arrow
+        display inline-block
+        margin-right .5em
+      .delta
+        display inline-block
+        margin-top .5em
+    
 
-.ranks 
-  margin 1em 0
-  padding-right 0
-  padding-left 0
-  border-bottom 1px solid rgba(255, 255, 255,0.8)
-  padding-bottom 1em
-  &:last-child
-    border-bottom none
-    padding-bottom 0
-    margin-bottom 0
+.kaizen-ranking
+  background kaizen-ranking-background-color
+  color kaizen-ranking-text-color
+  .ranking
+    .rank
+      border-bottom 1px solid lighten(kaizen-ranking-background-color, 20%)
+      padding 1em 0
+      &:first-child
+        padding 0 0 1em 0
+      .each
+        .info
+          font-weight 400
+          font-size 1em
+          a
+            color white
+            text-decoration none
+          span
+            color kaizen-ranking-text-color
+        .weighted
+          font-weight 400
+          font-size 1em
+          display block
+        .arrow
+          vertical-align middle
+          display inline-block
+          &.positive
+            color kaizen-positive-color-changes
+          &.negative
+            color lighten(kaizen-negative-color-changes, 10%)
+        .delta
+          display block
+          color kaizen-ranking-text-color
+          vertical-align baseline
+          font-weight 300
+        .position
+          color white
+          float right
+          font-size 2.5em
+          font-weight 300
+      &:last-child
+        border-bottom none
+        
+.kaizen-skills
+  background kaizen-skills-background-color
+  color kaizen-skills-text-color
+  .skills
+    .skill
+      border-bottom 1px solid lighten(kaizen-ranking-background-color, 20%)
+      padding 1em 0
+      &:first-child
+        padding 0 0 1em 0
+      .each
+        .info
+          font-weight 300
+          font-size 1em
+          a
+            color white
+            text-decoration none
+            
+          span
+            color kaizen-ranking-text-color
+        .weighted
+          font-weight 400
+          font-size 1em
+          display block
+        .arrow
+          vertical-align middle
+          display inline-block
+          &.positive
+            color kaizen-positive-color-changes
+          &.negative
+            color lighten(kaizen-negative-color-changes, 10%)
+        .delta
+          display block
+          color kaizen-ranking-text-color
+          vertical-align baseline
+          font-weight 300
+        .position
+          color white
+          float right
+          font-size 2.5em
+          font-weight 300
+      &:last-child
+        border-bottom none
 
-.rank-position
-  color primary-color-1
-  float right
-  font-size 2.5em
+.kaizen-history
+  background kaizen-history-background-color
+  color kaizen-history-text-color
+  metrics
+    display block
 
-.rank-name
-  font-weight 400!important
-  color primary-color-1
-  font-size 1em
+.kaizen-radial-kpi
+  background kaizen-radial-kpi-background-color
+  color kaizen-radial-kpi-text-color
+  radial-plot
+    svg
+      height 85%
+      
+.kaizen-people-ranking
+  background kaizen-people-ranking-background-color
+  color kaizen-people-ranking-text-color
+  .rankings
+    margin-top 1em
+    .each-people
+      .each-avatar
+        img
+          height 48px
+      .each-name-and-kpi
+        h4
+          font-weight 400
+          margin 0 0 .5em 0
+          color primary-color-1
+          font-family alternative-font
+          font-size 1.2em
+        .progress
+          border-radius 0px
+          background rgb(240, 240, 240)
+          i
+            font-weight 300
+            font-style normal
+            color white
+            letter-spacing 1px
+            text-shadow 0px 1px rgb(0, 0, 0)
+      .each-social-interactions
+        .each-glyphicon-container
+          margin 1.4em 0 0 0
+          span
+            display block
+            font-size 1.4em
+            color rgb(210,210,210)
+            text-shadow 0px 1px 0px rgba(0,0,0,.4)
 
-.rank-weighted
-  font-weight 400!important
-  font-size 1em
-  color primary-color-2
-
-.arrow-ranking
-  vertical-align middle
-  display inline-block
-  &.positive
-    color kaizen-positive-color-changes
-  &.negative
-    color kaizen-negative-color-changes
-
-.rank-delta
-  color primary-color-2
-  margin-left .5em
-
-metrics
-  display block
+.kaizen-latest-news
+  background kaizen-latest-news-background-color
+  color kaizen-latest-news-text-color
+  .newsfeed
+    padding .5em 0 0 1em
+    .news
+      font-weight 300
+      margin 0 0 1.5em 0
+      h2
+        font-size 1.3em
+        margin 0 0 .5em 0
+        color white
+      h5
+        font-size .9em
+        
+.kaizen-promo-carousel
+  .carousels
+    background-position center
+    background-size cover
+    width 100%
+    height 100%
+    .carousel
+      height 100%
+    .carousel-inner
+      height 100%
+      .item
+        height 100%
+      img
+        height 100%
+        width 100%
+        
+.kaizen-feedback
+  background kaizen-feedback-background-color
+  color kaizen-feedback-text-color
+  
+  

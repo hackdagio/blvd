@@ -1,0 +1,265 @@
+.wrapper.coordinador-view
+  .wrapper-content
+    .container-fluid
+      .row
+        // level 1
+        .col-lg-8.nopadding
+
+          // sublevel 1
+          .col-lg-12.nopadding
+
+            // kpi: general
+            .col-md-9
+              .kaizen-box.kaizen-kpi.ok.kaizen-self#self-coordinador.h-level-1
+                .col-lg-8
+                  .avatar
+                    img.img-circle(src='entel/avatar/30.jpg')
+                  .self-info
+                    span.who.capitalize Francisca Bilbao
+                    span.what.uppercase Coordinador General
+                    span.where.uppercase ECC
+                .col-lg-4
+                  .kaizen-box-name.big-size.text-right
+                    .glyphicon-kpi
+                      span.glyphicon.glyphicon-asterisk
+                    span.uppercase Total
+                  .kpi.kaizen-box-content.text-right
+                    .weighted
+                      span.big-size {{ indicadores.Kpi.Ponderado.Valor }}
+                    .diff
+                      .arrow.positive
+                        span.glyphicon.glyphicon-chevron-up
+                      .delta
+                        span {{ indicadores.Kpi.Ponderado.Delta }}%
+
+            // kpi: desv q llamadas
+            .col-md-3
+              .kaizen-box.kaizen-kpi.ok.h-level-1
+                .kaizen-box-name
+                  .glyphicon-kpi
+                    span.glyphicon.glyphicon-asterisk
+                  span.uppercase Desv. Llamadas
+                  .glyphicon-kpi.right-info
+                    button.glyphicon.glyphicon-question-sign(popover-animation='true', popover='{{ indicadores.Kpi.DesviacionQLlamadas.Valor }}')
+                .kpi.kaizen-box-content
+                  .weighted.text-right
+                    span.normal-size {{ indicadores.Kpi.DesviacionQLlamadas.Valor }}
+                  .diff.text-right
+                    .arrow.negative
+                      span.glyphicon.glyphicon-chevron-down
+                    .delta
+                      span {{ indicadores.Kpi.DesviacionQLlamadas.Delta }}%
+
+          // sublevel 2
+          .col-lg-12.nopadding
+
+            // kpi: n.s.
+            .col-md-3
+              .kaizen-box.kaizen-kpi.red-alert.h-level-2
+                .kaizen-box-name
+                  .glyphicon-kpi
+                    span.glyphicon.glyphicon-asterisk
+                  span.uppercase Servicio
+                  .glyphicon-kpi.right-info
+                    button.glyphicon.glyphicon-question-sign(popover-animation='true', popover='{{ indicadores.Kpi.NivelServicio.Valor }}')
+                .kpi.kaizen-box-content
+                  .weighted.text-right
+                    span.normal-size {{ indicadores.Kpi.NivelServicio.Valor }}
+                  .diff.text-right
+                    .arrow.positive
+                      span.glyphicon.glyphicon-chevron-up
+                    .delta
+                      span {{ indicadores.Kpi.NivelServicio.Delta }}%
+
+            // kpi: n.a.
+            .col-md-3
+              .kaizen-box.kaizen-kpi.red-alert.h-level-2
+                .kaizen-box-name
+                  .glyphicon-kpi
+                    span.glyphicon.glyphicon-asterisk
+                  span.uppercase Atención
+                  .glyphicon-kpi.right-info
+                    button.glyphicon.glyphicon-question-sign(popover-animation='true', popover='{{ indicadores.Kpi.NivelAtencion.Valor }}')
+                .kpi.kaizen-box-content
+                  .weighted.text-right
+                    span.normal-size {{ indicadores.Kpi.NivelAtencion.Valor }}
+                  .diff.text-right
+                    .arrow.positive
+                      span.glyphicon.glyphicon-chevron-up
+                    .delta
+                      span {{ indicadores.Kpi.NivelAtencion.Delta }}%
+
+            // kpi: epa
+            .col-md-3
+              .kaizen-box.kaizen-kpi.ok.h-level-2
+                .kaizen-box-name
+                  .glyphicon-kpi
+                    span.glyphicon.glyphicon-asterisk
+                  span.uppercase EPA
+                  .glyphicon-kpi.right-info
+                    button.glyphicon.glyphicon-question-sign(popover-animation='true', popover='{{ indicadores.Kpi.EPA.Valor }}')
+                .kpi.kaizen-box-content
+                  .weighted.text-right
+                    span.normal-size {{ indicadores.Kpi.EPA.Valor }}
+                  .diff.text-right
+                    .arrow.positive
+                      span.glyphicon.glyphicon-chevron-up
+                    .delta
+                      span {{ indicadores.Kpi.EPA.Delta }}%
+
+            // kpi: tmo
+            .col-md-3
+              .kaizen-box.kaizen-kpi.ok.h-level-2
+                .kaizen-box-name
+                  .glyphicon-kpi
+                    span.glyphicon.glyphicon-asterisk
+                  span.uppercase TMO
+                  .glyphicon-kpi.right-info
+                    button.glyphicon.glyphicon-question-sign(popover-animation='true', popover='{{ indicadores.Kpi.TMO }}')
+                .kpi.kaizen-box-content
+                  .weighted.text-right
+                    span.normal-size {{ indicadores.Kpi.TMO }}
+                    | <small> seg</small>
+
+        //- level 2
+
+        // rendimiento comparado
+        .col-lg-4
+          .kaizen-box.kaizen-radial-kpi.h-level-3(ng-controller='radialPlotCtrl')
+            .kaizen-box-name
+              .glyphicon-kpi
+                span.glyphicon.glyphicon-asterisk
+              span.uppercase Rendimiento comparado
+            radial-plot(dsn="dataset_a", point-radius="1.2", labelled="true", compare='dataset_b', free="true", animate="true", play="others")
+
+        //- level 3
+
+        // history
+        .col-lg-8.nopadding
+          .col-md-6
+            .kaizen-box.kaizen-people-ranking.h-level-3
+              .kaizen-box-name
+                .glyphicon-kpi
+                  span.glyphicon.glyphicon-asterisk
+                span.uppercase Mejores supervisores
+                .glyphicon-kpi.right-info
+                  button.glyphicon.glyphicon-question-sign(popover-animation='true', popover='texto')
+              .rankings.kaizen-box-content(ng-controller='ProgressDemoCtrl')
+                .each-people.col-md-12.nopadding
+                  .each-avatar.col-xs-2.nopadding
+                    img.img-circle.text-center(src='entel/avatar/4.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ nameData[0] }}
+                    progressbar(max='max', value='97', type='success')
+                      i 97
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+                .each-people.col-md-12.nopadding
+                  .each-avatar.col-xs-2.nopadding
+                    img.img-circle(src='entel/avatar/3.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ nameData[1] }}
+                    progressbar(max='max', value='75', type='info')
+                      i 75
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+                .each-people.col-md-12.nopadding
+                  .each-avatar.col-xs-2.nopadding
+                    img.img-circle(src='entel/avatar/2.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ nameData[2] }}
+                    progressbar(max='max', value='45', type='warning')
+                      i 45
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+                .each-people.col-md-12.nopadding
+                  .each-avatar.col-xs-2.nopadding
+                    img.img-circle(src='entel/avatar/1.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ nameData[3] }}
+                    progressbar(max='max', value='21', type='danger')
+                      i 21
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+
+          .col-md-6
+            .kaizen-box.kaizen-people-ranking.h-level-3
+              .kaizen-box-name
+                .glyphicon-kpi
+                  span.glyphicon.glyphicon-asterisk
+                span.uppercase Mejores ejecutivos
+                .glyphicon-kpi.right-info
+                  button.glyphicon.glyphicon-question-sign(popover-animation='true', popover='texto')
+              .rankings.kaizen-box-content(ng-controller='ProgressDemoCtrl')
+                .each-people.col-md-12.nopadding
+                  .each-avatar.col-xs-2.nopadding
+                    img.img-circle.text-center(src='entel/avatar/5.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ ejecutivosData[0] }}
+                    progressbar(max='max', value='91.3', type='success')
+                      i 91.3
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+                .each-people.col-md-12.nopadding
+                  .each-avatar.col-xs-2.nopadding
+                    img.img-circle(src='entel/avatar/3.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ ejecutivosData[1] }}
+                    progressbar(max='max', value='89.5', type='success')
+                      i 89.5
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+                .each-people.col-md-12.nopadding
+                  .each-avatar.col-xs-2.nopadding
+                    img.img-circle(src='entel/avatar/2.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ ejecutivosData[2] }}
+                    progressbar(max='max', value='74.5', type='info')
+                      i 74.5
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+                .each-people.col-md-12.nopadding
+                  .each-avatar.col-xs-2.nopadding
+                    img.img-circle(src='entel/avatar/1.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ ejecutivosData[3] }}
+                    progressbar(max='max', value='62.1', type='warning')
+                      i 62.1
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+
+
+        // habilidades
+        .col-lg-4
+          .kaizen-box.kaizen-latest-news.h-level-3
+            .kaizen-box-name
+              .glyphicon-kpi
+                span.glyphicon.glyphicon-asterisk
+              span.uppercase Últimas noticias
+            .newsfeed.kaizen-box-content
+              .news.latest
+                h2 Ganadores de Noviembre
+                h5 Hace 2 días · por Área de Ventas
+              .news
+                h2 Motivate con Sonrisas
+                h5 Hace 3 días · por Gerencia
+              .news
+                h2 Juntos vendemos más
+                h5 Hace 3 días · por Área de Ventas
+
+//- script.
+//-   $("#menu-toggle").click(function(e) {
+//-   e.preventDefault();
+//-   $("#wrapper").toggleClass("toggled");
+//-   });
+
+
+

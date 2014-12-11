@@ -9,9 +9,9 @@
           form(role='form')
             fieldset
               .form-group
-                input#username.form-control(type='username', name='username', data-ng-model='loginData.userName', required='', autofocus='')
+                input#username.form-control(type='username', name='username', data-ng-model='loginData.userName', required='', autofocus='', tooltip='Tu RUT o usuario', tooltip-trigger="focus", tooltip-placement="right")
               .form-group
-                input#password.form-control(type='password', name='password', data-ng-model='loginData.password', required='')
+                input#password.form-control(type='password', name='password', data-ng-model='loginData.password', required='', tooltip='Tu contraseña', tooltip-trigger="focus", tooltip-placement="right")
               .checkbox
                 label
                   input(name='remember', type='checkbox', value='Recuérdame')

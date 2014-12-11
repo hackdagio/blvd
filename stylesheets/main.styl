@@ -15,6 +15,7 @@ h6
 body
   padding-top (body-distance-from-top)px
   color primary-color-1
+  background rgb(240, 240, 240)
 
 // bootstrap fixes
 .btn-primary
@@ -23,13 +24,20 @@ body
   padding 0 30px
 .nopadding
    padding 0 !important
-
 .uppercase
   text-transform uppercase
-
-// kaizen titles
-
-.kaizen-titles
-  margin-top 50px
-  span
-    color primary-color-2
+.capitalize
+  text-transform capitalize
+.progress-bar-success
+  background-color color-positive
+.progress-bar-info
+  background-color color-less-positive
+.progress-bar-warning
+  background-color color-almost-negative
+.progress-bar-danger
+  background-color color-negative
+  
+// css fixes
+.full-width-and-float
+  width 100%
+  float left

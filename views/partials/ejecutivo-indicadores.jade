@@ -1,0 +1,71 @@
+.wrapper.ejecutivo-view
+  .wrapper-content
+    .container-fluid
+      .row
+        //- level 1
+        .col-lg-12.nopadding
+
+          //- self
+          .col-md-2
+            .kaizen-box.kaizen-self#self-ejecutivo.h-level-3
+              .kaizen-box-content
+                .avatar.col-xs-12
+                  img.img-circle(src='entel/avatar/5.jpg')
+                .self-info.col-xs-12.nopadding
+                  span.who.capitalize Claudia Rojas
+                  span.what.uppercase Ejecutiva de Ventas
+                  span.where.uppercase ALLUS
+
+          //- carousel
+          .col-lg-8
+            .kaizen-box.kaizen-promo-carousel#carousel-ejecutivo.h-level-3.full-box
+              .kaizen-box-content.carousels(ng-controller='carouselController')
+                carousel(interval='interval')
+                  slide(ng-repeat='slide in slides', active='slide.active')
+                    img(ng-src='{{slide.image}}')
+                    .carousel-caption
+                      h4 imagen {{ $index+1 }}
+
+          //- feedback
+          .col-lg-2
+            .kaizen-box.kaizen-feedback#feedback-ejecutivo.h-level-3
+              .kaizen-box-name
+                .glyphicon-kpi
+                  span.glyphicon.glyphicon-asterisk
+                span.uppercase Feedback_
+
+        //- level 2
+        .col-lg-12.nopadding
+          .col-lg-12
+            .kaizen-box.kaizen-kpi.ok#kpi-ejecutivo.h-level-5
+              .kaizen-box-name.text-center.big-size
+                .glyphicon-kpi
+                  span.glyphicon.glyphicon-asterisk
+                span.uppercase Tus indicadores_
+              .kaizen-box-content.col-lg-12.nopadding(ng-controller='kpipieController')
+                .col-lg-2
+                  .kpi.text-center
+                    
+                    .kpi-name
+                      span.small-size TMO
+                .col-lg-2
+                  .kpi.text-center
+                    .weighted
+                      span.normal-size 93,1%
+                    .kpi-name
+                      span.small-size TMO
+
+
+
+
+
+
+
+//- script.
+//-   $("#menu-toggle").click(function(e) {
+//-   e.preventDefault();
+//-   $("#wrapper").toggleClass("toggled");
+//-   });
+
+
+

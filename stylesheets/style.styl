@@ -1,20 +1,33 @@
-// nib
+/*!
+ * @author Ignacio Trujillo 
+ * @email itrujillo@conceptogroup.cl
+ * @url https://github.com/gnaces
+ *
+ * © Copyright 2014 Concepto Group. Todos los derechos reservados. 
+ */
+
+ // nib
 @import 'nib'
 
 // fonts
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300italic,300')
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,400')
 global-font = 'Open Sans', sans-serif
+alternative-font = 'Open Sans Condensed', sans-serif
 
 // global reset (reset.css alike)
 global-reset()
 
-// kaizen variables
+// global variables
 body-distance-from-top = 70
 
 // kaizen per sig customs
 @import 'custom/sig'
-@import 'custom/angular-loading-bar'
-@import 'custom/metrics'
+
+// libs
+@import 'lib/loading-bar'
+@import 'lib/metrics'
+@import 'lib/radialplot'
 
 // main site - always present
 @import 'main'
