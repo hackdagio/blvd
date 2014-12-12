@@ -6,7 +6,7 @@
         .col-lg-12.nopadding
 
           //- self
-          .col-md-2
+          .col-sm-2
             .kaizen-box.kaizen-self#self-ejecutivo.h-level-3
               .kaizen-box-content
                 .avatar.col-xs-12
@@ -17,17 +17,17 @@
                   span.where.uppercase ALLUS
 
           //- carousel
-          .col-lg-8
+          .col-sm-7
             .kaizen-box.kaizen-promo-carousel#carousel-ejecutivo.h-level-3.full-box
               .kaizen-box-content.carousels(ng-controller='carouselController')
                 carousel(interval='interval')
                   slide(ng-repeat='slide in slides', active='slide.active')
                     img(ng-src='{{slide.image}}')
                     .carousel-caption
-                      h4 imagen {{ $index+1 }}
+                      h4 promo {{ $index+1 }}
 
           //- feedback
-          .col-lg-2
+          .col-sm-3
             .kaizen-box.kaizen-feedback#feedback-ejecutivo.h-level-3
               .kaizen-box-name
                 .glyphicon-kpi
@@ -42,7 +42,7 @@
                 .glyphicon-kpi
                   span.glyphicon.glyphicon-asterisk
                 span.uppercase Tus indicadores_
-              .kaizen-box-content.col-lg-12.nopadding(ng-controller='kpipieController')
+              .kaizen-box-content.col-lg-12.nopadding
                 .col-lg-2
                   .kpi.text-center
                     
