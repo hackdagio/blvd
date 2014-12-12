@@ -18,28 +18,82 @@
         .col-lg-12.nopadding
 
           //- self
-          .col-lg-7
-            .kaizen-box.kaizen-self.kaizen-kpi#self-ejecutivo.h-level-5
-              .kaizen-box-name.big-size
-                .glyphicon-kpi
-                  span.glyphicon.glyphicon-asterisk
-                span.uppercase Hola_
-              //- .kaizen-box-content
-              //-   .avatar.col-xs-12
-              //-     img.img-circle(src='entel/avatar/5.jpg')
-              //-   .self-info.col-xs-12.nopadding
-              //-     span.who.capitalize Claudia Rojas
-              //-     span.what.uppercase Ejecutiva de Ventas
-              //-     span.where.uppercase ALLUS
+          .col-sm-7
+            .kaizen-box.kaizen-self.kaizen-kpi#self-ejecutivo.h-level-6
+              //- .kaizen-box-name.big-size
+              //-   .glyphicon-kpi
+              //-     span.glyphicon.glyphicon-asterisk
+              //-   span.uppercase Hola_
               .kaizen-box-content
-                
+                .col-xs-3
+                  .avatar
+                    img.img-circle(src='entel/avatar/5.jpg')
+                .col-xs-9.nopadding
+                  .col-xs-4
+                    .kpi
+                      .kpi-name
+                        span.small-size Ponderado
+                  .col-xs-4
+                    .kpi
+                      .kpi-name
+                        span.small-size EPA
+                  .col-xs-4
+                    .kpi
+                      .kpi-name
+                        span.small-size CROSS
+
           //- feedback
-          .col-lg-5
-            .kaizen-box.kaizen-feedback#feedback-ejecutivo.h-level-5
+          .col-sm-5
+            .kaizen-box.kaizen-feedback#feedback-ejecutivo.h-level-6
               .kaizen-box-name
                 .glyphicon-kpi
                   span.glyphicon.glyphicon-asterisk
                 span.uppercase Feedback_
+              .feedback.kaizen-box-content
+
+                .col-xs-12.each-feedback
+                  .each
+                    .col-xs-1.nopadding
+                      .each-avatar
+                        img.img-circle(src='entel/avatar/2.jpg')
+                    .col-xs-10
+                      .each-text
+                        img(src='entel/images/originals/only.svg')
+                        blockquote: p Te felicito por un notable rendimiento en EPA 95%
+                        cite.text-right: | <b>Juan Farias</b> · Jefe Comercial
+                    .col-xs-1.nopadding
+                      .each-happyness
+                        span: a(href='javascript:void(0)') ;)
+
+                .col-xs-12.each-feedback
+                  .each
+                    .col-xs-1.nopadding
+                      .each-avatar
+                        img.img-circle(src='entel/avatar/3.jpg')
+                    .col-xs-10
+                      .each-text
+                        img(src='entel/images/originals/only.svg')
+                        span Te ha enviado una sonrisa por tu rendimiento ponderado 85%
+                        cite.text-right: | <b>Daniela Alegría</b> · Jefe Comercial
+                    .col-xs-1.nopadding
+                      .each-happyness
+                        span: a(href='javascript:void(0)') ;)
+
+                .col-xs-12.each-feedback
+                  .each
+                    .col-xs-1.nopadding
+                      .each-avatar
+                        img.img-circle(src='entel/avatar/1.jpg')
+                    .col-xs-10
+                      .each-text
+                        img(src='entel/images/originals/all.svg')
+                        blockquote: p Chicos necesitamos que mejoremos el TMO para no salirnos del proceso.
+                        cite.text-right: | <b>Macarena Andrade</b> · Coordinador
+                    .col-xs-1.nopadding
+                      .each-happyness
+                        span: a(href='javascript:void(0)') ;)
+
+
 
 
         .col-lg-12.nopadding
