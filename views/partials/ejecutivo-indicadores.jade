@@ -2,58 +2,55 @@
   .wrapper-content
     .container-fluid
       .row
-        //- level 1
+
+        //- level 2
         .col-lg-12.nopadding
-
-          //- self
-          .col-sm-2
-            .kaizen-box.kaizen-self#self-ejecutivo.h-level-3
-              .kaizen-box-content
-                .avatar.col-xs-12
-                  img.img-circle(src='entel/avatar/5.jpg')
-                .self-info.col-xs-12.nopadding
-                  span.who.capitalize Claudia Rojas
-                  span.what.uppercase Ejecutiva de Ventas
-                  span.where.uppercase ALLUS
-
-          //- carousel
-          .col-sm-7
-            .kaizen-box.kaizen-promo-carousel#carousel-ejecutivo.h-level-3.full-box
+          .col-lg-12
+            .kaizen-box.kaizen-promo-carousel#carousel-ejecutivo.full-box
               .kaizen-box-content.carousels(ng-controller='carouselController')
                 carousel(interval='interval')
                   slide(ng-repeat='slide in slides', active='slide.active')
                     img(ng-src='{{slide.image}}')
-                    .carousel-caption
-                      h4 promo {{ $index+1 }}
+                    //- .carousel-caption
+                    //-   h4 promo {{ $index+1 }}
 
+        //- level 1
+        .col-lg-12.nopadding
+
+          //- self
+          .col-lg-7
+            .kaizen-box.kaizen-self.kaizen-kpi#self-ejecutivo.h-level-5
+              .kaizen-box-name.big-size
+                .glyphicon-kpi
+                  span.glyphicon.glyphicon-asterisk
+                span.uppercase Hola_
+              //- .kaizen-box-content
+              //-   .avatar.col-xs-12
+              //-     img.img-circle(src='entel/avatar/5.jpg')
+              //-   .self-info.col-xs-12.nopadding
+              //-     span.who.capitalize Claudia Rojas
+              //-     span.what.uppercase Ejecutiva de Ventas
+              //-     span.where.uppercase ALLUS
+              .kaizen-box-content
+                
           //- feedback
-          .col-sm-3
-            .kaizen-box.kaizen-feedback#feedback-ejecutivo.h-level-3
+          .col-lg-5
+            .kaizen-box.kaizen-feedback#feedback-ejecutivo.h-level-5
               .kaizen-box-name
                 .glyphicon-kpi
                   span.glyphicon.glyphicon-asterisk
                 span.uppercase Feedback_
 
-        //- level 2
+
         .col-lg-12.nopadding
-          .col-lg-12
-            .kaizen-box.kaizen-kpi.ok#kpi-ejecutivo.h-level-5
-              .kaizen-box-name.text-center.big-size
-                .glyphicon-kpi
-                  span.glyphicon.glyphicon-asterisk
-                span.uppercase Tus indicadores_
-              .kaizen-box-content.col-lg-12.nopadding
-                .col-lg-2
-                  .kpi.text-center
-                    
-                    .kpi-name
-                      span.small-size TMO
-                .col-lg-2
-                  .kpi.text-center
-                    .weighted
-                      span.normal-size 93,1%
-                    .kpi-name
-                      span.small-size TMO
+          .col-lg-4
+            .kaizen-box.kaizen-self.h-level-1
+
+          .col-lg-4
+            .kaizen-box.kaizen-self.h-level-1
+
+          .col-lg-4
+            .kaizen-box.kaizen-self.h-level-1
 
 
 
