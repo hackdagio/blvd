@@ -322,9 +322,9 @@ app.controller('testGauge', ['$scope', '$timeout', function($scope, $timeout) {
         },
         limitMax: 'false',
         // If true, the pointer will not go past the end of the gauge
-        colorStart: '#6FADCF',
+        colorStart: '#FF6702',
         // Colors
-        colorStop: '#8FC0DA',
+        colorStop: '#FF6702',
         // just experiment with them
         strokeColor: '#E0E0E0',
         // to see which ones work best for you

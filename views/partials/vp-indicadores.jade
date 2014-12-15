@@ -211,9 +211,28 @@
         .col-lg-8
           .kaizen-box.kaizen-history.h-level-3
             .kaizen-box-name
-              .glyphicon-kpi
-                span.glyphicon.glyphicon-asterisk
-              span.uppercase Históricos Total
+              .col-md-12.nopadding
+                .col-md-6
+                  .glyphicon-kpi
+                    span.glyphicon.glyphicon-asterisk
+                  span.uppercase Históricos Total
+                .col-md-6.text-right
+                  .btn-group
+                    button.btn.btn-default.btn-xs.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='false') Indicador
+                      span.caret
+                    ul.dropdown-menu(role='menu')
+                      li: a(href='#') Test
+                  .btn-group
+                    button.btn.btn-default.btn-xs.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='false') Tiempo
+                      span.caret
+                    ul.dropdown-menu(role='menu')
+                      li: a(href='#') Tiempo
+                  .btn-group
+                    button.btn.btn-default.btn-xs.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='false') Habilidad
+                      span.caret
+                    ul.dropdown-menu(role='menu')
+                      li: a(href='#') Habilidad
+
             .kaizen-box-content
               metricsgeneral.text-left(width='690', height='240')
               .legend

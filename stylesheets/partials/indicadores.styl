@@ -32,8 +32,11 @@ kaizen-latest-news-text-color = rgb(0, 0, 0)
 kaizen-self-background-color = kaizen-kpi-ok-background-color
 kaizen-self-text-color = kaizen-kpi-ok-text-color
 
-kaizen-feedback-background-color = rgb(55, 83, 102)
+kaizen-feedback-background-color = darken(primary-color-1, 30%)
 kaizen-feedback-text-color = white
+
+kaizen-user-stories-background-color = rgb(31,31,31)
+kaizen-user-stories-text-color = rgb(255, 255, 255)
 
 grid-height = 12
 
@@ -131,6 +134,17 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
       background none
       outline 0
       padding 1px 1px
+.each-glyphicon-container
+  margin 1.4em 0 0 0
+  span
+    display block
+    font-size 1.4em
+    color primary-color-2
+
+.glyphicon-inline
+  display inline-block
+  vertical-align middle
+  color primary-color-2
   
 .kaizen-box
   padding 18px
@@ -187,10 +201,13 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
     &.big-size 
       font-size 1.4em
     span
-      display inline
-      font-weight 300
-      word-wrap break-word
-      white-space pre-wrap
+      &:not(.caret)
+        display inline
+        font-weight 300
+        word-wrap break-word
+        white-space pre-wrap
+      &.caret
+        margin-left 5px
   .kaizen-box-content
     float left
     width 100%
@@ -429,13 +446,6 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
             color white
             letter-spacing 1px
             text-shadow 0px 1px rgb(0, 0, 0)
-      .each-social-interactions
-        .each-glyphicon-container
-          margin 1.4em 0 0 0
-          span
-            display block
-            font-size 1.4em
-            color primary-color-2
 
 .kaizen-latest-news
   background kaizen-latest-news-background-color
@@ -499,19 +509,12 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
             font-size .8em
             float left
             width 100%
-        .each-happyness
+        img
+          &.guino
+            width 22px
+        .glyphicon-inline
           span
-            text-align center
-            a
-              color lighten(primary-color-2, 25%)
-              font-weight 400
-              font-size 1.5em
-              text-decoration none
-              // animation-name blink
-              // animation-duration 2s
-              // animation-timing-function linear
-              // animation-iteration-count infinite
-              // animation-play-state running
+            vertical-align top
     
         
 .kaizen-promo-carousel
@@ -545,6 +548,30 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
           width 7px
           height 7px
 
+.kaizen-user-stories
+  background kaizen-user-stories-background-color
+  color kaizen-user-stories-text-color
+  .user-stories
+    margin-top 1em
+    .each-story
+      img
+        max-height 100%
+        max-width 100%
+        width 100%
+        border avatar-img-border--thin
+      span
+        font-weight 300
+        &.story-legend
+          p
+            font-style italic
+            font-size 1em
+        &.story-author
+          p
+            font-weight bold
+            font-size .8em
+          
+      
+  
 // @keyframes blink
 //   0%
 //     text-shadow none
