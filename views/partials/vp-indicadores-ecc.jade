@@ -3,14 +3,14 @@
       .container
         .row
           ul.sidebar-nav
-            li.sidebar-brand.active
+            li
               a(href='indicadores/call-center')
                 img(src='entel/images/static/call-center.png')
                 span.hidden-sm.hidden-xs Contact Center
             li
               a(href='vp/indicadores/allus')
                 span Allus
-            li
+            li.sidebar-brand.active
               a(href='vp/indicadores/ecc')
                 span ECC
             li
@@ -41,15 +41,15 @@
                     .kaizen-box-name.big-size.text-right
                       .glyphicon-kpi
                         span.glyphicon.glyphicon-asterisk
-                      span.uppercase Total General
+                      span.uppercase Total ECC
                     .kpi.kaizen-box-content.text-right
                       .weighted
-                        span.big-size {{ indicadores.Kpi.Ponderado.Valor }}
+                        span.big-size {{ ecc.Kpi.Ponderado.Valor }}
                       .diff
                         .arrow.positive
                           span.glyphicon.glyphicon-chevron-up
                         .delta
-                          span {{ indicadores.Kpi.Ponderado.Delta }}%
+                          span {{ ecc.Kpi.Ponderado.Delta }}%
 
             //-- kpi: desv q llamadas
             .col-md-3
@@ -60,12 +60,12 @@
                   span.uppercase Desviación
                 .kpi.kaizen-box-content.text-right
                   .weighted
-                    span.normal-size {{ indicadores.Kpi.DesviacionQLlamadas.Valor }}
+                    span.normal-size {{ ecc.Kpi.DesviacionQLlamadas.Valor }}
                   .diff
                     .arrow.negative
                       span.glyphicon.glyphicon-chevron-down
                     .delta
-                      span {{ indicadores.Kpi.DesviacionQLlamadas.Delta }}%
+                      span {{ ecc.Kpi.DesviacionQLlamadas.Delta }}%
 
 
           //- sublevel 2
@@ -79,15 +79,15 @@
                     span.glyphicon.glyphicon-asterisk
                   span.uppercase Servicio
                   .glyphicon-kpi.right-info
-                    button.glyphicon.glyphicon-info-sign(popover-animation='true', popover='{{ indicadores.Kpi.NivelServicio.Valor }}')
+                    button.glyphicon.glyphicon-info-sign(popover-animation='true', popover='{{ ecc.Kpi.NivelServicio.Valor }}')
                 .kpi.kaizen-box-content.text-right
                   .weighted
-                    span.normal-size {{ indicadores.Kpi.NivelServicio.Valor }}
+                    span.normal-size {{ ecc.Kpi.NivelServicio.Valor }}
                   .diff
                     .arrow.positive
                       span.glyphicon.glyphicon-chevron-up
                     .delta
-                      span {{ indicadores.Kpi.NivelServicio.Delta }}%
+                      span {{ ecc.Kpi.NivelServicio.Delta }}%
                   .kpi-info
                     span: | <b>M</b> 29%
                     span: | <b>C</b> 93%
@@ -100,15 +100,15 @@
                     span.glyphicon.glyphicon-asterisk
                   span.uppercase Atención
                   .glyphicon-kpi.right-info
-                    button.glyphicon.glyphicon-info-sign(popover-animation='true', popover='{{ indicadores.Kpi.NivelAtencion.Valor }}')
+                    button.glyphicon.glyphicon-info-sign(popover-animation='true', popover='{{ ecc.Kpi.NivelAtencion.Valor }}')
                 .kpi.kaizen-box-content.text-right
                   .weighted
-                    span.normal-size {{ indicadores.Kpi.NivelAtencion.Valor }}
+                    span.normal-size {{ ecc.Kpi.NivelAtencion.Valor }}
                   .diff
                     .arrow.positive
                       span.glyphicon.glyphicon-chevron-up
                     .delta
-                      span {{ indicadores.Kpi.NivelAtencion.Delta }}%
+                      span {{ ecc.Kpi.NivelAtencion.Delta }}%
                   .kpi-info
                     span: | <b>M</b> 29%
                     span: | <b>C</b> 93%
@@ -121,15 +121,15 @@
                     span.glyphicon.glyphicon-asterisk
                   span.uppercase EPA
                   .glyphicon-kpi.right-info
-                    button.glyphicon.glyphicon-info-sign(popover-animation='true', popover='{{ indicadores.Kpi.EPA.Valor }}')
+                    button.glyphicon.glyphicon-info-sign(popover-animation='true', popover='{{ ecc.Kpi.EPA.Valor }}')
                 .kpi.kaizen-box-content.text-right
                   .weighted
-                    span.normal-size {{ indicadores.Kpi.EPA.Valor }}
+                    span.normal-size {{ ecc.Kpi.EPA.Valor }}
                   .diff
                     .arrow.positive
                       span.glyphicon.glyphicon-chevron-up
                     .delta
-                      span {{ indicadores.Kpi.EPA.Delta }}%
+                      span {{ ecc.Kpi.EPA.Delta }}%
                   .kpi-info
                     span: | <b>M</b> 29%
                     span: | <b>C</b> 93%
@@ -144,7 +144,7 @@
                   span.uppercase TMO
                 .kpi.kaizen-box-content.text-right
                   .weighted
-                    span.normal-size {{ indicadores.Kpi.TMO }}
+                    span.normal-size {{ ecc.Kpi.TMO }}
                     | <small>seg</small>
 
 
@@ -215,7 +215,7 @@
                 .col-md-6
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
-                  span.uppercase Históricos Total
+                  span.uppercase Históricos ECC
                 .col-md-6.text-right
                   .btn-group
                     button.btn.btn-default.btn-xs.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='false') Indicador
@@ -234,7 +234,7 @@
                       li: a(href='#') Habilidad
 
             .kaizen-box-content
-              metricsgeneral.text-left(width='690', height='240')
+              metricsecc.text-left(width='690', height='240')
               .legend
 
         //- ranking
