@@ -267,9 +267,21 @@ app.controller('ProgressDemoCtrl', function ($scope) {
 
   $scope.ejecutivosData = [
   'Alicia Valderrama',
-  'Juan Perez',
+  'Javiera Pincheira',
+  'Silvana Roloff',
+  'María Oyarzo'];
+
+  $scope.ejecutivos2Data = [
+  'Alicia Valderrama',
+  'María Oyarzo',
   'Sonia Gerke',
   'Alejandro Duarte'];
+
+  $scope.peoresData = [
+  'Carolina Riquelme',
+  'Pamela Villa',
+  'Fernanda Almendra',
+  'Javier Torres']
 });
 
 app.controller('testGauge', ['$scope', '$timeout', function($scope, $timeout) {
@@ -280,6 +292,10 @@ app.controller('testGauge', ['$scope', '$timeout', function($scope, $timeout) {
     $scope.valuePonderado = 93.2;
     $scope.valueEPA = 74.5;
     $scope.valueCROSS = 85.4;
+
+    $scope.valuePonderadoSuper = 91.2;
+    $scope.valueEPASuper = 82.4;
+    $scope.valueCROSSSuper = 89.9;
 
     $scope.gaugeOptions = {
         lines: 12,
