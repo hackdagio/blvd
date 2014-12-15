@@ -22,7 +22,7 @@ angular.module('kaizen-concepto.controllers-views', [])
 
 	$scope.indicadores = [];
 
-	indicadoresService.getIndicadores('ongoing', 'general').then(function (results) {
+	indicadoresService.getIndicadores('ongoing2', 'general').then(function (results) {
 		$scope.indicadores = results.data;
 
 	}, function (error) {
@@ -38,7 +38,7 @@ angular.module('kaizen-concepto.controllers-views', [])
 	});
 
 	$scope.allus = [];
-	indicadoresService.getIndicadores('ongoing', 'allus').then(function (results) {
+	indicadoresService.getIndicadores('ongoing2', 'allus').then(function (results) {
 		$scope.allus = results.data;
 
 	}, function (error) {
@@ -46,7 +46,7 @@ angular.module('kaizen-concepto.controllers-views', [])
 	});
 
 	$scope.ecc = [];
-	indicadoresService.getIndicadores('ongoing', 'ecc').then(function (results) {
+	indicadoresService.getIndicadores('ongoing2', 'ecc').then(function (results) {
 		$scope.ecc = results.data;
 
 	}, function (error) {
@@ -54,12 +54,33 @@ angular.module('kaizen-concepto.controllers-views', [])
 	});
 
 	$scope.sccp = [];
-	indicadoresService.getIndicadores('ongoing', 'sccp').then(function (results) {
+	indicadoresService.getIndicadores('ongoing2', 'sccp').then(function (results) {
 		$scope.sccp = results.data;
 
 	}, function (error) {
 
 	});
+
+	var tooltip1 = '<b>M:</b> Meta';
+	var tooltip2 = '<b>C:</b> Cumplimiento';
+	var tooltip3 = '<b>Número Grande:</b> Valor Real';
+	var tooltip4 = '<b>Delta:</b> Diferencia entre mes actual y periodo anterior';
+
+	$scope.tooltipKpi = tooltip1 + '<br /><br />' + tooltip2 + '<br /><br />' + tooltip3 + '<br /><br />' + tooltip4;
+
+}])
+
+.directive("popoverHtmlUnsafePopup", function () {
+  return {
+    restrict: "EA",
+    replace: true,
+    scope: { title: "@", content: "@", placement: "@", animation: "&", isOpen: "&" },
+    templateUrl: "partials/popover-html-unsafe-popup"
+  };
+})
+
+.directive("popoverHtmlUnsafe", [ "$tooltip", function ($tooltip) {
+  return $tooltip("popoverHtmlUnsafe", "popover", "click");
 }]);
 
 

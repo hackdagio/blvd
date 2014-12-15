@@ -32,10 +32,10 @@
                 .col-lg-12.nopadding
                   .col-sm-8.nopadding
                     .avatar
-                      img.img-circle(src='entel/avatar/50.jpg')
+                      img.img-circle(src='entel/avatar/e.jpg')
                     .self-info
-                      span.who.capitalize Francisco Javier Errázuriz
-                      span.what.uppercase Vice Presidente
+                      span.who.capitalize José Luis Poch Piretta
+                      span.what.uppercase Vicepresidente Mercado Personas
                       span.where.uppercase Entel
                   .col-sm-4.high-margin-top
                     .kaizen-box-name.big-size.text-right
@@ -44,12 +44,12 @@
                       span.uppercase Total General
                     .kpi.kaizen-box-content.text-right
                       .weighted
-                        span.big-size {{ indicadores.Kpi.Ponderado.Valor }}
+                        span.big-size {{ indicadores.Kpi.Ponderado.Valor | percentage:2 }}
                       .diff
                         .arrow.positive
                           span.glyphicon.glyphicon-chevron-up
                         .delta
-                          span {{ indicadores.Kpi.Ponderado.Delta }}%
+                          span {{ indicadores.Kpi.Ponderado.Delta | percentage:2 }}
 
             //-- kpi: desv q llamadas
             .col-md-3
@@ -60,12 +60,12 @@
                   span.uppercase Desviación
                 .kpi.kaizen-box-content.text-right
                   .weighted
-                    span.normal-size {{ indicadores.Kpi.DesviacionQLlamadas.Valor }}
+                    span.normal-size {{ indicadores.Kpi.DesviacionQLlamadas.Valor | percentage:2 }}
                   .diff
                     .arrow.negative
                       span.glyphicon.glyphicon-chevron-down
                     .delta
-                      span {{ indicadores.Kpi.DesviacionQLlamadas.Delta }}%
+                      span {{ indicadores.Kpi.DesviacionQLlamadas.Delta | percentage:2 }}
 
 
           //- sublevel 2
@@ -79,18 +79,18 @@
                     span.glyphicon.glyphicon-asterisk
                   span.uppercase Servicio
                   .glyphicon-kpi.right-info
-                    button.glyphicon.glyphicon-info-sign(popover-animation='true', popover='{{ indicadores.Kpi.NivelServicio.Valor }}')
+                    button.glyphicon.glyphicon-info-sign(popover-placement='top', popover-trigger='focus', popover-html-unsafe='{{ tooltipKpi }}')
                 .kpi.kaizen-box-content.text-right
                   .weighted
-                    span.normal-size {{ indicadores.Kpi.NivelServicio.Valor }}
+                    span.normal-size {{ indicadores.Kpi.NivelServicio.Valor | percentage:2 }}
                   .diff
                     .arrow.positive
                       span.glyphicon.glyphicon-chevron-up
                     .delta
-                      span {{ indicadores.Kpi.NivelServicio.Delta }}%
+                      span {{ indicadores.Kpi.NivelServicio.Delta | percentage:2 }}
                   .kpi-info
-                    span: | <b>M</b> 29%
-                    span: | <b>C</b> 93%
+                    span: | <b>M</b> 85%
+                    span: | <b>C</b> {{ indicadores.Kpi.NivelServicio.Cumplimiento | percentage:2 }}
 
             //- kpi: n.a.
             .col-md-3
@@ -100,39 +100,39 @@
                     span.glyphicon.glyphicon-asterisk
                   span.uppercase Atención
                   .glyphicon-kpi.right-info
-                    button.glyphicon.glyphicon-info-sign(popover-animation='true', popover='{{ indicadores.Kpi.NivelAtencion.Valor }}')
+                    button.glyphicon.glyphicon-info-sign(popover-placement='top', popover-trigger='focus', popover-html-unsafe='{{ tooltipKpi }}')
                 .kpi.kaizen-box-content.text-right
                   .weighted
-                    span.normal-size {{ indicadores.Kpi.NivelAtencion.Valor }}
+                    span.normal-size {{ indicadores.Kpi.NivelAtencion.Valor | percentage:2 }}
                   .diff
                     .arrow.positive
                       span.glyphicon.glyphicon-chevron-up
                     .delta
-                      span {{ indicadores.Kpi.NivelAtencion.Delta }}%
+                      span {{ indicadores.Kpi.NivelAtencion.Delta | percentage:2 }}
                   .kpi-info
-                    span: | <b>M</b> 29%
-                    span: | <b>C</b> 93%
+                    span: | <b>M</b> 95%
+                    span: | <b>C</b> {{ indicadores.Kpi.NivelAtencion.Cumplimiento | percentage:2 }}
 
             //- kpi: epa
             .col-md-3
-              .kaizen-box.kaizen-kpi.ok.h-level-2
+              .kaizen-box.kaizen-kpi.red-alert.h-level-2
                 .kaizen-box-name
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
                   span.uppercase EPA
                   .glyphicon-kpi.right-info
-                    button.glyphicon.glyphicon-info-sign(popover-animation='true', popover='{{ indicadores.Kpi.EPA.Valor }}')
+                    button.glyphicon.glyphicon-info-sign(popover-placement='top', popover-trigger='focus', popover-html-unsafe='{{ tooltipKpi }}')
                 .kpi.kaizen-box-content.text-right
                   .weighted
-                    span.normal-size {{ indicadores.Kpi.EPA.Valor }}
+                    span.normal-size {{ indicadores.Kpi.EPA.Valor | percentage:2 }}
                   .diff
                     .arrow.positive
                       span.glyphicon.glyphicon-chevron-up
                     .delta
-                      span {{ indicadores.Kpi.EPA.Delta }}%
+                      span {{ indicadores.Kpi.EPA.Delta | percentage:2 }}
                   .kpi-info
-                    span: | <b>M</b> 29%
-                    span: | <b>C</b> 93%
+                    span: | <b>M</b> 60%
+                    span: | <b>C</b> {{ indicadores.Kpi.EPA.Cumplimiento | percentage:2 }}
 
 
             //- kpi: tmo
