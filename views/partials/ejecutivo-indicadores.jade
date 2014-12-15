@@ -24,23 +24,29 @@
               //-   .glyphicon-kpi
               //-     span.glyphicon.glyphicon-asterisk
               //-   span.uppercase Hola_
-              .kaizen-box-content
-                .col-xs-3
-                  .avatar
-                    img.img-circle(src='entel/avatar/5.jpg')
-                .col-xs-9.nopadding
+              .kaizen-box-content(ng-controller='testGauge')
+                //- .col-xs-3
+                //-   .avatar
+                //-     img.img-circle(src='entel/avatar/5.jpg')
+                .col-xs-12.nopadding
                   .col-xs-4
                     .kpi
                       .kpi-name
                         span.small-size Ponderado
+                        .gauge-kpi
+                          canvas(gaugejs='', options='gaugeOptions', value='value', max-value='maxValue', animation-time='animationTime')
                   .col-xs-4
                     .kpi
                       .kpi-name
                         span.small-size EPA
+                        .gauge-kpi
+                          canvas(gaugejs='', options='gaugeOptions', value='value', max-value='maxValue', animation-time='animationTime')
                   .col-xs-4
                     .kpi
                       .kpi-name
                         span.small-size CROSS
+                        .gauge-kpi
+                          canvas(gaugejs='', options='gaugeOptions', value='value', max-value='maxValue', animation-time='animationTime')
 
           //- feedback
           .col-sm-5

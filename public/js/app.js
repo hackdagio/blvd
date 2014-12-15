@@ -7,7 +7,8 @@ var app = angular.module('kaizen-concepto', [
   'LocalStorageModule',
   'angular-loading-bar',
   'ui.bootstrap',
-  'ui.radialplot'
+  'ui.radialplot',
+  'gaugejs'
   ]);
 
 app.config(function ($routeProvider, $locationProvider) {
