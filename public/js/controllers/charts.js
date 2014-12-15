@@ -274,9 +274,12 @@ app.controller('ProgressDemoCtrl', function ($scope) {
 
 app.controller('testGauge', ['$scope', '$timeout', function($scope, $timeout) {
     $scope.animationTime = 10;
-    $scope.value = 3000;
-    $scope.maxValue = 3000;
+    $scope.maxValue = 100;
     $scope.gaugeType = 'donut';
+
+    $scope.valuePonderado = 93.2;
+    $scope.valueEPA = 74.5;
+    $scope.valueCROSS = 85.4;
 
     $scope.gaugeOptions = {
         lines: 12,

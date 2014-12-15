@@ -19,11 +19,11 @@
 
           //- self
           .col-sm-7
-            .kaizen-box.kaizen-self.kaizen-kpi#self-ejecutivo.h-level-6
-              //- .kaizen-box-name.big-size
-              //-   .glyphicon-kpi
-              //-     span.glyphicon.glyphicon-asterisk
-              //-   span.uppercase Hola_
+            .kaizen-box.kaizen-self.kaizen-kpi.ok#self-ejecutivo.h-level-6
+              .kaizen-box-name.big-size.text-center
+                .glyphicon-kpi
+                  span.glyphicon.glyphicon-asterisk
+                span.uppercase Hola, aquí están tus indicadores_
               .kaizen-box-content(ng-controller='testGauge')
                 //- .col-xs-3
                 //-   .avatar
@@ -31,22 +31,29 @@
                 .col-xs-12.nopadding
                   .col-xs-4
                     .kpi
-                      .kpi-name
+                      .gauge-kpi
+                        canvas(gaugejs='', options='gaugeOptions', value='valuePonderado', max-value='maxValue', animation-time='animationTime')
+                      .weighted
+                        span.normal-size.text-center {{ valuePonderado }}%
+                      .kpi-name.text-center.text-uppercase
                         span.small-size Ponderado
-                        .gauge-kpi
-                          canvas(gaugejs='', options='gaugeOptions', value='value', max-value='maxValue', animation-time='animationTime')
                   .col-xs-4
                     .kpi
-                      .kpi-name
+                      .gauge-kpi
+                        canvas(gaugejs='', options='gaugeOptions', value='valueEPA', max-value='maxValue', animation-time='animationTime')
+                      .weighted
+                        span.normal-size.text-center {{ valueEPA }}%
+                      .kpi-name.text-center.text-uppercase
                         span.small-size EPA
-                        .gauge-kpi
-                          canvas(gaugejs='', options='gaugeOptions', value='value', max-value='maxValue', animation-time='animationTime')
+
                   .col-xs-4
                     .kpi
-                      .kpi-name
+                      .gauge-kpi
+                        canvas(gaugejs='', options='gaugeOptions', value='valueCROSS', max-value='maxValue', animation-time='animationTime')
+                      .weighted
+                        span.normal-size.text-center {{ valueCROSS }}%
+                      .kpi-name.text-center.text-uppercase
                         span.small-size CROSS
-                        .gauge-kpi
-                          canvas(gaugejs='', options='gaugeOptions', value='value', max-value='maxValue', animation-time='animationTime')
 
           //- feedback
           .col-sm-5
