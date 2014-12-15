@@ -35,7 +35,6 @@
                   span.glyphicon.glyphicon-asterisk
                 span.uppercase Hola, aquí están tus indicadores_
               .kaizen-box-content(ng-controller='testGauge')
-
                 .col-xs-12.nopadding
                   .col-xs-4
                     .kpi
@@ -45,6 +44,10 @@
                         span.normal-size.text-center {{ valuePonderado }}%
                       .kpi-name.text-center.text-uppercase
                         span.small-size Ponderado
+                      .versus
+                        span.normal-size.text-center 9.5%
+                        span.glyphicon.glyphicon-chevron-up(alt='Sobre el promedio')
+                        span.normal-size Promedio
                   .col-xs-4
                     .kpi
                       .gauge-kpi
@@ -53,6 +56,10 @@
                         span.normal-size.text-center {{ valueEPA }}%
                       .kpi-name.text-center.text-uppercase
                         span.small-size EPA
+                      .versus
+                        span.normal-size.text-center 3.2%
+                        span.glyphicon.glyphicon-chevron-up(alt='Sobre el promedio')
+                        span.normal-size Promedio
 
                   .col-xs-4
                     .kpi
@@ -62,6 +69,10 @@
                         span.normal-size.text-center {{ valueCROSS }}%
                       .kpi-name.text-center.text-uppercase
                         span.small-size CROSS
+                      .versus
+                        span.normal-size.text-center 4.6%
+                        span.glyphicon.glyphicon-chevron-up(alt='Sobre el promedio')
+                        span.normal-size Promedio
 
           //- feedback
           .col-md-5

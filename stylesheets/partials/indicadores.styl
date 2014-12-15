@@ -145,7 +145,11 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
   display inline-block
   vertical-align middle
   color primary-color-2
-  
+
+.modal-content
+  border 1px solid rgba(0,0,0,0.06)
+  border-radius 0px
+  box-shadow rgba(0,0,0,.1) 0px 1px 1px 0px
 .kaizen-box
   padding 18px
   margin -5px -5px 25px -5px
@@ -324,6 +328,20 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
         display inline-block
         &:not(:first-child)
           margin-left .4em
+    .versus
+      text-align center
+      font-weight 300
+      span
+        &:first-child
+          margin-right .5em
+        &:last-child
+          margin-left .5em
+          
+      .glyphicon
+        font-size 1.2em
+
+      
+      
 
 .kaizen-ranking
   background kaizen-ranking-background-color
