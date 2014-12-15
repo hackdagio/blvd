@@ -18,7 +18,7 @@
                     .self-info
                       span.who.capitalize Francisca Bilbao
                       span.what.uppercase Coordinador General
-                      span.where.uppercase ECC
+                      span.where.uppercase Entel
                   .col-sm-4.high-margin-top
                     .kaizen-box-name.big-size.text-right
                       .glyphicon-kpi
@@ -26,12 +26,12 @@
                       span.uppercase Total
                     .kpi.kaizen-box-content.text-right
                       .weighted
-                        span.big-size {{ indicadores.Kpi.Ponderado.Valor }}
+                        span.big-size {{ indicadores.Kpi.Ponderado.Valor | percentage:2 }}
                       .diff
                         .arrow.positive
                           span.glyphicon.glyphicon-chevron-up
                         .delta
-                          span {{ indicadores.Kpi.Ponderado.Delta }}%
+                          span {{ indicadores.Kpi.Ponderado.Delta | percentage:2 }}%
 
             //- kpi: desv q llamadas
             .col-md-3
@@ -42,12 +42,12 @@
                   span.uppercase Desviación
                 .kpi.kaizen-box-content.text-right
                   .weighted
-                    span.normal-size {{ indicadores.Kpi.DesviacionQLlamadas.Valor }}
+                    span.normal-size {{ indicadores.Kpi.DesviacionQLlamadas.Valor | percentage:2 }}
                   .diff
                     .arrow.negative
                       span.glyphicon.glyphicon-chevron-down
                     .delta
-                      span {{ indicadores.Kpi.DesviacionQLlamadas.Delta }}%
+                      span {{ indicadores.Kpi.DesviacionQLlamadas.Delta | percentage:2 }}
 
           //- sublevel 2
           .col-lg-12.nopadding
@@ -60,18 +60,18 @@
                     span.glyphicon.glyphicon-asterisk
                   span.uppercase Servicio
                   .glyphicon-kpi.right-info
-                    button.glyphicon.glyphicon-info-sign(popover-animation='true', popover='{{ indicadores.Kpi.NivelServicio.Valor }}')
+                    button.glyphicon.glyphicon-info-sign(popover-placement='top', popover-trigger='focus', popover-html-unsafe='{{ tooltipKpi }}')
                 .kpi.kaizen-box-content.text-right
                   .weighted
-                    span.normal-size {{ indicadores.Kpi.NivelServicio.Valor }}
+                    span.normal-size {{ indicadores.Kpi.NivelServicio.Valor | percentage:2 }}
                   .diff
                     .arrow.positive
                       span.glyphicon.glyphicon-chevron-up
                     .delta
-                      span {{ indicadores.Kpi.NivelServicio.Delta }}%
+                      span {{ indicadores.Kpi.NivelServicio.Delta | percentage:2 }}
                   .kpi-info
-                    span: | <b>M</b> 29%
-                    span: | <b>C</b> 93%
+                    span: | <b>M</b> 85%
+                    span: | <b>C</b> {{ indicadores.Kpi.NivelServicio.Cumplimiento | percentage:2 }}
 
             //- kpi: n.a.
             .col-md-3
@@ -81,40 +81,40 @@
                     span.glyphicon.glyphicon-asterisk
                   span.uppercase Atención
                   .glyphicon-kpi.right-info
-                    button.glyphicon.glyphicon-info-sign(popover-animation='true', popover='{{ indicadores.Kpi.NivelAtencion.Valor }}')
+                    button.glyphicon.glyphicon-info-sign(popover-placement='top', popover-trigger='focus', popover-html-unsafe='{{ tooltipKpi }}')
                 .kpi.kaizen-box-content.text-right
                   .weighted
-                    span.normal-size {{ indicadores.Kpi.NivelAtencion.Valor }}
+                    span.normal-size {{ indicadores.Kpi.NivelAtencion.Valor | percentage:2 }}
                   .diff
                     .arrow.positive
                       span.glyphicon.glyphicon-chevron-up
                     .delta
-                      span {{ indicadores.Kpi.NivelAtencion.Delta }}%
+                      span {{ indicadores.Kpi.NivelAtencion.Delta | percentage:2 }}
                   .kpi-info
-                    span: | <b>M</b> 29%
-                    span: | <b>C</b> 93%
+                    span: | <b>M</b> 95%
+                    span: | <b>C</b> {{ indicadores.Kpi.NivelAtencion.Cumplimiento | percentage:2 }}
 
 
             //- kpi: epa
             .col-md-3
-              .kaizen-box.kaizen-kpi.ok.h-level-2
+              .kaizen-box.kaizen-kpi.red-alert.h-level-2
                 .kaizen-box-name
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
                   span.uppercase EPA
                   .glyphicon-kpi.right-info
-                    button.glyphicon.glyphicon-info-sign(popover-animation='true', popover='{{ indicadores.Kpi.EPA.Valor }}')
+                    button.glyphicon.glyphicon-info-sign(popover-placement='top', popover-trigger='focus', popover-html-unsafe='{{ tooltipKpi }}')
                 .kpi.kaizen-box-content.text-right
                   .weighted
-                    span.normal-size {{ indicadores.Kpi.EPA.Valor }}
+                    span.normal-size {{ indicadores.Kpi.EPA.Valor | percentage:2 }}
                   .diff
                     .arrow.positive
                       span.glyphicon.glyphicon-chevron-up
                     .delta
-                      span {{ indicadores.Kpi.EPA.Delta }}%
+                      span {{ indicadores.Kpi.EPA.Delta | percentage:2 }}
                   .kpi-info
-                    span: | <b>M</b> 29%
-                    span: | <b>C</b> 93%
+                    span: | <b>M</b> 60%
+                    span: | <b>C</b> {{ indicadores.Kpi.EPA.Cumplimiento | percentage:2 }}
 
             //- kpi: tmo
             .col-md-3
@@ -150,7 +150,7 @@
                   span.glyphicon.glyphicon-asterisk
                 span.uppercase Mejores supervisores
                 .glyphicon-kpi.right-info
-                  button.glyphicon.glyphicon-question-sign(popover-animation='true', popover='texto')
+                  button.glyphicon.glyphicon-question-sign
               .people-ranking.kaizen-box-content(ng-controller='ProgressDemoCtrl')
                 .each-people.col-md-12.nopadding
                   .each-avatar.col-xs-2.nopadding
@@ -200,7 +200,7 @@
                   span.glyphicon.glyphicon-asterisk
                 span.uppercase Mejores ejecutivos
                 .glyphicon-kpi.right-info
-                  button.glyphicon.glyphicon-question-sign(popover-animation='true', popover='texto')
+                  button.glyphicon.glyphicon-question-sign
               .people-ranking.kaizen-box-content(ng-controller='ProgressDemoCtrl')
                 .each-people.col-md-12.nopadding
                   .each-avatar.col-xs-2.nopadding
