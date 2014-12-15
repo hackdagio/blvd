@@ -26,8 +26,8 @@ kaizen-radial-kpi-text-color = kaizen-kpi-ok-text-color
 kaizen-people-ranking-background-color = kaizen-kpi-ok-background-color
 kaizen-people-ranking-text-color = kaizen-kpi-ok-text-color
 
-kaizen-latest-news-background-color = rgb(78, 87, 94)
-kaizen-latest-news-text-color = rgb(216, 216, 216)
+kaizen-latest-news-background-color = rgb(255, 255, 255)
+kaizen-latest-news-text-color = rgb(0, 0, 0)
 
 kaizen-self-background-color = kaizen-kpi-ok-background-color
 kaizen-self-text-color = kaizen-kpi-ok-text-color
@@ -229,8 +229,6 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
         &.what,
         &.where
           text-align center
-      
-
 
 .kaizen-kpi
   &.ok
@@ -353,7 +351,6 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
           a
             color white
             text-decoration none
-            
           span
             color kaizen-ranking-text-color
         .weighted
@@ -431,15 +428,20 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
   background kaizen-latest-news-background-color
   color kaizen-latest-news-text-color
   .latest-news
+    margin-top 1em
     .each-news
-      img
-        height 100px
       font-weight 300
       margin 0 0 1.5em 0
+      float left
+      img
+        &.guino
+          width 31px
+        &.cover-news
+          border avatar-img-border--thin
+          width 100%
       h2
         font-size 1.3em
         margin 0 0 .5em 0
-        color white
       h5
         font-size .9em
         
