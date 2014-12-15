@@ -32,8 +32,8 @@ kaizen-latest-news-text-color = rgb(0, 0, 0)
 kaizen-self-background-color = kaizen-kpi-ok-background-color
 kaizen-self-text-color = kaizen-kpi-ok-text-color
 
-kaizen-feedback-background-color = darken(primary-color-1, 30%)
-kaizen-feedback-text-color = white
+kaizen-feedback-background-color = rgb(90, 90, 90)
+kaizen-feedback-text-color = rgb(226, 226, 226)
 
 kaizen-user-stories-background-color = rgb(31,31,31)
 kaizen-user-stories-text-color = rgb(255, 255, 255)
@@ -484,8 +484,13 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
         .each-avatar
           img
             &:first-child
-              width 100%
+              width 55px
               border avatar-img-border--thin
+            &:last-child
+              height 35px
+              position absolute
+              bottom -7px
+              left 40px
         .each-text
           line-height 1.4em
           img
