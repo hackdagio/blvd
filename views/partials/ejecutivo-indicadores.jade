@@ -3,7 +3,7 @@
     .container-fluid
       .row
 
-        //- level 2
+        //- level 1
         .col-lg-12.nopadding
           .col-lg-12
             .kaizen-box.kaizen-promo-carousel#carousel-ejecutivo.full-box
@@ -14,20 +14,28 @@
                     //- .carousel-caption
                     //-   h4 promo {{ $index+1 }}
 
-        //- level 1
+        //- level 2
         .col-lg-12.nopadding
 
           //- self
-          .col-sm-7
+          .col-md-2
+            .kaizen-box.kaizen-self#self-ejecutivo.h-level-6
+              .kaizen-box-content
+                .avatar.text-center
+                  img.img-circle(src='entel/avatar/5.jpg')
+                .self-info
+                  span.who.capitalize Alicia Valderrama
+                  span.what.uppercase Ejecutiva de Ventas
+                  span.where.uppercase ECC
+
+          .col-md-5
             .kaizen-box.kaizen-self.kaizen-kpi.ok#self-ejecutivo.h-level-6
               .kaizen-box-name.big-size.text-center
                 .glyphicon-kpi
                   span.glyphicon.glyphicon-asterisk
                 span.uppercase Hola, aquí están tus indicadores_
               .kaizen-box-content(ng-controller='testGauge')
-                //- .col-xs-3
-                //-   .avatar
-                //-     img.img-circle(src='entel/avatar/5.jpg')
+
                 .col-xs-12.nopadding
                   .col-xs-4
                     .kpi
@@ -56,7 +64,7 @@
                         span.small-size CROSS
 
           //- feedback
-          .col-sm-5
+          .col-md-5
             .kaizen-box.kaizen-feedback#feedback-ejecutivo.h-level-6
               .kaizen-box-name
                 .glyphicon-kpi
