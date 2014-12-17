@@ -349,7 +349,7 @@ app.controller('testGauge', ['$scope', '$timeout', function($scope, $timeout) {
 
 }]);
 
-app.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
+app.controller('ModalKpiCtrl', function ($scope, $modal, $log) {
 
   $scope.items = ['item1', 'item2', 'item3'];
 
@@ -363,8 +363,7 @@ app.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
         items: function () {
           return $scope.items;
         }
-      },
-      backdrop: 'static'
+      }
     });
 
     modalInstance.result.then(function (selectedItem) {

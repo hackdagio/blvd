@@ -113,7 +113,7 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
           &:hover
             text-decoration none
       .active
-          border-left 2px solid primary-color-2
+          border-left 3px solid primary-color-2
       img
         width 50%
     .sidebar-nav li a:active,
@@ -146,10 +146,6 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
   vertical-align middle
   color primary-color-2
 
-.modal-content
-  border 1px solid rgba(0,0,0,0.06)
-  border-radius 0px
-  box-shadow rgba(0,0,0,.1) 0px 1px 1px 0px
 .kaizen-box
   padding 18px
   margin -5px -5px 25px -5px
@@ -597,9 +593,13 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
           p
             font-weight bold
             font-size .8em
-          
-      
-  
+
+
+.kaizen-modal-table
+  thead,
+  tbody
+    th
+      text-align center
 // @keyframes blink
 //   0%
 //     text-shadow none
