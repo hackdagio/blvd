@@ -7,25 +7,10 @@
 			tr
 				th Habilidades
 				th KPI
-		tbody
+		tbody(ng-repeat='item in items')
 			tr
-				th AC
-				th 0,983%
-			tr
-				th SSBV
-				th 0,983%
-			tr
-				th BAMCOMER
-				th 0,983%
-			tr
-				th NURSERY
-				th 0,43%
-			tr
-				th SMPH
-				th 0,43%
-			tr
-				th OT
-				th 0,32%
+				th {{ item.Id | uppercase }}
+				th {{ item.Ponderado }}
 
 .modal-footer
 	button.btn.btn-primary(ng-click='ok()') [ OK _
