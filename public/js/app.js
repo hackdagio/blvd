@@ -7,7 +7,8 @@ var app = angular.module('kaizen-concepto', [
   'LocalStorageModule',
   'angular-loading-bar',
   'ui.bootstrap',
-  'ui.radialplot'
+  'ui.radialplot',
+  'gaugejs'
   ]);
 
 app.config(function ($routeProvider, $locationProvider) {
@@ -18,17 +19,17 @@ app.config(function ($routeProvider, $locationProvider) {
     resolve: { loginRequired: loginRequired }
   })
   .when('/vp/indicadores/allus', {
-    templateUrl: 'partials/indicadores-allus',
+    templateUrl: 'partials/vp-indicadores-allus',
     controller: 'indicadoresController',
     resolve: { loginRequired: loginRequired }
   })
   .when('/vp/indicadores/ecc', {
-    templateUrl: 'partials/indicadores-ecc',
+    templateUrl: 'partials/vp-indicadores-ecc',
     controller: 'indicadoresController',
     resolve: { loginRequired: loginRequired }
   })
   .when('/vp/indicadores/sccp', {
-    templateUrl: 'partials/indicadores-sccp',
+    templateUrl: 'partials/vp-indicadores-sccp',
     controller: 'indicadoresController',
     resolve: { loginRequired: loginRequired }
   })
@@ -39,6 +40,11 @@ app.config(function ($routeProvider, $locationProvider) {
   })
   .when('/ejecutivo/indicadores', {
     templateUrl: 'partials/ejecutivo-indicadores',
+    controller: 'indicadoresController',
+    resolve: { loginRequired: loginRequired }
+  })
+  .when('/supervisor/indicadores', {
+    templateUrl: 'partials/supervisor-indicadores',
     controller: 'indicadoresController',
     resolve: { loginRequired: loginRequired }
   })

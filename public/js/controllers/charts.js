@@ -267,7 +267,128 @@ app.controller('ProgressDemoCtrl', function ($scope) {
 
   $scope.ejecutivosData = [
   'Alicia Valderrama',
-  'Juan Perez',
+  'Javiera Pincheira',
+  'Silvana Roloff',
+  'María Oyarzo'];
+
+  $scope.ejecutivos2Data = [
+  'Alicia Valderrama',
+  'María Oyarzo',
   'Sonia Gerke',
   'Alejandro Duarte'];
+
+  $scope.peoresData = [
+  'Carolina Riquelme',
+  'Pamela Villa',
+  'Fernanda Almendra',
+  'Javier Torres']
+});
+
+app.controller('testGauge', ['$scope', '$timeout', function($scope, $timeout) {
+    $scope.animationTime = 10;
+    $scope.maxValue = 100;
+    $scope.gaugeType = 'donut';
+
+    $scope.valuePonderado = 93.2;
+    $scope.valueEPA = 74.5;
+    $scope.valueCROSS = 85.4;
+
+    $scope.valuePonderadoSuper = 91.2;
+    $scope.valueEPASuper = 82.4;
+    $scope.valueCROSSSuper = 89.9;
+
+    $scope.gaugeOptions = {
+        lines: 12,
+        // The number of lines to draw
+        angle: 0.10,
+        // The length of each line
+        lineWidth: 0.14,
+        // The line thickness
+        pointer: {
+            length: 0.9,
+            // The radius of the inner circle
+            strokeWidth: 0.035,
+            // The rotation offset
+            color: '#005F9F' // Fill color
+        },
+        limitMax: 'false',
+        // If true, the pointer will not go past the end of the gauge
+        colorStart: '#FF6702',
+        // Colors
+        colorStop: '#E75C00',
+        // just experiment with them
+        strokeColor: '#F0F0F0',
+        // to see which ones work best for you
+        generateGradient: true
+    };
+    
+    $scope.donutGaugeOptions = {
+        lines: 12,
+        // The number of lines to draw
+        angle: 0.15,
+        // The length of each line
+        lineWidth: 0.044,
+        // The line thickness
+        pointer: {
+            length: 0.09,
+            // The radius of the inner circle
+            strokeWidth: 0.0035,
+            // The rotation offset
+            color: '#000000' // Fill color
+        },
+        limitMax: 'false',
+        // If true, the pointer will not go past the end of the gauge
+        colorStart: '#FF6702',
+        // Colors
+        colorStop: '#FF6702',
+        // just experiment with them
+        strokeColor: '#E0E0E0',
+        // to see which ones work best for you
+        generateGradient: true
+    };
+
+}]);
+
+app.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
+
+  $scope.items = ['item1', 'item2', 'item3'];
+
+  $scope.open = function (size) {
+
+    var modalInstance = $modal.open({
+      templateUrl: 'partials/modal',
+      controller: 'ModalInstanceCtrl',
+      size: size,
+      resolve: {
+        items: function () {
+          return $scope.items;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+      $scope.selected = selectedItem;
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+});
+
+// Please note that $modalInstance represents a modal window (instance) dependency.
+// It is not the same as the $modal service used above.
+
+app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
+
+  $scope.items = items;
+  $scope.selected = {
+    item: $scope.items[0]
+  };
+
+  $scope.ok = function () {
+    $modalInstance.close($scope.selected.item);
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
 });

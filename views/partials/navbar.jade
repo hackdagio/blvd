@@ -17,15 +17,15 @@
           ul.dropdown-menu(role='menu')
             li: a(href='/vp/indicadores') VP
             li: a(href='/coordinador/indicadores') Coordinador
+            li: a(href='/supervisor/indicadores') Supervisor
             li: a(href='/ejecutivo/indicadores') Ejecutivo
-        li
-          a.today(data-ng-hide='!authentication.isAuth') Septiembre, 2014
-        li
-          a(href='acceder', data-ng-hide='authentication.isAuth') Iniciar sesión
+        li: a.today(data-ng-hide='!authentication.isAuth') Septiembre, 2014
+        li: a(href='acceder', data-ng-hide='authentication.isAuth') Iniciar sesión
           
         li.dropdown
           a.dropdown-toggle.navbar-link.navbar-user(href='javascript:void(0)', data-ng-hide='!authentication.isAuth')
             span.glyphicon.glyphicon-user
+            //- span: img.img-circle(src='entel/avatar/5.jpg')
             strong  {{authentication.userName}}
             span.glyphicon-chevron-user
           ul.dropdown-menu
