@@ -363,7 +363,8 @@ app.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
         items: function () {
           return $scope.items;
         }
-      }
+      },
+      backdrop: 'static'
     });
 
     modalInstance.result.then(function (selectedItem) {
