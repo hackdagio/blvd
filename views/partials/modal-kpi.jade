@@ -8,12 +8,20 @@
 	table.table.table-hover.kaizen-modal-table
 		thead
 			tr
-				th Habilidades
+				th Habilidad
+				th Coordinador
 				th {{ title }} (%)
+				th Meta
+				th Cumplimiento
 		tbody(ng-repeat='item in items')
 			tr
 				th {{ item[1] | uppercase }}
-				th {{ item[0] }}%
+				th.table-kpi-deep-user
+					img.img-circle(src='{{ item[3] }}')
+					{{ item[2] }}
+				th.table-kpi-deep-weighted {{ item[0] }}%
+				th {{ item[4] }}%
+				th {{ item[5] }}%
 
 .modal-footer
 	button.btn.btn-primary(ng-click='ok()') [ OK _

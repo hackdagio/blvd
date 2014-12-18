@@ -332,12 +332,12 @@ app.controller('ModalKpiCtrl', function ($scope, $modal, indicadoresService) {
     // });
 
   $scope.items = [
-  ['98,5', 'AC'], 
-  ['95,3', 'SSBV'],
-  ['44,5', 'BAMCOMER'],
-  ['57,4', 'NURSERY'],
-  ['68,9', 'SMPH'],
-  ['84,2', 'OT']
+  ['98,5', 'AC', 'Francisca Bilbao', 'entel/avatar/30.jpg', '95', '94'], 
+  ['95,3', 'SSBV', 'Macarena Suazo', 'entel/avatar/30.jpg', '95', '94'],
+  ['44,5', 'BAMCOMER', 'Pablo Aravena', 'entel/avatar/30.jpg', '95', '94'],
+  ['57,4', 'NURSERY', 'Diego Deza', 'entel/avatar/30.jpg', '95', '94'],
+  ['68,9', 'SMPH', 'Agustina Ugarte', 'entel/avatar/30.jpg', '95', '94'],
+  ['84,2', 'OT', 'Camila Flores', 'entel/avatar/30.jpg', '95', '94']
   ];
   $scope.kpi = ['Nivel de Servicio', 'Nivel de Atención', 'EPA', 'TMO', 'Desviación de llamadas'];
 
