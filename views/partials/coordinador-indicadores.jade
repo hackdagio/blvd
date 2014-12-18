@@ -129,8 +129,6 @@
                     | <small>seg</small>
 
         //-- level 2
-
-        //- rendimiento comparado
         .col-lg-4.col-sm-12
           .kaizen-box.kaizen-radial-kpi.h-level-3(ng-controller='radialPlotCtrl')
             .kaizen-box-name
@@ -140,7 +138,6 @@
             radial-plot(dsn="dataset_a", point-radius="1.2", labelled="true", compare='dataset_b', free="true", animate="true", play="others")
 
         //-- level 3
-        //- history
         .col-lg-8.col-sm-12.nopadding
 
           //- mejores supervisores
@@ -241,6 +238,104 @@
                     .each-glyphicon-container
                       span.glyphicon.glyphicon-share-alt
 
+          //- supervisores a apoyar
+          .col-lg-6.col-sm-6
+            .kaizen-box.kaizen-people-ranking.h-level-3
+              .kaizen-box-name
+                .glyphicon-kpi
+                  span.glyphicon.glyphicon-asterisk
+                span.uppercase Supervisores a apoyar
+              .people-ranking.kaizen-box-content(ng-controller='ProgressDemoCtrl')
+                .each-people.col-md-12.nopadding
+                  .people-ranking-avatar.col-xs-2.nopadding
+                    img.img-circle.text-center(src='entel/avatar/4.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ peoresSupervisores[0] }}
+                    progressbar(max='max', value='75', type='danger')
+                      i 75,2%
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+                .each-people.col-md-12.nopadding
+                  .people-ranking-avatar.col-xs-2.nopadding
+                    img.img-circle(src='entel/avatar/3.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ peoresSupervisores[1] }}
+                    progressbar(max='max', value='70', type='danger')
+                      i 70,5%
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+                .each-people.col-md-12.nopadding
+                  .people-ranking-avatar.col-xs-2.nopadding
+                    img.img-circle(src='entel/avatar/2.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ peoresSupervisores[2] }}
+                    progressbar(max='max', value='68', type='danger')
+                      i 68,3%
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+                .each-people.col-md-12.nopadding
+                  .people-ranking-avatar.col-xs-2.nopadding
+                    img.img-circle(src='entel/avatar/1.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ peoresSupervisores[3] }}
+                    progressbar(max='max', value='64', type='danger')
+                      i 64,7%
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+
+          //- ejecutivos a apoyar
+          .col-lg-6.col-sm-6
+            .kaizen-box.kaizen-people-ranking.h-level-3
+              .kaizen-box-name
+                .glyphicon-kpi
+                  span.glyphicon.glyphicon-asterisk
+                span.uppercase Ejecutivos a apoyar
+              .people-ranking.kaizen-box-content(ng-controller='ProgressDemoCtrl')
+                .each-people.col-md-12.nopadding
+                  .people-ranking-avatar.col-xs-2.nopadding
+                    img.img-circle.text-center(src='entel/avatar/5.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ peoresEjecutivos[0] }}
+                    progressbar(max='max', value='54', type='danger')
+                      i 54,2%
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+                .each-people.col-md-12.nopadding
+                  .people-ranking-avatar.col-xs-2.nopadding
+                    img.img-circle(src='entel/avatar/130.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ peoresEjecutivos[1] }}
+                    progressbar(max='max', value='53', type='danger')
+                      i 53,2%
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+                .each-people.col-md-12.nopadding
+                  .people-ranking-avatar.col-xs-2.nopadding
+                    img.img-circle(src='entel/avatar/100.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ peoresEjecutivos[2] }}
+                    progressbar(max='max', value='50', type='danger')
+                      i 50,0%
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+                .each-people.col-md-12.nopadding
+                  .people-ranking-avatar.col-xs-2.nopadding
+                    img.img-circle(src='entel/avatar/90.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ peoresEjecutivos[3] }}
+                    progressbar(max='max', value='44', type='danger')
+                      i 44,3%
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+
         //- news
         .col-lg-4.col-sm-12
           .kaizen-box.kaizen-latest-news.h-level-3
@@ -276,12 +371,4 @@
                     h5 Hace 3 días · por Área de Ventas
                   .col-lg-1.col-sm-1.col-xs-1.nopadding
                     img.guino(src='entel/images/guiño.svg')
-
-//-- script.
-//--   $("#menu-toggle").click(function(e) {
-//--   e.preventDefault();
-//--   $("#wrapper").toggleClass("toggled");
-//--   });
-
-
 

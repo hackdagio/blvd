@@ -281,7 +281,19 @@ app.controller('ProgressDemoCtrl', function ($scope) {
   'Carolina Riquelme',
   'Pamela Villa',
   'Fernanda Almendra',
-  'Javier Torres']
+  'Javier Torres'];
+
+  $scope.peoresSupervisores = [
+  'Gabriela Rojas',
+  'Natalia Escobar',
+  'Gonzalo Sepúlveda',
+  'Luis Tapia'];
+
+  $scope.peoresEjecutivos = [
+  'Javiera Pistano',
+  'Johan Soto',
+  'Alberto Santana',
+  'Verónica Perez'];
 });
 
 app.controller('testGauge', ['$scope', '$timeout', function($scope, $timeout) {
