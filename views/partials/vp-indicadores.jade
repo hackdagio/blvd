@@ -35,13 +35,13 @@
                       img.img-circle(src='entel/avatar/e.jpg')
                     .self-info
                       span.who.capitalize José Luis Poch Piretta
-                      span.what.uppercase Vicepresidente Mercado Personas
-                      span.where.uppercase Entel
+                      span.what.text-uppercase Vicepresidente Mercado Personas
+                      span.where.text-uppercase Entel
                   .col-sm-4
                     .kaizen-box-name.small-size.text-right
                       .glyphicon-kpi
                         span.glyphicon.glyphicon-asterisk
-                      span.uppercase Total Contact Center
+                      span.text-uppercase Total Contact Center
                     .kpi.kaizen-box-content.text-right
                       .weighted
                         span.big-size {{ indicadores.Kpi.Ponderado.Valor | percentage:2 }}
@@ -57,7 +57,7 @@
                 .kaizen-box-name
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
-                  span.uppercase Desviación
+                  span.text-uppercase Desviación
                 .kpi.kaizen-box-content.text-right
                   .weighted
                     span.normal-size {{ indicadores.Kpi.DesviacionQLlamadas.Valor | percentage:2 }}
@@ -77,7 +77,7 @@
                 .kaizen-box-name
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
-                  span.uppercase Servicio
+                  span.text-uppercase Servicio
                   //- button.btn.btn-default
                   .glyphicon-kpi.right-info
                     button.glyphicon.glyphicon-info-sign(popover-placement='top', popover-trigger='focus', popover-html-unsafe='{{ tooltipKpi }}')
@@ -99,7 +99,7 @@
                 .kaizen-box-name
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
-                  span.uppercase Atención
+                  span.text-uppercase Atención
                   .glyphicon-kpi.right-info
                     button.glyphicon.glyphicon-info-sign(popover-placement='top', popover-trigger='focus', popover-html-unsafe='{{ tooltipKpi }}')
                 .kpi.kaizen-box-content.text-right
@@ -120,7 +120,7 @@
                 .kaizen-box-name
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
-                  span.uppercase EPA
+                  span.text-uppercase EPA
                   .glyphicon-kpi.right-info
                     button.glyphicon.glyphicon-info-sign(popover-placement='top', popover-trigger='focus', popover-html-unsafe='{{ tooltipKpi }}')
                 .kpi.kaizen-box-content.text-right
@@ -142,7 +142,7 @@
                 .kaizen-box-name
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
-                  span.uppercase TMO
+                  span.text-uppercase TMO
                 .kpi.kaizen-box-content.text-right
                   .weighted
                     span.normal-size {{ indicadores.Kpi.TMO }}
@@ -157,7 +157,7 @@
             .kaizen-box-name.big-size
               .glyphicon-kpi
                 span.glyphicon.glyphicon-asterisk
-              span.uppercase Habilidades
+              span.text-uppercase Habilidades
             .skills.kaizen-box-content
               .col-xs-12.skill
                 .each
@@ -216,7 +216,7 @@
                 .col-md-6
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
-                  span.uppercase Históricos Total
+                  span.text-uppercase Históricos Total
                 .col-md-6.text-right
                   .btn-group
                     button.btn.btn-default.btn-xs.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='false') Indicador
@@ -255,7 +255,7 @@
             .kaizen-box-name.big-size
               .glyphicon-kpi
                 span.glyphicon.glyphicon-asterisk
-              span.uppercase Ranking
+              span.text-uppercase Ranking
             .ranking.kaizen-box-content
               .col-xs-12.rank(ng-repeat='rank in ranking')
                 .each

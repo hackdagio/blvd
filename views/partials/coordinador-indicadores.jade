@@ -3,23 +3,24 @@
     .container-fluid
       .row
         //- level 1
-        .col-lg-8.nopadding
+        .col-lg-8.col-sm-12.nopadding
 
           //- sublevel 1
-          .col-lg-12.nopadding
+          .col-lg-12.col-sm-12.nopadding
 
             //- kpi: general
-            .col-md-9
+            .col-lg-9.col-sm-9
               .kaizen-box.kaizen-kpi.ok.kaizen-self#self-coordinador.h-level-1
                 .col-lg-12.nopadding
-                  .col-sm-8.nopadding
+                  .col-lg-8.col-xs-12.nopadding
                     .avatar
                       img.img-circle(src='entel/avatar/30.jpg')
                     .self-info
+                      span.rank-position.good-rank.text-uppercase #1
                       span.who.capitalize Francisca Bilbao
                       span.what.uppercase Coordinador General
                       span.where.uppercase Entel
-                  .col-sm-4.high-margin-top
+                  .col-lg-4.col-xs-12
                     .kaizen-box-name.big-size.text-right
                       .glyphicon-kpi
                         span.glyphicon.glyphicon-asterisk
@@ -34,7 +35,7 @@
                           span {{ indicadores.Kpi.Ponderado.Delta | percentage:2 }}%
 
             //- kpi: desv q llamadas
-            .col-md-3
+            .col-lg-3.col-sm-3
               .kaizen-box.kaizen-kpi.ok.h-level-1
                 .kaizen-box-name
                   .glyphicon-kpi
@@ -50,10 +51,10 @@
                       span {{ indicadores.Kpi.DesviacionQLlamadas.Delta | percentage:2 }}
 
           //- sublevel 2
-          .col-lg-12.nopadding
+          .col-lg-12.col-sm-12.nopadding
 
             //- kpi: n.s.
-            .col-md-3
+            .col-md-3.col-sm-6
               .kaizen-box.kaizen-kpi.red-alert.h-level-2
                 .kaizen-box-name
                   .glyphicon-kpi
@@ -74,7 +75,7 @@
                     span: | <b>C</b> {{ indicadores.Kpi.NivelServicio.Cumplimiento | percentage:2 }}
 
             //- kpi: n.a.
-            .col-md-3
+            .col-md-3.col-sm-6
               .kaizen-box.kaizen-kpi.red-alert.h-level-2
                 .kaizen-box-name
                   .glyphicon-kpi
@@ -94,9 +95,8 @@
                     span: | <b>M</b> 95%
                     span: | <b>C</b> {{ indicadores.Kpi.NivelAtencion.Cumplimiento | percentage:2 }}
 
-
             //- kpi: epa
-            .col-md-3
+            .col-md-3.col-sm-6
               .kaizen-box.kaizen-kpi.red-alert.h-level-2
                 .kaizen-box-name
                   .glyphicon-kpi
@@ -117,7 +117,7 @@
                     span: | <b>C</b> {{ indicadores.Kpi.EPA.Cumplimiento | percentage:2 }}
 
             //- kpi: tmo
-            .col-md-3
+            .col-md-3.col-sm-6
               .kaizen-box.kaizen-kpi.ok.h-level-2
                 .kaizen-box-name
                   .glyphicon-kpi
@@ -131,7 +131,7 @@
         //-- level 2
 
         //- rendimiento comparado
-        .col-lg-4
+        .col-lg-4.col-sm-12
           .kaizen-box.kaizen-radial-kpi.h-level-3(ng-controller='radialPlotCtrl')
             .kaizen-box-name
               .glyphicon-kpi
@@ -140,17 +140,16 @@
             radial-plot(dsn="dataset_a", point-radius="1.2", labelled="true", compare='dataset_b', free="true", animate="true", play="others")
 
         //-- level 3
-
         //- history
-        .col-lg-8.nopadding
-          .col-md-6
+        .col-lg-8.col-sm-12.nopadding
+
+          //- mejores supervisores
+          .col-lg-6.col-sm-6
             .kaizen-box.kaizen-people-ranking.h-level-3
               .kaizen-box-name
                 .glyphicon-kpi
                   span.glyphicon.glyphicon-asterisk
                 span.uppercase Mejores supervisores
-                .glyphicon-kpi.right-info
-                  button.glyphicon.glyphicon-question-sign
               .people-ranking.kaizen-box-content(ng-controller='ProgressDemoCtrl')
                 .each-people.col-md-12.nopadding
                   .each-avatar.col-xs-2.nopadding
@@ -193,14 +192,13 @@
                     .each-glyphicon-container
                       span.glyphicon.glyphicon-share-alt
 
-          .col-md-6
+          //- mejores ejecutivos
+          .col-lg-6.col-sm-6
             .kaizen-box.kaizen-people-ranking.h-level-3
               .kaizen-box-name
                 .glyphicon-kpi
                   span.glyphicon.glyphicon-asterisk
                 span.uppercase Mejores ejecutivos
-                .glyphicon-kpi.right-info
-                  button.glyphicon.glyphicon-question-sign
               .people-ranking.kaizen-box-content(ng-controller='ProgressDemoCtrl')
                 .each-people.col-md-12.nopadding
                   .each-avatar.col-xs-2.nopadding
@@ -243,9 +241,106 @@
                     .each-glyphicon-container
                       span.glyphicon.glyphicon-share-alt
 
+          //- peores supervisores
+          .col-lg-6.col-sm-6
+            .kaizen-box.kaizen-people-ranking.h-level-3
+              .kaizen-box-name
+                .glyphicon-kpi
+                  span.glyphicon.glyphicon-asterisk
+                span.uppercase Supervisores a mejorar
+              .people-ranking.kaizen-box-content(ng-controller='ProgressDemoCtrl')
+                .each-people.col-md-12.nopadding
+                  .each-avatar.col-xs-2.nopadding
+                    img.img-circle.text-center(src='entel/avatar/5.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ ejecutivosData[0] }}
+                    progressbar(max='max', value='99.3', type='success')
+                      i 99,3%
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+                .each-people.col-md-12.nopadding
+                  .each-avatar.col-xs-2.nopadding
+                    img.img-circle(src='entel/avatar/130.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ ejecutivosData[1] }}
+                    progressbar(max='max', value='98.5', type='success')
+                      i 98,5%
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+                .each-people.col-md-12.nopadding
+                  .each-avatar.col-xs-2.nopadding
+                    img.img-circle(src='entel/avatar/100.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ ejecutivosData[2] }}
+                    progressbar(max='max', value='97.4', type='success')
+                      i 97,4%
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+                .each-people.col-md-12.nopadding
+                  .each-avatar.col-xs-2.nopadding
+                    img.img-circle(src='entel/avatar/90.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ ejecutivosData[3] }}
+                    progressbar(max='max', value='97.2', type='success')
+                      i 97,2%
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+
+          //- peores ejecutivos
+          .col-lg-6.col-sm-6
+            .kaizen-box.kaizen-people-ranking.h-level-3
+              .kaizen-box-name
+                .glyphicon-kpi
+                  span.glyphicon.glyphicon-asterisk
+                span.uppercase Ejecutivos a mejorar
+              .people-ranking.kaizen-box-content(ng-controller='ProgressDemoCtrl')
+                .each-people.col-md-12.nopadding
+                  .each-avatar.col-xs-2.nopadding
+                    img.img-circle.text-center(src='entel/avatar/5.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ ejecutivosData[0] }}
+                    progressbar(max='max', value='99.3', type='success')
+                      i 99,3%
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+                .each-people.col-md-12.nopadding
+                  .each-avatar.col-xs-2.nopadding
+                    img.img-circle(src='entel/avatar/130.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ ejecutivosData[1] }}
+                    progressbar(max='max', value='98.5', type='success')
+                      i 98,5%
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+                .each-people.col-md-12.nopadding
+                  .each-avatar.col-xs-2.nopadding
+                    img.img-circle(src='entel/avatar/100.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ ejecutivosData[2] }}
+                    progressbar(max='max', value='97.4', type='success')
+                      i 97,4%
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
+                .each-people.col-md-12.nopadding
+                  .each-avatar.col-xs-2.nopadding
+                    img.img-circle(src='entel/avatar/90.jpg')
+                  .each-name-and-kpi.col-xs-9
+                    h4 {{ ejecutivosData[3] }}
+                    progressbar(max='max', value='97.2', type='success')
+                      i 97,2%
+                  .each-social-interactions.col-xs-1.nopadding
+                    .each-glyphicon-container
+                      span.glyphicon.glyphicon-share-alt
 
         //- news
-        .col-lg-4
+        .col-lg-4.col-sm-12
           .kaizen-box.kaizen-latest-news.h-level-3
             .kaizen-box-name
               .glyphicon-kpi
@@ -254,31 +349,32 @@
             .latest-news.kaizen-box-content
               .each-news.latest
                 .col-lg-12.nopadding
-                  .col-xs-2
+                  .col-lg-3.col-sm-2.col-xs-3
                     img.cover-news(src='entel/images/news/winners.jpg')
-                  .col-xs-9.nopadding
+                  .col-lg-8.col-sm-9.col-xs-8.nopadding
                     h2 Ganadores de Noviembre
                     h5 Hace 2 días · por Área de Ventas
-                  .col-xs-1.nopadding
+                  .col-lg-1.col-sm-1.col-xs-1.nopadding
                     img.guino(src='entel/images/guiño.svg')
               .each-news
                 .col-lg-12.nopadding
-                  .col-xs-2
+                  .col-lg-3.col-sm-2.col-xs-3
                     img.cover-news(src='entel/images/news/smile.jpg')
-                  .col-xs-9.nopadding
+                  .col-lg-8.col-sm-9.col-xs-8.nopadding
                     h2 Motivate con Sonrisas
                     h5 Hace 2 días · por Gerencia
-                  .col-xs-1.nopadding
+                  .col-lg-1.col-sm-1.col-xs-1.nopadding
                     img.guino(src='entel/images/guiño.svg')
               .each-news
                 .col-lg-12.nopadding
-                  .col-xs-2
+                  .col-lg-3.col-sm-2.col-xs-3
                     img.cover-news(src='entel/images/news/sell.jpg')
-                  .col-xs-9.nopadding
+                  .col-lg-8.col-sm-9.col-xs-8.nopadding
                     h2 Juntos vendemos más
                     h5 Hace 3 días · por Área de Ventas
-                  .col-xs-1.nopadding
+                  .col-lg-1.col-sm-1.col-xs-1.nopadding
                     img.guino(src='entel/images/guiño.svg')
+
 //-- script.
 //--   $("#menu-toggle").click(function(e) {
 //--   e.preventDefault();

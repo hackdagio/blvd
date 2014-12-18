@@ -26,8 +26,8 @@ kaizen-radial-kpi-text-color = kaizen-kpi-ok-text-color
 kaizen-people-ranking-background-color = kaizen-kpi-ok-background-color
 kaizen-people-ranking-text-color = kaizen-kpi-ok-text-color
 
-kaizen-latest-news-background-color = rgb(255, 255, 255)
-kaizen-latest-news-text-color = rgb(0, 0, 0)
+kaizen-latest-news-background-color = rgb(0, 79, 86)
+kaizen-latest-news-text-color = rgb(255, 255, 255)
 
 kaizen-self-background-color = kaizen-kpi-ok-background-color
 kaizen-self-text-color = kaizen-kpi-ok-text-color
@@ -202,7 +202,7 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
     &.normal-size
       font-size 1em
     &.big-size 
-      font-size 1.4em
+      font-size 1.2em
     span
       &:not(.caret)
         display inline
@@ -228,19 +228,29 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
       display block
       font-weight 300
       font-family alternative-font
+      &.rank-position
+        font-size 1.4em
+        &.good-rank
+          color rgb(40, 121, 1)
+        &.bad-rank
+          color rgb(208, 8, 8)
+        &:before
+          content "Estás en la posición "
+          font-size 60%
       &.who
         font-size 1.6em
         color darken(primary-color-1, 10%)
       &.what
         font-size 1.1em
-        color darken(primary-color-2, 20%)
+        color primary-color-2
         margin .3em 0 0 0
       &.where
         font-size 1em
-        color darken(primary-color-2, 20%)
+        color primary-color-2
   .avatar
     img
       border avatar-img-border--bold
+      
   &#self-coordinador,
   &#self-vp
     .self-info
@@ -249,7 +259,7 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
       float left
       margin 0 20px 0 0
       img
-        height 9.8em
+        height 156px
   &#self-ejecutivo
     .avatar
       img
@@ -438,6 +448,7 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
   radial-plot
     svg
       height 85%
+      max-height 400px
       
 .kaizen-people-ranking
   background kaizen-people-ranking-background-color
@@ -446,6 +457,7 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
     margin-top 1em
     .each-people
       .each-avatar
+        text-align center
         img
           height 48px
           border avatar-img-border--thin
@@ -453,18 +465,21 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
         h4
           font-weight 400
           margin 0 0 .5em 0
-          color primary-color-1
+          color darken(primary-color-1, 30%)
           font-family alternative-font
           font-size 1.2em
         .progress
+          .progress-bar
+            box-shadow inset 0 1px 4px rgba(0, 0, 0, 0.2)
           border-radius 0px
           background rgb(240, 240, 240)
+          box-shadow inset 0 1px 4px rgba(0, 0, 0, 0.2)
           i
             font-weight 300
             font-style normal
             color white
-            letter-spacing 1px
-            text-shadow 0px 1px rgb(0, 0, 0)
+            text-shadow 0 1px 10px rgb(0, 0, 0)
+            font-size 1.1em
 
 .kaizen-latest-news
   background kaizen-latest-news-background-color
@@ -477,15 +492,17 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
       float left
       img
         &.guino
-          width 31px
+          max-width 31px
         &.cover-news
           border avatar-img-border--thin
           width 100%
       h2
         font-size 1.3em
         margin 0 0 .5em 0
+        letter-spacing -1px
       h5
-        font-size .9em
+        font-size .8em
+        font-style italic
         
         
 .kaizen-feedback

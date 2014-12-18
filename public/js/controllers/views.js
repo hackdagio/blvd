@@ -30,7 +30,7 @@ angular.module('kaizen-concepto.controllers-views', [])
 	});
 
 	$scope.ranking = [];
-	indicadoresService.getIndicadores('ranking2', '').then(function (results) {
+	indicadoresService.getIndicadores('ranking', '').then(function (results) {
 		$scope.ranking = results.data;
 
 	}, function (error) {
