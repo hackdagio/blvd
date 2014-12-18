@@ -11,8 +11,9 @@
 				th Habilidad
 				th Coordinador
 				th {{ title }} (%)
-				th Meta
-				th Cumplimiento
+				th Meta (%)
+				th Cumplimiento (%)
+				th 
 		tbody(ng-repeat='item in items')
 			tr
 				th {{ item[1] | uppercase }}
@@ -22,6 +23,10 @@
 				th.table-kpi-deep-weighted {{ item[0] }}%
 				th {{ item[4] }}%
 				th {{ item[5] }}%
+				th.table-kpi-deep-guino
+					img(src='entel/images/guiño.svg')
+					.glyphicon-inline
+						span.glyphicon.glyphicon-comment
 
 .modal-footer
 	button.btn.btn-primary(ng-click='ok()') [ OK _

@@ -276,7 +276,8 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
       margin-top .5em
 
 .kaizen-kpi
-  &.ok
+  &.ok,
+  &.neutral
     background kaizen-kpi-ok-background-color
     color kaizen-kpi-ok-text-color
     .weighted
@@ -289,6 +290,9 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
           color kaizen-negative-color-changes
       .delta
         color primary-color-2
+    &:hover:not(.neutral)
+      background darken(kaizen-kpi-ok-background-color, 2%)
+
   &.red-alert
     background-image kaizen-kpi-alert-background-image
     color kaizen-kpi-alert-text-color
@@ -304,6 +308,8 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
         color kaizen-kpi-alert-text-color
     .popover-content
       color primary-color-2
+    &:hover
+      background kaizen-kpi-alert-background-color
   
   &.sig-color
     background primary-color-3
@@ -406,6 +412,10 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
   color kaizen-skills-text-color
   .skills
     .skill
+      &:hover
+        a,
+        .weighted
+          text-shadow 0px 0 10px rgb(255, 255, 255)
       border-bottom 1px solid lighten(kaizen-ranking-background-color, 20%)
       padding 1em 0
       &:first-child
@@ -659,6 +669,15 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
     font-family alternative-font
   .table-kpi-deep-weighted
     font-weight 400
+  .table-kpi-deep-guino
+    img
+      width 30px
+    .glyphicon-inline
+      vertical-align bottom
+      height 30px
+      font-size 1.2em
+      color primary-color-3
+  
     
       
     

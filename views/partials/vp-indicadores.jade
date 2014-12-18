@@ -28,7 +28,7 @@
 
             //-- kpi: general
             .col-md-9
-              .kaizen-box.kaizen-kpi.ok.kaizen-self#self-vp.h-level-1
+              .kaizen-box.kaizen-kpi.neutral.kaizen-self#self-vp.h-level-1
                 .col-lg-12.nopadding
                   .col-sm-8.nopadding
                     .avatar
@@ -159,11 +159,11 @@
                 span.glyphicon.glyphicon-asterisk
               span.text-uppercase Habilidades
             .skills.kaizen-box-content(ng-controller='ModalHabCtrl')
-              .col-xs-12.skill
+              .col-xs-12.skill.cursor-pointer(ng-click='open("lg", "AC")')
                 .each
                   .col-xs-6
                     .info
-                      a.cursor-pointer(ng-click='open("lg", "AC")') AC
+                      a(href='#') AC
                       span.weighted 80%
                   .col-xs-3
                     .arrow.positive
@@ -174,11 +174,11 @@
                   .col-xs-3
                     .position
                       span 1
-              .col-xs-12.skill
+              .col-xs-12.skill.cursor-pointer(ng-click='open("lg", "SSBV")')
                 .each
                   .col-xs-6
                     .info
-                      a.cursor-pointer(ng-click='open("lg", "SSBV")') SSBV
+                      a(href='#') SSBV
                       span.weighted 76.2%
                   .col-xs-3
                     .arrow.positive
@@ -189,11 +189,11 @@
                   .col-xs-3
                     .position
                       span 2
-              .col-xs-12.skill
+              .col-xs-12.skill.cursor-pointer(ng-click='open("lg", "BAMCOMER")')
                 .each
                   .col-xs-6
                     .info
-                      a.cursor-pointer(ng-click='open("lg", "BAMCOMER")') BAMCOMER
+                      a(href='#') BAMCOMER
                       span.weighted 74.1%
                   .col-xs-3
                     .arrow.positive
