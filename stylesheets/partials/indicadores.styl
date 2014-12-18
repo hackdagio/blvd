@@ -9,12 +9,15 @@ kaizen-kpi-ok-background-color = color-gray-lighten
 kaizen-kpi-ok-text-color = darken(primary-color-2, 10%)
 
 kaizen-kpi-alert-background-color = rgb(208,8,8)
+kaizen-kpi-alert-background-image = linear-gradient(to bottom right, rgb(208,8,8) 0%, rgb(180, 8, 8) 100%)
 kaizen-kpi-alert-text-color = rgb(255,255,255)
 
 kaizen-ranking-background-color = rgb(78, 87, 94)
+kaizen-ranking-background-image = linear-gradient(to bottom right, #4E575E 0%, #3A4247 100%)
 kaizen-ranking-text-color = rgb(216, 216, 216)
 
 kaizen-skills-background-color = rgb(90, 90, 90)
+kaizen-skills-background-image = linear-gradient(to bottom right, #5A5A5A 0%, #303030 100%)
 kaizen-skills-text-color = rgb(226, 226, 226)
 
 kaizen-history-background-color = kaizen-kpi-ok-background-color
@@ -27,15 +30,17 @@ kaizen-people-ranking-background-color = kaizen-kpi-ok-background-color
 kaizen-people-ranking-text-color = kaizen-kpi-ok-text-color
 
 kaizen-latest-news-background-color = rgb(56, 56, 56)
+kaizen-latest-news-background-image = linear-gradient(to bottom right, rgb(0, 51, 66) 0%, rgb(0, 31, 44) 100%)
 kaizen-latest-news-text-color = rgb(255, 255, 255)
 
 kaizen-self-background-color = kaizen-kpi-ok-background-color
 kaizen-self-text-color = kaizen-kpi-ok-text-color
 
 kaizen-feedback-background-color = rgb(90, 90, 90)
+kaizen-feedback-background-image = linear-gradient(to bottom right, rgb(90, 90, 90) 0%, rgb(70, 70, 70) 100%)
 kaizen-feedback-text-color = rgb(226, 226, 226)
 
-kaizen-user-stories-background-color = rgb(31,31,31)
+kaizen-user-stories-background-image = linear-gradient(to bottom right, #292323 0%, #171313 100%)
 kaizen-user-stories-text-color = rgb(255, 255, 255)
 
 grid-height = 12
@@ -288,7 +293,7 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
       .delta
         color primary-color-2
   &.red-alert
-    background kaizen-kpi-alert-background-color
+    background-image kaizen-kpi-alert-background-image
     color kaizen-kpi-alert-text-color
     .weighted
       color kaizen-kpi-alert-text-color
@@ -358,7 +363,7 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
       
 
 .kaizen-ranking
-  background kaizen-ranking-background-color
+  background-image kaizen-ranking-background-image
   color kaizen-ranking-text-color
   .ranking
     .rank
@@ -400,7 +405,7 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
         border-bottom none
         
 .kaizen-skills
-  background kaizen-skills-background-color
+  background-image kaizen-skills-background-image
   color kaizen-skills-text-color
   .skills
     .skill
@@ -487,7 +492,7 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
             font-size 1.1em
 
 .kaizen-latest-news
-  background kaizen-latest-news-background-color
+  background-image kaizen-latest-news-background-image
   color kaizen-latest-news-text-color
   .latest-news
     margin-top 1em
@@ -511,7 +516,7 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
         
         
 .kaizen-feedback
-  background kaizen-feedback-background-color
+  background-image kaizen-feedback-background-image
   color kaizen-feedback-text-color
   .feedback
     .each-feedback
@@ -610,22 +615,24 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
           height 7px
 
 .kaizen-user-stories
-  background kaizen-user-stories-background-color
+  background-image kaizen-user-stories-background-image
   color kaizen-user-stories-text-color
   .user-stories
     margin-top 1em
-    .each-story
+    .stories-avatar
+      text-align center
       img
-        max-height 100%
-        max-width 100%
+        max-width 120px
         width 100%
         border avatar-img-border--thin
+    .stories-text
       span
         font-weight 300
         &.story-legend
           p
             font-style italic
             font-size 1em
+            line-height 1.5em
         &.story-author
           p
             font-weight bold
