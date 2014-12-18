@@ -26,7 +26,7 @@ kaizen-radial-kpi-text-color = kaizen-kpi-ok-text-color
 kaizen-people-ranking-background-color = kaizen-kpi-ok-background-color
 kaizen-people-ranking-text-color = kaizen-kpi-ok-text-color
 
-kaizen-latest-news-background-color = rgb(0, 79, 86)
+kaizen-latest-news-background-color = rgb(56, 56, 56)
 kaizen-latest-news-text-color = rgb(255, 255, 255)
 
 kaizen-self-background-color = kaizen-kpi-ok-background-color
@@ -211,6 +211,9 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
         white-space pre-wrap
       &.caret
         margin-left 5px
+      &:not(.glyphicon)
+        &:after
+          content "_"
   .kaizen-box-content
     float left
     width 100%
@@ -260,17 +263,15 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
       margin 0 20px 0 0
       img
         height 156px
-  &#self-ejecutivo
+        
+  &#self-ejecutivo,
+  &#self-supervisor
     .avatar
       img
-        width 70%
+        max-width 156px
+        width 80%
     .self-info
       margin-top .5em
-      span
-        &.who,
-        &.what,
-        &.where
-          text-align center
 
 .kaizen-kpi
   &.ok
@@ -301,6 +302,10 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
         color kaizen-kpi-alert-text-color
     .popover-content
       color primary-color-2
+  
+  &.sig-color
+    background primary-color-3
+    color white
   .kpi
     .weighted
       letter-spacing -2px
@@ -322,12 +327,12 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
         display inline-block
         margin-top .5em
     .gauge-kpi
-      transform rotate(180deg)
       text-align center
       margin-bottom 1em
       canvas
         max-width 80%
-        width 80%
+        width auto
+        height auto
         max-height 54px
     .kpi-name,
     .kpi-info
@@ -456,7 +461,7 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
   .people-ranking
     margin-top 1em
     .each-people
-      .each-avatar
+      .people-ranking-avatar
         text-align center
         img
           height 48px
@@ -511,54 +516,69 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
   .feedback
     .each-feedback
       border-bottom 1px solid lighten(kaizen-ranking-background-color, 20%)
-      padding 1em 0
+      padding .5em 0
       &:first-child
-        padding 0 0 1em 0
+        padding 0 0 .5em 0
       &:last-child
         border-bottom none
-      .each
-        .each-avatar
-          img
-            &:first-child
-              width 55px
-              border avatar-img-border--thin
-            &:last-child
-              height 35px
-              position absolute
-              bottom -7px
-              left 40px
-        .each-text
-          line-height 1.4em
-          img
-            display inline-block
-            height 24px
-            vertical-align bottom
-          blockquote,
-          span
-            font-weight 300
+      .feedback-avatar
+        text-align center
+        img
+          &:first-child
+            max-width 65px
+            width 80%
+            border avatar-img-border--thin
+          &:last-child
+            height 35px
+            position absolute
+            bottom -7px
+            left 25px
+      .feedback-text
+        line-height 1.4em
+        padding-left 30px
+        @media(max-width:767px)
+          padding-left 40px
+        img
+          display inline-block
+          height 24px
+          vertical-align bottom
+        blockquote,
+        span
+          font-weight 300
+          display inline
+          color white
+        blockquote
+          font-style italic
+          quotes "\201C""\201D""\2018""\2019"
+          &:before
+            content open-quote
+          &:after
+            content close-quote
+          p
             display inline
-          blockquote
-            font-style italic
-            quotes "\201C""\201D""\2018""\2019"
-            &:before
-              content open-quote
-            &:after
-              content close-quote
-            p
-              display inline
-          cite
-            font-size .8em
-            float left
-            width 100%
+        cite
+          font-family alternative-font
+          font-size 1em
+          float left
+          width 100%
+          color rgb(200,200,200)
+      .feedback-icons
+        padding-right 10px
+        padding-left 0px
+        margin-top .3em
         img
           &.guino
             width 22px
-        .glyphicon-inline
-          span
-            vertical-align top
+          
+      .glyphicon-inline
+        span
+          vertical-align top
     
         
 .kaizen-promo-carousel
+  width 100%
+  margin -20px 0 20px 0
+  border-bottom 1px solid rgba(0,0,0,0.06)
   .carousels
     background-position center
     background-size cover

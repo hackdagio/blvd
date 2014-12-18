@@ -1,43 +1,45 @@
 .wrapper.supervisor-view
   .wrapper-content
+
+    //- carousel promos
+    .kaizen-promo-carousel#carousel-supervisor
+      .kaizen-box-content.carousels(ng-controller='carouselController')
+        carousel(interval='interval')
+          slide(ng-repeat='slide in slides', active='slide.active')
+            img(ng-src='{{slide.image}}')
+            //- .carousel-caption
+            //-   h4 promo {{ $index+1 }}
+
+    //- container principal
     .container-fluid
       .row
 
         //- level 1
         .col-lg-12.nopadding
-          .col-lg-12
-            .kaizen-box.kaizen-promo-carousel#carousel-ejecutivo.full-box
-              .kaizen-box-content.carousels(ng-controller='carouselController')
-                carousel(interval='interval')
-                  slide(ng-repeat='slide in slides', active='slide.active')
-                    img(ng-src='{{slide.image}}')
-                    //- .carousel-caption
-                    //-   h4 promo {{ $index+1 }}
-
-        //- level 2
-        .col-lg-12.nopadding
 
           //- self
-          .col-md-2
-            .kaizen-box.kaizen-self#self-ejecutivo.h-level-6
+          .col-lg-2.col-xs-12.col-md-2
+            .kaizen-box.kaizen-self#self-supervisor.h-level-6
               .kaizen-box-content
                 .avatar.text-center
                   img.img-circle(src='entel/avatar/200.jpg')
-                .self-info
+                .self-info.text-center
+                  span.rank-position.good-rank.text-uppercase #5
                   span.who.capitalize Elizabeth Pereira
                   span.what.uppercase Supervisora Alto Valor
                   span.where.uppercase Allus
 
-          .col-md-5
-            .kaizen-box.kaizen-self.kaizen-kpi.ok#self-ejecutivo.h-level-6
-              .kaizen-box-name.big-size.text-center
+          //- tus indicadores
+          .col-lg-5.col-xs-12.col-md-5
+            .kaizen-box.sig-color.kaizen-kpi#self-supervisor.h-level-6
+              .kaizen-box-name.text-center
                 .glyphicon-kpi
                   span.glyphicon.glyphicon-asterisk
-                span.uppercase Hola, aquí están tus indicadores_
+                span.uppercase Hola, aquí están tus indicadores
               .kaizen-box-content(ng-controller='testGauge')
 
-                .col-xs-12.nopadding
-                  .col-xs-4
+                .col-lg-12.col-xs-12.nopadding
+                  .col-lg-4.col-sm-4.col-xs-12
                     .kpi
                       .gauge-kpi
                         canvas(gaugejs='', options='gaugeOptions', value='valuePonderadoSuper', max-value='maxValue', animation-time='animationTime')
@@ -50,7 +52,7 @@
                         span.glyphicon.glyphicon-chevron-up(alt='Sobre el promedio')
                         span.normal-size Promedio
 
-                  .col-xs-4
+                  .col-lg-4.col-sm-4.col-xs-12
                     .kpi
                       .gauge-kpi
                         canvas(gaugejs='', options='gaugeOptions', value='valueEPASuper', max-value='maxValue', animation-time='animationTime')
@@ -63,7 +65,7 @@
                         span.glyphicon.glyphicon-chevron-up(alt='Sobre el promedio')
                         span.normal-size Promedio
 
-                  .col-xs-4
+                  .col-lg-4.col-sm-4.col-xs-12
                     .kpi
                       .gauge-kpi
                         canvas(gaugejs='', options='gaugeOptions', value='valueCROSSSuper', max-value='maxValue', animation-time='animationTime')
@@ -77,74 +79,64 @@
                         span.normal-size Promedio
 
           //- feedback
-          .col-md-5
+          .col-lg-5.col-xs-12.col-md-5
             .kaizen-box.kaizen-feedback#feedback-supervisor.h-level-6
               .kaizen-box-name
                 .glyphicon-kpi
                   span.glyphicon.glyphicon-asterisk
-                span.uppercase Feedback_
+                span.uppercase Feedback
               .feedback.kaizen-box-content
 
-                .col-xs-12.each-feedback
-                  .each
-                    .col-xs-2
-                      .each-avatar
-                        img.img-circle(src='entel/avatar/100.jpg')
-                        img(src='entel/images/originals/only.svg')
-                    .col-xs-9
-                      .each-text
-                        blockquote: p Tu equipo va muy bien! Sigue así Eli.
-                        cite: | <b class='text-uppercase'>Susana Jimenez</b> · Coordinador
-                    .col-xs-1.nopadding
-                      img.guino(src='entel/images/guiño.svg')
-                      .glyphicon-inline
-                        span.glyphicon.glyphicon-comment
+                .col-lg-12.col-xs-12.each-feedback
+                  .feedback-avatar.col-lg-2.col-sm-1.col-md-2.col-xs-2.nopadding
+                    img.img-circle(src='entel/avatar/100.jpg')
+                    img(src='entel/images/originals/only.svg')
+                  .feedback-text.col-lg-9.col-sm-10.col-md-9.col-xs-9
+                    blockquote: p Tu equipo va muy bien! Sigue así Eli.
+                    cite: | <em>por</em> <b>Alison Fernández</b> · Supervisor
+                  .feedback-icons.col-lg-1.col-sm-1.col-md-1.col-xs-1
+                    img.guino(src='entel/images/guiño.svg')
+                    .glyphicon-inline
+                      span.glyphicon.glyphicon-comment
 
-                .col-xs-12.each-feedback
-                  .each
-                    .col-xs-2
-                      .each-avatar
-                        img.img-circle(src='entel/avatar/110.jpg')
-                        img(src='entel/images/originals/only.svg')
-                    .col-xs-9
-                      .each-text
-                        blockquote: p ¡Cómo lo haces! Me gustaría manejar a un equipo tan bien como tú.
-                        cite: | <b class='text-uppercase'>Sonia Beltrán</b> · Supervisor
-                    .col-xs-1.nopadding
-                      img.guino(src='entel/images/guiño.svg')
-                      .glyphicon-inline
-                        span.glyphicon.glyphicon-comment
+                .col-lg-12.col-xs-12.each-feedback
+                  .feedback-avatar.col-lg-2.col-sm-1.col-md-2.col-xs-2.nopadding
+                    img.img-circle(src='entel/avatar/110.jpg')
+                    img(src='entel/images/originals/only.svg')
+                  .feedback-text.col-lg-9.col-sm-10.col-md-9.col-xs-9
+                    blockquote: p ¡Cómo lo haces! Me gustaría manejar a un equipo tan bien como tú.
+                    cite: | <em>por</em> <b>Sonia Beltrán</b> · Supervisor
+                  .feedback-icons.col-lg-1.col-sm-1.col-md-1.col-xs-1
+                    img.guino(src='entel/images/guiño.svg')
+                    .glyphicon-inline
+                      span.glyphicon.glyphicon-comment
 
-                .col-xs-12.each-feedback
-                  .each
-                    .col-xs-2
-                      .each-avatar
-                        img.img-circle(src='entel/avatar/120.jpg')
-                        img(src='entel/images/originals/all.svg')
-                    .col-xs-9
-                      .each-text
-                        blockquote: p Eli, ¿me puedes ayudar a subir mis ventas? Te lo agradecería un montón.
-                        cite: | <b class='text-uppercase'>Luis Perez</b> · Ejecutivo
-                    .col-xs-1.nopadding
-                      img.guino(src='entel/images/guiño.svg')
-                      .glyphicon-inline
-                        span.glyphicon.glyphicon-comment
+                .col-lg-12.col-xs-12.each-feedback
+                  .feedback-avatar.col-lg-2.col-sm-1.col-md-2.col-xs-2.nopadding   
+                    img.img-circle(src='entel/avatar/120.jpg')
+                    img(src='entel/images/originals/all.svg')
+                  .feedback-text.col-lg-9.col-sm-10.col-md-9.col-xs-9
+                    blockquote: p Eli, ¿me puedes ayudar a subir mis ventas? Te lo agradecería un montón.
+                    cite: | <em>por</em> <b>Luís Perez</b> · Supervisor
+                  .feedback-icons.col-lg-1.col-sm-1.col-md-1.col-xs-1
+                    img.guino(src='entel/images/guiño.svg')
+                    .glyphicon-inline
+                      span.glyphicon.glyphicon-comment
 
 
-
-
+        //- level 2
         .col-lg-12.nopadding
 
-          //- ranking
-          .col-md-4
+          //- top ejecutivos
+          .col-lg-4.col-md-4.col-sm-6.col-xs-12
             .kaizen-box.kaizen-people-ranking.h-level-3
               .kaizen-box-name
                 .glyphicon-kpi
                   span.glyphicon.glyphicon-asterisk
-                span.uppercase Top ejecutivos_
+                span.uppercase Mejores ejecutivos
               .people-ranking.kaizen-box-content(ng-controller='ProgressDemoCtrl')
                 .each-people.col-md-12.nopadding
-                  .each-avatar.col-xs-2.nopadding
+                  .people-ranking-avatar.col-xs-2.nopadding
                     img.img-circle.text-center(src='entel/avatar/5.jpg')
                   .each-name-and-kpi.col-xs-9
                     h4 {{ ejecutivosData[0] }}
@@ -154,7 +146,7 @@
                     .each-glyphicon-container
                       span.glyphicon.glyphicon-share-alt
                 .each-people.col-md-12.nopadding
-                  .each-avatar.col-xs-2.nopadding
+                  .people-ranking-avatar.col-xs-2.nopadding
                     img.img-circle(src='entel/avatar/90.jpg')
                   .each-name-and-kpi.col-xs-9
                     h4 {{ ejecutivosData[1] }}
@@ -164,7 +156,7 @@
                     .each-glyphicon-container
                       span.glyphicon.glyphicon-share-alt
                 .each-people.col-md-12.nopadding
-                  .each-avatar.col-xs-2.nopadding
+                  .people-ranking-avatar.col-xs-2.nopadding
                     img.img-circle(src='entel/avatar/180.jpg')
                   .each-name-and-kpi.col-xs-9
                     h4 {{ ejecutivosData[2] }}
@@ -174,7 +166,7 @@
                     .each-glyphicon-container
                       span.glyphicon.glyphicon-share-alt
                 .each-people.col-md-12.nopadding
-                  .each-avatar.col-xs-2.nopadding
+                  .people-ranking-avatar.col-xs-2.nopadding
                     img.img-circle(src='entel/avatar/60.jpg')
                   .each-name-and-kpi.col-xs-9
                     h4 {{ ejecutivosData[3] }}
@@ -184,89 +176,89 @@
                     .each-glyphicon-container
                       span.glyphicon.glyphicon-share-alt
 
-          //- ranking
-          .col-md-4
+          //- ejecutivos a apoyar
+          .col-lg-4.col-md-4.col-sm-6.col-xs-12
             .kaizen-box.kaizen-people-ranking.h-level-3
               .kaizen-box-name
                 .glyphicon-kpi
                   span.glyphicon.glyphicon-asterisk
-                span.uppercase Ejecutivos a apoyar_
+                span.uppercase Ejecutivos a apoyar
               .people-ranking.kaizen-box-content(ng-controller='ProgressDemoCtrl')
                 .each-people.col-md-12.nopadding
-                  .each-avatar.col-xs-2.nopadding
+                  .people-ranking-avatar.col-xs-2.nopadding
                     img.img-circle.text-center(src='entel/avatar/170.jpg')
                   .each-name-and-kpi.col-xs-9
                     h4 {{ peoresData[0] }}
-                    progressbar(max='max', value='61.2', type='danger')
-                      i 61,2%
+                    progressbar(max='max', value='61.3', type='danger')
+                      i 61,3%
                   .each-social-interactions.col-xs-1.nopadding
                     .each-glyphicon-container
                       span.glyphicon.glyphicon-share-alt
                 .each-people.col-md-12.nopadding
-                  .each-avatar.col-xs-2.nopadding
+                  .people-ranking-avatar.col-xs-2.nopadding
                     img.img-circle(src='entel/avatar/150.jpg')
                   .each-name-and-kpi.col-xs-9
                     h4 {{ peoresData[1] }}
-                    progressbar(max='max', value='60.3', type='danger')
-                      i 60,3%
+                    progressbar(max='max', value='60.8', type='danger')
+                      i 60,8%
                   .each-social-interactions.col-xs-1.nopadding
                     .each-glyphicon-container
                       span.glyphicon.glyphicon-share-alt
                 .each-people.col-md-12.nopadding
-                  .each-avatar.col-xs-2.nopadding
+                  .people-ranking-avatar.col-xs-2.nopadding
                     img.img-circle(src='entel/avatar/160.jpg')
                   .each-name-and-kpi.col-xs-9
                     h4 {{ peoresData[2] }}
-                    progressbar(max='max', value='59.7', type='danger')
-                      i 59,7%
+                    progressbar(max='max', value='59.4', type='danger')
+                      i 59,4%
                   .each-social-interactions.col-xs-1.nopadding
                     .each-glyphicon-container
                       span.glyphicon.glyphicon-share-alt
                 .each-people.col-md-12.nopadding
-                  .each-avatar.col-xs-2.nopadding
+                  .people-ranking-avatar.col-xs-2.nopadding
                     img.img-circle(src='entel/avatar/140.jpg')
                   .each-name-and-kpi.col-xs-9
                     h4 {{ peoresData[3] }}
-                    progressbar(max='max', value='55.7', type='danger')
-                      i 55.7%
+                    progressbar(max='max', value='58.1', type='danger')
+                      i 58,1%
                   .each-social-interactions.col-xs-1.nopadding
                     .each-glyphicon-container
                       span.glyphicon.glyphicon-share-alt
 
-          //- news
-          .col-md-4
+          //- ultimas noticias
+          .col-lg-4.col-md-4.col-sm-6.col-xs-12
             .kaizen-box.kaizen-latest-news.h-level-3
               .kaizen-box-name
                 .glyphicon-kpi
                   span.glyphicon.glyphicon-asterisk
-                span.uppercase Últimas noticias_
+                span.uppercase Últimas noticias
               .latest-news.kaizen-box-content
                 .each-news.latest
                   .col-lg-12.nopadding
-                    .col-xs-2
+                    .col-lg-3.col-sm-2.col-xs-3
                       img.cover-news(src='entel/images/news/winners.jpg')
-                    .col-xs-9.nopadding
+                    .col-lg-8.col-sm-9.col-xs-8.nopadding
                       h2 Ganadores de Noviembre
                       h5 Hace 2 días · por Área de Ventas
-                    .col-xs-1.nopadding
+                    .col-lg-1.col-sm-1.col-xs-1.nopadding
                       img.guino(src='entel/images/guiño.svg')
                 .each-news
                   .col-lg-12.nopadding
-                    .col-xs-2
-                      img.cover-news(src='entel/images/news/selfie.jpg')
-                    .col-xs-9.nopadding
-                      h2 Motiva a tu equipo
-                      h5 Hace 2 días · por Calidad
-                    .col-xs-1.nopadding
+                    .col-lg-3.col-sm-2.col-xs-3
+                      img.cover-news(src='entel/images/news/smile.jpg')
+                    .col-lg-8.col-sm-9.col-xs-8.nopadding
+                      h2 Motivate con Sonrisas
+                      h5 Hace 2 días · por Gerencia
+                    .col-lg-1.col-sm-1.col-xs-1.nopadding
                       img.guino(src='entel/images/guiño.svg')
                 .each-news
                   .col-lg-12.nopadding
-                    .col-xs-2
+                    .col-lg-3.col-sm-2.col-xs-3
                       img.cover-news(src='entel/images/news/sell.jpg')
-                    .col-xs-9.nopadding
+                    .col-lg-8.col-sm-9.col-xs-8.nopadding
                       h2 Juntos vendemos más
                       h5 Hace 3 días · por Área de Ventas
-                    .col-xs-1.nopadding
+                    .col-lg-1.col-sm-1.col-xs-1.nopadding
                       img.guino(src='entel/images/guiño.svg')
 
 

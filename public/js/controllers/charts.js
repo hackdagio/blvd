@@ -309,40 +309,15 @@ app.controller('testGauge', ['$scope', '$timeout', function($scope, $timeout) {
             // The radius of the inner circle
             strokeWidth: 0.035,
             // The rotation offset
-            color: '#005F9F' // Fill color
+            color: '#FFFFFF' // Fill color
         },
         limitMax: 'false',
         // If true, the pointer will not go past the end of the gauge
-        colorStart: '#FF6702',
+        colorStart: '#5A5A5A',
         // Colors
-        colorStop: '#E75C00',
+        colorStop: '#5A5A5A',
         // just experiment with them
-        strokeColor: '#F0F0F0',
-        // to see which ones work best for you
-        generateGradient: true
-    };
-    
-    $scope.donutGaugeOptions = {
-        lines: 12,
-        // The number of lines to draw
-        angle: 0.15,
-        // The length of each line
-        lineWidth: 0.044,
-        // The line thickness
-        pointer: {
-            length: 0.09,
-            // The radius of the inner circle
-            strokeWidth: 0.0035,
-            // The rotation offset
-            color: '#000000' // Fill color
-        },
-        limitMax: 'false',
-        // If true, the pointer will not go past the end of the gauge
-        colorStart: '#FF6702',
-        // Colors
-        colorStop: '#FF6702',
-        // just experiment with them
-        strokeColor: '#E0E0E0',
+        strokeColor: '#FFAF79',
         // to see which ones work best for you
         generateGradient: true
     };
