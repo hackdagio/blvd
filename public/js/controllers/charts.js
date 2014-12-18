@@ -326,21 +326,82 @@ app.controller('testGauge', ['$scope', '$timeout', function($scope, $timeout) {
 
 app.controller('ModalKpiCtrl', function ($scope, $modal, indicadoresService) {
 
-    $scope.ranking = [];
-    indicadoresService.getIndicadores('ranking', '').then(function (results) {
-      $scope.items = results.data;
-    });
+    // $scope.ranking = [];
+    // indicadoresService.getIndicadores('ranking', '').then(function (results) {
+    //   $scope.items = results.data;
+    // });
 
+  $scope.items = [
+  ['98,5', 'AC'], 
+  ['95,3', 'SSBV'],
+  ['44,5', 'BAMCOMER'],
+  ['57,4', 'NURSERY'],
+  ['68,9', 'SMPH'],
+  ['84,2', 'OT']
+  ];
+  $scope.kpi = ['Nivel de Servicio', 'Nivel de Atención', 'EPA', 'TMO', 'Desviación de llamadas'];
 
-  $scope.open = function (size) {
+  $scope.open = function (size, kpiname) {
 
     var modalInstance = $modal.open({
-      templateUrl: 'partials/modal',
+      templateUrl: 'partials/modal-kpi',
       controller: 'ModalInstanceCtrl',
       size: size,
       resolve: {
         items: function () {
           return $scope.items;
+        },
+        centros: function () {
+          return $scope.centros;
+        },
+        kpi: function () {
+          return $scope.kpi;
+        },
+        title: function () {
+          return kpiname;
+        }
+      }
+    });
+
+  };
+
+});
+
+app.controller('ModalHabCtrl', function ($scope, $modal, indicadoresService) {
+
+    // $scope.ranking = [];
+    // indicadoresService.getIndicadores('ranking', '').then(function (results) {
+    //   $scope.items = results.data;
+    // });
+
+  $scope.kpi = ['Servicio', 'Atención', 'Desviación', 'EPA', 'TMO', 'CROSS'];
+  $scope.items = [
+  ['94,2'],
+  ['75,4'],
+  ['67,4'],
+  ['98,5'],
+  ['94,3'],
+  ['87,3']
+  ];
+
+  $scope.open = function (size, kpiname) {
+
+    var modalInstance = $modal.open({
+      templateUrl: 'partials/modal-hab',
+      controller: 'ModalInstanceCtrl',
+      size: size,
+      resolve: {
+        items: function () {
+          return $scope.items;
+        },
+        centros: function () {
+          return $scope.centros;
+        },
+        kpi: function () {
+          return $scope.kpi;
+        },
+        title: function () {
+          return kpiname;
         }
       }
     });
@@ -352,8 +413,11 @@ app.controller('ModalKpiCtrl', function ($scope, $modal, indicadoresService) {
 // Please note that $modalInstance represents a modal window (instance) dependency.
 // It is not the same as the $modal service used above.
 
-app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
+app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items, title, centros, kpi) {
 
+  $scope.title = title;
+  $scope.centros = centros;
+  $scope.kpi = kpi;
   $scope.items = items;
   $scope.selected = {
     item: $scope.items[0]

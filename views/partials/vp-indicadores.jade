@@ -52,8 +52,8 @@
                           span {{ indicadores.Kpi.Ponderado.Delta | percentage:2 }}
 
             //-- kpi: desv q llamadas
-            .col-md-3
-              .kaizen-box.kaizen-kpi.ok.h-level-1
+            .col-md-3(ng-controller='ModalKpiCtrl')
+              .kaizen-box.kaizen-kpi.ok.h-level-1.cursor-pointer(ng-click='open("lg", "Desviación de llamadas")')
                 .kaizen-box-name
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
@@ -73,7 +73,7 @@
 
             //- kpi: n.s.
             .col-md-3
-              .kaizen-box.kaizen-kpi.red-alert.h-level-2.cursor-pointer(ng-click='open("lg")')
+              .kaizen-box.kaizen-kpi.red-alert.h-level-2.cursor-pointer(ng-click='open("lg", "Nivel de servicio")')
                 .kaizen-box-name
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
@@ -95,7 +95,7 @@
 
             //- kpi: n.a.
             .col-md-3
-              .kaizen-box.kaizen-kpi.red-alert.h-level-2.cursor-pointer(ng-click='open("lg")')
+              .kaizen-box.kaizen-kpi.red-alert.h-level-2.cursor-pointer(ng-click='open("lg", "Nivel de atención")')
                 .kaizen-box-name
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
@@ -116,7 +116,7 @@
 
             //- kpi: epa
             .col-md-3
-              .kaizen-box.kaizen-kpi.red-alert.h-level-2.cursor-pointer(ng-click='open("lg")')
+              .kaizen-box.kaizen-kpi.red-alert.h-level-2.cursor-pointer(ng-click='open("lg", "EPA")')
                 .kaizen-box-name
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
@@ -138,7 +138,7 @@
 
             //- kpi: tmo
             .col-md-3
-              .kaizen-box.kaizen-kpi.ok.h-level-2
+              .kaizen-box.kaizen-kpi.ok.h-level-2.cursor-pointer(ng-click='open("lg", "TMO")')
                 .kaizen-box-name
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
@@ -158,12 +158,12 @@
               .glyphicon-kpi
                 span.glyphicon.glyphicon-asterisk
               span.text-uppercase Habilidades
-            .skills.kaizen-box-content
+            .skills.kaizen-box-content(ng-controller='ModalHabCtrl')
               .col-xs-12.skill
                 .each
                   .col-xs-6
                     .info
-                      a(href='habilidades/') AC
+                      a.cursor-pointer(ng-click='open("lg", "AC")') AC
                       span.weighted 80%
                   .col-xs-3
                     .arrow.positive
@@ -178,7 +178,7 @@
                 .each
                   .col-xs-6
                     .info
-                      a(href='habilidades/') SSBV
+                      a.cursor-pointer(ng-click='open("lg", "SSBV")') SSBV
                       span.weighted 76.2%
                   .col-xs-3
                     .arrow.positive
@@ -193,7 +193,7 @@
                 .each
                   .col-xs-6
                     .info
-                      a(href='habilidades/') BAMCOMER
+                      a.cursor-pointer(ng-click='open("lg", "BAMCOMER")') SSBV BAMCOMER
                       span.weighted 74.1%
                   .col-xs-3
                     .arrow.positive
