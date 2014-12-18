@@ -3,17 +3,17 @@
     .col-md-12(ng-controller='loginController')
       .modal-dialog(style='margin-bottom:0')
         .panel-heading
-          h3.panel-title Inicia sesión
+          h3.panel-title.text-uppercase Inicia sesión
         .alert.alert-danger(data-dismiss='alert', data-ng-hide="message == ''") {{ message }}
         .panel-body
           form(role='form')
             fieldset
               .form-group
-                input#username.form-control(type='username', name='username', data-ng-model='loginData.userName', required='', autofocus='', tooltip='Tu RUT o usuario', tooltip-trigger="focus", tooltip-placement="right")
+                input#username.form-control(type='username', name='username', data-ng-model='loginData.userName', required='', autofocus='')
               .form-group
-                input#password.form-control(type='password', name='password', data-ng-model='loginData.password', required='', tooltip='Tu contraseña', tooltip-trigger="focus", tooltip-placement="right")
+                input#password.form-control(type='password', name='password', data-ng-model='loginData.password', required='')
               .checkbox
                 label
                   input(name='remember', type='checkbox', value='Recuérdame')
                   | Recuérdame
-              button.btn.btn-sm.btn-primary(type='submit', data-ng-click='login()') Entrar
+              button.btn.btn-sm.btn-primary(type='submit', data-ng-click='login()') [ Entrar_

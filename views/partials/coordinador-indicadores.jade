@@ -35,8 +35,8 @@
                           span {{ indicadores.Kpi.Ponderado.Delta | percentage:2 }}%
 
             //- kpi: desv q llamadas
-            .col-lg-3.col-sm-3
-              .kaizen-box.kaizen-kpi.ok.h-level-1
+            .col-lg-3.col-sm-3(ng-controller='ModalKpiCtrl')
+              .kaizen-box.kaizen-kpi.ok.h-level-1.cursor-pointer(ng-click='open("lg", "Desviación de llamadas")')
                 .kaizen-box-name
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
@@ -51,11 +51,11 @@
                       span {{ indicadores.Kpi.DesviacionQLlamadas.Delta | percentage:2 }}
 
           //- sublevel 2
-          .col-lg-12.col-sm-12.nopadding
+          .col-lg-12.col-sm-12.nopadding(ng-controller='ModalKpiCtrl')
 
             //- kpi: n.s.
             .col-md-3.col-sm-6
-              .kaizen-box.kaizen-kpi.red-alert.h-level-2
+              .kaizen-box.kaizen-kpi.red-alert.h-level-2.cursor-pointer(ng-click='open("lg", "Nivel de servicio")')
                 .kaizen-box-name
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
@@ -76,7 +76,7 @@
 
             //- kpi: n.a.
             .col-md-3.col-sm-6
-              .kaizen-box.kaizen-kpi.red-alert.h-level-2
+              .kaizen-box.kaizen-kpi.red-alert.h-level-2.cursor-pointer(ng-click='open("lg", "Nivel de atención")')
                 .kaizen-box-name
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
@@ -97,7 +97,7 @@
 
             //- kpi: epa
             .col-md-3.col-sm-6
-              .kaizen-box.kaizen-kpi.red-alert.h-level-2
+              .kaizen-box.kaizen-kpi.red-alert.h-level-2.cursor-pointer(ng-click='open("lg", "EPA")')
                 .kaizen-box-name
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
@@ -118,7 +118,7 @@
 
             //- kpi: tmo
             .col-md-3.col-sm-6
-              .kaizen-box.kaizen-kpi.ok.h-level-2
+              .kaizen-box.kaizen-kpi.ok.h-level-2.cursor-pointer(ng-click='open("lg", "TMO")')
                 .kaizen-box-name
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
