@@ -12,6 +12,8 @@ kaizen-kpi-alert-background-color = rgb(208,8,8)
 kaizen-kpi-alert-background-image = linear-gradient(to bottom right, rgb(208,8,8) 0%, rgb(180, 8, 8) 100%)
 kaizen-kpi-alert-text-color = rgb(255,255,255)
 
+kaizen-kpi-sig-background-image = linear-gradient(to bottom right, primary-color-3 0%, darken(primary-color-2, 10%) 100%)
+
 kaizen-ranking-background-color = rgb(78, 87, 94)
 kaizen-ranking-background-image = linear-gradient(to bottom right, #4E575E 0%, #3A4247 100%)
 kaizen-ranking-text-color = rgb(216, 216, 216)
@@ -312,7 +314,7 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
       background kaizen-kpi-alert-background-color
   
   &.sig-color
-    background primary-color-3
+    background-image kaizen-kpi-sig-background-image
     color white
   .kpi
     .weighted
@@ -505,14 +507,14 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
     margin-top 1em
     .each-news
       font-weight 300
-      margin 0 0 1.5em 0
+      margin 0 0 1em 0
       float left
       img
         &.guino
           max-width 31px
         &.cover-news
           border avatar-img-border--thin
-          width 100%
+          width 70%
       h2
         font-size 1.3em
         margin 0 0 .5em 0
@@ -677,6 +679,27 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
       height 30px
       font-size 1.2em
       color primary-color-3
+  .table-position-not-me
+    opacity .5
+    transform scale(.95)
+    -webkit-filter blur(1px)
+    th
+      border-top 0
+  .table-position-its-me
+    color primary-color-1
+    th
+      border-top 0
+    
+.kaizen-modal
+  .table-position-separator
+    text-align center
+    float left
+    width 100%
+    margin -20px 0 20px 0
+    span
+      color rgb(200, 200, 200)
+      font-weight 300
+      font-size 2em 
   
     
       

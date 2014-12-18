@@ -359,6 +359,18 @@ app.controller('ModalKpiCtrl', function ($scope, $modal, indicadoresService) {
         },
         title: function () {
           return kpiname;
+        },
+        actualrank: function () {
+          return false;
+        },
+        username: function () {
+          return false;
+        },
+        useravatar: function () {
+          return false;
+        },
+        userweighted: function () {
+          return false;
         }
       }
     });
@@ -402,6 +414,62 @@ app.controller('ModalHabCtrl', function ($scope, $modal, indicadoresService) {
         },
         title: function () {
           return kpiname;
+        },
+        actualrank: function () {
+          return false;
+        },
+        username: function () {
+          return false;
+        },
+        useravatar: function () {
+          return false;
+        },
+        userweighted: function () {
+          return false;
+        }
+      }
+    });
+
+  };
+
+});
+
+app.controller('ModalPosCtrl', function ($scope, $modal, indicadoresService) {
+
+  $scope.items = [
+  ['1', 'Paulina Gomez', 'entel/avatar/190.jpg', '99,9']
+  ];
+
+  $scope.open = function (size, rank, username, useravatar, userweighted) {
+
+    var modalInstance = $modal.open({
+      templateUrl: 'partials/modal-position',
+      controller: 'ModalInstanceCtrl',
+      size: size,
+      resolve: {
+        items: function () {
+          return $scope.items;
+        },
+        centros: function () {
+          return $scope.centros;
+        },
+        kpi: function () {
+          return $scope.kpi;
+        },
+        title: function () {
+          return false;
+        },
+        actualrank: function () {
+          return rank;
+        },
+        username: function () {
+          return username;
+        },
+        useravatar: function () {
+          return useravatar;
+        },
+        userweighted: function () {
+          return userweighted;
         }
       }
     });
@@ -413,8 +481,12 @@ app.controller('ModalHabCtrl', function ($scope, $modal, indicadoresService) {
 // Please note that $modalInstance represents a modal window (instance) dependency.
 // It is not the same as the $modal service used above.
 
-app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items, title, centros, kpi) {
+app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items, title, centros, kpi, actualrank, username, useravatar, userweighted) {
 
+  $scope.userweighted = userweighted;
+  $scope.useravatar = useravatar;
+  $scope.username = username;
+  $scope.actualrank = actualrank;
   $scope.title = title;
   $scope.centros = centros;
   $scope.kpi = kpi;

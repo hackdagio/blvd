@@ -23,8 +23,8 @@
               .kaizen-box-content
                 .avatar.text-center
                   img.img-circle(src='entel/avatar/200.jpg')
-                .self-info.text-center
-                  span.rank-position.good-rank.text-uppercase #5
+                .self-info.text-center(ng-controller='ModalPosCtrl')
+                  span.rank-position.good-rank.text-uppercase.cursor-pointer(ng-click='open("xs", "2", "Elizabeth Pereira", "entel/avatar/200.jpg", "91,2")') #2
                   span.who.capitalize Elizabeth Pereira
                   span.what.uppercase Supervisora Alto Valor
                   span.where.uppercase Allus

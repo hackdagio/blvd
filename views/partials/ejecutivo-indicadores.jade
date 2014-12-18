@@ -23,8 +23,8 @@
               .kaizen-box-content
                 .avatar.text-center
                   img.img-circle(src='entel/avatar/5.jpg')
-                .self-info.text-center
-                  span.rank-position.bad-rank.text-uppercase #34
+                .self-info.text-center(ng-controller='ModalPosCtrl')
+                  span.rank-position.bad-rank.text-uppercase.cursor-pointer(ng-click='open("xs", "34", "Alicia Valderrama", "entel/avatar/5.jpg", "91,2")') #34
                   span.who.capitalize Alicia Valderrama
                   span.what.uppercase Ejecutiva de Ventas
                   span.where.uppercase ECC
