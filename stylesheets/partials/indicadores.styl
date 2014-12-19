@@ -32,7 +32,7 @@ kaizen-people-ranking-background-color = kaizen-kpi-ok-background-color
 kaizen-people-ranking-text-color = kaizen-kpi-ok-text-color
 
 kaizen-latest-news-background-color = rgb(56, 56, 56)
-kaizen-latest-news-background-image = linear-gradient(to bottom right, rgb(0, 51, 66) 0%, rgb(0, 31, 44) 100%)
+kaizen-latest-news-background-image = linear-gradient(to bottom right, rgb(95, 95, 95) 0%, rgb(84, 100, 102) 100%)
 kaizen-latest-news-text-color = rgb(255, 255, 255)
 
 kaizen-self-background-color = kaizen-kpi-ok-background-color
@@ -158,7 +158,8 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
   margin -5px -5px 25px -5px
   line-height 2em
   overflow hidden
-  border 1px solid rgba(0,0,0,0.06)
+  &:not(.without-border)
+    border 1px solid rgba(0,0,0,0.06)
   &.full-box
     padding 0
   &.h-level-1
@@ -499,6 +500,15 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
             color white
             text-shadow 0 1px 10px rgb(0, 0, 0)
             font-size 1.1em
+      .each-social-interactions
+        margin-top 0.5em
+        img
+          &.guino
+            width 22px
+        .glyphicon-inline
+          span
+            vertical-align top
+      
 
 .kaizen-latest-news
   background-image kaizen-latest-news-background-image
