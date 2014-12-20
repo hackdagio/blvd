@@ -1,4 +1,4 @@
-wrapper-principal-size = 140
+wrapper-principal-size = 125
 
 kaizen-positive-color-changes = color-positive
 kaizen-negative-color-changes = color-negative
@@ -32,7 +32,7 @@ kaizen-people-ranking-background-color = kaizen-kpi-ok-background-color
 kaizen-people-ranking-text-color = kaizen-kpi-ok-text-color
 
 kaizen-latest-news-background-color = rgb(56, 56, 56)
-kaizen-latest-news-background-image = linear-gradient(to bottom right, rgb(95, 95, 95) 0%, rgb(84, 100, 102) 100%)
+kaizen-latest-news-background-image = linear-gradient(to bottom right, rgb(95, 95, 95) 0%, rgb(38, 50, 52) 100%)
 kaizen-latest-news-text-color = rgb(255, 255, 255)
 
 kaizen-self-background-color = kaizen-kpi-ok-background-color
@@ -107,20 +107,21 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
           display block
           text-decoration none
           color rgb(255,255,255)
-          font-size .9em
+          font-size 1em
           text-shadow 0 0 2px rgb(17, 17, 17)
+          text-transform uppercase
+          font-family alternative-font
           &:hover
             text-decoration none
         &:last-child
           border-bottom none
-      & > .sidebar-brand
-        font-size 18px
         a
           color rgb(255,255,255)
           &:hover
             text-decoration none
       .active
-          border-left 3px solid primary-color-2
+          border-left 3px solid primary-color-3
+          font-size 110%
       img
         width 50%
     .sidebar-nav li a:active,
@@ -198,6 +199,19 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
       height inherit
     @media(max-width:992px)
       height inherit
+  &.h-level-7
+    height (grid-height - 4)em
+    @media(max-width:767px)
+      height inherit
+    @media(max-width:992px)
+      height inherit
+  &.h-level-8
+    height (grid-height + 0.8)em
+    @media(max-width:767px)
+      height inherit
+    @media(max-width:992px)
+      height inherit
+      
     
   .kaizen-box-name
     float left
@@ -231,6 +245,25 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
 .kaizen-self
   background kaizen-self-background-color
   color kaizen-self-text-color
+  &#self-coordinador,
+  &#self-vp
+    .self-info
+      display block
+    .avatar
+      float left
+      margin 0 20px 0 0
+      img
+        height 156px
+  &#self-ejecutivo,
+  &#self-supervisor
+    .self-info
+      display block      
+    .avatar
+      float left
+      margin 0 20px 0 0
+      img
+        height 100px
+        
   .self-info
     span
       display block
@@ -251,7 +284,7 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
       &.what
         font-size 1.1em
         color primary-color-2
-        margin .3em 0 0 0
+        margin 0.3em 0 0 0
       &.where
         font-size 1em
         color primary-color-2
@@ -259,24 +292,35 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
     img
       border avatar-img-border--bold
       
-  &#self-coordinador,
-  &#self-vp
-    .self-info
-      display block
-    .avatar
-      float left
-      margin 0 20px 0 0
-      img
-        height 156px
+
         
-  &#self-ejecutivo,
-  &#self-supervisor
-    .avatar
-      img
-        max-width 156px
-        width 80%
-    .self-info
-      margin-top .5em
+  .versus
+    font-weight 300
+        
+    .glyphicon
+      font-size .8em
+    
+    .karma-wrapper,
+    .karma-glyphicon
+      width 100%
+      float left
+    .karma-wrapper
+      .karma-box
+        height 10px
+        float left
+        box-shadow inset 0 0 1px rgba(0, 0, 0, 0.1)
+        width 100%
+        background linear-gradient(to right, rgb(255, 61, 61) 0%, lighten(yellow, 20%) 75%, color-positive 100%)
+
+    .karma-glyphicon
+      &:hover
+        opacity 1
+        transition all 0.2s ease
+      &.mine
+        margin-bottom -7px
+      &.average
+        margin-top -1px
+        
 
 .kaizen-kpi
   &.ok,
@@ -337,9 +381,9 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
       .delta
         display inline-block
         margin-top .5em
+        
     .gauge-kpi
       text-align center
-      margin-bottom 1em
       canvas
         max-width 80%
         width auto
@@ -353,17 +397,8 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
         display inline-block
         &:not(:first-child)
           margin-left .4em
-    .versus
-      text-align center
-      font-weight 300
-      span
-        &:first-child
-          margin-right .5em
-        &:last-child
-          margin-left .5em
-          
-      .glyphicon
-        font-size 1.2em
+
+        
 
       
       
@@ -519,19 +554,21 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
       font-weight 300
       margin 0 0 1em 0
       float left
-      img
-        &.guino
-          max-width 31px
-        &.cover-news
+      .cover-news
+        
+        img
           border avatar-img-border--thin
           width 70%
+      .guino-news
+        img
+          max-width 22px
+
       h2
         font-size 1.3em
         margin 0 0 .5em 0
         letter-spacing -1px
       h5
-        font-size .8em
-        font-style italic
+        font-size .7em
         
         
 .kaizen-feedback

@@ -49,6 +49,9 @@
                       span.glyphicon.glyphicon-chevron-down
                     .delta
                       span {{ indicadores.Kpi.DesviacionQLlamadas.Delta | percentage:2 }}
+                  .kpi-info
+                    span: | <b>M</b> ≤ 7%
+
 
           //- sublevel 2
           .col-lg-12.col-sm-12.nopadding(ng-controller='ModalKpiCtrl')
@@ -357,37 +360,37 @@
 
         //- news
         .col-lg-4.col-sm-12
-          .kaizen-box.kaizen-latest-news.without-border.h-level-3
+          .kaizen-box.without-border.kaizen-latest-news.h-level-3
             .kaizen-box-name
               .glyphicon-kpi
                 span.glyphicon.glyphicon-asterisk
               span.uppercase Últimas noticias
             .latest-news.kaizen-box-content
-              .each-news.latest
-                .col-lg-12.nopadding
-                  .col-lg-3.col-sm-2.col-xs-3
-                    img.cover-news(src='entel/images/news/winners.jpg')
-                  .col-lg-8.col-sm-9.col-xs-8.nopadding
-                    h2 Ganadores de Noviembre
-                    h5 Hace 2 días · por Área de Ventas
-                  .col-lg-1.col-sm-1.col-xs-1.nopadding
-                    img.guino(src='entel/images/guiño.svg')
-              .each-news
-                .col-lg-12.nopadding
-                  .col-lg-3.col-sm-2.col-xs-3
-                    img.cover-news(src='entel/images/news/smile.jpg')
-                  .col-lg-8.col-sm-9.col-xs-8.nopadding
-                    h2 Motivate con Sonrisas
-                    h5 Hace 2 días · por Gerencia
-                  .col-lg-1.col-sm-1.col-xs-1.nopadding
-                    img.guino(src='entel/images/guiño.svg')
-              .each-news
-                .col-lg-12.nopadding
-                  .col-lg-3.col-sm-2.col-xs-3
-                    img.cover-news(src='entel/images/news/sell.jpg')
-                  .col-lg-8.col-sm-9.col-xs-8.nopadding
-                    h2 Juntos vendemos más
-                    h5 Hace 3 días · por Área de Ventas
-                  .col-lg-1.col-sm-1.col-xs-1.nopadding
-                    img.guino(src='entel/images/guiño.svg')
+
+              .each-news.col-lg-12.col-xs-12.nopadding
+                .cover-news.text-center.col-lg-3.col-sm-2.col-xs-3.nopadding
+                  img(src='entel/images/news/winners.jpg')
+                .col-lg-8.col-sm-9.col-xs-8
+                  h2.text-capitalize Ganadores de Noviembre
+                  h5.text-uppercase Hace 2 días · por Área de Ventas
+                .guino-news.col-lg-1.col-sm-1.col-xs-1.nopadding
+                  img(src='entel/images/guiño.svg')
+
+              .each-news.col-lg-12.col-xs-12.nopadding
+                .cover-news.text-center.col-lg-3.col-sm-2.col-xs-3.nopadding
+                  img(src='entel/images/news/smile.jpg')
+                .col-lg-8.col-sm-9.col-xs-8
+                  h2.text-capitalize Motivate con Sonrisas
+                  h5.text-uppercase Hace 2 días · por Gerencia
+                .guino-news.col-lg-1.col-sm-1.col-xs-1.nopadding
+                  img(src='entel/images/guiño.svg')
+
+              .each-news.col-lg-12.col-xs-12.nopadding
+                .cover-news.text-center.col-lg-3.col-sm-2.col-xs-3.nopadding
+                  img(src='entel/images/news/sell.jpg')
+                .col-lg-8.col-sm-9.col-xs-8
+                  h2.text-capitalize Juntos vendemos más
+                  h5.text-uppercase Hace 3 días · por Área de Ventas
+                .guino-news.col-lg-1.col-sm-1.col-xs-1.nopadding
+                  img(src='entel/images/guiño.svg')
 
