@@ -211,6 +211,12 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
       height inherit
     @media(max-width:992px)
       height inherit
+  &.h-level-9
+    height (grid-height + 14)em
+    @media(max-width:767px)
+      height inherit
+    @media(max-width:992px)
+      height inherit
       
     
   .kaizen-box-name
@@ -257,10 +263,11 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
   &#self-ejecutivo,
   &#self-supervisor
     .self-info
+      margin 10px 0 0 0
       display block      
     .avatar
       float left
-      margin 0 20px 0 0
+      margin 20px 30px 0 0
       img
         height 100px
         
@@ -276,7 +283,7 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
         &.bad-rank
           color rgb(208, 8, 8)
         &:before
-          content "Estás en la posición "
+          content "Conoce tu posición"
           font-size 60%
       &.who
         font-size 1.6em
@@ -304,22 +311,36 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
     .karma-glyphicon
       width 100%
       float left
+      margin-bottom 8px
     .karma-wrapper
+      .karma-title
+        margin-bottom -3px
+        text-align left
+        span
+          font-size .9em
+          color darken(primary-color-2, 20%)
+          text-transform uppercase
       .karma-box
         height 10px
         float left
         box-shadow inset 0 0 1px rgba(0, 0, 0, 0.1)
         width 100%
-        background linear-gradient(to right, rgb(255, 61, 61) 0%, lighten(yellow, 20%) 75%, color-positive 100%)
+        background-color rgb(252, 252, 252) !important
+        &.karma-asistencia
+          background linear-gradient(to right, rgb(255, 61, 61) 0%, lighten(rgb(255, 61, 61), 20%) 75%, rgba(255,255,255, 0) 75%,  rgba(255,255,255, 0) 100%)
+        &.karma-capacitacion
+          background linear-gradient(to right, rgb(0, 192, 30) 0%, lighten(rgb(0, 192, 30), 20%) 82%, rgba(255,255,255, 0) 82%,  rgba(255,255,255, 0) 100%)
+        &.karma-onoff
+          background linear-gradient(to right, rgb(215, 163, 0) 0%, lighten(rgb(215, 163, 0), 20%) 93%, rgba(255,255,255, 0) 93%,  rgba(255,255,255, 0) 100%)
 
     .karma-glyphicon
       &:hover
         opacity 1
         transition all 0.2s ease
       &.mine
-        margin-bottom -7px
+        margin-bottom -9px
       &.average
-        margin-top -1px
+        margin-top -9px
         
 
 .kaizen-kpi
