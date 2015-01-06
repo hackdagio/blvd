@@ -12,13 +12,13 @@
     .collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
         li.dropdown
-          a.dropdown-toggle(href='javascript:void(0)', aria-expanded='true', data-ng-hide='!authentication.isAuth') Vista
+          a.view-temp.dropdown-toggle(href='javascript:void(0)', aria-expanded='true', data-ng-hide='!authentication.isAuth') Vista
             span.caret
           ul.dropdown-menu(role='menu')
-            li: a(href='/vp/indicadores') VP
-            li: a(href='/coordinador/indicadores') Coordinador
-            li: a(href='/supervisor/indicadores') Supervisor
-            li: a(href='/ejecutivo/indicadores') Ejecutivo
+            li: a.view-temp(href='/vp/indicadores') VP
+            li: a.view-temp(href='/coordinador/indicadores') Coordinador
+            li: a.view-temp(href='/supervisor/indicadores') Supervisor
+            li: a.view-temp(href='/ejecutivo/indicadores') Ejecutivo
         li: a.today(data-ng-hide='!authentication.isAuth') Septiembre, 2014
         li: a(href='acceder', data-ng-hide='authentication.isAuth') Iniciar sesión
           
@@ -73,3 +73,12 @@
         li
           a.navbar-link.navbar-logout(href='javascript:void(0)', data-ng-hide='!authentication.isAuth', data-ng-click='logOut()')
             span.glyphicon.glyphicon-off
+      ul.nav.navbar-nav.navbar-left
+        li.dropdown
+          a.dropdown-toggle(href='javascript:void(0)',aria-expanded='true', data-ng-hide='!authentication.isAuth')
+            span.caret
+          ul.dropdown-menu
+            li: a.sig-menu(data-ng-hide='!authentication.isAuth') Entrenamiento
+            li: a.sig-menu(data-ng-hide='!authentication.isAuth') Noticias
+            li: a.sig-menu(data-ng-hide='!authentication.isAuth') Documentos
+            li: a.sig-menu(data-ng-hide='!authentication.isAuth') Premios

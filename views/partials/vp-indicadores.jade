@@ -28,20 +28,20 @@
 
             //-- kpi: general
             .col-md-9
-              .kaizen-box.kaizen-kpi.ok.kaizen-self#self-vp.h-level-1
+              .kaizen-box.kaizen-kpi.neutral.kaizen-self#self-vp.h-level-1
                 .col-lg-12.nopadding
                   .col-sm-8.nopadding
                     .avatar
-                      img.img-circle(src='entel/avatar/e.jpg')
+                      img.img-circle(src='entel/avatar/0.svg')
                     .self-info
                       span.who.capitalize José Luis Poch Piretta
-                      span.what.uppercase Vicepresidente Mercado Personas
-                      span.where.uppercase Entel
-                  .col-sm-4.high-margin-top
+                      span.what.text-uppercase Vicepresidente Mercado Personas
+                      span.where.text-uppercase Entel
+                  .col-sm-4
                     .kaizen-box-name.small-size.text-right
                       .glyphicon-kpi
                         span.glyphicon.glyphicon-asterisk
-                      span.uppercase Total Contact Center
+                      span.text-uppercase Total Contact Center
                     .kpi.kaizen-box-content.text-right
                       .weighted
                         span.big-size {{ indicadores.Kpi.Ponderado.Valor | percentage:2 }}
@@ -52,12 +52,12 @@
                           span {{ indicadores.Kpi.Ponderado.Delta | percentage:2 }}
 
             //-- kpi: desv q llamadas
-            .col-md-3
-              .kaizen-box.kaizen-kpi.ok.h-level-1
+            .col-md-3(ng-controller='ModalKpiCtrl')
+              .kaizen-box.kaizen-kpi.ok.h-level-1.cursor-pointer(ng-click='open("lg", "Desviación de llamadas")')
                 .kaizen-box-name
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
-                  span.uppercase Desviación
+                  span.text-uppercase Desviación
                 .kpi.kaizen-box-content.text-right
                   .weighted
                     span.normal-size {{ indicadores.Kpi.DesviacionQLlamadas.Valor | percentage:2 }}
@@ -66,19 +66,19 @@
                       span.glyphicon.glyphicon-chevron-down
                     .delta
                       span {{ indicadores.Kpi.DesviacionQLlamadas.Delta | percentage:2 }}
-
+                  .kpi-info
+                    span: | <b>M</b> ≤ 7%
 
           //- sublevel 2
-          .col-lg-12.nopadding
+          .col-lg-12.nopadding(ng-controller='ModalKpiCtrl')
 
             //- kpi: n.s.
             .col-md-3
-              .kaizen-box.kaizen-kpi.red-alert.h-level-2
+              .kaizen-box.kaizen-kpi.red-alert.h-level-2.cursor-pointer(ng-click='open("lg", "Nivel de servicio")')
                 .kaizen-box-name
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
-                  span.uppercase Servicio
-                  //- button.btn.btn-default(ng-click='open("lg")') Open me!
+                  span.text-uppercase Servicio
                   .glyphicon-kpi.right-info
                     button.glyphicon.glyphicon-info-sign(popover-placement='top', popover-trigger='focus', popover-html-unsafe='{{ tooltipKpi }}')
                 .kpi.kaizen-box-content.text-right
@@ -95,11 +95,11 @@
 
             //- kpi: n.a.
             .col-md-3
-              .kaizen-box.kaizen-kpi.red-alert.h-level-2
+              .kaizen-box.kaizen-kpi.red-alert.h-level-2.cursor-pointer(ng-click='open("lg", "Nivel de atención")')
                 .kaizen-box-name
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
-                  span.uppercase Atención
+                  span.text-uppercase Atención
                   .glyphicon-kpi.right-info
                     button.glyphicon.glyphicon-info-sign(popover-placement='top', popover-trigger='focus', popover-html-unsafe='{{ tooltipKpi }}')
                 .kpi.kaizen-box-content.text-right
@@ -116,11 +116,11 @@
 
             //- kpi: epa
             .col-md-3
-              .kaizen-box.kaizen-kpi.red-alert.h-level-2
+              .kaizen-box.kaizen-kpi.red-alert.h-level-2.cursor-pointer(ng-click='open("lg", "EPA")')
                 .kaizen-box-name
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
-                  span.uppercase EPA
+                  span.text-uppercase EPA
                   .glyphicon-kpi.right-info
                     button.glyphicon.glyphicon-info-sign(popover-placement='top', popover-trigger='focus', popover-html-unsafe='{{ tooltipKpi }}')
                 .kpi.kaizen-box-content.text-right
@@ -138,75 +138,44 @@
 
             //- kpi: tmo
             .col-md-3
-              .kaizen-box.kaizen-kpi.ok.h-level-2
+              .kaizen-box.kaizen-kpi.ok.h-level-2.cursor-pointer(ng-click='open("lg", "TMO")')
                 .kaizen-box-name
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
-                  span.uppercase TMO
+                  span.text-uppercase TMO
                 .kpi.kaizen-box-content.text-right
                   .weighted
                     span.normal-size {{ indicadores.Kpi.TMO }}
                     | <small>seg</small>
 
-
         //- level 2
 
         //- habilidades
         .col-lg-4
-          .kaizen-box.kaizen-skills.h-level-3
+          .kaizen-box.kaizen-ranking.h-level-3
             .kaizen-box-name.big-size
               .glyphicon-kpi
                 span.glyphicon.glyphicon-asterisk
-              span.uppercase Habilidades
-            .skills.kaizen-box-content
-              .col-xs-12.skill
+              span.text-uppercase Ranking
+            .ranking.kaizen-box-content
+              .col-xs-12.rank(ng-repeat='rank in ranking')
                 .each
                   .col-xs-6
                     .info
-                      a(href='habilidades/') AC
-                      span.weighted 80%
+                      a(href='indicadores/{{ rank.Id | lowercase }}') {{ rank.Id }}
+                      span.weighted {{ rank.Ponderado }}
                   .col-xs-3
-                    .arrow.positive
+                    .arrow.positive(ng-if='rank.Id != "SCCP"')
                       .glyphicon-kpi
                         span.glyphicon.glyphicon-chevron-up
-                    .delta
-                      span 2.3%
-                  .col-xs-3
-                    .position
-                      span 1
-              .col-xs-12.skill
-                .each
-                  .col-xs-6
-                    .info
-                      a(href='habilidades/') SSBV
-                      span.weighted 76.2%
-                  .col-xs-3
-                    .arrow.positive
+                    .arrow.negative(ng-if='rank.Id == "SCCP"')
                       .glyphicon-kpi
-                        span.glyphicon.glyphicon-chevron-up
+                        span.glyphicon.glyphicon-chevron-down
                     .delta
-                      span 0.9%
+                      span {{ rank.Delta }}%
                   .col-xs-3
                     .position
-                      span 2
-              .col-xs-12.skill
-                .each
-                  .col-xs-6
-                    .info
-                      a(href='habilidades/') BAMCOMER
-                      span.weighted 74.1%
-                  .col-xs-3
-                    .arrow.positive
-                      .glyphicon-kpi
-                        span.glyphicon.glyphicon-chevron-up
-                    .delta
-                      span 1.2%
-                  .col-xs-3
-                    .position
-                      span 3
-
-
-        //- level 4
+                      span {{ rank.Posicion }}
 
         //- history
         .col-lg-8
@@ -216,7 +185,7 @@
                 .col-md-6
                   .glyphicon-kpi
                     span.glyphicon.glyphicon-asterisk
-                  span.uppercase Históricos Total
+                  span.text-uppercase Históricos Total
                 .col-md-6.text-right
                   .btn-group
                     button.btn.btn-default.btn-xs.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='false') Indicador
@@ -251,30 +220,58 @@
 
         //- ranking
         .col-lg-4
-          .kaizen-box.kaizen-ranking.h-level-3
+          .kaizen-box.kaizen-skills.h-level-3
             .kaizen-box-name.big-size
               .glyphicon-kpi
                 span.glyphicon.glyphicon-asterisk
-              span.uppercase Ranking
-            .ranking.kaizen-box-content
-              .col-xs-12.rank(ng-repeat='rank in ranking')
+              span.text-uppercase Habilidades
+            .skills.kaizen-box-content(ng-controller='ModalHabCtrl')
+              .col-xs-12.skill.cursor-pointer(ng-click='open("lg", "AC")')
                 .each
                   .col-xs-6
                     .info
-                      a(href='indicadores/{{ rank.Id | lowercase }}') {{ rank.Id }}
-                      span.weighted {{ rank.Ponderado }}
+                      a(href='#') AC
+                      span.weighted 80%
                   .col-xs-3
-                    .arrow.positive(ng-if='rank.Id != "SCCP"')
+                    .arrow.positive
                       .glyphicon-kpi
                         span.glyphicon.glyphicon-chevron-up
-                    .arrow.negative(ng-if='rank.Id == "SCCP"')
-                      .glyphicon-kpi
-                        span.glyphicon.glyphicon-chevron-down
                     .delta
-                      span {{ rank.Delta }}%
+                      span 2.3%
                   .col-xs-3
                     .position
-                      span {{ rank.Posicion }}
+                      span 1
+              .col-xs-12.skill.cursor-pointer(ng-click='open("lg", "SSBV")')
+                .each
+                  .col-xs-6
+                    .info
+                      a(href='#') SSBV
+                      span.weighted 76.2%
+                  .col-xs-3
+                    .arrow.positive
+                      .glyphicon-kpi
+                        span.glyphicon.glyphicon-chevron-up
+                    .delta
+                      span 0.9%
+                  .col-xs-3
+                    .position
+                      span 2
+              .col-xs-12.skill.cursor-pointer(ng-click='open("lg", "BAMCOMER")')
+                .each
+                  .col-xs-6
+                    .info
+                      a(href='#') BAMCOMER
+                      span.weighted 74.1%
+                  .col-xs-3
+                    .arrow.positive
+                      .glyphicon-kpi
+                        span.glyphicon.glyphicon-chevron-up
+                    .delta
+                      span 1.2%
+                  .col-xs-3
+                    .position
+                      span 3
+
 
 //- script.
 //-   $("#menu-toggle").click(function(e) {

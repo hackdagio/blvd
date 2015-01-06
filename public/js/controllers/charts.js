@@ -281,7 +281,19 @@ app.controller('ProgressDemoCtrl', function ($scope) {
   'Carolina Riquelme',
   'Pamela Villa',
   'Fernanda Almendra',
-  'Javier Torres']
+  'Javier Torres'];
+
+  $scope.peoresSupervisores = [
+  'Gabriela Rojas',
+  'Natalia Escobar',
+  'Gonzalo Sepúlveda',
+  'Luis Tapia'];
+
+  $scope.peoresEjecutivos = [
+  'Javiera Pistano',
+  'Johan Soto',
+  'Alberto Santana',
+  'Verónica Perez'];
 });
 
 app.controller('testGauge', ['$scope', '$timeout', function($scope, $timeout) {
@@ -309,76 +321,187 @@ app.controller('testGauge', ['$scope', '$timeout', function($scope, $timeout) {
             // The radius of the inner circle
             strokeWidth: 0.035,
             // The rotation offset
-            color: '#005F9F' // Fill color
+            color: '#FFFFFF' // Fill color
         },
         limitMax: 'false',
         // If true, the pointer will not go past the end of the gauge
-        colorStart: '#FF6702',
+        colorStart: '#5A5A5A',
         // Colors
-        colorStop: '#E75C00',
+        colorStop: '#5A5A5A',
         // just experiment with them
-        strokeColor: '#F0F0F0',
-        // to see which ones work best for you
-        generateGradient: true
-    };
-    
-    $scope.donutGaugeOptions = {
-        lines: 12,
-        // The number of lines to draw
-        angle: 0.15,
-        // The length of each line
-        lineWidth: 0.044,
-        // The line thickness
-        pointer: {
-            length: 0.09,
-            // The radius of the inner circle
-            strokeWidth: 0.0035,
-            // The rotation offset
-            color: '#000000' // Fill color
-        },
-        limitMax: 'false',
-        // If true, the pointer will not go past the end of the gauge
-        colorStart: '#FF6702',
-        // Colors
-        colorStop: '#FF6702',
-        // just experiment with them
-        strokeColor: '#E0E0E0',
+        strokeColor: '#FFAF79',
         // to see which ones work best for you
         generateGradient: true
     };
 
 }]);
 
-app.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
+app.controller('ModalKpiCtrl', function ($scope, $modal, indicadoresService) {
 
-  $scope.items = ['item1', 'item2', 'item3'];
+    // $scope.ranking = [];
+    // indicadoresService.getIndicadores('ranking', '').then(function (results) {
+    //   $scope.items = results.data;
+    // });
 
-  $scope.open = function (size) {
+  $scope.items = [
+  ['98,5', 'AC', 'Francisca Bilbao', 'entel/avatar/30.jpg', '95', '94'], 
+  ['95,3', 'SSBV', 'Macarena Suazo', 'entel/avatar/40.jpg', '95', '94'],
+  ['44,5', 'BAMCOMER', 'Pablo Aravena', 'entel/avatar/50.jpg', '95', '94'],
+  ['57,4', 'NURSERY', 'Diego Deza', 'entel/avatar/60.jpg', '95', '94'],
+  ['68,9', 'SMPH', 'Agustina Ugarte', 'entel/avatar/70.jpg', '95', '94'],
+  ['84,2', 'OT', 'Camila Flores', 'entel/avatar/80.jpg', '95', '94']
+  ];
+  $scope.kpi = ['Nivel de Servicio', 'Nivel de Atención', 'EPA', 'TMO', 'Desviación de llamadas'];
+
+  $scope.open = function (size, kpiname) {
 
     var modalInstance = $modal.open({
-      templateUrl: 'partials/modal',
+      templateUrl: 'partials/modal-kpi',
       controller: 'ModalInstanceCtrl',
       size: size,
       resolve: {
         items: function () {
           return $scope.items;
+        },
+        centros: function () {
+          return $scope.centros;
+        },
+        kpi: function () {
+          return $scope.kpi;
+        },
+        title: function () {
+          return kpiname;
+        },
+        actualrank: function () {
+          return false;
+        },
+        username: function () {
+          return false;
+        },
+        useravatar: function () {
+          return false;
+        },
+        userweighted: function () {
+          return false;
         }
       }
     });
 
-    modalInstance.result.then(function (selectedItem) {
-      $scope.selected = selectedItem;
-    }, function () {
-      $log.info('Modal dismissed at: ' + new Date());
-    });
   };
+
+});
+
+app.controller('ModalHabCtrl', function ($scope, $modal, indicadoresService) {
+
+    // $scope.ranking = [];
+    // indicadoresService.getIndicadores('ranking', '').then(function (results) {
+    //   $scope.items = results.data;
+    // });
+
+  $scope.kpi = ['Servicio', 'Atención', 'Desviación', 'EPA', 'TMO', 'CROSS'];
+  $scope.items = [
+  ['94,2'],
+  ['75,4'],
+  ['67,4'],
+  ['98,5'],
+  ['94,3'],
+  ['87,3']
+  ];
+
+  $scope.open = function (size, kpiname) {
+
+    var modalInstance = $modal.open({
+      templateUrl: 'partials/modal-hab',
+      controller: 'ModalInstanceCtrl',
+      size: size,
+      resolve: {
+        items: function () {
+          return $scope.items;
+        },
+        centros: function () {
+          return $scope.centros;
+        },
+        kpi: function () {
+          return $scope.kpi;
+        },
+        title: function () {
+          return kpiname;
+        },
+        actualrank: function () {
+          return false;
+        },
+        username: function () {
+          return false;
+        },
+        useravatar: function () {
+          return false;
+        },
+        userweighted: function () {
+          return false;
+        }
+      }
+    });
+
+  };
+
+});
+
+app.controller('ModalPosCtrl', function ($scope, $modal, indicadoresService) {
+
+  $scope.items = [
+  ['1', 'Paulina Gomez', 'entel/avatar/190.jpg', '99,9']
+  ];
+
+  $scope.open = function (size, rank, username, useravatar, userweighted) {
+
+    var modalInstance = $modal.open({
+      templateUrl: 'partials/modal-position',
+      controller: 'ModalInstanceCtrl',
+      size: size,
+      resolve: {
+        items: function () {
+          return $scope.items;
+        },
+        centros: function () {
+          return $scope.centros;
+        },
+        kpi: function () {
+          return $scope.kpi;
+        },
+        title: function () {
+          return false;
+        },
+        actualrank: function () {
+          return rank;
+        },
+        username: function () {
+          return username;
+        },
+        useravatar: function () {
+          return useravatar;
+        },
+        userweighted: function () {
+          return userweighted;
+        }
+      }
+    });
+
+  };
+
 });
 
 // Please note that $modalInstance represents a modal window (instance) dependency.
 // It is not the same as the $modal service used above.
 
-app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
+app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items, title, centros, kpi, actualrank, username, useravatar, userweighted) {
 
+  $scope.userweighted = userweighted;
+  $scope.useravatar = useravatar;
+  $scope.username = username;
+  $scope.actualrank = actualrank;
+  $scope.title = title;
+  $scope.centros = centros;
+  $scope.kpi = kpi;
   $scope.items = items;
   $scope.selected = {
     item: $scope.items[0]

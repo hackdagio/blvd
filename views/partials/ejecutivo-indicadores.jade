@@ -1,182 +1,168 @@
 .wrapper.ejecutivo-view
   .wrapper-content
+
+    //- carousel promos
+    .kaizen-promo-carousel#carousel-ejecutivo
+      .kaizen-box-content.carousels(ng-controller='carouselController')
+        carousel(interval='interval')
+          slide(ng-repeat='slide in slides', active='slide.active')
+            img(ng-src='{{slide.image}}')
+            //- .carousel-caption
+            //-   h4 promo {{ $index+1 }}
+
+    //- container principal
     .container-fluid
       .row
 
         //- level 1
-        .col-lg-12.nopadding
-          .col-lg-12
-            .kaizen-box.kaizen-promo-carousel#carousel-ejecutivo.full-box
-              .kaizen-box-content.carousels(ng-controller='carouselController')
-                carousel(interval='interval')
-                  slide(ng-repeat='slide in slides', active='slide.active')
-                    img(ng-src='{{slide.image}}')
-                    //- .carousel-caption
-                    //-   h4 promo {{ $index+1 }}
+        .col-lg-12.col-xs-12.nopadding
+
+          .col-lg-6.col-md-6.col-sm-6.col-xs-12.nopadding
+
+            //- self
+            .col-lg-12.col-xs-12.col-md-12
+              .kaizen-box.kaizen-kpi.neutral.kaizen-self#self-ejecutivo.h-level-7
+                .col-lg-12.nopadding
+                  .col-lg-7.col-xs-12.nopadding
+                    .avatar
+                      img.img-circle(src='entel/avatar/5.jpg')
+                    .self-info
+                      span.who.capitalize Alicia Valderrama
+                      span.what.uppercase Ejecutiva de Ventas
+                      span.where.uppercase ECC
+                  .col-lg-5.col-xs-12
+                    .self-info(ng-controller='ModalPosCtrl')
+                      span.rank-position.good-rank.text-uppercase.cursor-pointer(ng-click='open("xs", "34", "Alicia Valderrama", "entel/avatar/5.jpg", "91,2")') #34
+                    .versus.text-center
+                      .karma-glyphicon.mine
+                        span.glyphicon.glyphicon-chevron-down(style='margin-left:-2em', tooltip-placement='top', tooltip='Estás aquí')
+                      .karma-wrapper
+                        .karma-box
+                      .karma-glyphicon.average
+                        span.glyphicon.glyphicon-chevron-up(style='margin-left:1em', tooltip-placement='left', tooltip='El promedio está aquí')
+
+
+            //- tus indicadores
+            .col-lg-12.col-xs-12.col-md-12
+              .kaizen-box.without-border.sig-color.kaizen-kpi#kpi-ejecutivo.h-level-8
+                .kaizen-box-name.text-center
+                  .glyphicon-kpi
+                    span.glyphicon.glyphicon-asterisk
+                  span.uppercase Hola, aquí están tus indicadores
+                .kaizen-box-content(ng-controller='testGauge')
+
+                  .col-lg-12.col-xs-12.nopadding
+                    .col-lg-4.col-sm-4.col-xs-12
+                      .kpi
+                        .gauge-kpi
+                          canvas(gaugejs='', options='gaugeOptions', value='valuePonderadoSuper', max-value='maxValue', animation-time='animationTime')
+                        .weighted
+                          span.normal-size.text-center {{ valuePonderadoSuper }}%
+                        .kpi-name.text-center.text-uppercase
+                          span.small-size Ponderado
+
+                    .col-lg-4.col-sm-4.col-xs-12
+                      .kpi
+                        .gauge-kpi
+                          canvas(gaugejs='', options='gaugeOptions', value='valueEPASuper', max-value='maxValue', animation-time='animationTime')
+                        .weighted
+                          span.normal-size.text-center {{ valueEPASuper }}%
+                        .kpi-name.text-center.text-uppercase
+                          span.small-size EPA
+
+                    .col-lg-4.col-sm-4.col-xs-12
+                      .kpi
+                        .gauge-kpi
+                          canvas(gaugejs='', options='gaugeOptions', value='valueCROSSSuper', max-value='maxValue', animation-time='animationTime')
+                        .weighted
+                          span.normal-size.text-center {{ valueCROSSSuper }}%
+                        .kpi-name.text-center.text-uppercase
+                          span.small-size CROSS
+
+          .col-lg-6.col-md-6.col-sm-6.col-xs-12.nopadding
+
+
+            //- feedback
+            .col-lg-12.col-xs-12.col-md-12
+              .kaizen-box.without-border.kaizen-feedback#feedback-supervisor.h-level-6
+                .kaizen-box-name
+                  .glyphicon-kpi
+                    span.glyphicon.glyphicon-asterisk
+                  span.uppercase Feedback
+                .feedback.kaizen-box-content
+
+                  .col-lg-12.col-xs-12.each-feedback
+                    .feedback-avatar.col-lg-2.col-sm-1.col-md-2.col-xs-2.nopadding
+                      img.img-circle(src='entel/avatar/100.jpg')
+                      img(src='entel/images/originals/only.svg')
+                    .feedback-text.col-lg-9.col-sm-10.col-md-9.col-xs-9
+                      blockquote: p Tu equipo va muy bien! Sigue así Eli.
+                      cite: | <em>por</em> <b>Alison Fernández</b> · Supervisor
+                    .feedback-icons.col-lg-1.col-sm-1.col-md-1.col-xs-1
+                      img.guino(src='entel/images/guiño.svg')
+                      .glyphicon-inline
+                        span.glyphicon.glyphicon-comment
+
+                  .col-lg-12.col-xs-12.each-feedback
+                    .feedback-avatar.col-lg-2.col-sm-1.col-md-2.col-xs-2.nopadding
+                      img.img-circle(src='entel/avatar/110.jpg')
+                      img(src='entel/images/originals/only.svg')
+                    .feedback-text.col-lg-9.col-sm-10.col-md-9.col-xs-9
+                      blockquote: p ¡Cómo lo haces! Me gustaría manejar a un equipo tan bien como tú.
+                      cite: | <em>por</em> <b>Sonia Beltrán</b> · Supervisor
+                    .feedback-icons.col-lg-1.col-sm-1.col-md-1.col-xs-1
+                      img.guino(src='entel/images/guiño.svg')
+                      .glyphicon-inline
+                        span.glyphicon.glyphicon-comment
+
+                  .col-lg-12.col-xs-12.each-feedback
+                    .feedback-avatar.col-lg-2.col-sm-1.col-md-2.col-xs-2.nopadding   
+                      img.img-circle(src='entel/avatar/120.jpg')
+                      img(src='entel/images/originals/all.svg')
+                    .feedback-text.col-lg-9.col-sm-10.col-md-9.col-xs-9
+                      blockquote: p Eli, ¿me puedes ayudar a subir mis ventas? Te lo agradecería un montón.
+                      cite: | <em>por</em> <b>Luís Perez</b> · Supervisor
+                    .feedback-icons.col-lg-1.col-sm-1.col-md-1.col-xs-1
+                      img.guino(src='entel/images/guiño.svg')
+                      .glyphicon-inline
+                        span.glyphicon.glyphicon-comment
+
 
         //- level 2
-        .col-lg-12.nopadding
+        .col-lg-12.col-xs-12.nopadding
 
-          //- self
-          .col-md-2
-            .kaizen-box.kaizen-self#self-ejecutivo.h-level-6
-              .kaizen-box-content
-                .avatar.text-center
-                  img.img-circle(src='entel/avatar/5.jpg')
-                .self-info
-                  span.who.capitalize Alicia Valderrama
-                  span.what.uppercase Ejecutiva de Ventas
-                  span.where.uppercase ECC
-
-          .col-md-5
-            .kaizen-box.kaizen-self.kaizen-kpi.ok#self-ejecutivo.h-level-6
-              .kaizen-box-name.big-size.text-center
-                .glyphicon-kpi
-                  span.glyphicon.glyphicon-asterisk
-                span.uppercase Hola, aquí están tus indicadores_
-              .kaizen-box-content(ng-controller='testGauge')
-                .col-xs-12.nopadding
-                  .col-xs-4
-                    .kpi
-                      .gauge-kpi
-                        canvas(gaugejs='', options='gaugeOptions', value='valuePonderado', max-value='maxValue', animation-time='animationTime')
-                      .weighted
-                        span.normal-size.text-center {{ valuePonderado }}%
-                      .kpi-name.text-center.text-uppercase
-                        span.small-size Ponderado
-                      .versus
-                        span.normal-size.text-center 9.5%
-                        span.glyphicon.glyphicon-chevron-up(alt='Sobre el promedio')
-                        span.normal-size Promedio
-                  .col-xs-4
-                    .kpi
-                      .gauge-kpi
-                        canvas(gaugejs='', options='gaugeOptions', value='valueEPA', max-value='maxValue', animation-time='animationTime')
-                      .weighted
-                        span.normal-size.text-center {{ valueEPA }}%
-                      .kpi-name.text-center.text-uppercase
-                        span.small-size EPA
-                      .versus
-                        span.normal-size.text-center 3.2%
-                        span.glyphicon.glyphicon-chevron-up(alt='Sobre el promedio')
-                        span.normal-size Promedio
-
-                  .col-xs-4
-                    .kpi
-                      .gauge-kpi
-                        canvas(gaugejs='', options='gaugeOptions', value='valueCROSS', max-value='maxValue', animation-time='animationTime')
-                      .weighted
-                        span.normal-size.text-center {{ valueCROSS }}%
-                      .kpi-name.text-center.text-uppercase
-                        span.small-size CROSS
-                      .versus
-                        span.normal-size.text-center 4.6%
-                        span.glyphicon.glyphicon-chevron-up(alt='Sobre el promedio')
-                        span.normal-size Promedio
-
-          //- feedback
-          .col-md-5
-            .kaizen-box.kaizen-feedback#feedback-ejecutivo.h-level-6
-              .kaizen-box-name
-                .glyphicon-kpi
-                  span.glyphicon.glyphicon-asterisk
-                span.uppercase Feedback_
-              .feedback.kaizen-box-content
-
-                .col-xs-12.each-feedback
-                  .each
-                    .col-xs-2
-                      .each-avatar
-                        img.img-circle(src='entel/avatar/2.jpg')
-                        img(src='entel/images/originals/only.svg')
-                    .col-xs-9
-                      .each-text
-                        blockquote: p Te felicito por un notable rendimiento en EPA 95%
-                        cite: | <b class='text-uppercase'>Juan Farias</b> · Jefe Comercial
-                    .col-xs-1.nopadding
-                      img.guino(src='entel/images/guiño.svg')
-                      .glyphicon-inline
-                        span.glyphicon.glyphicon-comment
-
-                .col-xs-12.each-feedback
-                  .each
-                    .col-xs-2
-                      .each-avatar
-                        img.img-circle(src='entel/avatar/3.jpg')
-                        img(src='entel/images/originals/only.svg')
-                    .col-xs-9
-                      .each-text
-                        span Te ha enviado una sonrisa por tu rendimiento ponderado 85%
-                        cite: | <b class='text-uppercase'>Daniela Alegría</b> · Jefe Comercial
-                    .col-xs-1.nopadding
-                      img.guino(src='entel/images/guiño.svg')
-                      .glyphicon-inline
-                        span.glyphicon.glyphicon-comment
-
-                .col-xs-12.each-feedback
-                  .each
-                    .col-xs-2
-                      .each-avatar
-                        img.img-circle(src='entel/avatar/1.jpg')
-                        img(src='entel/images/originals/all.svg')
-                    .col-xs-9
-                      .each-text
-                        blockquote: p ¡Chicos, necesitamos que mejoremos el TMO para no salirnos del proceso!
-                        cite: | <b class='text-uppercase'>Macarena Andrade</b> · Coordinador
-                    .col-xs-1.nopadding
-                      img.guino(src='entel/images/guiño.svg')
-                      .glyphicon-inline
-                        span.glyphicon.glyphicon-comment
-
-
-
-
-        .col-lg-12.nopadding
-          .col-lg-4
-            .kaizen-box.kaizen-user-stories.h-level-2
+          //- user story 1
+          .col-lg-4.col-md-4.col-sm-4.col-xs-12
+            .kaizen-box.without-border.kaizen-user-stories.h-level-2
               .user-stories.kaizen-box-content
-                .each-story
-                  .col-lg-12.nopadding
-                    .col-xs-3
-                      img.img-circle(src='entel/avatar/40.jpg')
-                    .col-xs-9.nopadding
-                      span.story-legend: p.text-center "Ahora me conecto de verdad con mis clientes cuando llaman. Entel me entregó las herramientas para hacerlo."
-                      span.story-author: p.text-center.text-uppercase Ángela Soto
+                .col-lg-12.nopadding
+                  .stories-avatar.col-lg-3.col-md-2.col-sm-2.col-xs-12.nopadding
+                    img.img-circle(src='entel/avatar/40.jpg')
+                  .stories-text.col-lg-9.col-md-10.col-sm-10.col-xs-12
+                    span.story-legend: p.text-center "Ahora me conecto de verdad con mis clientes cuando llaman. Entel me entregó las herramientas para hacerlo."
+                    span.story-author: p.text-center.text-uppercase Ángela Soto
 
-
-          .col-lg-4
-            .kaizen-box.kaizen-user-stories.h-level-2
+          //- user story 2
+          .col-lg-4.col-md-4.col-sm-4.col-xs-12
+            .kaizen-box.without-border.kaizen-user-stories.h-level-2
               .user-stories.kaizen-box-content
-                .each-story
-                  .col-lg-12.nopadding
-                    .col-xs-3
-                      img.img-circle(src='entel/avatar/70.jpg')
-                    .col-xs-9.nopadding
-                      span.story-legend: p.text-center "Mi familia y amigos están felices con lo que hago. Estoy dejando mi huella en muchas personas."
-                      span.story-author: p.text-center.text-uppercase Claudia Arce
+                .col-lg-12.nopadding
+                  .stories-avatar.col-lg-3.col-md-2.col-sm-2.col-xs-12.nopadding
+                    img.img-circle(src='entel/avatar/70.jpg')
+                  .stories-text.col-lg-9.col-md-10.col-sm-10.col-xs-12
+                    span.story-legend: p.text-center "Mi familia y amigos están felices con lo que hago. Estoy dejando mi huella en muchas personas."
+                    span.story-author: p.text-center.text-uppercase Claudia Arce
 
-          .col-lg-4
-            .kaizen-box.kaizen-user-stories.h-level-2
+          //- user story 3
+          .col-lg-4.col-md-4.col-sm-4.col-xs-12
+            .kaizen-box.without-border.kaizen-user-stories.h-level-2
               .user-stories.kaizen-box-content
-                .each-story
-                  .col-lg-12.nopadding
-                    .col-xs-3
-                      img.img-circle(src='entel/avatar/60.jpg')
-                    .col-xs-9.nopadding
-                      span.story-legend: p.text-center "Gracias a Entel he podido superarme a mi mismo cada día más."
-                      span.story-author: p.text-center.text-uppercase Esteban Durán
-
-
-
-
-
-
-
-//- script.
-//-   $("#menu-toggle").click(function(e) {
-//-   e.preventDefault();
-//-   $("#wrapper").toggleClass("toggled");
-//-   });
+                .col-lg-12.nopadding
+                  .stories-avatar.col-lg-3.col-md-2.col-sm-2.col-xs-12.nopadding
+                    img.img-circle(src='entel/avatar/60.jpg')
+                  .stories-text.col-lg-9.col-md-10.col-sm-10.col-xs-12
+                    span.story-legend: p.text-center "Gracias a Entel he podido superarme a mi mismo cada día más."
+                    span.story-author: p.text-center.text-uppercase Esteban Durán
 
 
 

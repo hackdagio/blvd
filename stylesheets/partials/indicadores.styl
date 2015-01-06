@@ -1,4 +1,4 @@
-wrapper-principal-size = 140
+wrapper-principal-size = 125
 
 kaizen-positive-color-changes = color-positive
 kaizen-negative-color-changes = color-negative
@@ -9,12 +9,17 @@ kaizen-kpi-ok-background-color = color-gray-lighten
 kaizen-kpi-ok-text-color = darken(primary-color-2, 10%)
 
 kaizen-kpi-alert-background-color = rgb(208,8,8)
+kaizen-kpi-alert-background-image = linear-gradient(to bottom right, rgb(208,8,8) 0%, rgb(180, 8, 8) 100%)
 kaizen-kpi-alert-text-color = rgb(255,255,255)
 
+kaizen-kpi-sig-background-image = linear-gradient(to bottom right, primary-color-3 0%, darken(primary-color-2, 10%) 100%)
+
 kaizen-ranking-background-color = rgb(78, 87, 94)
+kaizen-ranking-background-image = linear-gradient(to bottom right, #4E575E 0%, #3A4247 100%)
 kaizen-ranking-text-color = rgb(216, 216, 216)
 
 kaizen-skills-background-color = rgb(90, 90, 90)
+kaizen-skills-background-image = linear-gradient(to bottom right, #5A5A5A 0%, #303030 100%)
 kaizen-skills-text-color = rgb(226, 226, 226)
 
 kaizen-history-background-color = kaizen-kpi-ok-background-color
@@ -26,16 +31,18 @@ kaizen-radial-kpi-text-color = kaizen-kpi-ok-text-color
 kaizen-people-ranking-background-color = kaizen-kpi-ok-background-color
 kaizen-people-ranking-text-color = kaizen-kpi-ok-text-color
 
-kaizen-latest-news-background-color = rgb(255, 255, 255)
-kaizen-latest-news-text-color = rgb(0, 0, 0)
+kaizen-latest-news-background-color = rgb(56, 56, 56)
+kaizen-latest-news-background-image = linear-gradient(to bottom right, rgb(95, 95, 95) 0%, rgb(38, 50, 52) 100%)
+kaizen-latest-news-text-color = rgb(255, 255, 255)
 
 kaizen-self-background-color = kaizen-kpi-ok-background-color
 kaizen-self-text-color = kaizen-kpi-ok-text-color
 
 kaizen-feedback-background-color = rgb(90, 90, 90)
+kaizen-feedback-background-image = linear-gradient(to bottom right, rgb(90, 90, 90) 0%, rgb(70, 70, 70) 100%)
 kaizen-feedback-text-color = rgb(226, 226, 226)
 
-kaizen-user-stories-background-color = rgb(31,31,31)
+kaizen-user-stories-background-image = linear-gradient(to bottom right, #292323 0%, #171313 100%)
 kaizen-user-stories-text-color = rgb(255, 255, 255)
 
 grid-height = 12
@@ -100,20 +107,21 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
           display block
           text-decoration none
           color rgb(255,255,255)
-          font-size .9em
+          font-size 1em
           text-shadow 0 0 2px rgb(17, 17, 17)
+          text-transform uppercase
+          font-family alternative-font
           &:hover
             text-decoration none
         &:last-child
           border-bottom none
-      & > .sidebar-brand
-        font-size 18px
         a
           color rgb(255,255,255)
           &:hover
             text-decoration none
       .active
-          border-left 2px solid primary-color-2
+          border-left 3px solid primary-color-3
+          font-size 110%
       img
         width 50%
     .sidebar-nav li a:active,
@@ -146,16 +154,13 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
   vertical-align middle
   color primary-color-2
 
-.modal-content
-  border 1px solid rgba(0,0,0,0.06)
-  border-radius 0px
-  box-shadow rgba(0,0,0,.1) 0px 1px 1px 0px
 .kaizen-box
-  padding 18px
+  padding 15px
   margin -5px -5px 25px -5px
   line-height 2em
   overflow hidden
-  border 1px solid rgba(0,0,0,0.06)
+  &:not(.without-border)
+    border 1px solid rgba(0,0,0,0.06)
   &.full-box
     padding 0
   &.h-level-1
@@ -194,7 +199,20 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
       height inherit
     @media(max-width:992px)
       height inherit
-     
+  &.h-level-7
+    height (grid-height - 4)em
+    @media(max-width:767px)
+      height inherit
+    @media(max-width:992px)
+      height inherit
+  &.h-level-8
+    height (grid-height + 0.8)em
+    @media(max-width:767px)
+      height inherit
+    @media(max-width:992px)
+      height inherit
+      
+    
   .kaizen-box-name
     float left
     width 100%
@@ -203,7 +221,7 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
     &.normal-size
       font-size 1em
     &.big-size 
-      font-size 1.4em
+      font-size 1.2em
     span
       &:not(.caret)
         display inline
@@ -212,60 +230,101 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
         white-space pre-wrap
       &.caret
         margin-left 5px
+      &:not(.glyphicon)
+        &:after
+          content "_"
   .kaizen-box-content
     float left
     width 100%
     &.overflow-enabled
       overflow scroll
       height 100%
-  .high-margin-top
-    margin-top 1em
+  // .high-margin-top
+  //   margin-top 1em
       
 .kaizen-self
   background kaizen-self-background-color
   color kaizen-self-text-color
+  &#self-coordinador,
+  &#self-vp
+    .self-info
+      display block
+    .avatar
+      float left
+      margin 0 20px 0 0
+      img
+        height 156px
+  &#self-ejecutivo,
+  &#self-supervisor
+    .self-info
+      display block      
+    .avatar
+      float left
+      margin 0 20px 0 0
+      img
+        height 100px
+        
   .self-info
     span
       display block
       font-weight 300
       font-family alternative-font
+      &.rank-position
+        font-size 1.4em
+        &.good-rank
+          color rgb(40, 121, 1)
+        &.bad-rank
+          color rgb(208, 8, 8)
+        &:before
+          content "Estás en la posición "
+          font-size 60%
       &.who
         font-size 1.6em
         color darken(primary-color-1, 10%)
       &.what
         font-size 1.1em
-        color darken(primary-color-2, 20%)
-        margin .3em 0 0 0
+        color primary-color-2
+        margin 0.3em 0 0 0
       &.where
         font-size 1em
-        color darken(primary-color-2, 20%)
+        color primary-color-2
   .avatar
     img
       border avatar-img-border--bold
-  &#self-coordinador,
-  &#self-vp
-    .self-info
-      display block
-      padding 1.5em 0 0 0
-    .avatar
+      
+
+        
+  .versus
+    font-weight 300
+        
+    .glyphicon
+      font-size .8em
+    
+    .karma-wrapper,
+    .karma-glyphicon
+      width 100%
       float left
-      margin 0 20px 0 0
-      img
-        height 9.8em
-  &#self-ejecutivo
-    .avatar
-      img
-        width 70%
-    .self-info
-      margin-top .5em
-      span
-        &.who,
-        &.what,
-        &.where
-          text-align center
+    .karma-wrapper
+      .karma-box
+        height 10px
+        float left
+        box-shadow inset 0 0 1px rgba(0, 0, 0, 0.1)
+        width 100%
+        background linear-gradient(to right, rgb(255, 61, 61) 0%, lighten(yellow, 20%) 75%, color-positive 100%)
+
+    .karma-glyphicon
+      &:hover
+        opacity 1
+        transition all 0.2s ease
+      &.mine
+        margin-bottom -7px
+      &.average
+        margin-top -1px
+        
 
 .kaizen-kpi
-  &.ok
+  &.ok,
+  &.neutral
     background kaizen-kpi-ok-background-color
     color kaizen-kpi-ok-text-color
     .weighted
@@ -278,8 +337,11 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
           color kaizen-negative-color-changes
       .delta
         color primary-color-2
+    &:hover:not(.neutral)
+      background darken(kaizen-kpi-ok-background-color, 2%)
+
   &.red-alert
-    background kaizen-kpi-alert-background-color
+    background-image kaizen-kpi-alert-background-image
     color kaizen-kpi-alert-text-color
     .weighted
       color kaizen-kpi-alert-text-color
@@ -293,6 +355,12 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
         color kaizen-kpi-alert-text-color
     .popover-content
       color primary-color-2
+    &:hover
+      background kaizen-kpi-alert-background-color
+  
+  &.sig-color
+    background-image kaizen-kpi-sig-background-image
+    color white
   .kpi
     .weighted
       letter-spacing -2px
@@ -312,14 +380,15 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
         margin-right .5em
       .delta
         display inline-block
-        margin-top .2em
+        margin-top .5em
+        
     .gauge-kpi
-      transform rotate(180deg)
       text-align center
-      margin-bottom 1em
       canvas
         max-width 80%
-        width 80%
+        width auto
+        height auto
+        max-height 54px
     .kpi-name,
     .kpi-info
       font-weight 300
@@ -328,23 +397,14 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
         display inline-block
         &:not(:first-child)
           margin-left .4em
-    .versus
-      text-align center
-      font-weight 300
-      span
-        &:first-child
-          margin-right .5em
-        &:last-child
-          margin-left .5em
-          
-      .glyphicon
-        font-size 1.2em
+
+        
 
       
       
 
 .kaizen-ranking
-  background kaizen-ranking-background-color
+  background-image kaizen-ranking-background-image
   color kaizen-ranking-text-color
   .ranking
     .rank
@@ -386,10 +446,14 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
         border-bottom none
         
 .kaizen-skills
-  background kaizen-skills-background-color
+  background-image kaizen-skills-background-image
   color kaizen-skills-text-color
   .skills
     .skill
+      &:hover
+        a,
+        .weighted
+          text-shadow 0px 0 10px rgb(255, 255, 255)
       border-bottom 1px solid lighten(kaizen-ranking-background-color, 20%)
       padding 1em 0
       &:first-child
@@ -439,6 +503,7 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
   radial-plot
     svg
       height 85%
+      max-height 400px
       
 .kaizen-people-ranking
   background kaizen-people-ranking-background-color
@@ -446,7 +511,8 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
   .people-ranking
     margin-top 1em
     .each-people
-      .each-avatar
+      .people-ranking-avatar
+        text-align center
         img
           height 48px
           border avatar-img-border--thin
@@ -454,95 +520,126 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
         h4
           font-weight 400
           margin 0 0 .5em 0
-          color primary-color-1
+          color darken(primary-color-1, 30%)
           font-family alternative-font
           font-size 1.2em
         .progress
+          .progress-bar
+            box-shadow inset 0 1px 4px rgba(0, 0, 0, 0.2)
           border-radius 0px
           background rgb(240, 240, 240)
+          box-shadow inset 0 1px 4px rgba(0, 0, 0, 0.2)
           i
             font-weight 300
             font-style normal
             color white
-            letter-spacing 1px
-            text-shadow 0px 1px rgb(0, 0, 0)
-
-.kaizen-latest-news
-  background kaizen-latest-news-background-color
-  color kaizen-latest-news-text-color
-  .latest-news
-    margin-top 1em
-    .each-news
-      font-weight 300
-      margin 0 0 1.5em 0
-      float left
-      img
-        &.guino
-          width 31px
-        &.cover-news
-          border avatar-img-border--thin
-          width 100%
-      h2
-        font-size 1.3em
-        margin 0 0 .5em 0
-      h5
-        font-size .9em
-        
-        
-.kaizen-feedback
-  background kaizen-feedback-background-color
-  color kaizen-feedback-text-color
-  .feedback
-    .each-feedback
-      border-bottom 1px solid lighten(kaizen-ranking-background-color, 20%)
-      padding 1em 0
-      &:first-child
-        padding 0 0 1em 0
-      &:last-child
-        border-bottom none
-      .each
-        .each-avatar
-          img
-            &:first-child
-              width 55px
-              border avatar-img-border--thin
-            &:last-child
-              height 35px
-              position absolute
-              bottom -7px
-              left 40px
-        .each-text
-          line-height 1.4em
-          img
-            display inline-block
-            height 24px
-            vertical-align bottom
-          blockquote,
-          span
-            font-weight 300
-            display inline
-          blockquote
-            font-style italic
-            quotes "\201C""\201D""\2018""\2019"
-            &:before
-              content open-quote
-            &:after
-              content close-quote
-            p
-              display inline
-          cite
-            font-size .8em
-            float left
-            width 100%
+            text-shadow 0 1px 10px rgb(0, 0, 0)
+            font-size 1.1em
+      .each-social-interactions
+        margin-top 0.5em
         img
           &.guino
             width 22px
         .glyphicon-inline
           span
             vertical-align top
+      
+
+.kaizen-latest-news
+  background-image kaizen-latest-news-background-image
+  color kaizen-latest-news-text-color
+  .latest-news
+    margin-top 1em
+    .each-news
+      font-weight 300
+      margin 0 0 1em 0
+      float left
+      .cover-news
+        
+        img
+          border avatar-img-border--thin
+          width 70%
+      .guino-news
+        img
+          max-width 22px
+
+      h2
+        font-size 1.3em
+        margin 0 0 .5em 0
+        letter-spacing -1px
+      h5
+        font-size .7em
+        
+        
+.kaizen-feedback
+  background-image kaizen-feedback-background-image
+  color kaizen-feedback-text-color
+  .feedback
+    .each-feedback
+      border-bottom 1px solid lighten(kaizen-ranking-background-color, 20%)
+      padding .5em 0
+      &:first-child
+        padding 0 0 .5em 0
+      &:last-child
+        border-bottom none
+      .feedback-avatar
+        text-align center
+        img
+          &:first-child
+            max-width 65px
+            width 80%
+            border avatar-img-border--thin
+          &:last-child
+            height 35px
+            position absolute
+            bottom -7px
+            left 25px
+      .feedback-text
+        line-height 1.4em
+        padding-left 30px
+        @media(max-width:767px)
+          padding-left 40px
+        img
+          display inline-block
+          height 24px
+          vertical-align bottom
+        blockquote,
+        span
+          font-weight 300
+          display inline
+          color white
+        blockquote
+          font-style italic
+          quotes "\201C""\201D""\2018""\2019"
+          &:before
+            content open-quote
+          &:after
+            content close-quote
+          p
+            display inline
+        cite
+          font-family alternative-font
+          font-size 1em
+          float left
+          width 100%
+          color rgb(200,200,200)
+      .feedback-icons
+        padding-right 10px
+        padding-left 0px
+        margin-top .3em
+        img
+          &.guino
+            width 22px
+          
+      .glyphicon-inline
+        span
+          vertical-align top
     
         
 .kaizen-promo-carousel
+  width 100%
+  margin -20px 0 20px 0
+  border-bottom 1px solid rgba(0,0,0,0.06)
   .carousels
     background-position center
     background-size cover
@@ -574,29 +671,87 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
           height 7px
 
 .kaizen-user-stories
-  background kaizen-user-stories-background-color
+  background-image kaizen-user-stories-background-image
   color kaizen-user-stories-text-color
   .user-stories
     margin-top 1em
-    .each-story
+    .stories-avatar
+      text-align center
       img
-        max-height 100%
-        max-width 100%
+        max-width 120px
         width 100%
         border avatar-img-border--thin
+    .stories-text
       span
         font-weight 300
         &.story-legend
           p
             font-style italic
             font-size 1em
+            line-height 1.5em
         &.story-author
           p
             font-weight bold
             font-size .8em
-          
-      
+
+
+.kaizen-modal-table
+  thead,
+  tbody
+    th
+      text-align center
+      font-weight 300
+      vertical-align bottom!important
+  thead
+    th
+      font-weight 400
+      font-size 90%
+  .table-kpi-deep-user
+    text-align left
+    img
+      width 30px
+      margin-right .5em
+      vertical-align middle
+    font-weight 300
+    font-size 1.2em
+    vertical-align middle
+    font-family alternative-font
+  .table-kpi-deep-weighted
+    font-weight 400
+  .table-kpi-deep-guino
+    img
+      width 30px
+    .glyphicon-inline
+      vertical-align bottom
+      height 30px
+      font-size 1.2em
+      color primary-color-3
+  .table-position-not-me
+    opacity .5
+    transform scale(.95)
+    -webkit-filter blur(1px)
+    th
+      border-top 0
+  .table-position-its-me
+    color primary-color-1
+    th
+      border-top 0
+    
+.kaizen-modal
+  .table-position-separator
+    text-align center
+    float left
+    width 100%
+    margin -20px 0 20px 0
+    span
+      color rgb(200, 200, 200)
+      font-weight 300
+      font-size 2em 
   
+    
+      
+    
+      
 // @keyframes blink
 //   0%
 //     text-shadow none

@@ -1,0 +1,26 @@
+.modal-header.text-center
+	.glyphicon-inline
+		span.glyphicon.glyphicon-asterisk
+	h3.modal-title.text-uppercase Tu posición
+
+.modal-body.kaizen-modal
+	table.table.kaizen-modal-table
+		tbody(ng-repeat='item in items')
+			tr.table-position-not-me
+				th # {{ item[0] }}
+				th.table-kpi-deep-user
+					img.img-circle(src='{{ item[2] }}')
+					{{ item[1] }}
+				th.table-kpi-deep-weighted {{ item[3] }}%
+	.table-position-separator
+		span ...
+	table.table.kaizen-modal-table
+		tbody
+			tr.table-position-its-me
+				th # {{ actualrank }}
+				th.table-kpi-deep-user
+					img.img-circle(src='{{ useravatar }}')
+					{{ username }}
+				th.table-kpi-deep-weighted {{ userweighted }}%
+.modal-footer
+	button.btn.btn-primary(ng-click='ok()') [ OK _
