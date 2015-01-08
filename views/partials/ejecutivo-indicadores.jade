@@ -23,7 +23,7 @@
             .col-lg-12.col-xs-12.col-md-12
               .kaizen-box.kaizen-kpi.neutral.kaizen-self#self-ejecutivo.h-level-1
                 .col-lg-12.nopadding
-                  .col-lg-7.col-xs-12.nopadding
+                  .col-md-6.col-xs-12.nopadding
                     .avatar
                       img.img-circle(src='entel/avatar/5.jpg')
                     .self-info(ng-controller='ModalPosCtrl')
@@ -31,36 +31,29 @@
                       span.what.uppercase Ejecutiva de Ventas
                       span.where.uppercase ECC
                       span.rank-position.good-rank.text-uppercase.cursor-pointer(ng-click='open("xs", "34", "Alicia Valderrama", "entel/avatar/5.jpg", "91,2")') &nbsp;
-                  .col-lg-5.col-xs-12
-                    .self-info
+                  .col-md-4.col-xs-12
                     .versus.text-center
-                      //- .karma-glyphicon.mine
-                      //-   span.glyphicon.glyphicon-chevron-down(style='margin-left:2em', tooltip-placement='top', tooltip='Estás aquí')
                       .karma-wrapper
                         .karma-title
                           span Asistencia
                         .karma-box.karma-asistencia
-                          span 72%
-                      //- .karma-glyphicon.average
-                      //-   span.glyphicon.glyphicon-chevron-up(style='margin-left:1em', tooltip-placement='left', tooltip='El promedio está aquí')
-                      //- .karma-glyphicon.mine
-                      //-   span.glyphicon.glyphicon-chevron-down(style='margin-left:2em', tooltip-placement='top', tooltip='Estás aquí')
+                          span 75%
                       .karma-wrapper
                         .karma-title
                           span Capacitación
                         .karma-box.karma-capacitacion
-                          span 80%
-                      //- .karma-glyphicon.average
-                      //-   span.glyphicon.glyphicon-chevron-up(style='margin-left:1em', tooltip-placement='left', tooltip='El promedio está aquí')
-                      //- .karma-glyphicon.mine
-                      //-   span.glyphicon.glyphicon-chevron-down(style='margin-left:2em', tooltip-placement='top', tooltip='Estás aquí')
+                          span 82%
                       .karma-wrapper
                         .karma-title
                           span On-Off
                         .karma-box.karma-onoff
-                          span 91%
-                      //- .karma-glyphicon.average
-                      //-   span.glyphicon.glyphicon-chevron-up(style='margin-left:1em', tooltip-placement='left', tooltip='El promedio está aquí')
+                          span 93%
+                  .col-md-2.col-xs-12
+                    .versus
+                      .karma-average
+                        span.karma-average-value 83.3%
+                        span.karma-average-title.text-uppercase Ponderado
+
 
 
             //- tus indicadores
