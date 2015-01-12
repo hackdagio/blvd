@@ -2,7 +2,7 @@
 
 ## authors
 
-* Ignacio Trujillo (Lead UI/UX developer)
+* [Ignacio Trujillo](https://github.com/gnaces) <itrujillo@conceptogroup.cl> (Lead UI/UX developer)
 
 ## copyright
 
