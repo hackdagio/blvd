@@ -70,20 +70,20 @@
                     .col-lg-4.col-sm-4.col-xs-12
                       .kpi
                         .gauge-kpi
-                          canvas(gaugejs='', options='gaugeOptions', value='valuePonderadoSuper', max-value='maxValue', animation-time='animationTime')
-                        .weighted
-                          span.normal-size.text-center {{ valuePonderadoSuper }}%
-                        .kpi-name.text-center.text-uppercase
-                          span.small-size Ponderado gestión
-
-                    .col-lg-4.col-sm-4.col-xs-12
-                      .kpi
-                        .gauge-kpi
                           canvas(gaugejs='', options='gaugeOptions', value='valueEPASuper', max-value='maxValue', animation-time='animationTime')
                         .weighted
                           span.normal-size.text-center {{ valueEPASuper }}%
                         .kpi-name.text-center.text-uppercase
                           span.small-size EPA
+
+                    .col-lg-4.col-sm-4.col-xs-12
+                      .kpi
+                        .gauge-kpi
+                          canvas(gaugejs='', options='gaugeOptions', value='valuePonderadoSuper', max-value='maxValue', animation-time='animationTime')
+                        .weighted
+                          span.normal-size.text-center {{ valuePonderadoSuper }}%
+                        .kpi-name.text-center.text-uppercase
+                          span.small-size Ponderado gestión
 
                     .col-lg-4.col-sm-4.col-xs-12
                       .kpi
