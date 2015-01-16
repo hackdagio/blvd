@@ -1,9 +1,16 @@
-# kaizen dashboard
+# Kaizen Dashboard
+#### The front-end
 
-## authors
+## Authors
 
-* [Ignacio Trujillo](https://github.com/gnaces) <itrujillo@conceptogroup.cl> (Lead UI/UX developer)
+### Original Author and Development Lead
 
-## copyright
+- [Ignacio Trujillo](mailto:itrujillo@conceptogroup.cl) [(https://github.com/gnaces)](https://github.com/gnaces)
 
-(c) 2014-2015 Concepto Group
+### Contributors
+
+See [https://github.com/conceptogroup/kaizen-dashboard/contributors](https://github.com/conceptogroup/kaizen-dashboard/contributors)
+
+## Copyright
+
+Code, graphics and documentation copyright 2014-2015 Concepto Group
