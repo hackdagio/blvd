@@ -3,20 +3,21 @@
       .container
         .row
           ul.sidebar-nav
-            li.sidebar-brand.active
-              a(href='indicadores/call-center')
-                img(src='entel/images/static/call-center.png')
-                span.hidden-sm.hidden-xs Contact Center
+            li.active
+              span.glyphicon-inline.glyphicon.glyphicon-cog
+              a(href='vp/indicadores/allus') General
             li
-              a(href='vp/indicadores/allus')
-                span Allus
+              span.glyphicon-inline.glyphicon.glyphicon-user 
+              a(href='vp/indicadores/allus') Usuario
             li
-              a(href='vp/indicadores/ecc')
-                span ECC
+              span.glyphicon-inline.glyphicon.glyphicon-lock
+              a(href='vp/indicadores/ecc') Contraseña
             li
-              a(href='vp/indicadores/sccp')
-                span SCCP
+              span.glyphicon-inline.glyphicon.glyphicon-question-sign
+              a(href='vp/indicadores/sccp') Ayuda
 
-  .kaizen-dashboard-wrapper-content
+  .kaizen-user-wrapper-content
     .container-fluid
       .row
+        .kaizen-user-box.col-lg-12.col-xs-12
+          h3 general
