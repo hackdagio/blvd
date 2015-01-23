@@ -1,9 +1,8 @@
-wrapper-principal-size = 125
+kaizen-dashboard-wrapper-principal-size = 125
+kaizen-dashboard-wrapper-sidebar-background-color = darken(primary-color-1, 75%)
 
 kaizen-positive-color-changes = color-positive
 kaizen-negative-color-changes = color-negative
-
-kaizen-sidebar-background-color = darken(primary-color-1, 75%)
 
 kaizen-kpi-ok-background-color = color-gray-lighten
 kaizen-kpi-ok-text-color = darken(primary-color-2, 10%)
@@ -50,18 +49,18 @@ grid-height = 12
 avatar-img-border--bold = 3px solid rgb(220, 220, 220)
 avatar-img-border--thin = 1px solid rgb(220, 220, 220)
 
-.wrapper
+.kaizen-dashboard-wrapper
   padding-left 0
   transition all 0.5s ease
   &.toggled
-    padding-left (wrapper-principal-size)px
+    padding-left (kaizen-dashboard-wrapper-principal-size)px
     padding-left 0
-    .wrapper-sidebar
-      width (wrapper-principal-size)px
+    .kaizen-dashboard-wrapper-sidebar
+      width (kaizen-dashboard-wrapper-principal-size)px
       width 0
-    .wrapper-content
+    .kaizen-dashboard-wrapper-content
       position absolute
-      margin-right -(wrapper-principal-size)px
+      margin-right -(kaizen-dashboard-wrapper-principal-size)px
       position relative
       margin-right 0
       @media(min-width:768px)
@@ -71,24 +70,24 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
       padding-left 0
   &.vp-view
     @media(min-width:768px)
-      padding-left (wrapper-principal-size)px
-    .wrapper-content
+      padding-left (kaizen-dashboard-wrapper-principal-size)px
+    .kaizen-dashboard-wrapper-content
       @media(max-width:767px)
-        padding-left (wrapper-principal-size/2.5)px
-  .wrapper-sidebar
+        padding-left (kaizen-dashboard-wrapper-principal-size/2.5)px
+  .kaizen-dashboard-wrapper-sidebar
     z-index 1000
     position fixed
-    left (wrapper-principal-size)px
+    left (kaizen-dashboard-wrapper-principal-size)px
     width 0
     height 100%
-    margin-left -(wrapper-principal-size)px
-    background kaizen-sidebar-background-color
+    margin-left -(kaizen-dashboard-wrapper-principal-size)px
+    background kaizen-dashboard-wrapper-sidebar-background-color
     transition all 0.5s ease
-    width (wrapper-principal-size)px
+    width (kaizen-dashboard-wrapper-principal-size)px
     margin-top -20px
     font-weight 300
     @media(max-width:767px)
-      width (wrapper-principal-size/2.5)px
+      width (kaizen-dashboard-wrapper-principal-size/2.5)px
     .sidebar-nav
       position absolute
       width 100%
@@ -99,10 +98,10 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
       li
         width 100%
         text-align center
-        padding (wrapper-principal-size/10)px 0
-        border-top 1px solid lighten(kaizen-sidebar-background-color, 5%)
-        border-bottom 1px solid darken(kaizen-sidebar-background-color, 90%)
-        background darken(kaizen-sidebar-background-color, 50%)
+        padding (kaizen-dashboard-wrapper-principal-size/10)px 0
+        border-top 1px solid lighten(kaizen-dashboard-wrapper-sidebar-background-color, 5%)
+        border-bottom 1px solid darken(kaizen-dashboard-wrapper-sidebar-background-color, 90%)
+        background darken(kaizen-dashboard-wrapper-sidebar-background-color, 50%)
         span
           display block
           text-decoration none

@@ -48,6 +48,11 @@ app.config(function ($routeProvider, $locationProvider) {
     controller: 'indicadoresController',
     resolve: { loginRequired: loginRequired }
   })
+  .when('/usuario', {
+    templateUrl: 'partials/usuario',
+    controller: 'usuarioController',
+    resolve: { loginRequired: loginRequired }
+  })
   .when('/acceder', {
     templateUrl: 'partials/login',
     controller: 'loginController',

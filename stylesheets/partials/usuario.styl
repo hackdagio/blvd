@@ -1,0 +1,75 @@
+kaizen-user-wrapper-principal-size = 300
+kaizen-user-wrapper-sidebar-background-color = rgb(245,245,245)
+
+.kaizen-user-wrapper
+  padding-left 0
+  transition all 0.5s ease
+  background white
+  &.toggled
+    padding-left (kaizen-user-wrapper-principal-size)px
+    padding-left 0
+    .kaizen-user-wrapper-sidebar
+      width (kaizen-user-wrapper-principal-size)px
+      width 0
+    .kaizen-user-wrapper-content
+      position absolute
+      margin-right -(kaizen-user-wrapper-principal-size)px
+      position relative
+      margin-right 0
+      @media(min-width:768px)
+        position relative
+        margin-right 0
+    @media(min-width:768px)
+      padding-left 0
+  .kaizen-user-wrapper-sidebar
+    z-index 1000
+    position fixed
+    left (kaizen-user-wrapper-principal-size)px
+    width 0
+    height 100%
+    margin-left -(kaizen-user-wrapper-principal-size)px
+    background kaizen-user-wrapper-sidebar-background-color
+    transition all 0.5s ease
+    width (kaizen-user-wrapper-principal-size)px
+    margin-top -20px
+    font-weight 300
+    @media(max-width:767px)
+      width (kaizen-user-wrapper-principal-size/2.5)px
+    .sidebar-nav
+      position absolute
+      width 100%
+      top 0
+      margin 0
+      padding 0
+      list-style none
+      li
+        width 100%
+        text-align center
+        padding (kaizen-user-wrapper-principal-size/10)px 0
+        border-top 1px solid lighten(kaizen-user-wrapper-sidebar-background-color, 5%)
+        border-bottom 1px solid darken(kaizen-user-wrapper-sidebar-background-color, 90%)
+        background kaizen-user-wrapper-sidebar-background-color
+        span
+          display block
+          text-decoration none
+          color rgb(255,255,255)
+          font-size 1em
+          text-shadow 0 0 2px rgb(17, 17, 17)
+          text-transform uppercase
+          font-family alternative-font
+          &:hover
+            text-decoration none
+        &:last-child
+          border-bottom none
+        a
+          color rgb(255,255,255)
+          &:hover
+            text-decoration none
+      .active
+          border-left 3px solid primary-color-3
+          font-size 110%
+      img
+        width 50%
+    .sidebar-nav li a:active,
+    .sidebar-nav li a:focus
+      text-decoration none

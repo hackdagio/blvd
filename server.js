@@ -1,20 +1,21 @@
 var express = require('express'),
-bodyParser = require('body-parser'),
-methodOverride = require('method-override'),
-errorHandler = require('errorhandler'),
-morgan = require('morgan'),
-routes = require('./routes'),
-partials = require('./routes/partials'),
-api = require('./routes/api'),
-http = require('http'),
-stylus = require('stylus'),
-nib = require('nib'),
-compress = require('compression');
+    bodyParser = require('body-parser'),
+    methodOverride = require('method-override'),
+    errorHandler = require('errorhandler'),
+    morgan = require('morgan'),
+    http = require('http'),
+    stylus = require('stylus'),
+    nib = require('nib'),
+    compress = require('compression'),
+
+    // routes
+    routes = require('./routes'),
+    partials = require('./routes/partials');
 
 var debug = require('debug')('express');
 var app = module.exports = express();
 
-// compile .styl
+// compile .styl files
 function compile(str, path) {
   return stylus(str)
     .set('compress', true)
@@ -22,9 +23,7 @@ function compile(str, path) {
     .use(nib())
 }
 
-
-// config
-
+/// config
 app.set('port', process.env.PORT || 3001);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
@@ -33,7 +32,7 @@ app.use(stylus.middleware(
     dest: __dirname + '/public',
     compile: compile
   }
-))
+));
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -42,26 +41,18 @@ app.use(methodOverride());
 app.use(compress());
 app.use(express.static(__dirname + '/public'));
 
-var env = process.env.NODE_ENV || 'dev';
-
-// development only
-if (env === 'dev') { app.use(errorHandler()); }
-// production only
-if (env === 'production') { }
-
-
 // routes
 app.use('/', routes);
 app.use('/partials', partials);
-app.use('/api', api);
 
-// redirect all others to the index (html5 history)
+
+/// redirect all others to the index (html5 history)
 app.get('*', function(req, res, next) {
   res.render('index');
 });
 
 
-// error handlers
+/// error handlers
 
 // development error handler
 // will print stacktrace
@@ -86,15 +77,7 @@ app.use(function(err, req, res, next) {
 });
 
 
-// cors inbound
-app.all('/*', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST","PUT");
-  next();
-});
-
-
-// runtime
+/// runtime
 var server = app.listen(app.get('port'), function () {
   console.log('Kaizen listening on port ' + server.address().port);
 });
