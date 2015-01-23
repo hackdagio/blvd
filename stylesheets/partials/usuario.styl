@@ -1,5 +1,6 @@
 kaizen-user-wrapper-principal-size = 300
 kaizen-user-wrapper-sidebar-background-color = white
+kaizen-user-config-standard-color = rgb(36, 38, 40)
 
 .kaizen-user-wrapper
   transition all 0.5s ease
@@ -47,6 +48,7 @@ kaizen-user-wrapper-sidebar-background-color = white
         text-decoration none
         color rgb(170, 169, 162)
         font-size 1em
+        font-weight 300
         &:hover
           text-decoration none
       a
@@ -56,7 +58,7 @@ kaizen-user-wrapper-sidebar-background-color = white
     .active
       background body-background-color
       span, a
-        color rgb(36, 38, 40)
+        color kaizen-user-config-standard-color
         font-weight 400
     img
       width 50%
@@ -72,3 +74,33 @@ kaizen-user-wrapper-sidebar-background-color = white
     padding 20px
     position relative
 
+.kaizen-user-box
+  h1
+    font-size 2em
+    font-weight 300
+    color kaizen-user-config-standard-color
+  h3
+    font-size 1.56em
+    letter-spacing -1px
+    font-weight 300
+    color lighten(kaizen-user-config-standard-color, 10%)
+  form
+    margin-top 30px
+    .form-group
+      position relative
+      margin-bottom 1.6em
+      width 100%
+      max-width 500px
+    label
+      display block
+      color rgb(36, 38, 40)
+      font-size 0.9em
+      font-weight 400
+      margin-bottom 10px
+    input
+      border 1px solid rgb(224, 223, 215)
+      border-radius 0
+      box-shadow none
+    button
+      font-size 0.8em
+      font-weight 300

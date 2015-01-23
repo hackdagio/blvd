@@ -3,21 +3,36 @@
       .container
         .row
           ul.sidebar-nav
-            li.active
+            li
               span.glyphicon-inline.glyphicon.glyphicon-cog
-              a(href='vp/indicadores/allus') General
+              a.text-capitalize(href='vp/indicadores/allus') General
             li
               span.glyphicon-inline.glyphicon.glyphicon-user 
-              a(href='vp/indicadores/allus') Usuario
-            li
+              a.text-capitalize(href='vp/indicadores/allus') Usuario
+            li.active 
               span.glyphicon-inline.glyphicon.glyphicon-lock
-              a(href='vp/indicadores/ecc') Contraseña
+              a.text-capitalize(href='vp/indicadores/ecc') Seguridad
             li
               span.glyphicon-inline.glyphicon.glyphicon-question-sign
-              a(href='vp/indicadores/sccp') Ayuda
+              a.text-capitalize(href='vp/indicadores/sccp') Ayuda
 
   .kaizen-user-wrapper-content
     .container-fluid
       .row
         .kaizen-user-box.col-lg-12.col-xs-12
-          h3 general
+          h1 Seguridad
+          hr
+          h3 Cambia tu contraseña
+          form.change-password-form(name='changePassword')
+            fieldset
+              .form-group
+                label(for='user-password-old') Contraseña antigua
+                input.form-control(id='user-password-old', name='user-password-old', ng-model='user-password-old', type='password', ng-required='')
+              .form-group
+                label(for='user-password-new-1') Contraseña nueva
+                input.form-control(id='user-password-new-1', name='user-password-new-1', ng-model='user-password-new-1', type='password', ng-required='')
+              .form-group
+                label(for='user-password-new-2') Repite la contraseña nueva
+                input.form-control(id='user-password-new-2', name='user-password-new-2', ng-model='user-password-new-2', type='password', ng-required='', compareTo='user-password-new-1')
+              .form-group
+                button.button-change-password.btn.btn-danger.text-uppercase(type='button') Cambiar contraseña
