@@ -54,8 +54,13 @@ app.config(function ($routeProvider, $locationProvider) {
     resolve: { loginRequired: loginRequired }
   })
   .when('/acceder', {
-    templateUrl: 'partials/login',
+    templateUrl: 'partials/acceder',
     controller: 'loginController',
+    resolve: { redirectIfAuthenticated: redirectIfAuthenticated('/vp/indicadores') }
+  })
+  .when('/registrarse', {
+    templateUrl: 'partials/registrarse',
+    controller: 'signupController',
     resolve: { redirectIfAuthenticated: redirectIfAuthenticated('/vp/indicadores') }
   })
   .otherwise({

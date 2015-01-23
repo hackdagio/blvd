@@ -16,7 +16,7 @@ h6
 body
   padding-top (body-distance-from-top)px
   color primary-color-1
-  background rgb(240, 240, 240)
+  background body-background-color
 
 // bootstrap fixes
 .container-fluid
@@ -81,7 +81,12 @@ body
 .btn-warning
   background-color color-almost-negative
 .btn-danger
-  background-color color-negative
+  background-color rgb(207, 53, 32)
+  border-color rgb(177, 45, 27)
+.btn-transparent
+  background-color rgba(255,255,255,0.1)
+  border-color rgba(0,0,0,0.1)
+  color rgb(100,100,100)
 
 .form-control
   border-radius 0
@@ -93,3 +98,6 @@ body
   
 .cursor-pointer
   cursor pointer
+  
+.glyphicon-inline
+  display inline-block!important
