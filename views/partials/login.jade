@@ -1,19 +1,16 @@
 ﻿.container
   .row
-    .col-md-12(ng-controller='loginController')
-      .modal-dialog(style='margin-bottom:0')
+    .kaizen-login-box.col-xs-12(ng-controller='loginController')
+      .modal-dialog.text-center
         .panel-heading
-          h3.panel-title.text-uppercase Inicia sesión
+          h1.panel-title.text-uppercase Inicia sesión
         .alert.alert-danger(data-dismiss='alert', data-ng-hide="message == ''") {{ message }}
         .panel-body
-          form(role='form')
+          form.login-to-kaizen-form.form-inline(role='form')
             fieldset
               .form-group
-                input#username.form-control(type='username', name='username', data-ng-model='loginData.userName', required='', autofocus='')
+                input#username.form-control(type='username', name='username', data-ng-model='loginData.userName', required='', autofocus='', placeholder='RUT')
               .form-group
-                input#password.form-control(type='password', name='password', data-ng-model='loginData.password', required='')
-              .checkbox
-                label
-                  input(name='remember', type='checkbox', value='Recuérdame')
-                  | Recuérdame
-              button.btn.btn-sm.btn-primary(type='submit', data-ng-click='login()') [ Entrar_
+                input#password.form-control(type='password', name='password', data-ng-model='loginData.password', required='', placeholder='Contraseña')
+              .form-group
+                button.btn.btn-sm.btn-primary.text-uppercase(type='submit', data-ng-click='login()') [ Entrar_
