@@ -53,18 +53,23 @@ app.config(function ($routeProvider, $locationProvider) {
     controller: 'usuarioController',
     resolve: { loginRequired: loginRequired }
   })
-  .when('/acceder', {
-    templateUrl: 'partials/acceder',
+  .when('/login', {
+    templateUrl: 'partials/login',
     controller: 'loginController',
     resolve: { redirectIfAuthenticated: redirectIfAuthenticated('/vp/indicadores') }
   })
-  .when('/registrarse', {
-    templateUrl: 'partials/registrarse',
+  .when('/first-time', {
+    templateUrl: 'partials/first-time',
+    controller: 'firsttimeController',
+    resolve: { redirectIfAuthenticated: redirectIfAuthenticated('/vp/indicadores') }
+  })
+  .when('/signup', {
+    templateUrl: 'partials/singup',
     controller: 'signupController',
     resolve: { redirectIfAuthenticated: redirectIfAuthenticated('/vp/indicadores') }
   })
   .otherwise({
-    redirectTo: '/acceder'
+    redirectTo: '/login'
   });
 
   $locationProvider.html5Mode(true);
@@ -91,7 +96,7 @@ var loginRequired = function($location, $q, authService) {
 
   if(! (authService.authentication.isAuth == true)) {
     deferred.reject()
-    $location.path('/acceder');
+    $location.path('/login');
   } else {
     deferred.resolve()
   }

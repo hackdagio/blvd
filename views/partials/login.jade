@@ -3,7 +3,7 @@
     .kaizen-login-box.col-xs-12(ng-controller='loginController')
       .modal-dialog.text-center
         .panel-heading
-          h1.panel-title.text-uppercase Inicia sesión
+          h1.panel-title.text-uppercase _ Inicia sesión 
         .alert.alert-danger(data-dismiss='alert', data-ng-hide="message == ''") {{ message }}
         .panel-body
           form.login-to-kaizen-form.form-inline(role='form')
@@ -14,3 +14,4 @@
                 input#password.form-control(type='password', name='password', data-ng-model='loginData.password', required='', placeholder='Contraseña')
               .form-group
                 button.btn.btn-sm.btn-primary.text-uppercase(type='submit', data-ng-click='login()') [ Entrar_
+                a(href='/first-time'): button.btn.btn-sm.btn-transparent.text-uppercase [ Primera vez_
