@@ -1,3 +1,12 @@
+/*!
+ * Kaizen Dashboard
+ * by Ignacio Trujillo <itrujillo@conceptogroup.cl>
+ * (c) 2014-2015 Concepto Group
+ *
+ * http://www.conceptogroup.cl
+ * https://github.com/gnaces
+ */
+
 var express = require('express'),
     bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
@@ -6,11 +15,12 @@ var express = require('express'),
     http = require('http'),
     stylus = require('stylus'),
     nib = require('nib'),
-    compress = require('compression'),
+    compress = require('compression');
 
-    // routes
-    routes = require('./routes'),
-    partials = require('./routes/partials');
+var routes = require('./routes');
+var partials = require('./routes/partials');
+
+var config = require('./config.json');
 
 var debug = require('debug')('express');
 var app = module.exports = express();
@@ -24,7 +34,7 @@ function compile(str, path) {
 }
 
 /// config
-app.set('port', process.env.PORT || 3001);
+app.set('port', process.env.PORT || config.port);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(stylus.middleware(
@@ -79,7 +89,7 @@ app.use(function(err, req, res, next) {
 
 /// runtime
 var server = app.listen(app.get('port'), function () {
-  console.log('Kaizen listening on port ' + server.address().port);
+  console.log(config.app.name + ' "' + config.app.sig_name + '" running at ' + app.get('port'));
 });
 
 
