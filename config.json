@@ -1,0 +1,7 @@
+{
+    "app": {
+        "name": "Kaizen Dashboard",
+	    "sig_name": "Sonrisas para ti"
+    },
+    "port": 3001
+}
