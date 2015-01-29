@@ -3,7 +3,7 @@
 
     //- carousel promos
     .kaizen-promo-carousel#carousel-ejecutivo
-      .kaizen-box-content.carousels(ng-controller='carouselController')
+      .kaizen-box-content.carousels(ng-controller='bannerController')
         carousel(interval='interval')
           slide(ng-repeat='slide in slides', active='slide.active')
             img(ng-src='{{slide.image}}')
@@ -25,12 +25,12 @@
                 .col-lg-12.nopadding
                   .col-md-6.col-xs-12.nopadding
                     .avatar
-                      img.img-circle(src='entel/avatar/5.jpg')
+                      img.img-circle(src='//static.kaizen.link/generic/avatar/5.jpg')
                     .self-info(ng-controller='ModalPosCtrl')
                       span.who.capitalize Alicia Valderrama
                       span.what.uppercase Ejecutiva de Ventas
                       span.where.uppercase ECC
-                      span.rank-position.good-rank.text-uppercase.cursor-pointer(ng-click='open("xs", "34", "Alicia Valderrama", "entel/avatar/5.jpg", "91,2")') &nbsp;
+                      span.rank-position.good-rank.text-uppercase.cursor-pointer(ng-click='open("xs", "34", "Alicia Valderrama", "//static.kaizen.link/generic/avatar/5.jpg", "91,2")') &nbsp;
                   .col-md-4.col-xs-12
                     .versus.text-center
                       .karma-wrapper
@@ -108,37 +108,37 @@
 
                   .col-lg-12.col-xs-12.each-feedback
                     .feedback-avatar.col-lg-2.col-sm-1.col-md-2.col-xs-2.nopadding
-                      img.img-circle(src='entel/avatar/100.jpg')
-                      img(src='entel/images/originals/only.svg')
+                      img.img-circle(src='//static.kaizen.link/generic/avatar/100.jpg')
+                      img(src='//static.kaizen.link/entel/images/only.svg')
                     .feedback-text.col-lg-9.col-sm-10.col-md-9.col-xs-9
                       blockquote: p Tu equipo va muy bien! Sigue así Eli.
                       cite: | <em>por</em> <b>Alison Fernández</b> · Supervisor
                     .feedback-icons.col-lg-1.col-sm-1.col-md-1.col-xs-1
-                      img.guino(src='entel/images/guiño.svg')
+                      img.guino(src='//static.kaizen.link/entel/images/guiño.svg')
                       .glyphicon-inline
                         span.glyphicon.glyphicon-comment
 
                   .col-lg-12.col-xs-12.each-feedback
                     .feedback-avatar.col-lg-2.col-sm-1.col-md-2.col-xs-2.nopadding
-                      img.img-circle(src='entel/avatar/110.jpg')
-                      img(src='entel/images/originals/only.svg')
+                      img.img-circle(src='//static.kaizen.link/generic/avatar/110.jpg')
+                      img(src='//static.kaizen.link/entel/images/only.svg')
                     .feedback-text.col-lg-9.col-sm-10.col-md-9.col-xs-9
                       blockquote: p ¡Cómo lo haces! Me gustaría manejar a un equipo tan bien como tú.
                       cite: | <em>por</em> <b>Sonia Beltrán</b> · Supervisor
                     .feedback-icons.col-lg-1.col-sm-1.col-md-1.col-xs-1
-                      img.guino(src='entel/images/guiño.svg')
+                      img.guino(src='//static.kaizen.link/entel/images/guiño.svg')
                       .glyphicon-inline
                         span.glyphicon.glyphicon-comment
 
                   .col-lg-12.col-xs-12.each-feedback
                     .feedback-avatar.col-lg-2.col-sm-1.col-md-2.col-xs-2.nopadding   
-                      img.img-circle(src='entel/avatar/120.jpg')
-                      img(src='entel/images/originals/all.svg')
+                      img.img-circle(src='//static.kaizen.link/generic/avatar/120.jpg')
+                      img(src='//static.kaizen.link/entel/images/all.svg')
                     .feedback-text.col-lg-9.col-sm-10.col-md-9.col-xs-9
                       blockquote: p Eli, ¿me puedes ayudar a subir mis ventas? Te lo agradecería un montón.
                       cite: | <em>por</em> <b>Luís Perez</b> · Supervisor
                     .feedback-icons.col-lg-1.col-sm-1.col-md-1.col-xs-1
-                      img.guino(src='entel/images/guiño.svg')
+                      img.guino(src='//static.kaizen.link/entel/images/guiño.svg')
                       .glyphicon-inline
                         span.glyphicon.glyphicon-comment
 
@@ -152,7 +152,7 @@
               .user-stories.kaizen-box-content
                 .col-lg-12.nopadding
                   .stories-avatar.col-lg-3.col-md-2.col-sm-2.col-xs-12.nopadding
-                    img.img-circle(src='entel/avatar/40.jpg')
+                    img.img-circle(src='//static.kaizen.link/generic/avatar/40.jpg')
                   .stories-text.col-lg-9.col-md-10.col-sm-10.col-xs-12
                     span.story-legend: p.text-center "Ahora me conecto de verdad con mis clientes cuando llaman. Entel me entregó las herramientas para hacerlo."
                     span.story-author: p.text-center.text-uppercase Ángela Soto
@@ -163,7 +163,7 @@
               .user-stories.kaizen-box-content
                 .col-lg-12.nopadding
                   .stories-avatar.col-lg-3.col-md-2.col-sm-2.col-xs-12.nopadding
-                    img.img-circle(src='entel/avatar/70.jpg')
+                    img.img-circle(src='//static.kaizen.link/generic/avatar/70.jpg')
                   .stories-text.col-lg-9.col-md-10.col-sm-10.col-xs-12
                     span.story-legend: p.text-center "Mi familia y amigos están felices con lo que hago. Estoy dejando mi huella en muchas personas."
                     span.story-author: p.text-center.text-uppercase Claudia Arce
@@ -174,7 +174,7 @@
               .user-stories.kaizen-box-content
                 .col-lg-12.nopadding
                   .stories-avatar.col-lg-3.col-md-2.col-sm-2.col-xs-12.nopadding
-                    img.img-circle(src='entel/avatar/60.jpg')
+                    img.img-circle(src='//static.kaizen.link/generic/avatar/60.jpg')
                   .stories-text.col-lg-9.col-md-10.col-sm-10.col-xs-12
                     span.story-legend: p.text-center "Gracias a Entel he podido superarme a mi mismo cada día más."
                     span.story-author: p.text-center.text-uppercase Esteban Durán

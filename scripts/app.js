@@ -10,8 +10,8 @@
 'use strict';
 
 var app = angular.module('kaizen-concepto', [
+  'kaizen-controllers',
   'kaizen-concepto.controllers-views',
-  'kaizen-concepto.controllers-interactions',
   'ngRoute',
   'LocalStorageModule',
   'angular-loading-bar',
@@ -63,8 +63,8 @@ app.config(function ($routeProvider, $locationProvider) {
     controller: 'indicadoresController',
     resolve: { loginRequired: loginRequired }
   })
-  .when('/usuario', {
-    templateUrl: 'partials/usuario',
+  .when('/me', {
+    templateUrl: 'partials/me',
     controller: 'usuarioController',
     resolve: { loginRequired: loginRequired }
   })
