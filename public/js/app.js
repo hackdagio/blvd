@@ -1,3 +1,12 @@
+/*!
+ * Kaizen Dashboard
+ * by Ignacio Trujillo <itrujillo@conceptogroup.cl>
+ * (c) 2014-2015 Concepto Group
+ *
+ * http://www.conceptogroup.cl
+ * https://github.com/gnaces
+ */
+
 'use strict';
 
 var app = angular.module('kaizen-concepto', [
@@ -9,8 +18,14 @@ var app = angular.module('kaizen-concepto', [
   'ui.bootstrap',
   'ui.radialplot',
   'gaugejs'
-  ]);
+]);
 
+
+// api endpoint
+var serviceBase = 'http://demo.kaizen.link/';
+
+
+// angular routing
 app.config(function ($routeProvider, $locationProvider) {
   $routeProvider
   .when('/vp/indicadores', {
@@ -70,13 +85,17 @@ app.config(function ($routeProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 });
 
-var serviceBase = 'http://demo.kaizen.link/';
+app.config(function (localStorageServiceProvider) {
+  localStorageServiceProvider
+    .setStorageType('sessionStorage');
+});
 
 app.constant('ngAuthSettings', {
   apiServiceBaseUri: serviceBase,
-  clientId: 'kaizen'
+  clientId: 'sonrisas'
 });
 
+// interceptors for http requests
 app.config(function ($httpProvider) {
   $httpProvider.interceptors.push('authInterceptorService');
 });
