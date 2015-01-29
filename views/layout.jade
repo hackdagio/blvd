@@ -1,6 +1,8 @@
 //  
     @author Ignacio Trujillo @url https://github.com/gnaces 
     @copyright 2014 - 2015 Concepto Group. Todos los derechos reservados.
+
+- var bootstrap_css = { version: '3.3.2' }
 doctype
 html(ng-app="kaizen-concepto")
   head
@@ -16,7 +18,7 @@ html(ng-app="kaizen-concepto")
     link(rel='shortcut icon', href='//static.kaizen.link/entel/favicon.png')
 
     //- https://cdnjs.com/libraries/twitter-bootstrap
-    link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.min.css')
+    link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/#{bootstrap_css.version}/css/bootstrap.min.css')
 
     //- main style
     link(rel='stylesheet', href='/stylesheets/style.css')
