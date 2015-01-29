@@ -1,31 +1,31 @@
-.navbar.navbar-kaizen.navbar-fixed-top(role='navigation', data-ng-controller='inicioController')
+.navbar.navbar-kaizen.navbar-fixed-top(role='navigation', ng-controller='navbarController')
   .container-fluid
     .navbar-header
-      button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+      button.navbar-toggle(type='button', toggle='collapse', target='.navbar-collapse')
         span.sr-only Nav
         span.icon-bar
         span.icon-bar
         span.icon-bar
       a.navbar-brand(href='javascript:void(0)')
-        img(src='entel/images/logo-sonrisas.png')
+        img(src='//static.kaizen.link/entel/images/logo-sonrisas.png')
 
     .collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
         li.dropdown
-          a.view-temp.dropdown-toggle(href='javascript:void(0)', aria-expanded='true', data-ng-hide='!authentication.isAuth') Vista
+          a.view-temp.dropdown-toggle(href='javascript:void(0)', aria-expanded='true', ng-hide='!authentication.isAuth') Vista
             span.caret
           ul.dropdown-menu(role='menu')
             li: a.view-temp(href='/vp/indicadores') VP
             li: a.view-temp(href='/coordinador/indicadores') Coordinador
             li: a.view-temp(href='/supervisor/indicadores') Supervisor
             li: a.view-temp(href='/ejecutivo/indicadores') Ejecutivo
-        li: a.today(data-ng-hide='!authentication.isAuth') Septiembre, 2014
-        li: a(href='acceder', data-ng-hide='authentication.isAuth') Iniciar sesión
+        li: a.today(ng-hide='!authentication.isAuth') Septiembre, 2014
+        li: a(href='acceder', ng-hide='authentication.isAuth') Iniciar sesión
           
         li.dropdown
-          a.dropdown-toggle.navbar-link.navbar-user(href='javascript:void(0)', data-ng-hide='!authentication.isAuth')
+          a.dropdown-toggle.navbar-link.navbar-user(href='javascript:void(0)', ng-hide='!authentication.isAuth')
             span.glyphicon.glyphicon-user
-            //- span: img.img-circle(src='entel/avatar/5.jpg')
+            //- span: img.img-circle(src='//static.kaizen.link/generic/avatar/5.jpg')
             strong  {{authentication.userName}}
             span.glyphicon-chevron-user
           ul.dropdown-menu
@@ -34,7 +34,7 @@
                 .row
                   .col-xs-5
                     p.text-center
-                      img.navbar-user-avatar.img-circle(src='entel/avatar/10.jpg')
+                      img.navbar-user-avatar.img-circle(src='//static.kaizen.link/generic/avatar/90.jpg')
                   .col-xs-7.navbar-user-info
                     p.text-left
                       strong {{ authentication.userName }}
@@ -44,7 +44,7 @@
                     .navbar-user-link-account
                       a.btn.btn-primary.btn-block.btn-sm(href='javascript:void(0)') Mi cuenta
         li.dropdown
-          a.dropdown-toggle.navbar-link.navbar-notifications(href='javascript:void(0)', data-ng-hide='!authentication.isAuth')
+          a.dropdown-toggle.navbar-link.navbar-notifications(href='javascript:void(0)', ng-hide='!authentication.isAuth')
             span.glyphicon.glyphicon-envelope
           ul.dropdown-menu.navbar-notifications-box(role='menu')
             span.uppercase Notificaciones
@@ -63,7 +63,7 @@
               a(href='javascript:void(0)')
                 .row
                   .col-xs-2
-                    img(src='entel/avatar/10.jpg', style='width:100%;')
+                    img(src='//static.kaizen.link/generic/avatar/10.jpg', style='width:100%;')
                   .col-xs-10
                     span Has logrado superar tu meta
                     span
@@ -71,14 +71,14 @@
                     span
                       small Hace 2 minutos
         li
-          a.navbar-link.navbar-logout(href='javascript:void(0)', data-ng-hide='!authentication.isAuth', data-ng-click='logOut()')
+          a.navbar-link.navbar-logout(href='javascript:void(0)', ng-hide='!authentication.isAuth', ng-click='logOut()')
             span.glyphicon.glyphicon-off
       ul.nav.navbar-nav.navbar-left
         li.dropdown
-          a.dropdown-toggle(href='javascript:void(0)',aria-expanded='true', data-ng-hide='!authentication.isAuth')
+          a.dropdown-toggle(href='javascript:void(0)',aria-expanded='true', ng-hide='!authentication.isAuth')
             span.caret
           ul.dropdown-menu
-            li: a.sig-menu(data-ng-hide='!authentication.isAuth') Entrenamiento
-            li: a.sig-menu(data-ng-hide='!authentication.isAuth') Noticias
-            li: a.sig-menu(data-ng-hide='!authentication.isAuth') Documentos
-            li: a.sig-menu(data-ng-hide='!authentication.isAuth') Premios
+            li: a.sig-menu(ng-hide='!authentication.isAuth') Entrenamiento
+            li: a.sig-menu(ng-hide='!authentication.isAuth') Noticias
+            li: a.sig-menu(ng-hide='!authentication.isAuth') Documentos
+            li: a.sig-menu(ng-hide='!authentication.isAuth') Premios

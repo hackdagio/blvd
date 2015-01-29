@@ -49,6 +49,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(compress());
+app.use('/scripts', express.static(__dirname + '/scripts'));
 app.use(express.static(__dirname + '/public'));
 
 // routes
