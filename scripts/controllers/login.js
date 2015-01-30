@@ -1,24 +1,19 @@
 'use strict';
-app.controller('loginController', ['$scope', '$location', 'authService', function ($scope, $location, authService) {
-   
-    $scope.loginData = {
-        userName: "",
-        password: ""
-    };
-    
-    
-    $scope.message = "";
-    
-    $scope.login = function () {
-       
-        authService.login($scope.loginData).then(function (response) {
-           
-            $location.path('/indicadores/vp');
-            
-        },
-        function (err) {
-           $scope.message = err.error_description;
-       });
-    };
-    
+
+app.controller('loginController', ['$scope', '$state', 'authService', function ($scope, $state, authService) {
+  $scope.loginData = {
+    userName: "",
+    password: ""
+  };
+
+  $scope.message = "";
+
+  $scope.login = function () {
+    authService.login($scope.loginData).then(function (response) {
+      $state.go('vp/indicadores');
+    },
+    function (err) {
+      $scope.message = err.error_description;
+    });
+  };
 }]);
