@@ -12,7 +12,7 @@
 var app = angular.module('kaizen-concepto', [
   'kaizen-controllers',
   'kaizen-concepto.controllers-views',
-  'ngRoute',
+  'ui.router',
   'LocalStorageModule',
   'angular-loading-bar',
   'ui.bootstrap',
@@ -26,65 +26,72 @@ var serviceBase = 'http://demo.kaizen.link/';
 
 
 // angular routing
-app.config(function ($routeProvider, $locationProvider) {
-  $routeProvider
-  .when('/vp/indicadores', {
+app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise("/login");
+  $stateProvider
+  .state('vp/indicadores', {
+    url: '/vp/indicadores',
     templateUrl: 'partials/vp-indicadores',
     controller: 'indicadoresController',
     resolve: { loginRequired: loginRequired }
   })
-  .when('/vp/indicadores/allus', {
-    templateUrl: 'partials/vp-indicadores-allus',
-    controller: 'indicadoresController',
-    resolve: { loginRequired: loginRequired }
-  })
-  .when('/vp/indicadores/ecc', {
-    templateUrl: 'partials/vp-indicadores-ecc',
-    controller: 'indicadoresController',
-    resolve: { loginRequired: loginRequired }
-  })
-  .when('/vp/indicadores/sccp', {
-    templateUrl: 'partials/vp-indicadores-sccp',
-    controller: 'indicadoresController',
-    resolve: { loginRequired: loginRequired }
-  })
-  .when('/coordinador/indicadores', {
+  // .state('/vp/indicadores/allus', {
+  //   url: ''
+  //   templateUrl: 'partials/vp-indicadores-allus',
+  //   controller: 'indicadoresController',
+  //   resolve: { loginRequired: loginRequired }
+  // })
+  // .state('/vp/indicadores/ecc', {
+  //   templateUrl: 'partials/vp-indicadores-ecc',
+  //   controller: 'indicadoresController',
+  //   resolve: { loginRequired: loginRequired }
+  // })
+  // .state('/vp/indicadores/sccp', {
+  //   templateUrl: 'partials/vp-indicadores-sccp',
+  //   controller: 'indicadoresController',
+  //   resolve: { loginRequired: loginRequired }
+  // })
+  .state('coordinador/indicadores', {
+    url: '/coordinador/indicadores',
     templateUrl: 'partials/coordinador-indicadores',
     controller: 'indicadoresController',
     resolve: { loginRequired: loginRequired }
   })
-  .when('/ejecutivo/indicadores', {
+  .state('ejecutivo/indicadores', {
+    url: '/ejecutivo/indicadores',
     templateUrl: 'partials/ejecutivo-indicadores',
     controller: 'indicadoresController',
     resolve: { loginRequired: loginRequired }
   })
-  .when('/supervisor/indicadores', {
+  .state('supervisor/indicadores', {
+    url: '/supervisor/indicadores',
     templateUrl: 'partials/supervisor-indicadores',
     controller: 'indicadoresController',
     resolve: { loginRequired: loginRequired }
   })
-  .when('/me', {
+  .state('me', {
+    url: '/me',
     templateUrl: 'partials/me',
     controller: 'usuarioController',
     resolve: { loginRequired: loginRequired }
   })
-  .when('/login', {
+  .state('login', {
+    url: '/login',
     templateUrl: 'partials/login',
     controller: 'loginController',
     resolve: { redirectIfAuthenticated: redirectIfAuthenticated('/vp/indicadores') }
   })
-  .when('/first-time', {
+  .state('first-time', {
+    url: '/first-time',
     templateUrl: 'partials/first-time',
     controller: 'firsttimeController',
     resolve: { redirectIfAuthenticated: redirectIfAuthenticated('/vp/indicadores') }
   })
-  .when('/signup', {
+  .state('signup', {
+    url: '/signup',
     templateUrl: 'partials/singup',
     controller: 'signupController',
     resolve: { redirectIfAuthenticated: redirectIfAuthenticated('/vp/indicadores') }
-  })
-  .otherwise({
-    redirectTo: '/login'
   });
 
   $locationProvider.html5Mode(true);

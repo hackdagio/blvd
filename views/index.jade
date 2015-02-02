@@ -2,8 +2,8 @@ extends layout
 
 block body
 
-  div(data-ng-include='\'partials/navbar\'')
+  div(ng-include='\'partials/navbar\'')
 
-  div(data-ng-view)
+  div(ui-view)
 
   include ./includes/footer-scripts
