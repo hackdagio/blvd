@@ -10,7 +10,7 @@ app.controller('loginController', ['$scope', '$state', 'authService', function (
 
   $scope.login = function () {
     authService.login($scope.loginData).then(function (response) {
-      $state.go('vp/indicadores');
+      $state.go('home');
     },
     function (err) {
       $scope.message = err.error_description;

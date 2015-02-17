@@ -1,23 +1,23 @@
 {
-  "name": "kaizen-dashboard",
+  "name": "Boulevard",
   "author": "Ignacio Trujillo",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "prestart": "npm install",
-    "start": "node server.js"
+    "start": "node init.js"
   },
   "dependencies": {
     "body-parser": "^1.0.2",
     "debug": "^2.0.0",
     "errorhandler": "^1.1.1",
     "express": "~4.1.1",
-    "jade": "~0.31.2",
+    "jade": "*",
     "method-override": "^1.0.0",
     "morgan": "^1.0.0",
     "body-parser": "^1.9.0",
-    "nib": "~1.0.4",
-    "stylus": "~0.49.3",
+    "nib": "*",
+    "stylus": "*",
     "compression": "^1.2.0"
   },
   "engines": {

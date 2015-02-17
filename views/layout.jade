@@ -1,27 +1,18 @@
-//  
-    @author Ignacio Trujillo @url https://github.com/gnaces 
-    @copyright 2014 - 2015 Concepto Group. Todos los derechos reservados.
-
 - var bootstrap_css = { version: '3.3.2' }
 doctype
 html(ng-app="kaizen-concepto")
   head
     meta(charset='utf8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    meta(http-equiv='cleartype', content='on')
     meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
-    meta(name='apple-mobile-web-app-status-bar-style', content='black')
     meta(name='apple-mobile-web-app-capable', content='yes')
     base(href='/')
-    meta(name='author', content='Concepto Group')
-    title Sonrisas para ti
+    title= title
 
-    link(rel='shortcut icon', href='//static.kaizen.link/entel/images/favicon.png')
-
-    //- https://cdnjs.com/libraries/twitter-bootstrap
     link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/#{bootstrap_css.version}/css/bootstrap.min.css')
-
-    //- main style
     link(rel='stylesheet', href='/stylesheets/style.css')
+    block extraHead
 
   body
     block body

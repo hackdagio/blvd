@@ -1,7 +1,10 @@
 {
     "app": {
-        "name": "Kaizen Dashboard",
-	    "sig_name": "Sonrisas para ti"
+        "name": "Boulevard"
     },
-    "port": 3001
+    "product": {
+    	"name": "Orgullo-E",
+    	"company": "Entel"
+    },
+    "port": 3003
 }
