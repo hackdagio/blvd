@@ -1,9 +1,11 @@
-# Kaizen Dashboard
-#### The front-end
+# Boulevard Sonrisas
+#### The Kaizen client
+
+![](https://s3.eu-central-1.amazonaws.com/kaizen-prototype/entel/images/logo-sonrisas-github.svg)
 
 ## Authors
 
-### Original Author and Development Lead
+### Original Author
 
 - [Ignacio Trujillo](mailto:itrujillo@conceptogroup.cl) [(https://github.com/gnaces)](https://github.com/gnaces)
 
