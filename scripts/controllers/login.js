@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('loginController', ['$scope', '$state', 'authService', function ($scope, $state, authService) {
+app.controller('loginController', ['$scope', '$location', 'authService', function ($scope, $location, authService) {
   $scope.loginData = {
     userName: "",
     password: ""
@@ -10,7 +10,7 @@ app.controller('loginController', ['$scope', '$state', 'authService', function (
 
   $scope.login = function () {
     authService.login($scope.loginData).then(function (response) {
-      $state.go('home');
+      $location.path('/home');
     },
     function (err) {
       $scope.message = err.error_description;

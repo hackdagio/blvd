@@ -10,7 +10,7 @@
 
 'use strict';
 
-var app = angular.module('kaizen-concepto', [
+var app = angular.module('boulevard', [
   'kaizen-controllers',
   'kaizen-concepto.controllers-views',
   'ui.router',
@@ -33,8 +33,8 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
   
   $stateProvider
   
-    .state('home', {
-      url: '/',
+    .state('index', {
+      url: '/home',
       templateUrl: 'partials/home',
       controller: 'indicadoresController',
       resolve: { loginRequired: loginRequired }
@@ -44,7 +44,7 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
       url: '/login',
       templateUrl: 'partials/login',
       controller: 'loginController',
-      resolve: { redirectIfAuthenticated: redirectIfAuthenticated('/') }
+      resolve: { redirectIfAuthenticated: redirectIfAuthenticated('/home') }
     })
 
   $locationProvider.html5Mode(true);

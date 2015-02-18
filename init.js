@@ -22,8 +22,7 @@ var express = require('express'),
     compress = require('compression');
 
 // routes
-var access = require('./routes/access');
-var partials = require('./routes/partials');
+var routes = require('./routes');
 
 // config file
 var config = require('./config.json');
@@ -67,22 +66,11 @@ app.use('/js', express.static(__dirname + '/scripts'));
 app.use(express.static(__dirname + '/public'));
 
 
-/// General express routing
+/// Serve index and view partials
 
-app.use('/partials', partials);
-
-app.get('/', function(req, res) {
-  res.render('index', { title: config.product.name });
-});
-
-app.get('/login', access.login);
-app.get('/signup', access.signup);
-app.get('/request-access', access.request);
-
-// the 404 route (ALWAYS keep this as the last route)
-app.get('*', function(req, res){
-  res.send('error', 404);
-});
+app.get('/', routes.index);
+app.get('/partials/:name', routes.partials);
+app.get('*', routes.index);
 
 
 /// Error handlers
@@ -111,8 +99,7 @@ app.use(function(err, req, res, next) {
 
 
 /// Runtime
-
-var server = app.listen(app.get('port'), function () {
+http.createServer(app).listen(app.get('port'), function () {
   console.log(config.app.name + ' "' + config.product.name + ' ~ ' + config.product.company + '" running at ' + app.get('port'));
 });
 
