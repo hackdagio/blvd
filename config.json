@@ -2,8 +2,12 @@
     "app": {
         "name": "Boulevard"
     },
+    "api": {
+    	"name": "Kaizen",
+    	"url": "http://demo.kaizen.link"
+    },
     "product": {
-    	"name": "Orgullo-E",
+    	"name": "Orgullo Entel",
     	"company": "Entel"
     },
     "port": 3003
