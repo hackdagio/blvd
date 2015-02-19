@@ -8,7 +8,5 @@ exports.index = function (req, res){
 };
 
 exports.partials = function (req, res) {
-  var name = req.params.name;
-  res.render('partials/' + name);
+  res.render(req.path.slice(1)); // need to call slice() to strip out the first forward slashs
 };
-

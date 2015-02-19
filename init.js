@@ -69,7 +69,7 @@ app.use(express.static(__dirname + '/public'));
 /// Serve index and view partials
 
 app.get('/', routes.index);
-app.get('/partials/:name', routes.partials);
+app.get('/partials/*', routes.partials);
 app.get('*', routes.index);
 
 

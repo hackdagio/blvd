@@ -29,7 +29,7 @@ var serviceBase = 'http://demo.kaizen.link/';
 /// Angular routing based on nested views
 app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
   
-  $urlRouterProvider.otherwise("/login");
+  $urlRouterProvider.otherwise("/");
   
   $stateProvider
   
@@ -40,11 +40,28 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
       resolve: { loginRequired: loginRequired }
     })
 
-    .state('login', {
-      url: '/login',
-      templateUrl: 'partials/login',
-      controller: 'loginController',
+    .state('session', {
+      url: '/session',
+      templateUrl: 'partials/session/session',
       resolve: { redirectIfAuthenticated: redirectIfAuthenticated('/home') }
+    })
+
+    .state('session.login', {
+      url: '/login',
+      templateUrl: 'partials/session/login',
+      controller: 'loginController'
+    })
+
+    .state('session.signup', {
+      url: '/signup',
+      templateUrl: 'partials/session/signup',
+      controller: 'signupCtrl'
+    })
+
+    .state('session.request', {
+      url: '/request-access',
+      templateUrl: 'partials/session/request-access',
+      controller: 'requestaccessCtrl'
     })
 
   $locationProvider.html5Mode(true);
@@ -72,11 +89,12 @@ app.run(['authService', function (authService) {
 
 
 var loginRequired = function($location, $q, authService) {  
+  
   var deferred = $q.defer();
 
   if(! (authService.authentication.isAuth == true)) {
     deferred.reject()
-    $location.path('/login');
+    $location.path('/session/login');
   } else {
     deferred.resolve()
   }
