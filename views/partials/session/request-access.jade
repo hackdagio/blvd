@@ -9,7 +9,7 @@
           form.first-time-in-kaizen-form(role='form')
             fieldset
               .form-group
-                input#email.form-control(type='email', name='email', data-ng-model='loginData.userName', required='', autofocus='', placeholder='Correo electrónico')
+                input#email.form-control(type='email', name='email', data-ng-model='loginData.userName', autofocus='', placeholder='Correo electrónico')
               .form-group
                 button.btn.btn-sm.btn-primary.text-uppercase(type='submit', data-ng-click='login()') [ Obtener enlace_
-                a(href='/login'): button.btn.btn-sm.btn-transparent.text-uppercase [ Iniciar sesión_
+                a(ui-sref='session.login'): button.btn.btn-sm.btn-transparent.text-uppercase [ Iniciar sesión_

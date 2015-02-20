@@ -1,12 +1,16 @@
 /*!
- * Kaizen Dashboard
- * by Ignacio Trujillo <itrujillo@conceptogroup.cl>
- * (c) 2014-2015 Concepto Group
+ * Boulevard
+ * The Kaizen webclient
+ * by Ignacio Trujillo <itrujillo@conceptogroup.cl, ignaces@ignac.es>
+ * (c) 2015 Concepto Group
  *
  * http://www.conceptogroup.cl
  * https://github.com/gnaces
  */
 
+/// Vars
+
+// modules
 var express = require('express'),
     bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
@@ -17,15 +21,20 @@ var express = require('express'),
     nib = require('nib'),
     compress = require('compression');
 
+// routes
 var routes = require('./routes');
-var partials = require('./routes/partials');
 
+// config file
 var config = require('./config.json');
 
+// debug
 var debug = require('debug')('express');
 var app = module.exports = express();
 
-// compile .styl files
+
+/// Functions
+
+// compile stylus
 function compile(str, path) {
   return stylus(str)
     .set('compress', true)
@@ -33,37 +42,38 @@ function compile(str, path) {
     .use(nib())
 }
 
-/// config
+
+/// App Config
+
 app.set('port', process.env.PORT || config.port);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
-app.use(stylus.middleware(
-  { src: __dirname + '/',
-    dest: __dirname + '/public',
-    compile: compile
+app.use(stylus.middleware({
+  src: __dirname + '/',
+  dest: __dirname + '/public',
+  compile: compile
   }
 ));
 
 app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(compress());
-app.use('/scripts', express.static(__dirname + '/scripts'));
+
+// declaring public access paths
+app.use('/js', express.static(__dirname + '/scripts'));
 app.use(express.static(__dirname + '/public'));
 
-// routes
-app.use('/', routes);
-app.use('/partials', partials);
+
+/// Serve index and view partials
+
+app.get('/', routes.index);
+app.get('/partials/*', routes.partials);
+app.get('*', routes.index);
 
 
-/// redirect all others to the index (html5 history)
-app.get('*', function(req, res, next) {
-  res.render('index');
-});
-
-
-/// error handlers
+/// Error handlers
 
 // development error handler
 // will print stacktrace
@@ -75,7 +85,7 @@ if (app.get('env') === 'dev') {
       error: err
     });
   });
-}
+};
 
 // production error handler
 // no stacktraces leaked to user
@@ -88,10 +98,9 @@ app.use(function(err, req, res, next) {
 });
 
 
-/// runtime
-var server = app.listen(app.get('port'), function () {
-  console.log(config.app.name + ' "' + config.app.sig_name + '" running at ' + app.get('port'));
+/// Runtime
+http.createServer(app).listen(app.get('port'), function () {
+  console.log(config.app.name + ' "' + config.product.name + ' ~ ' + config.product.company + '" running at ' + app.get('port'));
 });
-
 
 module.exports = app;

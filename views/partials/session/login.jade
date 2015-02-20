@@ -14,4 +14,4 @@
                 input#password.form-control(type='password', name='password', data-ng-model='loginData.password', required='', placeholder='Contraseña')
               .form-group
                 button.btn.btn-sm.btn-primary.text-uppercase(type='submit', data-ng-click='login()') [ Entrar_
-                a(href='/first-time'): button.btn.btn-sm.btn-transparent.text-uppercase [ Primera vez_
+                a(ui-sref='session.request'): button.btn.btn-sm.btn-transparent.text-uppercase [ Primera vez_

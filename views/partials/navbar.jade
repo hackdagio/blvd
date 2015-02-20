@@ -2,7 +2,6 @@
   .container-fluid
     .navbar-header
       button.navbar-toggle(type='button', toggle='collapse', target='.navbar-collapse')
-        span.sr-only Nav
         span.icon-bar
         span.icon-bar
         span.icon-bar
@@ -20,7 +19,7 @@
             li: a.view-temp(href='/supervisor/indicadores') Supervisor
             li: a.view-temp(href='/ejecutivo/indicadores') Ejecutivo
         li: a.today(ng-hide='!authentication.isAuth') Septiembre, 2014
-        li: a(href='acceder', ng-hide='authentication.isAuth') Iniciar sesión
+        li: a(ui-sref='session.login', ng-hide='authentication.isAuth') Iniciar sesión
           
         li.dropdown
           a.dropdown-toggle.navbar-link.navbar-user(href='javascript:void(0)', ng-hide='!authentication.isAuth')

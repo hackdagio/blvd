@@ -1,8 +1,12 @@
-var express = require('express');
-var router = express.Router();
+var config = require('./../config.json');
 
-router.get('/', function(req, res) {
-	res.render('index');
-});
+exports.index = function (req, res){
+  res.render('index', { 
+  	title: config.product.name,
+  	generator: config.app.name + ', powered by ' + config.api.name
+  });
+};
 
-module.exports = router;
+exports.partials = function (req, res) {
+  res.render(req.path.slice(1)); // need to call slice() to strip out the first forward slashs
+};

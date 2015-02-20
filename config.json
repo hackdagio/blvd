@@ -1,7 +1,14 @@
 {
     "app": {
-        "name": "Kaizen Dashboard",
-	    "sig_name": "Sonrisas para ti"
+        "name": "Boulevard"
     },
-    "port": 3001
+    "api": {
+    	"name": "Kaizen",
+    	"url": "http://demo.kaizen.link"
+    },
+    "product": {
+    	"name": "Conectados",
+    	"company": "Entel"
+    },
+    "port": 3003
 }
