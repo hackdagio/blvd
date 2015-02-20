@@ -1,24 +1,23 @@
 {
   "name": "Boulevard",
-  "author": "Ignacio Trujillo",
-  "version": "0.1.90",
+  "author": "Ignacio Trujillo <ignaces@ignac.es> (http://ignac.es)",
+  "version": "0.1.91",
   "private": true,
   "scripts": {
     "prestart": "npm install",
     "start": "node init.js"
   },
   "dependencies": {
-    "body-parser": "^1.0.2",
+    "body-parser": "^1.9.0",
+    "compression": "^1.2.0",
     "debug": "^2.0.0",
     "errorhandler": "^1.1.1",
-    "express": "~4.1.1",
-    "jade": "*",
-    "method-override": "^1.0.0",
+    "express": "^4.1.2",
+    "jade": "^1.9.2",
+    "method-override": "^1.0.2",
     "morgan": "^1.0.0",
-    "body-parser": "^1.9.0",
-    "nib": "*",
-    "stylus": "*",
-    "compression": "^1.2.0"
+    "nib": "^1.1.0",
+    "stylus": "^0.50.0"
   },
   "engines": {
     "node": "0.10.x"

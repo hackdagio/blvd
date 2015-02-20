@@ -11,7 +11,6 @@
 'use strict';
 
 var app = angular.module('boulevard', [
-  'kaizen-controllers',
   'kaizen-concepto.controllers-views',
   'ui.router',
   'LocalStorageModule',
@@ -34,7 +33,7 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
   $stateProvider
   
     .state('index', {
-      url: '/home',
+      url: '/',
       templateUrl: 'partials/home',
       controller: 'indicadoresController',
       resolve: { loginRequired: loginRequired }
@@ -43,7 +42,7 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
     .state('session', {
       url: '/session',
       templateUrl: 'partials/session/session',
-      resolve: { redirectIfAuthenticated: redirectIfAuthenticated('/home') }
+      resolve: { redirectIfAuthenticated: redirectIfAuthenticated('/') }
     })
 
     .state('session.login', {
@@ -63,6 +62,12 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
       templateUrl: 'partials/session/request-access',
       controller: 'requestaccessCtrl'
     })
+
+    .state('navbar', {
+      templateUrl: 'partials/navbar',
+      controller: 'navbarController'
+    })
+
 
   $locationProvider.html5Mode(true);
 
