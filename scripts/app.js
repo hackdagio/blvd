@@ -41,6 +41,7 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
 
     .state('session', {
       url: '/session',
+      abstract: true,
       templateUrl: 'partials/session/session',
       resolve: { redirectIfAuthenticated: redirectIfAuthenticated('/') }
     })
@@ -63,9 +64,31 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
       controller: 'requestaccessCtrl'
     })
 
-    .state('navbar', {
-      templateUrl: 'partials/navbar',
-      controller: 'navbarController'
+    // Account
+
+    .state('account', {
+      url: '/account',
+      templateUrl: 'partials/account/account'
+    })
+
+    .state('account.general', {
+      url: '/general',
+      templateUrl: 'partials/account/general'
+    })
+
+    .state('account.user', {
+      url: '/user',
+      templateUrl: 'partials/account/user'
+    })
+
+    .state('account.security', {
+      url: '/security',
+      templateUrl: 'partials/account/security'
+    })
+
+    .state('account.help', {
+      url: '/help',
+      templateUrl: 'partials/account/help'
     })
 
 

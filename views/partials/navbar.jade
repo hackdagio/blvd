@@ -5,27 +5,18 @@
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(href='javascript:void(0)')
+      a.navbar-brand(ui-sref='index')
         img(src='//static.kaizen.link/entel/images/logo-sonrisas.png')
 
     .collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
-        li.dropdown
-          a.view-temp.dropdown-toggle(href='javascript:void(0)', aria-expanded='true', ng-hide='!authentication.isAuth') Vista
-            span.caret
-          ul.dropdown-menu(role='menu')
-            li: a.view-temp(href='/vp/indicadores') VP
-            li: a.view-temp(href='/coordinador/indicadores') Coordinador
-            li: a.view-temp(href='/supervisor/indicadores') Supervisor
-            li: a.view-temp(href='/ejecutivo/indicadores') Ejecutivo
-        li: a.today(ng-hide='!authentication.isAuth') Septiembre, 2014
+
         li: a(ui-sref='session.login', ng-hide='authentication.isAuth') Iniciar sesión
           
         li.dropdown
           a.dropdown-toggle.navbar-link.navbar-user(href='javascript:void(0)', ng-hide='!authentication.isAuth')
             span.glyphicon.glyphicon-user
-            //- span: img.img-circle(src='//static.kaizen.link/generic/avatar/5.jpg')
-            strong  {{authentication.userName}}
+            strong.text-capitalize  {{authentication.userName}}
             span.glyphicon-chevron-user
           ul.dropdown-menu
             li
@@ -38,37 +29,11 @@
                     p.text-left
                       strong {{ authentication.userName }}
                     p.text-left
-                      em Gerente
-                    p.text-left 18.123.123-k
+                      em {{ authentication.userName }}
+                    p.text-left {{ authentication.userName }}
                     .navbar-user-link-account
-                      a.btn.btn-primary.btn-block.btn-sm(href='javascript:void(0)') Mi cuenta
-        li.dropdown
-          a.dropdown-toggle.navbar-link.navbar-notifications(href='javascript:void(0)', ng-hide='!authentication.isAuth')
-            span.glyphicon.glyphicon-envelope
-          ul.dropdown-menu.navbar-notifications-box(role='menu')
-            span.uppercase Notificaciones
-            li
-              a(href='javascript:void(0)')
-                .row
-                  .col-xs-2
-                    span.glyphicon.glyphicon-star
-                  .col-xs-10
-                    span Has logrado superar tu meta
-                    span
-                      small Te ganaste un premio
-                    span
-                      small Hace 2 minutos
-            li
-              a(href='javascript:void(0)')
-                .row
-                  .col-xs-2
-                    img(src='//static.kaizen.link/generic/avatar/10.jpg', style='width:100%;')
-                  .col-xs-10
-                    span Has logrado superar tu meta
-                    span
-                      small Te ganaste un premio
-                    span
-                      small Hace 2 minutos
+                      a.btn.btn-primary.btn-block.btn-sm(ui-sref='account') Mi cuenta
+
         li
           a.navbar-link.navbar-logout(href='javascript:void(0)', ng-hide='!authentication.isAuth', ng-click='logOut()')
             span.glyphicon.glyphicon-off
