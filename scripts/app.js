@@ -17,7 +17,8 @@ var app = angular.module('boulevard', [
   'angular-loading-bar',
   'ui.bootstrap',
   'ui.radialplot',
-  'gaugejs'
+  'gaugejs',
+  'door3.css'
 ]);
 
 
