@@ -1,3 +1,6 @@
+@import 'vars'
+
+force-background-color = rgb(245, 245, 245)
 kaizen-dashboard-wrapper-principal-size = 125
 kaizen-dashboard-wrapper-sidebar-background-color = darken(primary-color-1, 75%)
 
@@ -49,6 +52,9 @@ grid-height = 12
 avatar-img-border--bold = 3px solid rgb(220, 220, 220)
 avatar-img-border--thin = 1px solid rgb(220, 220, 220)
 
+body
+  background force-background-color !important
+  
 .kaizen-dashboard-wrapper
   transition all 0.5s ease
   &.toggled
@@ -794,16 +800,3 @@ avatar-img-border--thin = 1px solid rgb(220, 220, 220)
       color rgb(200, 200, 200)
       font-weight 300
       font-size 2em 
-  
-    
-      
-    
-      
-// @keyframes blink
-//   0%
-//     text-shadow none
-//   50%
-//     text-shadow 0px 0px 8px white
-//     color white
-//   100%
-//     text-shadow none

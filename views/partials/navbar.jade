@@ -32,17 +32,9 @@
                       em {{ authentication.userName }}
                     p.text-left {{ authentication.userName }}
                     .navbar-user-link-account
-                      a.btn.btn-primary.btn-block.btn-sm(ui-sref='account') Mi cuenta
+                      a.btn.btn-primary.btn-block.btn-sm(ui-sref='account.general') Mi cuenta
 
         li
           a.navbar-link.navbar-logout(href='javascript:void(0)', ng-hide='!authentication.isAuth', ng-click='logOut()')
             span.glyphicon.glyphicon-off
       ul.nav.navbar-nav.navbar-left
-        li.dropdown
-          a.dropdown-toggle(href='javascript:void(0)',aria-expanded='true', ng-hide='!authentication.isAuth')
-            span.caret
-          ul.dropdown-menu
-            li: a.sig-menu(ng-hide='!authentication.isAuth') Entrenamiento
-            li: a.sig-menu(ng-hide='!authentication.isAuth') Noticias
-            li: a.sig-menu(ng-hide='!authentication.isAuth') Documentos
-            li: a.sig-menu(ng-hide='!authentication.isAuth') Premios

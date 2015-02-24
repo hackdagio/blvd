@@ -12,18 +12,12 @@
 // fonts
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300italic,300')
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,400')
-global-font = 'Open Sans', sans-serif
-alternative-font = 'Open Sans Condensed', sans-serif
 
 // global reset (reset.css alike)
 global-reset()
 
-// global variables
-body-distance-from-top = 70
-body-background-color = rgb(255, 255, 255)
-
 // kaizen per sig customs
-@import 'custom/sig'
+@import 'vars'
 
 // libs
 @import 'lib/loading-bar'
@@ -32,13 +26,4 @@ body-background-color = rgb(255, 255, 255)
 
 // main site - always present
 @import 'main'
-@import 'partials/navbar'
-
-// custom views
-@import 'partials/account'
-@import 'partials/inicio'
-@import 'partials/indicadores'
-@import 'partials/usuario'
-
-// footer - always present
-@import 'partials/footer'
+@import 'navbar'

@@ -37,7 +37,13 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
       url: '/',
       templateUrl: 'partials/home',
       controller: 'indicadoresController',
-      resolve: { loginRequired: loginRequired }
+      resolve: { loginRequired: loginRequired },
+      css: {
+        href: '/stylesheets/indicadores.css',
+        container: 'head',
+        bustCache: true,
+        preload: true
+      }
     })
 
     .state('session', {
@@ -50,46 +56,83 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
     .state('session.login', {
       url: '/login',
       templateUrl: 'partials/session/login',
-      controller: 'loginController'
+      controller: 'loginController',
+      css: {
+        href: '/stylesheets/session.css',
+        preload: true
+      }
     })
 
     .state('session.signup', {
       url: '/signup',
       templateUrl: 'partials/session/signup',
-      controller: 'signupCtrl'
+      controller: 'signupCtrl',
+      css: {
+        href: '/stylesheets/session.css',
+        preload: true
+      }
     })
 
     .state('session.request', {
       url: '/request-access',
       templateUrl: 'partials/session/request-access',
-      controller: 'requestaccessCtrl'
+      controller: 'requestaccessCtrl',
+      css: {
+        href: '/stylesheets/session.css',
+        preload: true
+      }
     })
 
     // Account
 
     .state('account', {
       url: '/account',
+      abstract: true,
       templateUrl: 'partials/account/account'
     })
 
     .state('account.general', {
       url: '/general',
-      templateUrl: 'partials/account/general'
+      templateUrl: 'partials/account/general',
+      css: {
+        href: '/stylesheets/account.css',
+        container: 'head',
+        bustCache: true,
+        preload: true
+      }
     })
 
     .state('account.user', {
       url: '/user',
-      templateUrl: 'partials/account/user'
+      templateUrl: 'partials/account/user',
+      css: {
+        href: '/stylesheets/account.css',
+        container: 'head',
+        bustCache: true,
+        preload: true
+      }
     })
 
     .state('account.security', {
       url: '/security',
-      templateUrl: 'partials/account/security'
+      templateUrl: 'partials/account/security',
+      css: {
+        href: '/stylesheets/account.css',
+        container: 'head',
+        bustCache: true,
+        preload: true
+      }
     })
 
     .state('account.help', {
       url: '/help',
-      templateUrl: 'partials/account/help'
+      templateUrl: 'partials/account/help',
+      css: {
+        href: '/stylesheets/account.css',
+        container: 'head',
+        bustCache: true,
+        preload: true
+      }
     })
 
 
