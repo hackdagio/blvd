@@ -59,7 +59,8 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
       controller: 'loginController',
       css: {
         href: '/stylesheets/session.css',
-        preload: true
+        preload: true,
+        persist: true
       }
     })
 
@@ -69,7 +70,8 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
       controller: 'signupCtrl',
       css: {
         href: '/stylesheets/session.css',
-        preload: true
+        preload: true,
+        persist: true
       }
     })
 
@@ -79,7 +81,8 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
       controller: 'requestaccessCtrl',
       css: {
         href: '/stylesheets/session.css',
-        preload: true
+        preload: true,
+        persist: true
       }
     })
 
@@ -98,7 +101,8 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
         href: '/stylesheets/account.css',
         container: 'head',
         bustCache: true,
-        preload: true
+        preload: true,
+        persist: true
       }
     })
 
@@ -109,7 +113,8 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
         href: '/stylesheets/account.css',
         container: 'head',
         bustCache: true,
-        preload: true
+        preload: true,
+        persist: true
       }
     })
 
@@ -120,7 +125,8 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
         href: '/stylesheets/account.css',
         container: 'head',
         bustCache: true,
-        preload: true
+        preload: true,
+        persist: true
       }
     })
 
@@ -129,6 +135,26 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
       templateUrl: 'partials/account/help',
       css: {
         href: '/stylesheets/account.css',
+        container: 'head',
+        bustCache: true,
+        preload: true,
+        persist: true
+      }
+    })
+
+    // Post
+
+    .state('content', {
+      url: '/content',
+      abstract: true,
+      templateUrl: 'partials/content/content'
+    })
+
+    .state('content.post', {
+      url: '/post',
+      templateUrl: 'partials/content/post',
+      css: {
+        href: '/stylesheets/post.css',
         container: 'head',
         bustCache: true,
         preload: true

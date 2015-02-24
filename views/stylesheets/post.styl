@@ -1,0 +1,68 @@
+@import 'vars'
+
+@import url('http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,200italic,00italic,400italic,600italic')
+
+content-font = 'Source Sans Pro', sans-serif
+content-font-ultralight-weight = 200
+content-font-light-weight = 300
+content-font-regular-weight = 400
+content-font-bold-weight = 600
+
+content-declare-h-tags(font-size, line-height, letter-spacing, text-indent)
+  font-size (font-size)rem
+  line-height (line-height)em
+  letter-spacing (letter-spacing)px
+  text-indent (text-indent)px
+  
+
+.kaizen-content-post
+  h1, h2, h3, h4, h5, h6
+    font-family content-font
+    font-weight content-font-ultralight-weight
+    color rgb(100, 100, 100)
+  strong
+    font-weight content-font-regular-weight
+  em
+    font-style italic
+    
+  article
+    header
+      h1
+        content-declare-h-tags(4.2, 2, -2, 0)
+    margin-bottom 1em
+    
+    section.post-meta
+      margin 1em 0 2em 0
+      img
+        width 100%
+        max-width 100%
+      time
+        font-family content-font
+        font-weight content-font-ultralight-weight
+        line-height 2.2em
+        color rgb(120, 120, 120)
+        font-size 0.9rem
+        letter-spacing 3px
+    
+    section.post-content
+      h1
+        content-declare-h-tags(3.7, 1.2, -2, 0)
+      h2
+        content-declare-h-tags(3, 1.2, -1, 0)
+      h3
+        content-declare-h-tags(2.5, 1.2, -1, 0)
+      h4
+        content-declare-h-tags(2.2, 1.2, -1, 0)
+      h5
+        content-declare-h-tags(2, 1.2, 0, 0)
+      h6
+        content-declare-h-tags(1.8, 1.2, 0, 0)
+      p
+        font-family content-font
+        font-weight content-font-ultralight-weight
+        line-height 1.5em
+        font-size 1.4rem
+        color rgb(0,0,0)
+        text-indent 0.3em
+        margin 1.6em 0
+      
