@@ -26,10 +26,11 @@ content-declare-h-tags(font-size, line-height, letter-spacing, text-indent)
     font-style italic
     
   article
+    margin-bottom 1em
+    
     header
       h1
         content-declare-h-tags(4.2, 2, -2, 0)
-    margin-bottom 1em
     
     section.post-meta
       margin 1em 0 2em 0
@@ -59,10 +60,30 @@ content-declare-h-tags(font-size, line-height, letter-spacing, text-indent)
         content-declare-h-tags(1.8, 1.2, 0, 0)
       p
         font-family content-font
-        font-weight content-font-ultralight-weight
+        font-weight content-font-light-weight
         line-height 1.5em
         font-size 1.4rem
         color rgb(0,0,0)
         text-indent 0.3em
         margin 1.6em 0
       
+    section.post-files
+      border 1px solid rgb(220, 220, 220)
+      padding 30px
+      
+      h5
+        content-declare-h-tags(1.2, 1.2, 4, 0)
+        
+      .files-list
+        margin-top 15px
+        ul
+          line-height 1.8em
+          li
+            list-style none
+        
+      a
+        color rgb(60, 60, 60) 
+        &:focus, &:hover
+          color darken(primary-color-2, 10%)
+          text-decoration underline
+          
