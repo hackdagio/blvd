@@ -23,7 +23,12 @@ var app = angular.module('boulevard', [
 
 
 /// Kaizen Master Endpoint
-var serviceBase = 'http://demo.kaizen.link/';
+app.constant('ngAuthSettings', {
+  apiServiceBaseUri: serviceBase,
+  clientId: 'sonrisas'
+});
+
+var serviceBase = 'http://localhost:49717/conectados/';
 
 
 /// Angular routing based on nested views
@@ -46,6 +51,8 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
       }
     })
 
+    // Session
+
     .state('session', {
       url: '/session',
       abstract: true,
@@ -56,34 +63,23 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
     .state('session.login', {
       url: '/login',
       templateUrl: 'partials/session/login',
-      controller: 'loginController',
-      css: {
-        href: '/stylesheets/session.css',
-        preload: true,
-        persist: true
-      }
+      controller: 'LoginCtrl'
+    })
+
+    .state('session.request', {
+      url: '/request',
+      templateUrl: 'partials/session/request',
+      controller: 'RequestCtrl'
     })
 
     .state('session.signup', {
       url: '/signup',
       templateUrl: 'partials/session/signup',
-      controller: 'signupCtrl',
-      css: {
-        href: '/stylesheets/session.css',
-        preload: true,
-        persist: true
-      }
+      controller: 'signupCtrl'
     })
 
-    .state('session.request', {
-      url: '/request-access',
-      templateUrl: 'partials/session/request-access',
-      controller: 'requestaccessCtrl',
-      css: {
-        href: '/stylesheets/session.css',
-        preload: true,
-        persist: true
-      }
+    .state('session.signup.confirm', {
+      url: '/confirm?uid&token'
     })
 
     // Account
@@ -96,50 +92,22 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
 
     .state('account.general', {
       url: '/general',
-      templateUrl: 'partials/account/general',
-      css: {
-        href: '/stylesheets/account.css',
-        container: 'head',
-        bustCache: true,
-        preload: true,
-        persist: true
-      }
+      templateUrl: 'partials/account/general'
     })
 
     .state('account.user', {
       url: '/user',
-      templateUrl: 'partials/account/user',
-      css: {
-        href: '/stylesheets/account.css',
-        container: 'head',
-        bustCache: true,
-        preload: true,
-        persist: true
-      }
+      templateUrl: 'partials/account/user'
     })
 
     .state('account.security', {
       url: '/security',
-      templateUrl: 'partials/account/security',
-      css: {
-        href: '/stylesheets/account.css',
-        container: 'head',
-        bustCache: true,
-        preload: true,
-        persist: true
-      }
+      templateUrl: 'partials/account/security'
     })
 
     .state('account.help', {
       url: '/help',
-      templateUrl: 'partials/account/help',
-      css: {
-        href: '/stylesheets/account.css',
-        container: 'head',
-        bustCache: true,
-        preload: true,
-        persist: true
-      }
+      templateUrl: 'partials/account/help'
     })
 
     // Post
@@ -147,7 +115,8 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
     .state('content', {
       url: '/content',
       abstract: true,
-      templateUrl: 'partials/content/content'
+      templateUrl: 'partials/content/content',
+      resolve: { loginRequired: loginRequired }
     })
 
     .state('content.post', {
@@ -171,12 +140,7 @@ app.config(function (localStorageServiceProvider) {
     .setStorageType('sessionStorage');
 });
 
-app.constant('ngAuthSettings', {
-  apiServiceBaseUri: serviceBase,
-  clientId: 'sonrisas'
-});
-
-// interceptors for http requests
+// Interceptors
 app.config(function ($httpProvider) {
   $httpProvider.interceptors.push('authInterceptorService');
 });
@@ -185,6 +149,8 @@ app.run(['authService', function (authService) {
   authService.fillAuthData();
 }]);
 
+
+// checking ac
 
 var loginRequired = function($location, $q, authService) {  
   

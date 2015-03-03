@@ -1,12 +1,12 @@
 ﻿.container
   .row
-    .kaizen-signup-box.col-xs-12(ng-controller='signupController')
+    .blvd-signup-box.col-xs-12(ng-controller='signupController')
       .modal-dialog.text-center
         .panel-heading
-          h1.panel-title.text-uppercase _ ¿Primera vez aquí?
+          h1.panel-title.text-uppercase Registrate
         .panel-body
           h3 Necesitamos verificar tu identidad. Te enviaremos un correo electrónico con un enlace, al cual deberás entrar para que puedas finalizar con tu registro.
-          form.signup-in-kaizen-form(role='form')
+          form.signup-in-blvd-form(role='form')
             fieldset
               .form-group
                 input#email.form-control(type='email', name='email', data-ng-model='loginData.userName', required='', autofocus='', placeholder='Correo electrónico')

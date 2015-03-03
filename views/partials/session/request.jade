@@ -1,15 +1,16 @@
 ﻿.container
   .row
-    .first-time-box.col-xs-12(ng-controller='signupController')
+    .blvd-first-time-box.col-xs-12
       .modal-dialog.text-center
         .panel-heading
           h1.panel-title.text-uppercase _ ¿Primera vez aquí?
+        .alert.alert-danger(data-dismiss='alert', data-ng-hide="message == ''") {{ message }}
         .panel-body
           h3 Necesitamos verificar tu identidad. Te enviaremos un correo electrónico con un enlace, al cual deberás entrar para que puedas finalizar con tu registro.
-          form.first-time-in-kaizen-form(role='form')
+          form.first-time-in-blvd-form(role='form')
             fieldset
               .form-group
-                input#email.form-control(type='email', name='email', data-ng-model='loginData.userName', autofocus='', placeholder='Correo electrónico')
+                input#id.form-control(type='id', name='id', data-ng-model='requestData.idUser', autofocus='', placeholder='Tu RUT o DNI')
               .form-group
-                button.btn.btn-sm.btn-primary.text-uppercase(type='submit', data-ng-click='login()') [ Obtener enlace_
+                button.btn.btn-sm.btn-primary.text-uppercase(type='submit', data-ng-click='request()') [ Obtener enlace_
                 a(ui-sref='session.login'): button.btn.btn-sm.btn-transparent.text-uppercase [ Iniciar sesión_

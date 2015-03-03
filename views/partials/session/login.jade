@@ -1,17 +1,17 @@
 ﻿.container
   .row
-    .kaizen-login-box.col-xs-12(ng-controller='loginController')
+    .blvd-login-box.col-xs-12
       .modal-dialog.text-center
         .panel-heading
           h1.panel-title.text-uppercase _ Inicia sesión 
         .alert.alert-danger(data-dismiss='alert', data-ng-hide="message == ''") {{ message }}
         .panel-body
-          form.login-to-kaizen-form.form-inline(role='form')
+          form.login-to-blvd-form.form-inline(role='form')
             fieldset
               .form-group
-                input#username.form-control(type='username', name='username', data-ng-model='loginData.userName', required='', autofocus='', placeholder='RUT')
+                input#username.form-control(type='username', name='username', data-ng-model='loginData.userName', required='', autofocus='', placeholder='Tu RUT')
               .form-group
-                input#password.form-control(type='password', name='password', data-ng-model='loginData.password', required='', placeholder='Contraseña')
+                input#password.form-control(type='password', name='password', data-ng-model='loginData.password', required='', placeholder='Tu contraseña')
               .form-group
                 button.btn.btn-sm.btn-primary.text-uppercase(type='submit', data-ng-click='login()') [ Entrar_
                 a(ui-sref='session.request'): button.btn.btn-sm.btn-transparent.text-uppercase [ Primera vez_
