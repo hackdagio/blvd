@@ -17,12 +17,17 @@ var app = angular.module('boulevard', [
   'angular-loading-bar',
   'ui.bootstrap',
   'ui.radialplot',
-  'gaugejs'
+  'gaugejs',
+  'door3.css'
 ]);
 
 
-/// Kaizen Master Endpoint
-var serviceBase = 'http://demo.kaizen.link/';
+var serviceBase = 'http://dev.kaizen.cl/conectados/';
+
+app.constant('ngAuthSettings', {
+  apiServiceBaseUri: serviceBase,
+  clientId: 'sonrisas'
+});
 
 
 /// Angular routing based on nested views
@@ -36,11 +41,20 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
       url: '/',
       templateUrl: 'partials/home',
       controller: 'indicadoresController',
-      resolve: { loginRequired: loginRequired }
+      resolve: { loginRequired: loginRequired },
+      css: {
+        href: '/stylesheets/indicadores.css',
+        container: 'head',
+        bustCache: true,
+        preload: true
+      }
     })
+
+    // Session
 
     .state('session', {
       url: '/session',
+      abstract: true,
       templateUrl: 'partials/session/session',
       resolve: { redirectIfAuthenticated: redirectIfAuthenticated('/') }
     })
@@ -48,24 +62,67 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
     .state('session.login', {
       url: '/login',
       templateUrl: 'partials/session/login',
-      controller: 'loginController'
-    })
-
-    .state('session.signup', {
-      url: '/signup',
-      templateUrl: 'partials/session/signup',
-      controller: 'signupCtrl'
+      controller: 'LoginCtrl'
     })
 
     .state('session.request', {
-      url: '/request-access',
-      templateUrl: 'partials/session/request-access',
-      controller: 'requestaccessCtrl'
+      url: '/request',
+      templateUrl: 'partials/session/request',
+      controller: 'RequestCtrl'
     })
 
-    .state('navbar', {
-      templateUrl: 'partials/navbar',
-      controller: 'navbarController'
+    .state('session.signup', {
+      url: '/signup/confirm/users/:uid/token/:token',
+      templateUrl: 'partials/session/signup',
+      controller: 'SignupCtrl'
+    })
+
+    // Account
+
+    .state('account', {
+      url: '/account',
+      abstract: true,
+      templateUrl: 'partials/account/account'
+    })
+
+    .state('account.general', {
+      url: '/general',
+      templateUrl: 'partials/account/general'
+    })
+
+    .state('account.user', {
+      url: '/user',
+      templateUrl: 'partials/account/user'
+    })
+
+    .state('account.security', {
+      url: '/security',
+      templateUrl: 'partials/account/security'
+    })
+
+    .state('account.help', {
+      url: '/help',
+      templateUrl: 'partials/account/help'
+    })
+
+    // Post
+
+    .state('content', {
+      url: '/content',
+      abstract: true,
+      templateUrl: 'partials/content/content',
+      resolve: { loginRequired: loginRequired }
+    })
+
+    .state('content.post', {
+      url: '/post',
+      templateUrl: 'partials/content/post',
+      css: {
+        href: '/stylesheets/post.css',
+        container: 'head',
+        bustCache: true,
+        preload: true
+      }
     })
 
 
@@ -78,12 +135,7 @@ app.config(function (localStorageServiceProvider) {
     .setStorageType('sessionStorage');
 });
 
-app.constant('ngAuthSettings', {
-  apiServiceBaseUri: serviceBase,
-  clientId: 'sonrisas'
-});
-
-// interceptors for http requests
+// Interceptors
 app.config(function ($httpProvider) {
   $httpProvider.interceptors.push('authInterceptorService');
 });
@@ -92,6 +144,8 @@ app.run(['authService', function (authService) {
   authService.fillAuthData();
 }]);
 
+
+// checking ac
 
 var loginRequired = function($location, $q, authService) {  
   

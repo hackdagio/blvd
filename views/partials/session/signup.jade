@@ -1,15 +1,16 @@
 ﻿.container
   .row
-    .kaizen-signup-box.col-xs-12(ng-controller='signupController')
+    .blvd-signup-box.col-xs-12
       .modal-dialog.text-center
         .panel-heading
-          h1.panel-title.text-uppercase _ ¿Primera vez aquí?
+          h1.panel-title.text-uppercase Registrate
         .panel-body
-          h3 Necesitamos verificar tu identidad. Te enviaremos un correo electrónico con un enlace, al cual deberás entrar para que puedas finalizar con tu registro.
-          form.signup-in-kaizen-form(role='form')
+          h3 Crea tu contraseña
+          form.signup-to-blvd-form(role='form')
             fieldset
               .form-group
-                input#email.form-control(type='email', name='email', data-ng-model='loginData.userName', required='', autofocus='', placeholder='Correo electrónico')
+                input#new-password.form-control(type='password', name='new_password', data-ng-model='signupData.pwd', required='', autofocus='', placeholder='Contraseña nueva')
               .form-group
-                button.btn.btn-sm.btn-primary.text-uppercase(type='submit', data-ng-click='login()') [ Obtener enlace_
-                a(href='/acceder'): button.btn.btn-sm.btn-transparent.text-uppercase [ Iniciar sesión_
+                input#new-password.form-control(type='password', name='confirm_password', data-ng-model='signupData.pwdConfirmed', required='', autofocus='', placeholder='Confirma la contraseña nueva')
+              .form-group
+                button.btn.btn-sm.btn-primary.text-uppercase(type='submit', data-ng-click='signup()') [ Crear contraseña_

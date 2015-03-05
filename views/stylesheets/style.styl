@@ -3,7 +3,7 @@
  * @email itrujillo@conceptogroup.cl
  * @url https://github.com/gnaces
  *
- * © Copyright 2014 Concepto Group. Todos los derechos reservados. 
+ * © Copyright 2015 Concepto Group. Todos los derechos reservados. 
  */
 
  // nib
@@ -12,18 +12,15 @@
 // fonts
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300italic,300')
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,400')
-global-font = 'Open Sans', sans-serif
-alternative-font = 'Open Sans Condensed', sans-serif
 
 // global reset (reset.css alike)
 global-reset()
 
-// global variables
-body-distance-from-top = 70
-body-background-color = rgb(240, 240, 240)
-
 // kaizen per sig customs
-@import 'custom/sig'
+@import 'vars'
+
+@import 'session'
+@import 'account'
 
 // libs
 @import 'lib/loading-bar'
@@ -32,13 +29,4 @@ body-background-color = rgb(240, 240, 240)
 
 // main site - always present
 @import 'main'
-@import 'partials/navbar'
-
-// custom views
-@import 'partials/login-signup-firsttime'
-@import 'partials/inicio'
-@import 'partials/indicadores'
-@import 'partials/usuario'
-
-// footer - always present
-@import 'partials/footer'
+@import 'navbar'

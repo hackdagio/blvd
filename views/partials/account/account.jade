@@ -1,0 +1,19 @@
+.kaizen-user-wrapper
+  .kaizen-user-wrapper-sidebar
+      .container
+        .row
+          ul.sidebar-nav
+            li(ui-sref-active='active')
+              span.glyphicon-inline.glyphicon.glyphicon-cog
+              a.text-capitalize(ui-sref='account.general',) General
+            li(ui-sref-active='active')
+              span.glyphicon-inline.glyphicon.glyphicon-lock
+              a.text-capitalize(ui-sref='account.security') Seguridad
+            li(ui-sref-active='active')
+              span.glyphicon-inline.glyphicon.glyphicon-question-sign
+              a.text-capitalize(ui-sref='account.help') Ayuda
+
+  .kaizen-user-wrapper-content
+    .container-fluid
+      .row
+        ui-view
