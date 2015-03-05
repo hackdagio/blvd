@@ -10,7 +10,7 @@
           form.first-time-in-blvd-form(role='form')
             fieldset
               .form-group
-                input#id.form-control(type='id', name='id', data-ng-model='requestData.idUser', autofocus='', placeholder='Tu RUT o DNI')
+                input#id.form-control(type='text', name='id', data-ng-model='requestData.idUser', autofocus='', placeholder='Tu RUT o DNI')
               .form-group
                 button.btn.btn-sm.btn-primary.text-uppercase(type='submit', data-ng-click='request()') [ Obtener enlace_
                 a(ui-sref='session.login'): button.btn.btn-sm.btn-transparent.text-uppercase [ Iniciar sesión_

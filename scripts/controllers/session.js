@@ -39,3 +39,23 @@ app.controller('RequestCtrl', ['$scope', '$state', 'authService',
 
   }
 ]);
+
+app.controller('SignupCtrl', ['$scope', '$stateParams', 'authService',
+  function($scope, $stateParams, authService) {
+    $scope.signupData = {
+      pwd: "",
+      pwdConfirmed: ""
+    };
+
+    $scope.message = "";
+
+    $scope.signup = function () {
+      authService.signup($scope.signupData, $stateParams.token, $stateParams.uid).then(function (response) {
+      },
+      function (err) {
+        $scope.message = err.Message;
+      });
+    };
+
+  }
+]);

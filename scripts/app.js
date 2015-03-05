@@ -22,13 +22,12 @@ var app = angular.module('boulevard', [
 ]);
 
 
-/// Kaizen Master Endpoint
+var serviceBase = 'http://dev.kaizen.cl/conectados/';
+
 app.constant('ngAuthSettings', {
   apiServiceBaseUri: serviceBase,
   clientId: 'sonrisas'
 });
-
-var serviceBase = 'http://localhost:49717/conectados/';
 
 
 /// Angular routing based on nested views
@@ -73,13 +72,9 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
     })
 
     .state('session.signup', {
-      url: '/signup',
+      url: '/signup/confirm/users/:uid/token/:token',
       templateUrl: 'partials/session/signup',
-      controller: 'signupCtrl'
-    })
-
-    .state('session.signup.confirm', {
-      url: '/confirm?uid&token'
+      controller: 'SignupCtrl'
     })
 
     // Account

@@ -57,6 +57,26 @@ app.factory('authService', ['$http', '$q', 'localStorageService',
 
     };
 
+    var _signup = function (signupData, token, uid) {
+
+      var deferred = $q.defer();      
+
+      $http.post(serviceBase + 'users/' + uid, { 'password': signupData.pwdConfirmed, 'token': token }, { headers: { 'Content-Type': 'application/json' } })
+      .success(function (response) {
+
+        deferred.resolve(response);
+
+      })
+      .error(function(err, status) {
+
+        deferred.reject(status);
+
+      });
+
+      return deferred.promise;
+
+    };
+
     var _logOut = function () {
 
       localStorageService.remove('authorizationData');
@@ -81,6 +101,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService',
     authServiceFactory.fillAuthData = _fillAuthData;
     authServiceFactory.authentication = _authentication;
     authServiceFactory.request = _requestSignup;
+    authServiceFactory.signup = _signup;
  
     return authServiceFactory;
   }
