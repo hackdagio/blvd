@@ -1,4 +1,32 @@
-.kaizen-user-box.col-lg-12.col-xs-12
+.kaizen-user-box
   h1 Configuraciones generales
-  hr
-  h2 Perfil
+  .col-lg-12.nopadding
+    .col-lg-8.nopadding
+      h4 Tus datos personales
+      form.blvd-change-personal-info-form(name='changePersonalInfo')
+        .form-group
+          label(for='current-rut') RUT
+          input#current-rut.form-control(name='current-rut', type='text', ng-required='', disabled='true', placeholder='')
+        .form-group
+          label(for='current-name') Nombres
+          input#current-name.form-control(name='current-name', type='text', ng-required='')
+        .form-group
+          label(for='current-surname') Apellidos
+          input#current-surname.form-control(name='current-surname', type='text', ng-required='')
+        .form-group
+          label(for='current-nickname') Apodo
+          input#current-nickname.form-control(name='current-nickname', type='text', ng-required='')
+        .form-group
+          label(for='current-email') Correo electrónico
+          input#current-email.form-control(name='current-email', type='email', ng-required='')
+        .form-group
+          label(for='current-phone') Teléfono movil
+          input#current-phone.form-control(name='current-phone', type='tel', ng-required='', autocomplete='off')
+    .col-lg-4
+      figure.current-profile-image
+        #current-profile-image.img(style='background-image: url("//static.kaizen.link/generic/avatar/90.jpg")', href='#')
+      form.blvd-change-current-profile-image(name='changeCurrentProfileImage')
+        .form-group
+          button.btn.btn-success.text-uppercase(type='button') Actualiza tu foto
+        .form-group
+          button.btn.btn-danger.text-uppercase(type='button') Elimina tu foto

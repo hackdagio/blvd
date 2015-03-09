@@ -52,32 +52,49 @@ body
   overflow auto
   
 .modal-title
-  font-weight 300
+  font-weight global-font-light-weight
   color darken(primary-color-2, 10%)
   display inline
   margin-left .5em
   strong
-    font-weight 400
+    font-weight global-font-regular-weight
   
 .modal-footer button
-  font-weight 300
+  font-weight global-font-light-weight
 
 .modal.fade .modal-dialog
   transition transform .1s ease-out
   
 .modal-body
   color darken(primary-color-1, 50%)
-  font-weight 300
+  font-weight global-font-light-weight
 
+// alert and buttons
 .alert,
 .btn
-  font-weight 300
+  font-weight global-font-light-weight
   border-radius 0px
-  font-style italic
+  
+.btn
+  font-size 11px
+  letter-spacing 1px
+  padding 9px 14px
+  
+.btn-primary,
+.btn-success,
+.alert-success,
+.btn-danger,
+.alert-danger
+  transition background 0.2s ease, border-color 0.2s ease
+  color white
   
 .btn-primary
   background-color primary-color-2
   border-color lighten(primary-color-2, 10%)
+  color white
+  &:hover
+    background-color lighten(primary-color-2, 30%)
+    border-color lighten(primary-color-2, 40%)
   
 .btn-info
   background-color color-less-positive
@@ -88,22 +105,24 @@ body
 .btn-success,
 .alert-success
   background-color color-positive
-  color white
-  
+  border-color rgb(148, 177, 72)
+  &:focus
+    background-color rgb(132, 159, 65)
+    border-color rgb(111, 134, 54)  
+
 .btn-danger,
 .alert-danger
-  background-color rgb(208, 8, 8)
-  border-color rgb(177, 45, 27)
-  color white
-  
-  
+  background-color color-negative
+  border-color rgb(223, 64, 42)
+  &:focus
+    background-color rgb(207, 53, 32)
+    border-color rgb(177, 45, 27)
+
 .btn-transparent
-  background-color rgba(255,255,255,0.1)
+  background-color rgba(0,0,0,0.001)
   border-color rgba(0,0,0,0.1)
   color rgb(100,100,100)
 
-.form-control
-  border-radius 0
 
 // css fixes
 
@@ -119,25 +138,31 @@ body
   
 
 // generic form
+
+.form-control
+  border-radius 0
 form
   .form-control
+    border 1px solid rgb(224, 223, 215)
+    box-shadow none
     &:focus
-      border-color rgb(81, 167, 232)
+      border-color rgb(170, 169, 162)
       outline 0
-      box-shadow inset 0 1px 2px rgba(0, 0, 0, 0.075),0 0 5px rgba(81, 167, 232, 0.5)
+      box-shadow none
   label
     display block
-    color rgb(36, 38, 40)
-    font-size 0.9em
-    font-weight 400
+    color rgb(129, 129, 129)
+    font-size 12px
+    font-weight global-font-regular-weight
     margin-bottom 10px
+    text-transform uppercase
   input
     border 1px solid rgb(224, 223, 215)
     border-radius 0
     box-shadow none
-    font-weight 300
+    font-weight global-font-light-weight
   button
-    font-weight 300
-    font-size 0.8em
+    font-weight global-font-light-weight
+    font-size 11px
     box-shadow none
     border-radius 0
