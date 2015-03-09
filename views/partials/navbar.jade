@@ -15,7 +15,7 @@
         li: a(ui-sref='session.login', ng-hide='authentication.isAuth') Iniciar sesión
           
         li.dropdown
-          a.dropdown-toggle.navbar-link.navbar-user(href='javascript:void(0)', ng-hide='!authentication.isAuth')
+          a.dropdown-toggle.navbar-link.navbar-user(data-toggle='dropdown', href='javascript:void(0)', ng-hide='!authentication.isAuth')
             span.glyphicon.glyphicon-user
             strong.text-capitalize  {{authentication.userName}}
             span.glyphicon-chevron-user

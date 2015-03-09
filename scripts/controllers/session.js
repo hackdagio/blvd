@@ -57,8 +57,8 @@ app.controller('RequestCtrl', ['$scope', '$state', 'authService',
   }
 ]);
 
-app.controller('SignupCtrl', ['$scope', '$state', '$stateParams', 'authService',
-  function($scope, $state, $stateParams, authService) {
+app.controller('SignupCtrl', ['$scope', '$timeout', '$state', '$stateParams', 'authService',
+  function($scope, $timeout, $state, $stateParams, authService) {
 
     $scope.signupData = {
       pwd: "",
@@ -70,13 +70,27 @@ app.controller('SignupCtrl', ['$scope', '$state', '$stateParams', 'authService',
       msg: ''
     };
 
+    $scope.counter = 0;
+
+    $scope.onTimeout = function () {
+      $scope.counter++;
+      myTimeout = $timeout($scope.onTimeout, 1000);
+    };
+
+    var myTimeout = $timeout($scope.onTimeout, 1000);
+
     $scope.signup = function () {
       authService.signup($scope.signupData, $stateParams.uid, $stateParams.token)
         .then(function (response) {
           $scope.alert = {
             type: 'success',
-            msg: 'Contraseña creada con éxito.'
+            msg: 'Contraseña creada con éxito. En un instante, serás redirigido para que inicies sesión.'
           };
+
+          return $timeout(function () {
+            $state.go('session.login', {}, { reload: true });
+          }, 5000);
+
         },
         function (err) {
           $scope.alert = {
