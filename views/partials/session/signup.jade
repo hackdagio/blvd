@@ -1,16 +1,14 @@
-﻿.container
-  .row
-    .blvd-signup-box.col-xs-12
-      .modal-dialog.text-center
-        .panel-heading
-          h1.panel-title.text-uppercase Registrate
-        .panel-body
-          h3 Crea tu contraseña
-          form.signup-to-blvd-form(role='form')
-            fieldset
-              .form-group
-                input#new-password.form-control(type='password', name='new_password', data-ng-model='signupData.pwd', required='', autofocus='', placeholder='Contraseña nueva')
-              .form-group
-                input#new-password.form-control(type='password', name='confirm_password', data-ng-model='signupData.pwdConfirmed', required='', autofocus='', placeholder='Confirma la contraseña nueva')
-              .form-group
-                button.btn.btn-sm.btn-primary.text-uppercase(type='submit', data-ng-click='signup()') [ Crear contraseña_
+﻿//- TODO: validate max-length
+.blvd-signup-box
+  .modal-dialog.text-center
+    .panel-heading
+      h1.panel-title.text-uppercase Registrate
+    alert(ng-hide="alert.msg == ''", type='{{alert.type}}') {{ alert.msg }}
+    .panel-body
+      h3 Crea tu contraseña
+      form.signup-to-blvd-form(name='signup-to-blvd', role='form')
+        .form-group
+          input.form-control(type='password', name='new_password', data-ng-model='signupData.pwd', required='', autofocus='', placeholder='Contraseña nueva')
+        .form-group
+          input.form-control(type='password', name='confirm_password', data-ng-model='signupData.pwdConfirmed', required='', autofocus='', placeholder='Confirma la contraseña nueva')
+        button.btn.btn-sm.btn-primary.text-uppercase(type='submit', data-ng-click='signup()') Crear contraseña

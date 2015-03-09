@@ -3,59 +3,87 @@
 app.controller('LoginCtrl', ['$scope', '$state', 'authService',
   function ($scope, $state, authService) {
     $scope.loginData = {
-      userName: "",
-      password: ""
+      userName: '',
+      password: ''
     };
 
-    $scope.message = "";
+    $scope.alert = {
+      type: '',
+      msg: ''
+    };
 
     $scope.login = function () {
       authService.login($scope.loginData).then(function (response) {
         $state.go('index');
       },
       function (err) {
-        $scope.message = err.error_description;
+        $scope.alert = {
+          type: 'danger',
+          msg: 'RUT o contraseña incorrectos'
+        };
       });
     };
   }
 ]);
+
 
 app.controller('RequestCtrl', ['$scope', '$state', 'authService',
   function($scope, $state, authService) {
     $scope.requestData = {
-      idUser: ""
+      idUser: ''
     };
 
-    $scope.message = "";
+    $scope.alert = {
+      type: '',
+      msg: ''
+    };
 
     $scope.request = function () {
-      authService.request($scope.requestData).then(function (response) {
-        $state.go('index');
+      authService.request($scope.requestData)
+      .then(function (response) {
+        $scope.alert = {
+          type: 'success',
+          msg: 'Rut encontrado. Te hemos enviado el correo.'
+        };
       },
       function (err) {
-        $scope.message = err.Message;
+        $scope.alert = {
+          type: 'danger',
+          msg: 'Rut no encontrado'
+        };
       });
     };
 
   }
 ]);
 
-app.controller('SignupCtrl', ['$scope', '$stateParams', 'authService',
-  function($scope, $stateParams, authService) {
+app.controller('SignupCtrl', ['$scope', '$state', '$stateParams', 'authService',
+  function($scope, $state, $stateParams, authService) {
+
     $scope.signupData = {
       pwd: "",
       pwdConfirmed: ""
     };
 
-    $scope.message = "";
-
-    $scope.signup = function () {
-      authService.signup($scope.signupData, $stateParams.token, $stateParams.uid).then(function (response) {
-      },
-      function (err) {
-        $scope.message = err.Message;
-      });
+    $scope.alert = {
+      type: '',
+      msg: ''
     };
 
+    $scope.signup = function () {
+      authService.signup($scope.signupData, $stateParams.uid, $stateParams.token)
+        .then(function (response) {
+          $scope.alert = {
+            type: 'success',
+            msg: 'Contraseña creada con éxito.'
+          };
+        },
+        function (err) {
+          $scope.alert = {
+            type: 'danger',
+            msg: 'Token no válido.'
+          };
+        });
+    };
   }
 ]);

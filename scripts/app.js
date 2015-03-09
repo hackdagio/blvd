@@ -43,7 +43,7 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
       controller: 'indicadoresController',
       resolve: { loginRequired: loginRequired },
       css: {
-        href: '/stylesheets/indicadores.css',
+        href: '/stylesheets/partials/indicadores.css',
         container: 'head',
         bustCache: true,
         preload: true
@@ -116,13 +116,7 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
 
     .state('content.post', {
       url: '/post',
-      templateUrl: 'partials/content/post',
-      css: {
-        href: '/stylesheets/post.css',
-        container: 'head',
-        bustCache: true,
-        preload: true
-      }
+      templateUrl: 'partials/content/post'
     })
 
 

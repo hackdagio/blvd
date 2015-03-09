@@ -6,27 +6,30 @@
  * © Copyright 2015 Concepto Group. Todos los derechos reservados. 
  */
 
- // nib
+// nib
 @import 'nib'
 
-// fonts
+// import fonts
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300italic,300')
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,400')
 
-// global reset (reset.css alike)
+// global reset (reset.css like)
 global-reset()
 
-// kaizen per sig customs
+// blvd customs
 @import 'vars'
 
-@import 'session'
-@import 'account'
+// main - always present
+@import 'main/main'
+@import 'main/navbar'
 
-// libs
+// styling for partials
+@import 'partials/session'
+@import 'partials/account'
+@import 'partials/post'
+
+// styling for libs
 @import 'lib/loading-bar'
 @import 'lib/metrics'
 @import 'lib/radialplot'
 
-// main site - always present
-@import 'main'
-@import 'navbar'
