@@ -7,10 +7,7 @@ app.controller('LoginCtrl', ['$scope', '$state', 'authService',
       password: ''
     };
 
-    $scope.alert = {
-      type: '',
-      msg: ''
-    };
+    $scope.alert = {type: '',msg: ''};
 
     $scope.login = function () {
       authService.login($scope.loginData).then(function (response) {
@@ -33,10 +30,7 @@ app.controller('RequestCtrl', ['$scope', '$state', 'authService',
       idUser: ''
     };
 
-    $scope.alert = {
-      type: '',
-      msg: ''
-    };
+    $scope.alert = {type: '',msg: ''};
 
     $scope.request = function () {
       authService.request($scope.requestData)
@@ -65,19 +59,7 @@ app.controller('SignupCtrl', ['$scope', '$timeout', '$state', '$stateParams', 'a
       pwdConfirmed: ""
     };
 
-    $scope.alert = {
-      type: '',
-      msg: ''
-    };
-
-    $scope.counter = 0;
-
-    $scope.onTimeout = function () {
-      $scope.counter++;
-      myTimeout = $timeout($scope.onTimeout, 1000);
-    };
-
-    var myTimeout = $timeout($scope.onTimeout, 1000);
+    $scope.alert = {type: '',msg: ''};
 
     $scope.signup = function () {
       authService.signup($scope.signupData, $stateParams.uid, $stateParams.token)
@@ -99,5 +81,15 @@ app.controller('SignupCtrl', ['$scope', '$timeout', '$state', '$stateParams', 'a
           };
         });
     };
+  }
+]);
+
+app.controller('AccountGeneralCtrl', ['$scope',
+  function($scope) {
+    $scope.PersonaInfo = {
+      
+
+    };
+
   }
 ]);

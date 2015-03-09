@@ -87,12 +87,8 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
 
     .state('account.general', {
       url: '/general',
-      templateUrl: 'partials/account/general'
-    })
-
-    .state('account.user', {
-      url: '/user',
-      templateUrl: 'partials/account/user'
+      templateUrl: 'partials/account/general',
+      controller: 'AccountGeneralCtrl'
     })
 
     .state('account.security', {
