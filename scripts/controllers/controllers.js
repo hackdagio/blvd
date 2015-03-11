@@ -102,8 +102,10 @@ app.controller('NavbarCtrl', ['$rootScope', '$scope', '$state', 'localService', 
 
     $rootScope.$on('$stateChangeStart', function (event, next) {
       $scope.personaData = localService.getinfo('personaData');
-      $scope.authentication = authService.authentication;
     });
+    
+    $scope.authentication = authService.authentication;
+    $scope.personaData = localService.getinfo('personaData');
 
     $scope.logOut = function () {
       authService.logOut();

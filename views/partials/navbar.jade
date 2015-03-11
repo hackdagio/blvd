@@ -30,7 +30,7 @@
                     p.text-left
                       strong {{ personaData.display_name }}
                     p.text-left
-                      em {{ personaData.id }}
+                      em {{ personaData.id | rut }}
                     p.text-left {{ personaData.phone }}
                     .navbar-user-link-account
                       a.btn.btn-primary.btn-block.btn-sm(ui-sref='account.general') Mi cuenta

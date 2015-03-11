@@ -18,7 +18,8 @@ var app = angular.module('boulevard', [
   'ui.bootstrap',
   'ui.radialplot',
   'gaugejs',
-  'door3.css'
+  'door3.css',
+  'platanus.rut'
 ]);
 
 

@@ -9,7 +9,9 @@ mixin form-input-persona(display, name, type, ngmodel, placeholder, attr)
     .col-lg-8.nopadding
       h4 Tus datos personales
       form.blvd-change-personal-info-form(name='changePersonalInfo')
-        +form-input-persona('Rut', 'current-id', 'text', 'PersonaInfo.id', '', 'true')
+        .form-group
+          label(for=name)= display
+          input#current-id.form-control(ng-rut, name='current-id', type='text', ng-model='PersonaInfo.id', ng-required='', placeholder='{{PersonaInfo.id}}', disabled='true')
         +form-input-persona('Nombres', 'current-givenname', 'text', 'PersonaInfo.givenname', '', 'true')
         +form-input-persona('Apellidos', 'current-surname', 'text', 'PersonaInfo.surname', '', 'true')
         +form-input-persona('Apodo', 'current-displayname', 'text', 'PersonaInfo.displayname', '')
