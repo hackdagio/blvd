@@ -11,73 +11,60 @@ app.factory('authService', ['$http', '$q', 'localStorageService',
  
     var _login = function (loginData) {
 
-      var data = "grant_type=password&username=" + loginData.userName + "&password=" + loginData.password;
-      var deferred = $q.defer();
+      var data = "grant_type=password&username=" + loginData.username + "&password=" + loginData.password;
 
-      $http.post(serviceBase + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
-        
-      .success(function (response) {
-        
-        localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName });
-        _authentication.isAuth = true;
-        _authentication.userName = loginData.userName;
+      return $http.post(serviceBase + 'token', data).
+        success(function (response) {
 
-        deferred.resolve(response);
+          var personaData = { 
+            id: response.username,
+            display_name: response.display_name,
+            email: response.email,
+            phone: response.phone,
+            firstname: response.firstname,
+            middlename: response.middlename,
+            surname: response.surname,
+            lastname: response.lastname
+          };
 
-      })
-      .error(function (err, status) {
+          localStorageService.set('authorizationData', { token: response.access_token });
+          localStorageService.set('personaData', personaData);
+          _authentication.isAuth = true;
+          _authentication.userName = response.username;
 
-        _logOut();
-        deferred.reject(err);
-
-      });
-
-      return deferred.promise;
-
+          return response;
+        }).
+        error(function(err) {
+          return null;
+        });
     };
+
+    // Request signup
 
     var _requestSignup = function (requestData) {
 
-      var data = "";
-      var deferred = $q.defer();      
-
-      $http.post(serviceBase + 'users/' + requestData.idUser + '/signup', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
-      .success(function (response) {
-
-        deferred.resolve(response);
-
-      })
-      .error(function(err, status) {
-
-        deferred.reject(err);
-
-      });
-
-      return deferred.promise;
-
+      return $http.post(serviceBase + 'users/' + requestData.idUser + '/signup', '').
+        success(function (response) {
+          return response;
+        }).
+        error(function(err) {
+          return null;
+        });
     };
 
     // Signup
 
     var _signup = function (signupData, uid, token) {
 
-      var data = { 'password': signupData.pwdConfirmed, 'token': token };
-      var deferred = $q.defer();      
+      var data = { 'password': signupData.pwdConfirmed, 'token': token }; 
 
-      $http.post(serviceBase + 'users/' + uid, data)
-      .success(function (response) {
-
-        deferred.resolve(response);
-
-      })
-      .error(function(err, status) {
-
-        deferred.reject(err);
-
-      });
-
-      return deferred.promise;
-
+      return $http.post(serviceBase + 'users/' + uid, data).
+        success(function (response) {
+          return response;
+        }).
+        error(function(err) {
+          return null;
+        });
     };
 
     var _logOut = function () {
