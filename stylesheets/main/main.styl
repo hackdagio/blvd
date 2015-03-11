@@ -1,0 +1,173 @@
+body,
+html
+  width 100%
+  height 100%
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  font-family global-font
+
+body
+  padding-top (body-distance-from-top)px
+  color primary-color-1
+  background body-background-color
+
+// bootstrap fixes
+.container-fluid
+  padding 0 30px
+.nopadding
+   padding 0 !important
+   
+// .uppercase
+//   text-transform uppercase
+// .capitalize
+//   text-transform capitalize
+  
+.progress-bar-success
+  background-color color-positive
+.progress-bar-info
+  background-color color-less-positive
+.progress-bar-warning
+  background-color color-almost-negative
+.progress-bar-danger
+  background-color color-negative
+
+.modal-backdrop
+  position fixed
+  top 0
+  right 0
+  left 0
+  bottom 0
+  background-color darken(primary-color-1, 90%)
+  
+.modal-content
+  border none
+  border-radius 0px
+  box-shadow 0 5px 30px rgb(40,40,40)
+  overflow auto
+  
+.modal-title
+  font-weight global-font-light-weight
+  color darken(primary-color-2, 10%)
+  display inline
+  margin-left .5em
+  strong
+    font-weight global-font-regular-weight
+  
+.modal-footer button
+  font-weight global-font-light-weight
+
+.modal.fade .modal-dialog
+  transition transform .1s ease-out
+  
+.modal-body
+  color darken(primary-color-1, 50%)
+  font-weight global-font-light-weight
+
+// alert and buttons
+.alert,
+.btn
+  font-weight global-font-light-weight
+  border-radius 0px
+  
+.btn
+  font-size 11px
+  letter-spacing 1px
+  padding 9px 14px
+  
+.btn-primary,
+.btn-success,
+.alert-success,
+.btn-danger,
+.alert-danger
+  transition background 0.2s ease, border-color 0.2s ease
+  color white
+  
+.btn-primary
+  background-color primary-color-2
+  border-color lighten(primary-color-2, 10%)
+  color white
+  &:hover
+    background-color lighten(primary-color-2, 30%)
+    border-color lighten(primary-color-2, 40%)
+  
+.btn-info
+  background-color color-less-positive
+  
+.btn-warning
+  background-color color-almost-negative
+
+.btn-success,
+.alert-success
+  background-color color-positive
+  border-color rgb(148, 177, 72)
+  &:focus
+    background-color rgb(132, 159, 65)
+    border-color rgb(111, 134, 54)  
+
+.btn-danger,
+.alert-danger
+  background-color color-negative
+  border-color rgb(223, 64, 42)
+  &:focus
+    background-color rgb(207, 53, 32)
+    border-color rgb(177, 45, 27)
+
+.btn-transparent
+  background-color rgba(0,0,0,0.001)
+  border-color rgba(0,0,0,0.1)
+  color rgb(100,100,100)
+
+
+// css fixes
+
+.full-width-and-float
+  width 100%
+  float left
+  
+.cursor-pointer
+  cursor pointer
+  
+.glyphicon-inline
+  display inline-block!important
+  
+
+// generic form
+
+.form-control
+  border-radius 0
+form
+  .form-control
+    border 1px solid rgb(224, 223, 215)
+    box-shadow none
+    &:focus
+      border-color rgb(170, 169, 162)
+      outline 0
+      box-shadow none
+  label
+    display block
+    color rgb(129, 129, 129)
+    font-size 12px
+    font-weight global-font-regular-weight
+    margin-bottom 10px
+    text-transform uppercase
+  input
+    border 1px solid rgb(224, 223, 215)
+    border-radius 0
+    box-shadow none
+    font-weight global-font-light-weight
+  button
+    font-weight global-font-light-weight
+    font-size 11px
+    box-shadow none
+    border-radius 0
+    
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control
+  background-color rgb(245, 245, 245)

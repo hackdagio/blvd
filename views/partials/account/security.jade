@@ -1,17 +1,14 @@
-.kaizen-user-box.col-lg-12.col-xs-12
+.kaizen-user-box
   h1 Seguridad de tu cuenta
-  hr
-  h3 Actualiza tu contraseña
+  h4 Actualiza tu contraseña
   form.change-password-form(name='changePassword')
-    fieldset
-      .form-group
-        label(for='current-password') Contraseña actual
-        input.form-control(id='current-password', name='current-password', type='password', ng-required='')
-      .form-group
-        label(for='new-password') Contraseña nueva
-        input.form-control(id='new-password', name='new-password', type='password', ng-required='')
-      .form-group
-        label(for='confirm-new-password') Repite la contraseña nueva
-        input.form-control(id='confirm-new-password', name='confirm-new-password', type='password', ng-required='')
-      .form-group
-        button.button-change-password.btn.btn-danger.text-uppercase(type='button') Actualizar contraseña
+    .form-group
+      label(for='current-password') Contraseña actual
+      input#current-password.form-control(name='current-password', type='password', ng-required='')
+    .form-group
+      label(for='new-password') Contraseña nueva
+      input.form-control(id='new-password', name='new-password', type='password', ng-required='')
+    .form-group
+      label(for='confirm-new-password') Repite la contraseña nueva
+      input.form-control(id='confirm-new-password', name='confirm-new-password', type='password', ng-required='')
+    button.button-change-password.btn.btn-danger.text-uppercase(type='button') Actualizar contraseña

@@ -1,20 +1,21 @@
 .navbar.navbar-kaizen.navbar-fixed-top(role='navigation', ng-controller='navbarController')
   .container-fluid
     .navbar-header
-      button.navbar-toggle(type='button', toggle='collapse', target='.navbar-collapse')
+      button.navbar-toggle(type='button', ng-click='navbarCollapsed = !navbarCollapsed')
+        span.sr-only Abrir navegación
         span.icon-bar
         span.icon-bar
         span.icon-bar
       a.navbar-brand(ui-sref='index')
         img(src='//static.kaizen.link/entel/images/logo-sonrisas.png')
 
-    .collapse.navbar-collapse
+    .collapse.navbar-collapse(collapse='navbarCollapsed')
       ul.nav.navbar-nav.navbar-right
 
         li: a(ui-sref='session.login', ng-hide='authentication.isAuth') Iniciar sesión
           
         li.dropdown
-          a.dropdown-toggle.navbar-link.navbar-user(href='javascript:void(0)', ng-hide='!authentication.isAuth')
+          a.dropdown-toggle.navbar-link.navbar-user(data-toggle='dropdown', href='javascript:void(0)', ng-hide='!authentication.isAuth')
             span.glyphicon.glyphicon-user
             strong.text-capitalize  {{authentication.userName}}
             span.glyphicon-chevron-user

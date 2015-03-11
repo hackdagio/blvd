@@ -49,7 +49,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService',
       })
       .error(function(err, status) {
 
-        deferred.reject(status);
+        deferred.reject(err);
 
       });
 
@@ -57,11 +57,14 @@ app.factory('authService', ['$http', '$q', 'localStorageService',
 
     };
 
-    var _signup = function (signupData, token, uid) {
+    // Signup
 
+    var _signup = function (signupData, uid, token) {
+
+      var data = { 'password': signupData.pwdConfirmed, 'token': token };
       var deferred = $q.defer();      
 
-      $http.post(serviceBase + 'users/' + uid, { 'password': signupData.pwdConfirmed, 'token': token }, { headers: { 'Content-Type': 'application/json' } })
+      $http.post(serviceBase + 'users/' + uid, data)
       .success(function (response) {
 
         deferred.resolve(response);
@@ -69,7 +72,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService',
       })
       .error(function(err, status) {
 
-        deferred.reject(status);
+        deferred.reject(err);
 
       });
 
