@@ -9,12 +9,12 @@ mixin form-input-persona(display, name, type, ngmodel, placeholder, attr)
     .col-lg-8.nopadding
       h4 Tus datos personales
       form.blvd-change-personal-info-form(name='changePersonalInfo')
-        +form-input-persona('Rut', 'current-rut', 'text', 'PersonaInfo.id', '', 'true')
-        +form-input-persona('Nombres', 'current-name', 'text', 'PersonaInfo.name', '', 'true')
+        +form-input-persona('Rut', 'current-id', 'text', 'PersonaInfo.id', '', 'true')
+        +form-input-persona('Nombres', 'current-givenname', 'text', 'PersonaInfo.givenname', '', 'true')
         +form-input-persona('Apellidos', 'current-surname', 'text', 'PersonaInfo.surname', '', 'true')
-        +form-input-persona('Apodo', 'current-nickname', 'text', 'PersonaInfo.nickname', '')
+        +form-input-persona('Apodo', 'current-displayname', 'text', 'PersonaInfo.displayname', '')
         +form-input-persona('Correo electrónico', 'current-email', 'email', 'PersonaInfo.email', '')
-        +form-input-persona('Teléfono', 'current-tel', 'tel', 'PersonaInfo.tel', '')
+        +form-input-persona('Teléfono', 'current-phone', 'tel', 'PersonaInfo.phone', '')
     .col-lg-4
       figure.current-profile-image
         #current-profile-image.img(style='background-image: url("//static.kaizen.link/generic/avatar/90.jpg")', href='#')
