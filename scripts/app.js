@@ -40,7 +40,7 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
     .state('index', {
       url: '/',
       templateUrl: 'partials/home',
-      controller: 'indicadoresController',
+      controller: 'IndexCtrl',
       resolve: { loginRequired: loginRequired },
       css: {
         href: '/stylesheets/partials/indicadores.css',
@@ -120,19 +120,22 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
 
 });
 
-app.config(function (localStorageServiceProvider) {
-  localStorageServiceProvider
-    .setStorageType('sessionStorage');
-});
-
 // Interceptors
 app.config(function ($httpProvider) {
   $httpProvider.interceptors.push('authInterceptorService');
 });
 
-app.run(['authService', function (authService) {
-  authService.fillAuthData();
-}]);
+app.config(function (localStorageServiceProvider) {
+  localStorageServiceProvider
+    .setStorageType('sessionStorage');
+});
+
+
+app.run(['authService', 
+  function (authService) {
+    authService.fillAuthData();
+  }
+]);
 
 
 // checking ac

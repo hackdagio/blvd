@@ -12,7 +12,7 @@ app.controller('LoginCtrl', ['$scope', '$state', 'authService',
     $scope.login = function () {
       authService.login($scope.loginData).
         then(function (response) {
-          $state.go('index');
+          $state.go('index', {}, {reload: true});
         }, function (err) {
           $scope.alert = {
             type: 'danger',
@@ -97,11 +97,13 @@ app.controller('AccountGeneralCtrl', ['$scope', 'localService',
   }
 ]);
 
-app.controller('NavbarCtrl', ['$scope', '$state', 'localService', 'authService',
-  function ($scope, $state, localService, authService) {
+app.controller('NavbarCtrl', ['$rootScope', '$scope', '$state', 'localService', 'authService',
+  function ($rootScope, $scope, $state, localService, authService) {
 
-    $scope.personaData = localService.getinfo('personaData');
-    $scope.authentication = authService.authentication;
+    $rootScope.$on('$stateChangeStart', function (event, next) {
+      $scope.personaData = localService.getinfo('personaData');
+      $scope.authentication = authService.authentication;
+    });
 
     $scope.logOut = function () {
       authService.logOut();
@@ -118,5 +120,11 @@ app.controller('bannerController', ['$scope',
      { image: '//static.kaizen.link/entel/promos/promo_san-valentin.jpg' },
      { image: '//static.kaizen.link/entel/promos/promo_capacitacion.jpg' }
     ];
+  }
+]);
+
+app.controller('IndexCtrl', ['$scope', 'localService',
+  function($scope, localService) {
+    $scope.personaData = localService.getinfo('personaData');
   }
 ]);
