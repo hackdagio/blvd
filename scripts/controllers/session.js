@@ -10,15 +10,15 @@ app.controller('LoginCtrl', ['$scope', '$state', 'authService',
     $scope.alert = {type: '',msg: ''};
 
     $scope.login = function () {
-      authService.login($scope.loginData).then(function (response) {
-        $state.go('index');
-      },
-      function (err) {
-        $scope.alert = {
-          type: 'danger',
-          msg: 'RUT o contraseña incorrectos'
-        };
-      });
+      authService.login($scope.loginData).
+        then(function (response) {
+          $state.go('index');
+        }, function (err) {
+          $scope.alert = {
+            type: 'danger',
+            msg: err.error_description
+          };
+        });
     };
   }
 ]);
