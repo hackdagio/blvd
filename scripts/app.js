@@ -57,7 +57,7 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
       url: '/session',
       abstract: true,
       templateUrl: 'partials/session/session',
-      resolve: { redirectIfAuthenticated: redirectIfAuthenticated('/') }
+      resolve: { redirectIfAuthenticated: redirectIfAuthenticated('index') }
     })
 
     .state('session.login', {
@@ -83,7 +83,8 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
     .state('account', {
       url: '/account',
       abstract: true,
-      templateUrl: 'partials/account/account'
+      templateUrl: 'partials/account/account',
+      resolve: { loginRequired: loginRequired }
     })
 
     .state('account.general', {
@@ -139,30 +140,38 @@ app.run(['authService',
 ]);
 
 
-// checking ac
+var loginRequired = function($state, $q, authService, $timeout) {  
 
-var loginRequired = function($location, $q, authService) {  
-  
   var deferred = $q.defer();
 
-  if(! (authService.authentication.isAuth == true)) {
-    deferred.reject()
-    $location.path('/session/login');
+  if (! (authService.authentication.isAuth)) {
+    
+    $timeout(function() {
+      $state.go('session.login');
+    });
+    
+    deferred.reject();
+
   } else {
-    deferred.resolve()
+    deferred.resolve();
   }
 
   return deferred.promise;
-}
+};
 
 var redirectIfAuthenticated = function(route) {  
-  return function($location, $q, authService) {
+  return function($state, $q, authService, $timeout) {
 
     var deferred = $q.defer();
 
-    if (authService.authentication.isAuth == true) {
+    if (authService.authentication.isAuth) {
+
+      $timeout(function() {
+        $state.go(route);
+      });
+
       deferred.reject()
-      $location.path(route);
+      
     } else {
       deferred.resolve()
     }
