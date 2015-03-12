@@ -1,7 +1,7 @@
-.navbar.navbar-kaizen.navbar-fixed-top(role='navigation', ng-controller='navbarController')
+.navbar.navbar-kaizen.navbar-fixed-top(role='navigation', ng-controller='NavbarCtrl')
   .container-fluid
     .navbar-header
-      button.navbar-toggle(type='button', ng-click='navbarCollapsed = !navbarCollapsed')
+      button.navbar-toggle(type='button', ng-init='navbarCollapsed = true', ng-click='navbarCollapsed = !navbarCollapsed')
         span.sr-only Abrir navegación
         span.icon-bar
         span.icon-bar
@@ -17,7 +17,7 @@
         li.dropdown
           a.dropdown-toggle.navbar-link.navbar-user(data-toggle='dropdown', href='javascript:void(0)', ng-hide='!authentication.isAuth')
             span.glyphicon.glyphicon-user
-            strong.text-capitalize  {{authentication.userName}}
+            strong.text-capitalize  {{ personaData.display_name }}
             span.glyphicon-chevron-user
           ul.dropdown-menu
             li
@@ -28,10 +28,10 @@
                       img.navbar-user-avatar.img-circle(src='//static.kaizen.link/generic/avatar/90.jpg')
                   .col-xs-7.navbar-user-info
                     p.text-left
-                      strong {{ authentication.userName }}
+                      strong {{ personaData.display_name }}
                     p.text-left
-                      em {{ authentication.userName }}
-                    p.text-left {{ authentication.userName }}
+                      em {{ personaData.id | rut }}
+                    p.text-left {{ personaData.phone }}
                     .navbar-user-link-account
                       a.btn.btn-primary.btn-block.btn-sm(ui-sref='account.general') Mi cuenta
 

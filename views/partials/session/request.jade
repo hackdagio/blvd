@@ -7,6 +7,6 @@
       h3 Necesitamos verificar tu identidad. Te enviaremos un correo electrónico con un enlace, al cual deberás entrar para que puedas finalizar con tu registro.
       form.first-time-in-blvd-form(role='form')
         .form-group
-          input#id.form-control(type='text', name='id', data-ng-model='requestData.idUser', autofocus='', autocomplete='off', placeholder='RUT o DNI')
+          input#id.form-control(ng-rut, type='text', name='id', data-ng-model='requestData.idUser', autofocus='', autocomplete='off', placeholder='RUT o DNI')
         button.btn.btn-sm.btn-primary.text-uppercase(type='submit', data-ng-click='request()') Obtener enlace
         a(ui-sref='session.login'): button.btn.btn-sm.btn-transparent.text-uppercase Iniciar sesión

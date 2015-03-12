@@ -18,7 +18,8 @@ var app = angular.module('boulevard', [
   'ui.bootstrap',
   'ui.radialplot',
   'gaugejs',
-  'door3.css'
+  'door3.css',
+  'platanus.rut'
 ]);
 
 
@@ -40,7 +41,7 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
     .state('index', {
       url: '/',
       templateUrl: 'partials/home',
-      controller: 'indicadoresController',
+      controller: 'IndexCtrl',
       resolve: { loginRequired: loginRequired },
       css: {
         href: '/stylesheets/partials/indicadores.css',
@@ -51,12 +52,11 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
     })
 
     // Session
-
     .state('session', {
       url: '/session',
       abstract: true,
       templateUrl: 'partials/session/session',
-      resolve: { redirectIfAuthenticated: redirectIfAuthenticated('/') }
+      resolve: { redirectIfAuthenticated: redirectIfAuthenticated('index') }
     })
 
     .state('session.login', {
@@ -78,11 +78,11 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
     })
 
     // Account
-
     .state('account', {
       url: '/account',
       abstract: true,
-      templateUrl: 'partials/account/account'
+      templateUrl: 'partials/account/account',
+      resolve: { loginRequired: loginRequired }
     })
 
     .state('account.general', {
@@ -120,49 +120,60 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
 
 });
 
-app.config(function (localStorageServiceProvider) {
-  localStorageServiceProvider
-    .setStorageType('sessionStorage');
-});
-
 // Interceptors
 app.config(function ($httpProvider) {
   $httpProvider.interceptors.push('authInterceptorService');
 });
 
-app.run(['authService', function (authService) {
-  authService.fillAuthData();
-}]);
+app.config(function (localStorageServiceProvider) {
+  localStorageServiceProvider
+    .setStorageType('sessionStorage');
+});
 
 
-// checking ac
+app.run(['authService', 
+  function (authService) {
+    authService.fillAuthData();
+  }
+]);
 
-var loginRequired = function($location, $q, authService) {  
-  
+
+var loginRequired = function($state, $q, authService, $timeout) {  
+
   var deferred = $q.defer();
 
-  if(! (authService.authentication.isAuth == true)) {
-    deferred.reject()
-    $location.path('/session/login');
+  if (! (authService.authentication.isAuth)) {
+    
+    $timeout(function() {
+      $state.go('session.login');
+    });
+    
+    deferred.reject();
+
   } else {
-    deferred.resolve()
+    deferred.resolve();
   }
 
   return deferred.promise;
-}
+};
 
 var redirectIfAuthenticated = function(route) {  
-  return function($location, $q, authService) {
+  return function($state, $q, authService, $timeout) {
 
     var deferred = $q.defer();
 
-    if (authService.authentication.isAuth == true) {
+    if (authService.authentication.isAuth) {
+
+      $timeout(function() {
+        $state.go(route);
+      });
+
       deferred.reject()
-      $location.path(route);
+      
     } else {
       deferred.resolve()
     }
 
     return deferred.promise;
   }
-}
+};
