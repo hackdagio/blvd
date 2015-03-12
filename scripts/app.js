@@ -40,7 +40,32 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
   
     .state('index', {
       url: '/',
-      templateUrl: 'partials/home',
+      templateProvider: function (authService, $http, $templateCache) {
+        var auth = authService.authentication;
+        var templateUrl;
+
+        if (auth.profile === 'VP') {
+          templateUrl = '/partials/profiles/vp-indicadores';
+        } else if (auth.profile === 'Ejecutivo') {
+          templateUrl = '/partials/profiles/ejecutivo-indicadores';
+        } else if (auth.profile === 'Supervisor') {
+          templateUrl = '/partials/profiles/supervisor-indicadores';
+        } else if (auth.profile === 'Coordinador') {
+          templateUrl = '/partials/profiles/coordinador-indicadores';
+        } else {
+          templateUrl = null;
+        }
+
+        var tpl = $templateCache.get(templateUrl);
+        if (tpl) return tpl;
+
+        return $http.get(templateUrl).
+        then(function(response) {
+          tpl = response.data;
+          $templateCache.put(templateUrl, tpl);
+          return tpl;
+        });
+      },
       controller: 'IndexCtrl',
       resolve: { loginRequired: loginRequired },
       css: {
