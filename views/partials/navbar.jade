@@ -1,7 +1,7 @@
 .navbar.navbar-kaizen.navbar-fixed-top(role='navigation', ng-controller='NavbarCtrl')
   .container-fluid
     .navbar-header
-      button.navbar-toggle(type='button', ng-click='navbarCollapsed = !navbarCollapsed')
+      button.navbar-toggle(type='button', ng-init='navbarCollapsed = true', ng-click='navbarCollapsed = !navbarCollapsed')
         span.sr-only Abrir navegación
         span.icon-bar
         span.icon-bar

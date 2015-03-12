@@ -52,7 +52,6 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
     })
 
     // Session
-
     .state('session', {
       url: '/session',
       abstract: true,
@@ -79,7 +78,6 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
     })
 
     // Account
-
     .state('account', {
       url: '/account',
       abstract: true,
@@ -178,4 +176,4 @@ var redirectIfAuthenticated = function(route) {
 
     return deferred.promise;
   }
-}
+};
