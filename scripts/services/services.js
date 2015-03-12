@@ -5,7 +5,8 @@ app.factory('authService', ['$http', '$q', 'localStorageService',
     
     var authServiceFactory = {};
     var _authentication = {
-      isAuth: false
+      isAuth: false,
+      profile: ''
     };
  
     var _login = function (loginData) {
@@ -23,12 +24,14 @@ app.factory('authService', ['$http', '$q', 'localStorageService',
             firstname: response.firstname,
             middlename: response.middlename,
             surname: response.surname,
-            lastname: response.lastname
+            lastname: response.lastname,
+            profile: response.profile
           };
 
-          localStorageService.set('authorizationData', { token: response.access_token });
+          localStorageService.set('authorizationData', { token: response.access_token, profile: response.profile });
           localStorageService.set('personaData', personaData);
           _authentication.isAuth = true;
+          _authentication.profile =  response.profile;
 
           return response;
         }).
@@ -78,6 +81,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService',
       var authData = localStorageService.get('authorizationData');
       if (authData) {
         _authentication.isAuth = true;
+        _authentication.profile = authData.profile;
       }
 
     };
