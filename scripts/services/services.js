@@ -1,7 +1,7 @@
 'use strict';
 
-app.factory('authService', ['$http', '$timeout', '$q', 'localStorageService', 
-  function ($http, $timeout, $q, localStorageService) {
+app.factory('authService', ['$http', '$q', 'localStorageService', 
+  function ($http, $q, localStorageService) {
     
     var authServiceFactory = {};
     var _authentication = {
