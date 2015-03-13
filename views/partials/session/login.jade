@@ -1,13 +1,12 @@
 ﻿.blvd-login-box
   .modal-dialog.text-center
     .panel-heading
-      h1.panel-title.text-uppercase Inicia sesión
+      img(src='http://static.kaizen.link/entel/images/logo-sonrisas-github.svg')
     alert(ng-hide="alert.msg == ''", type='{{alert.type}}') {{ alert.msg }}
     .panel-body
-
-      form.login-to-blvd-form.form-inline(role='form')
+      form.login-to-blvd-form(role='form')
         .form-group
-          input#username.form-control(ng-rut, type='username', name='username', data-ng-model='loginData.username', required='', autofocus='true', placeholder='ID')
+          input#username.form-control(type='username', name='username', data-ng-model='loginData.username', required='', autofocus='true', placeholder='ID')
         .form-group
           input#password.form-control(type='password', name='password', data-ng-model='loginData.password', required='', autocomplete='off', placeholder='Contraseña')
         button.btn.btn-sm.btn-primary.text-uppercase(type='submit', data-ng-click='login()') Entrar

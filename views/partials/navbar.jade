@@ -1,4 +1,4 @@
-nav.navbar.navbar-fixed-top: .nav-blvd(ng-controller='NavbarCtrl')
+nav.navbar.navbar-fixed-top: .nav-blvd(ng-controller='NavbarCtrl', ng-hide='!authentication.isAuth')
   .container-fluid
     .navbar-header
       button.navbar-toggle(type='button', ng-init='navbarCollapsed = true', ng-click='navbarCollapsed = !navbarCollapsed')
@@ -12,13 +12,10 @@ nav.navbar.navbar-fixed-top: .nav-blvd(ng-controller='NavbarCtrl')
 
     .navbar-collapse.collapse(collapse='navbarCollapsed')
       ul.nav.navbar-nav.navbar-right
-
-        li.nav-blvd-login
-          a(ui-sref='session.login', ng-hide='authentication.isAuth') Inicia sesión
           
         li.nav-blvd-user.dropdown
 
-          a.dropdown-toggle.nav-blvd-user-display_name(data-toggle='dropdown', ng-hide='!authentication.isAuth')
+          a.dropdown-toggle.nav-blvd-user-display_name(data-toggle='dropdown')
             span.glyphicon.glyphicon-user
             strong.text-capitalize  {{ personaData.firstname }}
             span.glyphicon-chevron-user
