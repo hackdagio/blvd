@@ -1,102 +1,91 @@
-kaizen-user-wrapper-principal-size = 300
-kaizen-user-wrapper-sidebar-background-color = white
-kaizen-user-wrapper-sidebar-border-color = rgb(237, 236, 228)
-kaizen-user-config-standard-color = rgb(36, 38, 40)
-blvd-size-of-current-profile-image = 256
+blvd-account-wrapper-principal-size = 200
+blvd-account-wrapper-sidebar-backgroud-color = white
+blvd-account-wrapper-sidebar-border-color = rgb(237, 236, 228)
+blvd-account-config-standard-color = rgb(36, 38, 40)
+blvd-account-size-of-current-profile-image = 256
 
-.kaizen-user-wrapper
-  transition all 0.5s ease
+.blvd-account-wrapper
   &.toggled
-    padding-left (kaizen-user-wrapper-principal-size)px
-    .kaizen-user-wrapper-sidebar
-      width (kaizen-user-wrapper-principal-size)px
-    .kaizen-user-wrapper-content
+    padding-left (blvd-account-wrapper-principal-size)px
+    .blvd-account-wrapper-sidebar
+      width (blvd-account-wrapper-principal-size)px
+    .blvd-account-wrapper-content
       position absolute
-      margin-right -(kaizen-user-wrapper-principal-size)px
+      margin-right -(blvd-account-wrapper-principal-size)px
       @media(min-width:768px)
         position relative
         margin-right 0
     @media(min-width:768px)
       padding-left 0
   @media(min-width:768px)
-    padding-left (kaizen-user-wrapper-principal-size)px
+    padding-left (blvd-account-wrapper-principal-size)px
 
-.kaizen-user-wrapper-sidebar
-  z-index 1000
-  position fixed
-  left (kaizen-user-wrapper-principal-size)px
-  width (kaizen-user-wrapper-principal-size)px
-  height 100%
-  margin-left -(kaizen-user-wrapper-principal-size)px
-  background kaizen-user-wrapper-sidebar-background-color
-  transition all 0.5s ease
-  margin-top -20px
-  border-right 1px solid kaizen-user-wrapper-sidebar-border-color   
-  @media(max-width:767px)
-    width (kaizen-user-wrapper-principal-size/2.5)px
-  
-  .sidebar-nav
-    position absolute
-    width 100%
-    top 0
-    margin 0
-    padding 0
-    list-style none
-    li
+  .blvd-account-wrapper-sidebar
+    z-index 1000
+    position fixed
+    left (blvd-account-wrapper-principal-size)px
+    width (blvd-account-wrapper-principal-size)px
+    height 100%
+    margin-left -(blvd-account-wrapper-principal-size)px
+    background blvd-account-wrapper-sidebar-backgroud-color
+    margin-top -20px
+    border-right 1px solid blvd-account-wrapper-sidebar-border-color   
+    @media(max-width:767px)
+      width (blvd-account-wrapper-principal-size/2.5)px
+    
+    .blvd-account-wrapper-sidebar-nav
+      position absolute
       width 100%
-      padding 20px 0 20px 30px
-      span, a
-        text-decoration none
-        color rgb(170, 169, 162)
-        font-size 1em
-        font-weight global-font-light-weight
-        &:hover
-          text-decoration none
-      a
-        margin-left 15px
-      &:last-child
-        border-bottom none
-      &.active
-        background body-background-color
-        border-top kaizen-user-wrapper-sidebar-border-color 1px solid
-        box-shadow rgb(255, 255, 255) 1px 0 0, kaizen-user-wrapper-sidebar-border-color 0 1px 0
-        z-index 300
+      top 0
+      margin 0
+      padding 0
+      list-style none
+      li
+        width 100%
+        padding 20px 0 20px 30px
         span, a
-          color kaizen-user-config-standard-color
+          text-decoration none
+          color rgb(170, 169, 162)
+          font-size 1em
           font-weight global-font-light-weight
-      &:first-of-type
-        border-top none
-    img
-      width 50%
-  .sidebar-nav li a:active,
-  .sidebar-nav li a:focus
-    text-decoration none
+          &:hover
+            text-decoration none
+        a
+          margin-left 15px
+        &:last-child
+          border-bottom none
+        &.active
+          background body-background-color
+          border-top blvd-account-wrapper-sidebar-border-color 1px solid
+          box-shadow rgb(255, 255, 255) 1px 0 0, blvd-account-wrapper-sidebar-border-color 0 1px 0
+          z-index 300
+          span, a
+            color blvd-account-config-standard-color
+            font-weight global-font-light-weight
+        &:first-of-type
+          border-top none
+      img
+        width 50%
+    .sidebar-nav li a:active,
+    .sidebar-nav li a:focus
+      text-decoration none
 
-.kaizen-user-wrapper-content
-  width 100%
-  position absolute
-  padding 15px
-  @media(min-width:768px)
-    padding 20px
-    position relative
+  .blvd-account-wrapper-content
+    width 100%
+    position absolute
+    padding 15px
+    @media(min-width:768px)
+      padding 20px
+      position relative
 
-.kaizen-user-box
-  h1
-    font-size 2em
+.blvd-account-views
+  h2, h3, h4
+    color blvd-account-config-standard-color
     font-weight global-font-light-weight
-    color kaizen-user-config-standard-color
+  h2
     margin-bottom 1em
     letter-spacing -1px
-  h3
-    font-size 1.56em
-    letter-spacing -1px
-    font-weight global-font-light-weight
-    color lighten(kaizen-user-config-standard-color, 10%)
-  h4
-    font-size 1.16em
-    letter-spacing -1px
-    font-weight global-font-light-weight
-    color lighten(kaizen-user-config-standard-color, 10%)
+    text-transform uppercase
   form
     margin-top 30px
     .form-group
@@ -104,27 +93,28 @@ blvd-size-of-current-profile-image = 256
       margin-bottom 1.6em
       width 100%
       max-width 500px
-
-.current-profile-image
   
-  display block
-  width (blvd-size-of-current-profile-image)px
-  height (blvd-size-of-current-profile-image)px
-  float left
-  text-align center
-  border-radius 100%
-  overflow hidden
-  background rgb(255, 255, 255)
-  z-index 2
-  margin-bottom 1em
-  .img
-    display block
-    width (blvd-size-of-current-profile-image)px
-    height (blvd-size-of-current-profile-image)px
-    background-size cover
-    background-position center center
-    border-radius 100%
-.blvd-change-current-profile-image
-  width (blvd-size-of-current-profile-image)px
-  text-align center
-  
+  .blvd-account-views-persona
+    .blvd-account-views-persona-profile-image
+      figure
+        display block
+        width (blvd-account-size-of-current-profile-image)px
+        height (blvd-account-size-of-current-profile-image)px
+        float left
+        text-align center
+        border-radius 100%
+        overflow hidden
+        background rgb(255, 255, 255)
+        z-index 2
+        margin-bottom 1em
+        .profile-image
+          display block
+          width (blvd-account-size-of-current-profile-image)px
+          height (blvd-account-size-of-current-profile-image)px
+          background-size cover
+          background-position center center
+          border-radius 100%
+      form
+        width (blvd-account-size-of-current-profile-image)px
+        text-align center
+      

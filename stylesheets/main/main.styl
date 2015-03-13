@@ -11,6 +11,19 @@ h4,
 h5,
 h6
   font-family global-font
+  
+h1
+  font-size 2em
+h2
+  font-size 1.5em
+h3
+  font-size 1.17em
+h4
+  font-size 1.12em
+h5
+  font-size .83em
+h6
+  font-size .75em
 
 body
   padding-top (body-distance-from-top)px
@@ -146,22 +159,19 @@ form
   .form-control
     border 1px solid rgb(224, 223, 215)
     box-shadow none
+    color rgb(100, 100, 100)
     &:focus
       border-color rgb(170, 169, 162)
       outline 0
       box-shadow none
+      color rgb(0, 0, 0)
   label
     display block
     color rgb(129, 129, 129)
     font-size 12px
-    font-weight global-font-regular-weight
+    font-weight global-font-light-weight
     margin-bottom 10px
     text-transform uppercase
-  input
-    border 1px solid rgb(224, 223, 215)
-    border-radius 0
-    box-shadow none
-    font-weight global-font-light-weight
   button
     font-weight global-font-light-weight
     font-size 11px
@@ -171,4 +181,4 @@ form
 .form-control[disabled],
 .form-control[readonly],
 fieldset[disabled] .form-control
-  background-color rgb(245, 245, 245)
+  background-color rgb(250, 250, 250)
