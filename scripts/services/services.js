@@ -25,7 +25,10 @@ app.factory('authService', ['$http', '$q', 'localStorageService',
             middlename: response.middlename,
             surname: response.surname,
             lastname: response.lastname,
-            profile: response.profile
+            profile: response.profile,
+            position: response.cargo, // pedir a API cambio de cargo a position en respuesta
+            image_profile: response.image_profile,
+
           };
 
           localStorageService.set('authorizationData', { token: response.access_token, profile: response.profile });
