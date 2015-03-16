@@ -36,15 +36,16 @@ app.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', functio
       templateProvider: function (authService, $http, $templateCache) {
         var auth = authService.authentication;
         var templateUrl;
+        var templateBase = '/partials/profiles/';
 
         if (auth.profile === 'VP') {
-          templateUrl = '/partials/profiles/vp-indicadores';
+          templateUrl = templateBase + 'tp/vp';
         } else if (auth.profile === 'Ejecutivo') {
-          templateUrl = '/partials/profiles/ejecutivo-indicadores';
+          templateUrl = templateBase + 'tp/ejecutivo';
         } else if (auth.profile === 'Supervisor') {
-          templateUrl = '/partials/profiles/supervisor-indicadores';
+          templateUrl = templateBase + 'tp/supervisor';
         } else if (auth.profile === 'Coordinador') {
-          templateUrl = '/partials/profiles/coordinador-indicadores';
+          templateUrl = templateBase + 'tp/coordinador';
         } else {
           templateUrl = null;
         }
@@ -82,6 +83,23 @@ app.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', functio
       templateUrl: 'partials/session/login',
       controller: 'LoginCtrl'
     })
+
+    // .state('session.login.forgot', {
+    //   url: '/forgot',
+    //   onEnter: ['$state', '$modal', '$scope',
+    //     function($state, $modal, $scope) {
+    //       $modal.open({
+    //         templateUrl: 'partials/session/forgot',
+    //         controller: 'ForgotPwdCtrl'
+    //       }).result.finally(function() {
+    //         $state.go('^');
+    //       });
+    //       $scope.ok = function() {
+    //         $modal.close();
+    //       }
+    //     }
+    //   ],  
+    // })
 
     .state('session.request', {
       url: '/request',
@@ -129,7 +147,7 @@ app.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', functio
     })
 
     .state('content.post', {
-      url: '/post',
+      url: '/post/:id',
       templateUrl: 'partials/content/post'
     })
 
