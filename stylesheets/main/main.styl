@@ -167,10 +167,10 @@ form
       outline 0
       box-shadow none
       color rgb(0, 0, 0)
-  label
+  label, p
     display block
     color rgb(129, 129, 129)
-    font-size 12px
+    font-size 13px
     font-weight global-font-light-weight
     margin-bottom 10px
     text-transform uppercase
@@ -179,6 +179,12 @@ form
     font-size 11px
     box-shadow none
     border-radius 0
+  p 
+    line-height 2.25em
+    font-size 11px
+    font-weight global-font-regular-weight
+    &.error-msg
+      color color-negative
     
 .form-control[disabled],
 .form-control[readonly],

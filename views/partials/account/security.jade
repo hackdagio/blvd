@@ -1,15 +1,23 @@
+- var form = { name: 'UserChangePassword' }
+- var field = { oldPw: 'pw0', newPw: 'pw1', confirmPw: 'pw2' }
+- var pwd = { min: '6' }
+
 .blvd-account-views-user
   .blvd-account-views-user-password
     h2 Seguridad
     h3 Actualiza tu contraseña
-    form(name='UserChangePassword')
+    form(name='#{form.name}')
       .form-group
-        label(for='current-password') Contraseña actual
-        input#current-password.form-control(name='current-password', type='password', ng-required='')
+        label(for='#{field.oldPw}') Contraseña actual
+        input.form-control(id='#{field.oldPw}', name='#{field.oldPw}', type='password', ng-required='')
       .form-group
-        label(for='new-password') Contraseña nueva
-        input.form-control(id='new-password', name='new-password', type='password', ng-required='')
+        label(for='#{field.newPw}') Contraseña nueva
+        input.form-control(id='#{field.newPw}', name='#{field.newPw}', ng-model='#{field.newPw}', type='password', ng-required='', ng-minlength='#{pwd.min}')
+        p.error-msg(ng-if='#{form.name}.#{field.newPw}.$error.minlength') Hey! La contraseña debe tener un mínimo de 6 carácteres.
       .form-group
-        label(for='confirm-new-password') Repite la contraseña nueva
-        input.form-control(id='confirm-new-password', name='confirm-new-password', type='password', ng-required='')
-      button.button-change-password.btn.btn-danger.text-uppercase(type='button') Actualizar contraseña
+        label(for='#{field.confirmPw}') Repite la contraseña nueva
+        input.form-control(id='#{field.confirmPw}', name='#{field.confirmPw}', ng-model='#{field.confirmPw}', type='password', ng-required='', match='#{field.newPw}', ng-minlength='#{pwd.min}')
+        p.error-msg(ng-if='#{form.name}.#{field.confirmPw}.$error.match') Debe coincidir con la contraseña nueva.
+      button.btn.btn-danger(type='submit', ng-click='update()') Actualizar contraseña
+    
+    

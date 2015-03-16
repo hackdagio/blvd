@@ -20,6 +20,6 @@ mixin form-input-persona(display, name, type, ngmodel, placeholder, attr)
     figure: .profile-image(style='background-image: url("{{ PersonaInfo.image_profile }}")', href='#')
     form(name='changeCurrentProfileImage')
       .form-group
-        button.btn.btn-success.text-uppercase(type='button') Actualiza tu foto
+        button.btn.btn-success(type='button') Actualiza tu foto
       .form-group
-        button.btn.btn-danger.text-uppercase(type='button') Elimina tu foto
+        button.btn.btn-danger(type='button') Elimina tu foto

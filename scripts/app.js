@@ -12,34 +12,27 @@
 
 var app = angular.module('boulevard', [
   'kaizen-concepto.controllers-views',
+  'angular-loading-bar',
   'ui.router',
   'LocalStorageModule',
-  'angular-loading-bar',
   'ui.bootstrap',
   'ui.radialplot',
   'gaugejs',
   'door3.css',
-  'platanus.rut'
+  'ngAnimate'
 ]);
-
 
 var serviceBase = 'http://dev.kaizen.cl/conectados/';
 
-app.constant('ngAuthSettings', {
-  apiServiceBaseUri: serviceBase,
-  clientId: 'sonrisas'
-});
-
-
 /// Angular routing based on nested views
-app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
+app.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', function ($stateProvider, $locationProvider, $urlRouterProvider) {
   
-  $urlRouterProvider.otherwise("/");
+  $urlRouterProvider.otherwise('/');
   
   $stateProvider
   
     .state('index', {
-      url: '/dashboard',
+      url: '/',
       templateProvider: function (authService, $http, $templateCache) {
         var auth = authService.authentication;
         var templateUrl;
@@ -143,18 +136,25 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
 
   $locationProvider.html5Mode(true);
 
+}]);
+
+app.constant('ngAuthSettings', {
+  apiServiceBaseUri: serviceBase,
+  clientId: 'sonrisas'
 });
 
 // Interceptors
-app.config(function ($httpProvider) {
-  $httpProvider.interceptors.push('authInterceptorService');
-});
+app.config(['$httpProvider',
+  function ($httpProvider) {
+    $httpProvider.interceptors.push('authInterceptorService');
+  }
+]);
 
-app.config(function (localStorageServiceProvider) {
-  localStorageServiceProvider
-    .setStorageType('sessionStorage');
-});
-
+app.config(['localStorageServiceProvider',
+  function (localStorageServiceProvider) {
+    localStorageServiceProvider.setStorageType('sessionStorage');
+  }
+]);
 
 app.run(['authService', 
   function (authService) {
