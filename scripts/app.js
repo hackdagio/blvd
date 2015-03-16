@@ -39,7 +39,7 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
   $stateProvider
   
     .state('index', {
-      url: '/',
+      url: '/dashboard',
       templateProvider: function (authService, $http, $templateCache) {
         var auth = authService.authentication;
         var templateUrl;
