@@ -83,15 +83,17 @@ app.controller('SignupCtrl', ['$scope', '$timeout', '$state', '$stateParams', 'a
 app.controller('AccountGeneralCtrl', ['$scope', 'localService',
   function($scope, localService) {
 
-    var d = localService.getinfo('personaData');
+    var data = localService.getinfo('personaData');
 
     $scope.PersonaInfo = {
-      id: d.id,
-      givenname: d.firstname + ' ' + d.middlename,
-      surname: d.surname + ' ' + d.lastname,
-      displayname: d.display_name,
-      email: d.email,
-      phone: d.phone
+      id: data.id,
+      givenname: data.firstname + ' ' + data.middlename,
+      surname: data.surname + ' ' + data.lastname,
+      display_name: data.display_name,
+      image_profile: data.image_profile,
+      email: data.email,
+      phone: data.phone,
+
     };
 
   }

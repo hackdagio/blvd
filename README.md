@@ -6,7 +6,7 @@
 ## Client
 
 - _Company:_ Entel
-- _Product:_ Orgullo-e
+- _Product:_ Conectados
 
 ## Authors
 

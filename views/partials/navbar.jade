@@ -1,41 +1,38 @@
-.navbar.navbar-kaizen.navbar-fixed-top(role='navigation', ng-controller='NavbarCtrl')
+nav.navbar.navbar-fixed-top: .nav-blvd(ng-controller='NavbarCtrl', ng-hide='!authentication.isAuth')
   .container-fluid
     .navbar-header
       button.navbar-toggle(type='button', ng-init='navbarCollapsed = true', ng-click='navbarCollapsed = !navbarCollapsed')
-        span.sr-only Abrir navegación
+        span.sr-only Navegación
         span.icon-bar
         span.icon-bar
         span.icon-bar
+
       a.navbar-brand(ui-sref='index')
-        img(src='//static.kaizen.link/entel/images/logo-sonrisas.png')
+        img(alt='Conectados', src='//static.kaizen.link/entel/images/logo-sonrisas-github.svg')
 
-    .collapse.navbar-collapse(collapse='navbarCollapsed')
+    .navbar-collapse.collapse(collapse='navbarCollapsed')
       ul.nav.navbar-nav.navbar-right
-
-        li: a(ui-sref='session.login', ng-hide='authentication.isAuth') Iniciar sesión
           
-        li.dropdown
-          a.dropdown-toggle.navbar-link.navbar-user(data-toggle='dropdown', href='javascript:void(0)', ng-hide='!authentication.isAuth')
-            span.glyphicon.glyphicon-user
-            strong.text-capitalize  {{ personaData.display_name }}
-            span.glyphicon-chevron-user
-          ul.dropdown-menu
-            li
-              .navbar-login
-                .row
-                  .col-xs-5
-                    p.text-center
-                      img.navbar-user-avatar.img-circle(src='//static.kaizen.link/generic/avatar/90.jpg')
-                  .col-xs-7.navbar-user-info
-                    p.text-left
-                      strong {{ personaData.display_name }}
-                    p.text-left
-                      em {{ personaData.id | rut }}
-                    p.text-left {{ personaData.phone }}
-                    .navbar-user-link-account
-                      a.btn.btn-primary.btn-block.btn-sm(ui-sref='account.general') Mi cuenta
+        li.nav-blvd-user.dropdown
 
-        li
-          a.navbar-link.navbar-logout(href='javascript:void(0)', ng-hide='!authentication.isAuth', ng-click='logOut()')
+          a.dropdown-toggle.nav-blvd-user-display_name(data-toggle='dropdown')
+            span.glyphicon.glyphicon-user
+            strong.text-capitalize  {{ personaData.firstname }}
+            span.glyphicon-chevron-user
+          
+          ul.dropdown-menu.nav-blvd-user-container
+            .row: .col-xs-12
+
+              .col-xs-5.nopadding: .nav-blvd-user-image_profile
+                img.img-circle(alt='{{ personaData.display_name }}', src='{{ personaData.image_profile }}')
+              
+              .col-xs-7: .nav-blvd-user-info
+                span {{ personaData.firstname }} {{ personaData.surname }}
+                span {{ personaData.id }}
+                
+                .nav-blvd-user-access-account
+                  a.btn.btn-primary.btn-block.btn-sm(ui-sref='account.general') Cuenta
+
+        li.nav-blvd-logout
+          a(href='javascript:void(0)', ng-hide='!authentication.isAuth', ng-click='logOut()')
             span.glyphicon.glyphicon-off
-      ul.nav.navbar-nav.navbar-left

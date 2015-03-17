@@ -1,20 +1,16 @@
-.kaizen-user-wrapper
-  .kaizen-user-wrapper-sidebar
-      .container
-        .row
-          ul.sidebar-nav
-            li(ui-sref-active='active')
-              span.glyphicon-inline.glyphicon.glyphicon-cog
-              a.text-capitalize(ui-sref='account.general',) General
-            li(ui-sref-active='active')
-              span.glyphicon-inline.glyphicon.glyphicon-lock
-              a.text-capitalize(ui-sref='account.security') Seguridad
-            li(ui-sref-active='active')
-              span.glyphicon-inline.glyphicon.glyphicon-question-sign
-              a.text-capitalize(ui-sref='account.help') Ayuda
+.blvd-account-wrapper
+  .blvd-account-wrapper-sidebar
+      .container: .row
+        ul.blvd-account-wrapper-sidebar-nav
+          li(ui-sref-active='active')
+            span.glyphicon-inline.glyphicon.glyphicon-cog
+            a.text-capitalize(ui-sref='account.general',) General
+          li(ui-sref-active='active')
+            span.glyphicon-inline.glyphicon.glyphicon-lock
+            a.text-capitalize(ui-sref='account.security') Seguridad
 
-  .kaizen-user-wrapper-content
-    .container-fluid
-      .row
-        .col-lg-12.col-xs-12
+  .blvd-account-wrapper-content
+    .container-fluid: .row
+      .col-xs-12
+        .blvd-account-views
           ui-view

@@ -12,29 +12,22 @@
 
 var app = angular.module('boulevard', [
   'kaizen-concepto.controllers-views',
+  'angular-loading-bar',
   'ui.router',
   'LocalStorageModule',
-  'angular-loading-bar',
   'ui.bootstrap',
   'ui.radialplot',
   'gaugejs',
   'door3.css',
-  'platanus.rut'
+  'ngAnimate'
 ]);
-
 
 var serviceBase = 'http://dev.kaizen.cl/conectados/';
 
-app.constant('ngAuthSettings', {
-  apiServiceBaseUri: serviceBase,
-  clientId: 'sonrisas'
-});
-
-
 /// Angular routing based on nested views
-app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
+app.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', function ($stateProvider, $locationProvider, $urlRouterProvider) {
   
-  $urlRouterProvider.otherwise("/");
+  $urlRouterProvider.otherwise('/');
   
   $stateProvider
   
@@ -43,15 +36,16 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
       templateProvider: function (authService, $http, $templateCache) {
         var auth = authService.authentication;
         var templateUrl;
+        var templateBase = '/partials/profiles/';
 
         if (auth.profile === 'VP') {
-          templateUrl = '/partials/profiles/vp-indicadores';
+          templateUrl = templateBase + 'tp/vp';
         } else if (auth.profile === 'Ejecutivo') {
-          templateUrl = '/partials/profiles/ejecutivo-indicadores';
+          templateUrl = templateBase + 'tp/ejecutivo';
         } else if (auth.profile === 'Supervisor') {
-          templateUrl = '/partials/profiles/supervisor-indicadores';
+          templateUrl = templateBase + 'tp/supervisor';
         } else if (auth.profile === 'Coordinador') {
-          templateUrl = '/partials/profiles/coordinador-indicadores';
+          templateUrl = templateBase + 'tp/coordinador';
         } else {
           templateUrl = null;
         }
@@ -89,6 +83,23 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
       templateUrl: 'partials/session/login',
       controller: 'LoginCtrl'
     })
+
+    // .state('session.login.forgot', {
+    //   url: '/forgot',
+    //   onEnter: ['$state', '$modal', '$scope',
+    //     function($state, $modal, $scope) {
+    //       $modal.open({
+    //         templateUrl: 'partials/session/forgot',
+    //         controller: 'ForgotPwdCtrl'
+    //       }).result.finally(function() {
+    //         $state.go('^');
+    //       });
+    //       $scope.ok = function() {
+    //         $modal.close();
+    //       }
+    //     }
+    //   ],  
+    // })
 
     .state('session.request', {
       url: '/request',
@@ -136,25 +147,32 @@ app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
     })
 
     .state('content.post', {
-      url: '/post',
+      url: '/post/:id',
       templateUrl: 'partials/content/post'
     })
 
 
   $locationProvider.html5Mode(true);
 
+}]);
+
+app.constant('ngAuthSettings', {
+  apiServiceBaseUri: serviceBase,
+  clientId: 'sonrisas'
 });
 
 // Interceptors
-app.config(function ($httpProvider) {
-  $httpProvider.interceptors.push('authInterceptorService');
-});
+app.config(['$httpProvider',
+  function ($httpProvider) {
+    $httpProvider.interceptors.push('authInterceptorService');
+  }
+]);
 
-app.config(function (localStorageServiceProvider) {
-  localStorageServiceProvider
-    .setStorageType('sessionStorage');
-});
-
+app.config(['localStorageServiceProvider',
+  function (localStorageServiceProvider) {
+    localStorageServiceProvider.setStorageType('sessionStorage');
+  }
+]);
 
 app.run(['authService', 
   function (authService) {
