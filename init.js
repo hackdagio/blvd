@@ -25,7 +25,7 @@ var express = require('express'),
 var routes = require('./routes');
 
 // config file
-var config = require('./app/config.json');
+var config = require('../app/config.json');
 
 // debug
 var debug = require('debug')('express');
@@ -49,8 +49,8 @@ app.set('port', process.env.PORT || config.port);
 app.set('views', __dirname + '/app/views');
 app.set('view engine', 'jade');
 app.use(stylus.middleware({
-  src: __dirname + '/app/',
-  dest: __dirname + '/app/public',
+  src: __dirname + '../app/',
+  dest: __dirname + '../app/public',
   compile: compile
   }
 ));
@@ -62,8 +62,8 @@ app.use(methodOverride());
 app.use(compress());
 
 // declaring public access paths
-app.use('/js', express.static(__dirname + '/app/scripts'));
-app.use(express.static(__dirname + '/app/public'));
+app.use('/js', express.static(__dirname + '../app/scripts'));
+app.use(express.static(__dirname + '../app/public'));
 
 
 /// Serve index and view partials
