@@ -24,6 +24,7 @@ var express = require('express'),
 
 // routes
 var routes = require('./routes');
+var api = require('./routes/api');
 
 // config file
 var config = require('../config.json');
@@ -69,6 +70,7 @@ app.use(express.static('../public'));
 
 /// Serve index and view partials
 
+app.use('/api', api);
 app.get('/', routes.index);
 app.get('/partials/*', routes.partials);
 app.get('*', routes.index);
