@@ -5,8 +5,9 @@
   "private": true,
   "scripts": {
     "prestart": "npm install",
-    "start": "node init.js",
-    "prepublish": "coffee --compile --output ../public/js ../scripts"
+    "start": "node app/init.js",
+    "prepublish": "coffee --compile --output ../public/js ../scripts",
+    "postinstall" : "coffee --compile --output app src"
   },
   "dependencies": {
     "body-parser": "^1.12.2",

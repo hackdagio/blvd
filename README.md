@@ -1,1 +1,2 @@
-Look, if there's no /app, there's no app at all. Period.
+# boulevard
+the core app
