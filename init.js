@@ -64,7 +64,6 @@ app.use(methodOverride());
 app.use(compress());
 
 // declaring public access paths
-app.use('/js', express.static('../scripts'));
 app.use(express.static('../public'));
 
 
