@@ -1,2 +1,1 @@
-# boulevard
-the core app
+Look, if there's no /app, there's no app at all. Period.
