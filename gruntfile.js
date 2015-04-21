@@ -12,11 +12,15 @@ module.exports = function(grunt) {
       }
     },
     uglify: {
+      options: {
+        mangle: false,
+        preserveComments: 'all'
+      },
       target: {
         files: [{
           expand: true,
           cwd: '../public/js/',
-          src: ['**/*.js'],
+          src: ['**/*.js','!**/*.min.js'],
           dest: '../public/js/',
           ext: '.min.js'
         }]
