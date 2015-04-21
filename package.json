@@ -1,12 +1,12 @@
 {
-  "name": "boulevard-core",
+  "name": "Boulevard",
   "author": "Ignacio Trujillo <ignaces@ignac.es> (http://ignac.es)",
   "version": "0.3.0",
   "private": true,
   "scripts": {
     "prestart": "npm install",
-    "start": "node init.js",
-    "prepublish": "coffee --compile --output ../public/js ../scripts"
+    "start": "node www",
+    "prepublish": "grunt make-coffee && grunt make-uglify"
   },
   "dependencies": {
     "body-parser": "^1.12.2",
@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "grunt": "^0.4.5",
-    "grunt-contrib-coffee": "^0.13.0"
+    "grunt-contrib-coffee": "^0.13.0",
+    "grunt-contrib-uglify": "*"
   }
 }
