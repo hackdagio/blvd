@@ -2,11 +2,14 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     coffee: {
-      compile: {
-        files: {
-          '../public/js/*.js': '../scripts/*.coffee'
-        }
-      },
+      glob_to_multiple: {
+        expand: true,
+        flatten: true,
+        cwd: '../scripts/',
+        src: ['*.coffee'],
+        dest: '../public/js/',
+        ext: '.js'
+      }
     }
   });
   grunt.loadNpmTasks('grunt-contrib-coffee');
