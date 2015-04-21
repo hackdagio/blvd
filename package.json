@@ -1,7 +1,7 @@
 {
-  "name": "Boulevard",
+  "name": "boulevard-core",
   "author": "Ignacio Trujillo <ignaces@ignac.es> (http://ignac.es)",
-  "version": "0.1.91",
+  "version": "0.3.0",
   "private": true,
   "scripts": {
     "prestart": "npm install",
@@ -22,5 +22,9 @@
   },
   "engines": {
     "node": "0.10.x"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-coffee": "^0.13.0"
   }
 }
