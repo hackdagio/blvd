@@ -5,11 +5,11 @@ module.exports = function(grunt) {
     watch: {
       coffee: {
         files: ['../scripts/*.coffee','../scripts/**/*.coffee'],
-        tasks: ['coffee:compile', 'uglify:minify']
+        tasks: ['coffee:compile_core', 'uglify:minify_core']
       }
     },
     coffee: {
-      compile: {
+      compile_core: {
         expand: true,
         flatten: false,
         cwd: '../scripts/',
@@ -23,12 +23,21 @@ module.exports = function(grunt) {
         mangle: false,
         preserveComments: 'all'
       },
-      minify: {
+      minify_core: {
         files: [{
           expand: true,
           cwd: '../public/js/',
           src: ['**/*.js','!**/*.min.js'],
           dest: '../public/js/',
+          ext: '.min.js'
+        }]
+      },
+      minify_vendor: {
+        files: [{
+          expand: true,
+          cwd: '../public/vendor/',
+          src: ['**/*.js','!**/*.min.js'],
+          dest: '../public/vendor/',
           ext: '.min.js'
         }]
       }
@@ -38,8 +47,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('make-coffee', ['coffee']);
-  grunt.registerTask('make-uglify', ['uglify']);
+  grunt.registerTask('make-coffee', ['coffee:compile_core']);
+  grunt.registerTask('make-uglify', ['uglify:minify_core', 'uglify:minify_vendor']);
+
+  // only intended for dev envs
   grunt.registerTask('watch-coffee', ['watch']);
 
 };
