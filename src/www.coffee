@@ -32,7 +32,13 @@ app = module.exports = express()
 
 #/ function to compile stylus as-you-go
 compile = (str, path) ->
-  stylus(str).set('compress', true).set('filename', path).use nib()
+  stylus(str)
+  .define('url', stylus.url(
+    paths: [ '../public/images' ]
+    limit: 10000))
+  .set('compress', true)
+  .set('filename', path)
+  .use nib()
 
 #/ app settings
 app.set 'port', process.env.PORT or config.port #port
