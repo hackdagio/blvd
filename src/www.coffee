@@ -39,7 +39,7 @@ app.set 'port', process.env.PORT or config.port #port
 app.set 'views', '../views'
 app.set 'view engine', 'jade'
 app.use stylus.middleware(
-  src: '../'
+  src: '../*'
   dest: '../public'
   compile: compile) # using the function to compile stylus files
 app.use morgan('dev')
