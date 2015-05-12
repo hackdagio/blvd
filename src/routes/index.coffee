@@ -1,10 +1,7 @@
 config = require('../../../config.json')
 
 exports.index = (req, res) ->
-  res.render 'index',
-    title: config.product.name
-    generator: config.app.name + ', powered by ' + config.api.name
-    api: config.api.url
+  res.render 'index', config: config
   return
 
 exports.partials = (req, res) ->
