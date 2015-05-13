@@ -34,8 +34,8 @@ app = module.exports = express()
 compile = (str, path) ->
   stylus(str)
   .define('url', stylus.url(
-    paths: [ '../public/images' ]
-    limit: 10000))
+    paths: [ '../public' ]
+    limit: false))
   .set('compress', true)
   .set('filename', path)
   .use nib()
