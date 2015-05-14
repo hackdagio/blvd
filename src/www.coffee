@@ -16,8 +16,8 @@ methodOverride = require 'method-override'
 errorHandler = require 'errorhandler' 
 morgan = require 'morgan' 
 http = require 'http' 
-stylus = require 'stylus' 
-nib = require 'nib' 
+# stylus = require 'stylus' 
+# nib = require 'nib' 
 compress = require 'compression' 
 
 #/ loading routes
@@ -31,23 +31,23 @@ debug = require('debug')('express')
 app = module.exports = express()
 
 #/ function to compile stylus as-you-go
-compile = (str, path) ->
-  stylus(str)
-  .define('url', stylus.url(
-    paths: [ '../public' ]
-    limit: false))
-  .set('compress', true)
-  .set('filename', path)
-  .use nib()
+# compile = (str, path) ->
+#   stylus(str)
+#   .define('url', stylus.url(
+#     paths: [ '../public' ]
+#     limit: false))
+#   .set('compress', true)
+#   .set('filename', path)
+#   .use nib()
 
 #/ app settings
 app.set 'port', process.env.PORT or config.port #port
 app.set 'views', '../views'
 app.set 'view engine', 'jade'
-app.use stylus.middleware(
-  src: '../'
-  dest: '../public'
-  compile: compile) # using the function to compile stylus files
+# app.use stylus.middleware(
+#   src: '../'
+#   dest: '../public'
+#   compile: compile) # using the function to compile stylus files
 app.use morgan('dev')
 app.use bodyParser.urlencoded(extended: true)
 app.use bodyParser.json()

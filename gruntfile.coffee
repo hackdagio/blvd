@@ -81,6 +81,17 @@ module.exports = (grunt) ->
           ext: '.min.js'
         }]
 
+    stylus:
+      app_core:
+        options:
+          urlfunc:
+            name: 'url'
+            limit: false
+            paths: ['../public']
+          limit: false
+        files:
+          '../public/stylesheets/style.min.css': '../stylesheets/style.styl'
+
     clean:
       options:
         force: true
@@ -90,6 +101,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-contrib-clean'
+  grunt.loadNpmTasks 'grunt-contrib-stylus'
 
 
   grunt.registerTask 'startup-production', [
@@ -97,6 +109,7 @@ module.exports = (grunt) ->
     'coffee:app_core'
     'uglify:app_core'
     'uglify:app_vendor'
+    'stylus:app_core'
     'clean:app_core'
   ]
 
