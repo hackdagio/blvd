@@ -38,13 +38,19 @@ module.exports = (grunt) ->
         src: [ '**/*.coffee' ]
         dest: 'app/'
         ext: '.js'
+#      app_core:
+#        expand: true
+#        flatten: false
+#        cwd: '../scripts/'
+#        src: [ '**/*.coffee' ]
+#        dest: '../public/js/'
+#        ext: '.js'
       app_core:
-        expand: true
-        flatten: false
-        cwd: '../scripts/'
-        src: [ '**/*.coffee' ]
-        dest: '../public/js/'
-        ext: '.js'
+        options:
+          bare: false
+          join: true
+        files:
+          '../public/js/app.js': '../scripts/**/*.coffee'
 
     uglify:
       options:
@@ -77,6 +83,8 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-watch'
+  grunt.loadNpmTasks 'grunt-contrib-concat'
+
 
   grunt.registerTask 'startup-production', [
     'coffee:www'
