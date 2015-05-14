@@ -155,6 +155,8 @@ module.exports = (grunt) ->
     'clean:app_core'
 
     'stylus:app_style'
+
+    'aws_s3'
   ]
 
   # dev
