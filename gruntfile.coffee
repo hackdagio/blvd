@@ -81,10 +81,15 @@ module.exports = (grunt) ->
           ext: '.min.js'
         }]
 
+    clean:
+      options:
+        force: true
+      app_core: ['../public/js/*.js', '!../public/js/*.min.js']
 
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-watch'
+  grunt.loadNpmTasks 'grunt-contrib-clean'
 
 
   grunt.registerTask 'startup-production', [
@@ -92,6 +97,7 @@ module.exports = (grunt) ->
     'coffee:app_core'
     'uglify:app_core'
     'uglify:app_vendor'
+    'clean:app_core'
   ]
 
   # only intended for dev envs
