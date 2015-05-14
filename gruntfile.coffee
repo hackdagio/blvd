@@ -1,7 +1,9 @@
 module.exports = (grunt) ->
 
   grunt.initConfig
-    pkg: grunt.file.readJSON('package.json')
+    pkg: grunt.file.readJSON 'package.json'
+    aws: grunt.file.readJSON 'aws-keys.json'
+    blvd: grunt.file.readJSON '../config.json'
 
     # coffee task
     coffee:
@@ -98,11 +100,48 @@ module.exports = (grunt) ->
         task: 'stylus:stylesheets'
     # / watch task
 
+    # s3 task
+    aws_s3:
+      options:
+        accessKeyId: '<%= aws.AWSAccessKeyId %>'
+        secretAccessKey: '<%= aws.AWSSecretKey %>'
+        uploadConcurrency: 5
+        bucket: 'blvd-assets'
+        signatureVersion: 'v4'
+
+      app_vendor:
+        files: [{
+          action: 'upload'
+          expand: true
+          cwd: '../public/vendor/'
+          src: ['**.min.js']
+          dest: '<%= blvd.product.id %>/assets/js/vendor/'
+          differential: true
+          params:
+            CacheControl: '2000'
+        }]
+
+      app_img:
+        files: [{
+          action: 'upload'
+          expand: true
+          cwd: '../public/img/'
+          src: ['**']
+          dest: '<%= blvd.product.id %>/assets/img/'
+          differential: true
+          params:
+            CacheControl: '2000'
+        }]
+    # / s3 task
+
+
+
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-contrib-stylus'
+  grunt.loadNpmTasks 'grunt-aws-s3'
 
 
   # production startup
@@ -123,6 +162,10 @@ module.exports = (grunt) ->
     'watch:app-angular'
     'watch:app_vendor'
     'watch:app_style'
+  ]
+
+  grunt.registerTask 'upload-assets', [
+    'aws_s3'
   ]
   
   return
