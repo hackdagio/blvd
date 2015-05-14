@@ -53,10 +53,10 @@ module.exports = (grunt) ->
           '../public/js/app.js': '../scripts/**/*.coffee'
 
     uglify:
-      options:
-        mangle: false
-        preserveComments: 'some'
       app_core:
+        options:
+          mangle: false
+          preserveComments: 'some'
         files: [{
           expand: true
           cwd: '../public/js/'
@@ -68,6 +68,8 @@ module.exports = (grunt) ->
           ext: '.min.js'
         }]
       app_vendor:
+        options:
+          preserveComments: false
         files: [{
           expand: true
           cwd: '../public/vendor/'
@@ -83,7 +85,6 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-watch'
-  grunt.loadNpmTasks 'grunt-contrib-concat'
 
 
   grunt.registerTask 'startup-production', [
