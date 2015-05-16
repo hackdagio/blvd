@@ -43,6 +43,7 @@ if env == 'dev'
 # app routes
 app.get '/', routes.index
 app.get '/partials/*', routes.partials
+app.get '/favicon.ico', routes.favicon
 app.get '*', routes.index
 
 # Error handlers
