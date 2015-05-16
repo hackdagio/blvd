@@ -72,7 +72,7 @@ module.exports = (grunt) ->
             paths: ['../public']
           limit: false
         files:
-          '../public/stylesheets/style.min.css': '../stylesheets/style.styl'
+          '../public/stylesheets/style.css': '../stylesheets/style.styl'
     # / stylus task
 
     # watch task
@@ -96,8 +96,11 @@ module.exports = (grunt) ->
         tasks: 'uglify:app_vendor'
 
       app_style:
-        files: '../stylesheets/*'
-        task: 'stylus:stylesheets'
+        files: [
+          '../stylesheets/**'
+        ]
+        tasks: 'stylus:app_style'
+
     # / watch task
 
     # s3 task
