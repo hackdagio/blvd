@@ -67,7 +67,7 @@ module.exports = (grunt) ->
       app_style:
         options:
           urlfunc:
-            name: 'url'
+            name: 'baseUrl'
             limit: false
             paths: ['../public']
           limit: false
