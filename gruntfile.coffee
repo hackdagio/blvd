@@ -111,6 +111,7 @@ module.exports = (grunt) ->
         uploadConcurrency: 5
         bucket: 'blvd-assets'
         signatureVersion: 'v4'
+        progress: 'progressBar'
 
       app_vendor:
         files: [{
@@ -121,7 +122,7 @@ module.exports = (grunt) ->
           dest: '<%= blvd.product.id %>/assets/js/vendor/'
           differential: true
           params:
-            CacheControl: '2000'
+            CacheControl: 'public, max-age=86400'
         }]
 
       app_img:
@@ -133,7 +134,7 @@ module.exports = (grunt) ->
           dest: '<%= blvd.product.id %>/assets/img/'
           differential: true
           params:
-            CacheControl: '2000'
+            CacheControl: 'public, max-age=3600'
         }]
     # / s3 task
 
