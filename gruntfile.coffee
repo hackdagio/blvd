@@ -33,8 +33,9 @@ module.exports = (grunt) ->
           expand: true
           cwd: '../public/js/'
           src: [
-            '**/*.js'
-            '!**/*.min.js'
+            '*.js'
+            '!*.min.gz.js'
+            '!*.min.js'
           ]
           dest: '../public/js/'
           ext: '.min.js'
@@ -50,7 +51,7 @@ module.exports = (grunt) ->
             '**/*.js'
             '!**/*.min.js'
           ]
-          dest: '../public/vendor/'
+          dest: '../public/js/vendor/'
           ext: '.min.js'
         }]
     # / uglify task
@@ -59,7 +60,7 @@ module.exports = (grunt) ->
     clean:
       options:
         force: true
-      app_core: ['../public/js/*.js', '!../public/js/*.min.js']
+      app_angular: ['../public/js/*.js', '!../public/js/*.min.js']
     # / clean task
 
     # stylus task
@@ -75,33 +76,34 @@ module.exports = (grunt) ->
           '../public/stylesheets/style.css': '../stylesheets/style.styl'
     # / stylus task
 
-    # watch task
-    watch:
+    # compress task
+    compress:
 
       app_angular:
-        files: [
-          '../scripts/*.coffee'
-          '../scripts/**/*.coffee'
-        ]
-        tasks: [
-          'coffee:app_angular'
-          'uglify:app_angular'
-        ]
+        options:
+          mode: 'gzip'
+        files: [{
+          expand: true
+          cwd: '../public/js/'
+          src: [
+            '*.min.js'
+          ]
+          dest: '../public/js/'
+          ext: '.min.gz.js'
+        }]
 
       app_vendor:
-        files: [
-          '../public/vendor/*.js'
-          '!../public/vendor/*.min.js'
-        ]
-        tasks: 'uglify:app_vendor'
-
-      app_style:
-        files: [
-          '../stylesheets/**'
-        ]
-        tasks: 'stylus:app_style'
-
-    # / watch task
+        options:
+          mode: 'gzip'
+        files: [{
+          expand: true
+          cwd: '../public/js/vendor/'
+          src: [
+            '**/*.min.js'
+          ]
+          dest: '../public/js/vendor/'
+          ext: '.min.gz.js'
+        }]
 
     # s3 task
     aws_s3:
@@ -117,12 +119,22 @@ module.exports = (grunt) ->
         files: [{
           action: 'upload'
           expand: true
-          cwd: '../public/vendor/'
+          cwd: '../public/js/vendor/'
           src: ['**.min.js']
           dest: '<%= blvd.product.id %>/assets/js/vendor/'
           differential: true
           params:
             CacheControl: 'public, max-age=86400'
+        }, {
+          action: 'upload'
+          expand: true
+          cwd: '../public/js/vendor/'
+          src: ['**.min.gz.js']
+          dest: '<%= blvd.product.id %>/assets/js/vendor/'
+          differential: true
+          params:
+            CacheControl: 'public, max-age=86400'
+            ContentEncoding: 'gzip'
         }]
 
       app_img:
@@ -138,7 +150,34 @@ module.exports = (grunt) ->
         }]
     # / s3 task
 
+    # watch task
+    watch:
 
+      app_angular:
+        files: [
+          '../scripts/*.coffee'
+          '../scripts/**/*.coffee'
+        ]
+        tasks: [
+          'coffee:app_angular'
+          'uglify:app_angular'
+          'compress:app_angular'
+        ]
+
+      app_vendor:
+        files: [
+          '../public/vendor/*.js'
+          '!../public/vendor/*.min.js'
+        ]
+        tasks: ['uglify:app_vendor', 'compress:app_vendor']
+
+      app_style:
+        files: [
+          '../stylesheets/**'
+        ]
+        tasks: ['stylus:app_style']
+
+    # / watch task
 
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
@@ -146,29 +185,26 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-contrib-stylus'
   grunt.loadNpmTasks 'grunt-aws-s3'
+  grunt.loadNpmTasks 'grunt-contrib-compress'
 
 
   # production startup
   grunt.registerTask 'production', [
     'coffee:startup'
+
     'coffee:app_angular'
-
     'uglify:app_angular'
-    'uglify:app_vendor'
+    'clean:app_angular'
+    'compress:app_angular'
 
-    'clean:app_core'
+    'uglify:app_vendor'
+    'compress:app_vendor'
 
     'stylus:app_style'
   ]
 
-  # dev
-  grunt.registerTask 'watch-dev', [
-    'watch:app-angular'
-    'watch:app_vendor'
-    'watch:app_style'
-  ]
-
-  grunt.registerTask 'upload-assets', [
+  grunt.registerTask 'upload', [
+    'compress'
     'aws_s3'
   ]
   
