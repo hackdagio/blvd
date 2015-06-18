@@ -73,7 +73,7 @@ module.exports = (grunt) ->
             paths: ['../public']
           limit: false
         files:
-          '../public/stylesheets/style.css': '../stylesheets/style.styl'
+          '../public/stylesheets/style.min.css': '../stylesheets/style.styl'
     # / stylus task
 
     # compress task
@@ -146,7 +146,7 @@ module.exports = (grunt) ->
           dest: '<%= blvd.product.id %>/assets/img/'
           differential: true
           params:
-            CacheControl: 'public, max-age=3600'
+            CacheControl: 'public, max-age=86400'
         }]
 
       app_fonts:
