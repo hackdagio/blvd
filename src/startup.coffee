@@ -15,6 +15,7 @@ errorHandler = require 'errorhandler'
 morgan = require 'morgan'
 http = require 'http'
 compress = require 'compression'
+request = require 'request'
 
 #routes
 routes = require './routes'
@@ -39,6 +40,25 @@ app.use express.static('../public') # declaring public access paths
 if env == 'dev'
   app.use morgan('dev')
   app.use(errorHandler())
+
+
+app.use '/api', (req, res) ->
+  url = config.product.api.protocol + config.product.api.domain + '/' + config.product.api.id + req.url
+  r = null
+  if req.method == 'POST'
+    if req.url == config.product.api.token
+      r = request.post(
+        uri: url
+        form: req.body)
+    else
+      r = request.post(
+        uri: url
+        json: req.body)
+  else
+    r = request(url)
+
+  req.pipe(r).pipe res
+  return
 
 # app routes
 app.get '/', routes.index
