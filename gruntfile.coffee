@@ -148,6 +148,17 @@ module.exports = (grunt) ->
           params:
             CacheControl: 'public, max-age=3600'
         }]
+
+      app_fonts:
+        files: [{
+          action: 'upload'
+          expand: true
+          cwd: '../public/fonts/'
+          src: ['**']
+          dest: '<%= blvd.product.id %>/assets/webfonts/'
+          params:
+            CacheControl: 'public, max-age=30686016'
+        }]
     # / s3 task
 
     # watch task
