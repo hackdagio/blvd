@@ -34,8 +34,8 @@ module.exports = (grunt) ->
           cwd: '../public/js/'
           src: [
             '*.js'
-            '!*.min.gz.js'
             '!*.min.js'
+            '!*.min.js.gz'
           ]
           dest: '../public/js/'
           ext: '.min.js'
@@ -46,10 +46,9 @@ module.exports = (grunt) ->
           preserveComments: false
         files: [{
           expand: true
-          cwd: '../public/vendor/'
+          cwd: '../assets/vendor/'
           src: [
             '**/*.js'
-            '!**/*.min.js'
           ]
           dest: '../public/js/vendor/'
           ext: '.min.js'
@@ -60,7 +59,7 @@ module.exports = (grunt) ->
     clean:
       options:
         force: true
-      app_angular: ['../public/js/*.js', '!../public/js/*.min.js']
+      app_angular: ['../public/js/*.js', '!../public/js/*.min.js', '!../public/js/*.min.js.gz']
     # / clean task
 
     # stylus task
@@ -76,6 +75,21 @@ module.exports = (grunt) ->
           '../public/stylesheets/style.min.css': '../stylesheets/style.styl'
     # / stylus task
 
+    jsonmin:
+      app_language:
+        options:
+          stripWhitespace: true
+          stripComments: true
+        files: [{
+          expand: true
+          cwd: '../lang/'
+          src: [
+            '*.json'
+          ]
+          dest: '../public/language/'
+          ext: '.min.json'
+        }]
+
     # compress task
     compress:
 
@@ -87,9 +101,11 @@ module.exports = (grunt) ->
           cwd: '../public/js/'
           src: [
             '*.min.js'
+            '!*.js'
+            '!*.min.js.gz'
           ]
           dest: '../public/js/'
-          ext: '.min.gz.js'
+          ext: '.min.js.gz'
         }]
 
       app_vendor:
@@ -102,7 +118,21 @@ module.exports = (grunt) ->
             '**/*.min.js'
           ]
           dest: '../public/js/vendor/'
-          ext: '.min.gz.js'
+          ext: '.min.js.gz'
+        }]
+
+      app_language:
+        options:
+          mode: 'gzip'
+        files: [{
+          expand: true
+          cwd: '../public/language/'
+          src: [
+            '**/*.min.json'
+            '!**/*.min.json.gz'
+          ]
+          dest: '../public/language/'
+          ext: '.min.json.gz'
         }]
 
     # s3 task
@@ -124,16 +154,16 @@ module.exports = (grunt) ->
           dest: '<%= blvd.product.id %>/assets/js/vendor/'
           differential: true
           params:
-            CacheControl: 'public, max-age=86400'
+            CacheControl: 'public, must-revalidate, proxy-revalidate, max-age=86400'
         }, {
           action: 'upload'
           expand: true
           cwd: '../public/js/vendor/'
-          src: ['**.min.gz.js']
+          src: ['**.min.js.gz']
           dest: '<%= blvd.product.id %>/assets/js/vendor/'
           differential: true
           params:
-            CacheControl: 'public, max-age=86400'
+            CacheControl: 'public, must-revalidate, proxy-revalidate, max-age=86400'
             ContentEncoding: 'gzip'
         }]
 
@@ -153,11 +183,31 @@ module.exports = (grunt) ->
         files: [{
           action: 'upload'
           expand: true
-          cwd: '../public/fonts/'
+          cwd: '../assets/fonts/'
           src: ['**']
           dest: '<%= blvd.product.id %>/assets/webfonts/'
           params:
             CacheControl: 'public, max-age=30686016'
+        }]
+
+      app_language:
+        files: [{
+          action: 'upload'
+          expand: true
+          cwd: '../public/language/'
+          src: ['**.min.json']
+          dest: '<%= blvd.product.id %>/assets/language/'
+          params:
+            CacheControl: 'public, must-revalidate, proxy-revalidate, max-age=0'
+        }, {
+          action: 'upload'
+          expand: true
+          cwd: '../public/language/'
+          src: ['**.min.json.gz']
+          dest: '<%= blvd.product.id %>/assets/language/'
+          params:
+            ContentEncoding: 'gzip'
+            CacheControl: 'public, must-revalidate, proxy-revalidate, max-age=0'
         }]
     # / s3 task
 
@@ -177,16 +227,21 @@ module.exports = (grunt) ->
 
       app_vendor:
         files: [
-          '../public/vendor/*.js'
-          '!../public/vendor/*.min.js'
+          '../assets/vendor/**/*.js'
         ]
-        tasks: ['uglify:app_vendor', 'compress:app_vendor']
+        tasks: ['uglify:app_vendor', 'compress:app_vendor', 'aws_s3:app_vendor']
 
       app_style:
         files: [
           '../stylesheets/**'
         ]
         tasks: ['stylus:app_style']
+
+      app_language:
+        files: [
+          '../lang/*.json'
+        ]
+        tasks: ['jsonmin:app_language', 'compress:app_language', 'aws_s3:app_language']
 
     # / watch task
 
@@ -197,6 +252,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-stylus'
   grunt.loadNpmTasks 'grunt-aws-s3'
   grunt.loadNpmTasks 'grunt-contrib-compress'
+  grunt.loadNpmTasks 'grunt-jsonmin'
 
 
   # production startup
@@ -212,6 +268,9 @@ module.exports = (grunt) ->
     'compress:app_vendor'
 
     'stylus:app_style'
+
+    'jsonmin:app_language'
+    'compress:app_language'
   ]
 
   grunt.registerTask 'upload', [
