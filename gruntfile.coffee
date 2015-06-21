@@ -229,7 +229,7 @@ module.exports = (grunt) ->
         files: [
           '../assets/vendor/**/*.js'
         ]
-        tasks: ['uglify:app_vendor', 'compress:app_vendor', 'aws_s3:app_vendor']
+        tasks: ['uglify:app_vendor', 'compress:app_vendor']
 
       app_style:
         files: [
@@ -241,7 +241,7 @@ module.exports = (grunt) ->
         files: [
           '../lang/*.json'
         ]
-        tasks: ['jsonmin:app_language', 'compress:app_language', 'aws_s3:app_language']
+        tasks: ['jsonmin:app_language']
 
     # / watch task
 
