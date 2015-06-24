@@ -67,6 +67,13 @@ app.get '/favicon.ico', routes.favicon
 app.get '*', routes.index
 
 # Error handlers
+process.on 'uncaughtException', (err) ->
+  console.error 'uncaughtException: ' + err.message
+  console.error err.stack
+  console.log 'err'
+  # exit with error
+  return
+
 # development error handler
 # will print stacktrace
 if env == 'dev'
