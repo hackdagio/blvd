@@ -29,6 +29,7 @@ env = if process.env.ENV == 'dev' then 'dev' else 'prod'
 debug = require('debug')('express')
 app = module.exports = express()
 
+# some config
 app.set 'port', port
 app.set 'views', '../views'
 app.set 'view engine', 'jade'
@@ -110,7 +111,6 @@ else
       message: err.message
       error: {}
     return
-
 
 # starting up
 http.createServer(app).listen port, ->

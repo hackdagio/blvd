@@ -258,7 +258,6 @@ module.exports = (grunt) ->
     'stylus:app_style'
 
     'jsonmin:app_language'
-    'compress:app_language'
   ]
 
   grunt.registerTask 'upload', [
