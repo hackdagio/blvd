@@ -121,18 +121,17 @@ module.exports = (grunt) ->
           ext: '.min.js.gz'
         }]
 
-      app_language:
+      app_fonts:
         options:
           mode: 'gzip'
         files: [{
           expand: true
-          cwd: '../public/language/'
+          cwd: '../assets/fonts/'
           src: [
-            '**/*.min.json'
-            '!**/*.min.json.gz'
+            '**/*.woff'
           ]
-          dest: '../public/language/'
-          ext: '.min.json.gz'
+          dest: '../public/fonts/'
+          ext: '.woff.gz'
         }]
 
     # s3 task
@@ -171,7 +170,7 @@ module.exports = (grunt) ->
         files: [{
           action: 'upload'
           expand: true
-          cwd: '../public/img/'
+          cwd: '../assets/img/'
           src: ['**']
           dest: '<%= blvd.product.id %>/assets/img/'
           differential: true
@@ -188,26 +187,15 @@ module.exports = (grunt) ->
           dest: '<%= blvd.product.id %>/assets/webfonts/'
           params:
             CacheControl: 'public, max-age=30686016'
-        }]
-
-      app_language:
-        files: [{
-          action: 'upload'
-          expand: true
-          cwd: '../public/language/'
-          src: ['**.min.json']
-          dest: '<%= blvd.product.id %>/assets/language/'
-          params:
-            CacheControl: 'public, must-revalidate, proxy-revalidate, max-age=0'
         }, {
           action: 'upload'
           expand: true
-          cwd: '../public/language/'
-          src: ['**.min.json.gz']
-          dest: '<%= blvd.product.id %>/assets/language/'
+          cwd: '../public/fonts/'
+          src: ['**']
+          dest: '<%= blvd.product.id %>/assets/webfonts/'
           params:
             ContentEncoding: 'gzip'
-            CacheControl: 'public, must-revalidate, proxy-revalidate, max-age=0'
+            CacheControl: 'public, max-age=30686016'
         }]
     # / s3 task
 
