@@ -32,10 +32,11 @@ app = module.exports = express()
 app.set 'port', port
 app.set 'views', '../views'
 app.set 'view engine', 'jade'
+
+app.use compress() # enable the gzip compression
 app.use bodyParser.urlencoded(extended: true)
 app.use bodyParser.json()
 app.use methodOverride()
-app.use compress()
 app.use express.static('../public') # declaring public access paths
 if env == 'dev'
   app.use morgan('dev')
