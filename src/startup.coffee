@@ -41,21 +41,38 @@ if env == 'dev'
   app.use morgan('dev')
   app.use(errorHandler())
 
-
+# reverse proxy to kaizen
 app.use '/api', (req, res) ->
   url = config.product.api.protocol + config.product.api.domain + '/' + config.product.api.id + req.url
   r = null
+
   if req.method == 'POST'
     if req.url == config.product.api.token
-      r = request.post(
+      r = request.post({
         uri: url
-        form: req.body)
+        form: req.body
+        }, (error, response, body) ->
+        if error
+          console.error 'Refused connection ' + error.code
+          res.status(503).send({ error: 'Can\'t connect to Kaizen' }).end
+        return)
     else
-      r = request.post(
+      r = request.post({
         uri: url
-        json: req.body)
+        json: req.body
+        }, (error, response, body) ->
+        if error
+          console.error 'Refused connection ' + error.code
+          res.status(503).send({ error: 'Can\'t connect to Kaizen' }).end
+        return)
   else
-    r = request(url)
+    r = request.get({
+      uri: url
+      }, (error, response, body) ->
+      if error
+        console.error 'Refused connection ' + error.code
+        res.status(503).send({ error: 'Can\'t connect to Kaizen' }).end
+      return)
 
   req.pipe(r).pipe res
   return
