@@ -59,7 +59,11 @@ module.exports = (grunt) ->
     clean:
       options:
         force: true
-      app_angular: ['../public/js/*.js', '!../public/js/*.min.js', '!../public/js/*.min.js.gz']
+      app_angular: [
+        '../public/js/*.js', 
+        '!../public/js/*.min.js', 
+        '!../public/js/*.min.js.gz'
+      ]
     # / clean task
 
     # stylus task
@@ -69,7 +73,7 @@ module.exports = (grunt) ->
           urlfunc:
             name: 'baseUrl'
             limit: false
-            paths: ['../public']
+            paths: ['../stylesheets/images']
           limit: false
         files:
           '../public/stylesheets/style.min.css': '../stylesheets/style.styl'
