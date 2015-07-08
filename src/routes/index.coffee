@@ -12,3 +12,7 @@ exports.partials = (req, res) ->
 exports.favicon = (req, res) ->
   res.redirect 301, config.product.assets.protocol + config.product.assets.domain + '/' + config.product.id + config.product.assets.path + config.product.assets.files.favicon
   return
+
+exports.avenue = (req, res) ->
+  res.render 'avenue', config: config
+  return

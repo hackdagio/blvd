@@ -77,6 +77,11 @@ module.exports = (grunt) ->
           limit: false
         files:
           '../public/stylesheets/style.min.css': '../stylesheets/style.styl'
+      avenue_gateway_style:
+        options:
+          limit: false
+        files:
+          '../public/stylesheets/avenue.min.css': '../stylesheets/avenue.styl'
     # / stylus task
 
     jsonmin:
@@ -226,8 +231,15 @@ module.exports = (grunt) ->
       app_style:
         files: [
           '../stylesheets/**'
+          '!../stylesheets/avenue.styl'
         ]
         tasks: ['stylus:app_style']
+
+      avenue_gateway_style:
+        files: [
+          '../stylesheets/avenue.styl'
+        ]
+        tasks: ['stylus:avenue_gateway_style']
 
       app_language:
         files: [
