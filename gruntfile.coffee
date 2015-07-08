@@ -272,6 +272,7 @@ module.exports = (grunt) ->
     'compress:app_vendor'
 
     'stylus:app_style'
+    'stylus:avenue_gateway_style'
 
     'jsonmin:app_language'
   ]
