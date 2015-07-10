@@ -1,7 +1,7 @@
 config = require('../../../config.json')
 
 exports.index = (req, res) ->
-  res.render 'index', config: config
+  res.render 'index'
   return
 
 exports.partials = (req, res) ->
@@ -14,5 +14,5 @@ exports.favicon = (req, res) ->
   return
 
 exports.avenue = (req, res) ->
-  res.render 'avenue', config: config
+  res.render 'avenue'
   return

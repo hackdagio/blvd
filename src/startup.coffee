@@ -31,8 +31,9 @@ app = module.exports = express()
 
 # some config
 app.set 'port', port
-app.set 'views', '../views'
-app.set 'view engine', 'jade'
+app.engine 'html', require('ejs').renderFile
+app.set 'view engine', 'html'
+app.set 'views', '../public/views'
 
 app.use compress() # enable the gzip compression
 app.use bodyParser.urlencoded(extended: true)

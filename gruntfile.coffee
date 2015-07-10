@@ -5,6 +5,24 @@ module.exports = (grunt) ->
     aws: grunt.file.readJSON 'aws-keys.json'
     blvd: grunt.file.readJSON '../config.json'
 
+
+    # jade task
+    jade:
+      app_views:
+        options:
+          data:
+            debug: false
+            data: grunt.file.readJSON('../config.json')
+        files: [{
+          expand: true
+          cwd: '../views/'
+          src: [
+            '**/*.jade'
+          ]
+          dest: '../public/views/'
+          ext: '.html'
+        }]
+
     # coffee task
     coffee:
       startup:
@@ -211,6 +229,13 @@ module.exports = (grunt) ->
     # watch task
     watch:
 
+      app_views:
+        files: [
+          '../views/*.jade'
+          '../views/**/*.jade'
+        ]
+        tasks: ['jade:app_views']
+
       app_angular:
         files: [
           '../scripts/*.coffee'
@@ -257,11 +282,14 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-aws-s3'
   grunt.loadNpmTasks 'grunt-contrib-compress'
   grunt.loadNpmTasks 'grunt-jsonmin'
+  grunt.loadNpmTasks 'grunt-contrib-jade'
 
 
   # production startup
   grunt.registerTask 'production', [
     'coffee:startup'
+
+    'jade:app_views'
 
     'coffee:app_angular'
     'uglify:app_angular'
