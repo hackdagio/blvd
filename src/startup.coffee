@@ -29,33 +29,53 @@ env = if process.env.ENV == 'dev' then 'dev' else 'prod'
 debug = require('debug')('express')
 app = module.exports = express()
 
+# some config
 app.set 'port', port
-app.set 'views', '../views'
-app.set 'view engine', 'jade'
+app.engine 'html', require('ejs').renderFile
+app.set 'view engine', 'html'
+app.set 'views', '../public/views'
+
+app.use compress() # enable the gzip compression
 app.use bodyParser.urlencoded(extended: true)
 app.use bodyParser.json()
 app.use methodOverride()
-app.use compress()
 app.use express.static('../public') # declaring public access paths
 if env == 'dev'
   app.use morgan('dev')
   app.use(errorHandler())
 
-
+# reverse proxy to kaizen
 app.use '/api', (req, res) ->
   url = config.product.api.protocol + config.product.api.domain + '/' + config.product.api.id + req.url
   r = null
+
   if req.method == 'POST'
     if req.url == config.product.api.token
-      r = request.post(
+      r = request.post({
         uri: url
-        form: req.body)
+        form: req.body
+        }, (error, response, body) ->
+        if error
+          console.error 'Refused connection ' + error.code
+          res.status(503).send({ error: 'Can\'t connect to Kaizen' }).end
+        return)
     else
-      r = request.post(
+      r = request.post({
         uri: url
-        json: req.body)
+        json: req.body
+        }, (error, response, body) ->
+        if error
+          console.error 'Refused connection ' + error.code
+          res.status(503).send({ error: 'Can\'t connect to Kaizen' }).end
+        return)
   else
-    r = request(url)
+    r = request.get({
+      uri: url
+      }, (error, response, body) ->
+      if error
+        console.error 'Refused connection ' + error.code
+        res.status(503).send({ error: 'Can\'t connect to Kaizen' }).end
+      return)
 
   req.pipe(r).pipe res
   return
@@ -64,9 +84,17 @@ app.use '/api', (req, res) ->
 app.get '/', routes.index
 app.get '/partials/*', routes.partials
 app.get '/favicon.ico', routes.favicon
+app.get '/download', routes.avenue
 app.get '*', routes.index
 
 # Error handlers
+process.on 'uncaughtException', (err) ->
+  console.error 'uncaughtException: ' + err.message
+  console.error err.stack
+  console.log 'err'
+  # exit with error
+  return
+
 # development error handler
 # will print stacktrace
 if env == 'dev'
@@ -85,7 +113,6 @@ else
       message: err.message
       error: {}
     return
-
 
 # starting up
 http.createServer(app).listen port, ->

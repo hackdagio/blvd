@@ -5,6 +5,24 @@ module.exports = (grunt) ->
     aws: grunt.file.readJSON 'aws-keys.json'
     blvd: grunt.file.readJSON '../config.json'
 
+
+    # jade task
+    jade:
+      app_views:
+        options:
+          data:
+            debug: false
+            data: grunt.file.readJSON('../config.json')
+        files: [{
+          expand: true
+          cwd: '../views/'
+          src: [
+            '**/*.jade'
+          ]
+          dest: '../public/views/'
+          ext: '.html'
+        }]
+
     # coffee task
     coffee:
       startup:
@@ -59,7 +77,11 @@ module.exports = (grunt) ->
     clean:
       options:
         force: true
-      app_angular: ['../public/js/*.js', '!../public/js/*.min.js', '!../public/js/*.min.js.gz']
+      app_angular: [
+        '../public/js/*.js', 
+        '!../public/js/*.min.js', 
+        '!../public/js/*.min.js.gz'
+      ]
     # / clean task
 
     # stylus task
@@ -69,10 +91,15 @@ module.exports = (grunt) ->
           urlfunc:
             name: 'baseUrl'
             limit: false
-            paths: ['../public']
+            paths: ['../stylesheets/images']
           limit: false
         files:
           '../public/stylesheets/style.min.css': '../stylesheets/style.styl'
+      avenue_gateway_style:
+        options:
+          limit: false
+        files:
+          '../public/stylesheets/avenue.min.css': '../stylesheets/avenue.styl'
     # / stylus task
 
     jsonmin:
@@ -121,18 +148,17 @@ module.exports = (grunt) ->
           ext: '.min.js.gz'
         }]
 
-      app_language:
+      app_fonts:
         options:
           mode: 'gzip'
         files: [{
           expand: true
-          cwd: '../public/language/'
+          cwd: '../assets/fonts/'
           src: [
-            '**/*.min.json'
-            '!**/*.min.json.gz'
+            '**/*.woff'
           ]
-          dest: '../public/language/'
-          ext: '.min.json.gz'
+          dest: '../public/fonts/'
+          ext: '.woff.gz'
         }]
 
     # s3 task
@@ -171,7 +197,7 @@ module.exports = (grunt) ->
         files: [{
           action: 'upload'
           expand: true
-          cwd: '../public/img/'
+          cwd: '../assets/img/'
           src: ['**']
           dest: '<%= blvd.product.id %>/assets/img/'
           differential: true
@@ -188,31 +214,27 @@ module.exports = (grunt) ->
           dest: '<%= blvd.product.id %>/assets/webfonts/'
           params:
             CacheControl: 'public, max-age=30686016'
-        }]
-
-      app_language:
-        files: [{
-          action: 'upload'
-          expand: true
-          cwd: '../public/language/'
-          src: ['**.min.json']
-          dest: '<%= blvd.product.id %>/assets/language/'
-          params:
-            CacheControl: 'public, must-revalidate, proxy-revalidate, max-age=0'
         }, {
           action: 'upload'
           expand: true
-          cwd: '../public/language/'
-          src: ['**.min.json.gz']
-          dest: '<%= blvd.product.id %>/assets/language/'
+          cwd: '../public/fonts/'
+          src: ['**']
+          dest: '<%= blvd.product.id %>/assets/webfonts/'
           params:
             ContentEncoding: 'gzip'
-            CacheControl: 'public, must-revalidate, proxy-revalidate, max-age=0'
+            CacheControl: 'public, max-age=30686016'
         }]
     # / s3 task
 
     # watch task
     watch:
+
+      app_views:
+        files: [
+          '../views/*.jade'
+          '../views/**/*.jade'
+        ]
+        tasks: ['jade:app_views']
 
       app_angular:
         files: [
@@ -229,19 +251,26 @@ module.exports = (grunt) ->
         files: [
           '../assets/vendor/**/*.js'
         ]
-        tasks: ['uglify:app_vendor', 'compress:app_vendor', 'aws_s3:app_vendor']
+        tasks: ['uglify:app_vendor', 'compress:app_vendor']
 
       app_style:
         files: [
           '../stylesheets/**'
+          '!../stylesheets/avenue.styl'
         ]
         tasks: ['stylus:app_style']
+
+      avenue_gateway_style:
+        files: [
+          '../stylesheets/avenue.styl'
+        ]
+        tasks: ['stylus:avenue_gateway_style']
 
       app_language:
         files: [
           '../lang/*.json'
         ]
-        tasks: ['jsonmin:app_language', 'compress:app_language', 'aws_s3:app_language']
+        tasks: ['jsonmin:app_language']
 
     # / watch task
 
@@ -253,11 +282,14 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-aws-s3'
   grunt.loadNpmTasks 'grunt-contrib-compress'
   grunt.loadNpmTasks 'grunt-jsonmin'
+  grunt.loadNpmTasks 'grunt-contrib-jade'
 
 
   # production startup
   grunt.registerTask 'production', [
     'coffee:startup'
+
+    'jade:app_views'
 
     'coffee:app_angular'
     'uglify:app_angular'
@@ -268,9 +300,9 @@ module.exports = (grunt) ->
     'compress:app_vendor'
 
     'stylus:app_style'
+    'stylus:avenue_gateway_style'
 
     'jsonmin:app_language'
-    'compress:app_language'
   ]
 
   grunt.registerTask 'upload', [
