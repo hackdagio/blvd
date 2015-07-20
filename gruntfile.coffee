@@ -1,5 +1,9 @@
 module.exports = (grunt) ->
 
+  # used in templates to invalidate resources
+  randomNumber = (low, high) ->
+    Math.floor Math.random() * (high - low + 1) + low
+
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
     aws: grunt.file.readJSON 'aws-keys.json'
@@ -13,6 +17,7 @@ module.exports = (grunt) ->
           data:
             debug: false
             data: grunt.file.readJSON('../config.json')
+            random: randomNumber(9999, 999999999)
         files: [{
           expand: true
           cwd: '../views/'
