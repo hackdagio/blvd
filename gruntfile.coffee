@@ -78,17 +78,6 @@ module.exports = (grunt) ->
         }]
     # / uglify task
 
-    # clean task
-    clean:
-      options:
-        force: true
-      app_angular: [
-        '../public/js/*.js', 
-        '!../public/js/*.min.js', 
-        '!../public/js/*.min.js.gz'
-      ]
-    # / clean task
-
     # stylus task
     stylus:
       app_style:
@@ -107,6 +96,37 @@ module.exports = (grunt) ->
           '../public/stylesheets/avenue.min.css': '../stylesheets/avenue.styl'
     # / stylus task
 
+    # svgmin task
+    svgmin:
+      options: plugin: [
+        { removeUselessStrokeAndFill: false }
+      ]
+
+      app_style_svg:
+        files: [{
+          expand: true
+          cwd: '../stylesheets/images/'
+          src: [
+            '**/*.svg'
+            '!**/*.min.svg'
+          ]
+          dest: '../stylesheets/images/'
+          ext: '.min.svg'
+        }]
+
+      app_assets_svg:
+        files: [{
+          expand: true
+          cwd: '../assets/img/'
+          src: [
+            '**/*.svg'
+            '!**/*.min.svg'
+          ]
+          dest: '../assets/img/'
+          ext: '.min.svg'
+        }]
+    # / svgmin task
+
     jsonmin:
       app_language:
         options:
@@ -121,6 +141,17 @@ module.exports = (grunt) ->
           dest: '../public/language/'
           ext: '.min.json'
         }]
+
+    # clean task
+    clean:
+      options:
+        force: true
+      app_angular: [
+        '../public/js/*.js',
+        '!../public/js/*.min.js',
+        '!../public/js/*.min.js.gz'
+      ]
+    # / clean task
 
     # compress task
     compress:
@@ -260,7 +291,8 @@ module.exports = (grunt) ->
 
       app_style:
         files: [
-          '../stylesheets/**'
+          '../stylesheets/*.styl'
+          '../stylesheets/**/*.styl'
           '!../stylesheets/avenue.styl'
         ]
         tasks: ['stylus:app_style']
@@ -288,6 +320,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-compress'
   grunt.loadNpmTasks 'grunt-jsonmin'
   grunt.loadNpmTasks 'grunt-contrib-jade'
+  grunt.loadNpmTasks 'grunt-svgmin'
 
 
   # production startup
@@ -304,6 +337,7 @@ module.exports = (grunt) ->
     'uglify:app_vendor'
     'compress:app_vendor'
 
+    'svgmin:app_style_svg'
     'stylus:app_style'
     'stylus:avenue_gateway_style'
 
@@ -311,6 +345,7 @@ module.exports = (grunt) ->
   ]
 
   grunt.registerTask 'upload', [
+    'svgmin:app_assets_svg'
     'compress'
     'aws_s3'
   ]
