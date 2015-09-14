@@ -22,8 +22,17 @@ routes = require './routes'
 
 # config - this is essential
 config = require '../../config.json'
-port = if process.env.ENV == 'dev' then config.port.dev else config.port.prod
-env = if process.env.ENV == 'dev' then 'dev' else 'prod'
+
+# demo port
+if process.env.ENV is 'dev'
+  env = 'dev'
+  port = config.port.dev
+else if process.env.ENV is 'demo'
+  env = 'dev' # fuck yes
+  port = config.port.demo
+else
+  env = 'prod'
+  port = config.port.prod
 
 ## init
 debug = require('debug')('express')
