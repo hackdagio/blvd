@@ -8,7 +8,7 @@ module.exports = (grunt) ->
     pkg: grunt.file.readJSON 'package.json'
     aws: grunt.file.readJSON 'aws-keys.json'
     blvd: grunt.file.readJSON '../config.json'
-
+    penv: process.env.ENV # added environment variable to grunt
 
     # jade task
     jade:
@@ -18,6 +18,7 @@ module.exports = (grunt) ->
             debug: false
             data: grunt.file.readJSON('../config.json')
             random: randomNumber(9999, 999999999)
+            env: '<%= penv %>' # lending penv to markup
         files: [{
           expand: true
           cwd: '../views/'
