@@ -80,6 +80,8 @@ app.use '/api', (req, res) ->
 
   # this is an ugly if_ is to handle a not-so-well implemented endpoint
   if req.method == 'POST'
+    vari = JSON.stringify(req.headers).indexOf('multipart/form-data')
+
     if req.url == token
       r = request.post({
         uri: url
@@ -89,6 +91,17 @@ app.use '/api', (req, res) ->
           console.error 'Refused connection ' + error.code
           res.status(503).send({ error: 'Can\'t connect to Kaizen' }).end
         return)
+
+    else if vari isnt -1
+      r = request.post({
+        uri: url
+        formData : req.body
+        }, (error, response, body) ->
+        if error
+          console.error 'Refused connection ' + error.code
+          res.status(503).send({ error: 'Can\'t connect to Kaizen' }).end
+        return)
+
     else
       r = request.post({
         uri: url
