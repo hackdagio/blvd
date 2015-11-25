@@ -58,6 +58,32 @@ if env == 'dev'
   app.use morgan('dev')
   app.use(errorHandler())
 
+# reverse proxy to push
+app.use '/push', (req, res) ->
+
+  push_protocol = if env is 'dev' then config.product.push.dev.protocol else config.product.push.production.protocol
+  push_domain = if env is 'dev' then config.product.push.dev.domain else config.product.push.production.domain
+  push_id = if env is 'dev' then config.product.push.dev.id else config.product.push.production.id
+
+  url = push_protocol + push_domain + '/' + push_id + req.url
+  r = null
+
+  if req.method is 'GET'
+    r = request.get({
+      uri: url
+      }, (error, response, body) ->
+      if error
+        console.error 'Refused connection ' + error.code
+        res.status(503).send({ error: 'Can\'t connect to Push' }).end
+      return)
+
+    req.pipe(r).pipe res
+
+  else
+    console.error 'Not implemented ' + error.code
+    res.status(501).send({ error: 'Can\'t connect to Push' }).end
+
+  return
 
 # reverse proxy to kaizen api
 app.use '/api', (req, res) ->
