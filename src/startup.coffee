@@ -9,8 +9,6 @@
 
 # dependencies
 express = require 'express'
-bodyParser = require 'body-parser'
-methodOverride = require 'method-override'
 errorHandler = require 'errorhandler'
 morgan = require 'morgan'
 http = require 'http'
@@ -48,9 +46,6 @@ app.set 'view engine', 'html'
 app.set 'views', '../public/views'
 
 app.use compress() # enabling the gzip compression
-app.use bodyParser.urlencoded(extended: true)
-app.use bodyParser.json()
-app.use methodOverride()
 app.use express.static('../public') # declaring public access path
 
 # using console logs if dev mode is on
