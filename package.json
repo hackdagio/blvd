@@ -1,7 +1,7 @@
 {
   "name": "Boulevard",
   "author": "Ignacio Trujillo <ignaces@ignac.es> (http://ignac.es)",
-  "version": "0.9.8",
+  "version": "0.9.9",
   "private": true,
   "scripts": {
     "prestart": "npm install",
@@ -9,9 +9,11 @@
     "prepublish": "grunt production"
   },
   "dependencies": {
-    "body-parser": "^1.15.0",
+    "body-parser": "^1.15.1",
     "compression": "^1.6.1",
     "debug": "^2.2.0",
+    "dns": "*",
+    "dnscache": "^0.0.4",
     "ejs": "^2.4.1",
     "errorhandler": "^1.4.3",
     "express": "^4.13.4",
@@ -21,7 +23,7 @@
     "nib": "^1.1.0",
     "path": "^0.12.7",
     "request": "^2.69.0",
-    "stylus": "^0.54.2"
+    "stylus": "^0.54.5"
   },
   "engines": {
     "node": "0.10.x"

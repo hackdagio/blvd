@@ -1,6 +1,11 @@
 express = require 'express'
 router = express.Router()
 request = require 'request'
+dns = require 'dns'
+dnscache = require('dnscache')(
+  'enable': true
+  'ttl': 86400
+  'cachesize': 1000)
 
 config = require '../../../config.json'
 spec_version = 'application/vnd.kaizen+json'
@@ -85,15 +90,6 @@ router.get '*', (req, res) ->
   else
     version = api_version
 
-  requester = request.get({
-    uri: url
-    headers: Accept: version
-    }, (error, response, body) ->
-    if error
-      console.error 'Refused connection ' + error.code
-      res.status(503).send({ error: 'Can\'t connect to Kaizen' }).end
-    return)
-
   if env is 'dev'
     res.append 'x-api-endpoint', url
     res.append 'x-api-version', version
@@ -101,7 +97,25 @@ router.get '*', (req, res) ->
     res.append 'x-api-endpoint', api_id
     res.append 'x-api-version', version
 
-  req.pipe(requester).pipe res
+  dnscache.lookup api_domain, (e, hostname) ->
+    opts =
+      uri: api_protocol + hostname + '/' + api_id + req.url
+      headers:
+        Accept: version
+        Host: api_domain
+
+    requester = request.get opts, (error, response, body) ->
+      if error
+        console.error 'Refused connection ' + error.code
+        res.status(503).send({ error: 'Can\'t connect to Kaizen' }).end
+      return
+
+    if env is 'dev'
+      res.append 'x-api-ip', hostname
+
+    req.pipe(requester).pipe res
+    return
+
   return
 
 module.exports = router

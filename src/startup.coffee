@@ -92,8 +92,11 @@ else
 # starting up
 http.createServer(app).listen port, ->
   console.log config.app.name + ' "' + config.product.name + '"'
-  console.log 'running at ' + port
   console.log '\x1b[36m', process.env.ENV + ' mode', '\x1b[0m'
+  require('dns').lookup require('os').hostname(), (err, add, fam) ->
+    text = 'running at ' + add + ' ** ' + fam + ' ** ' + port
+    console.log text
+    return
   return
 
 module.exports = app

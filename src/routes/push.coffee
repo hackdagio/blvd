@@ -1,6 +1,11 @@
 express = require 'express'
 router = express.Router()
 request = require 'request'
+dns = require 'dns'
+dnscache = require('dnscache')(
+  'enable': true
+  'ttl': 180
+  'cachesize': 1000)
 
 config = require '../../../config.json'
 
@@ -17,18 +22,23 @@ router.get '/', (req, res) ->
 
 router.get '*', (req, res) ->
 
-  url = push_protocol + push_domain + '/' + push_id + req.url
   requester = null
 
-  requester = request.get({
-    uri: url
-    }, (error, response, body) ->
-    if error
-      console.error 'Refused connection ' + error.code
-      res.status(503).send({ error: 'Can\'t connect to Push' }).end
-    return)
+  dnscache.lookup push_domain, (e, hostname) ->
+    opts =
+      uri: push_protocol + hostname + '/' + push_id + req.url
+      headers:
+        Host: push_domain
 
-  req.pipe(requester).pipe res
+    if env is 'dev'
+      res.append 'x-push-ip', hostname
+
+    x = request(opts)
+    req.pipe x
+    x.pipe res
+
+    return
+
   return
 
 module.exports = router
