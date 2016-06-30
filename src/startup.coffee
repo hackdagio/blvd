@@ -28,7 +28,12 @@ debug = require('debug')('express')
 app = module.exports = express()
 
 # defining port
-port = if process.env.ENV is 'prod' then config.port.prod else config.port.dev
+switch process.env.ENV
+  when 'dev'
+    port = config.port.dev
+  else
+    port = config.port.prod
+
 app.set 'port', port
 
 # since @ 0.7.0

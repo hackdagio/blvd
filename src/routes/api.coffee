@@ -5,13 +5,28 @@ request = require 'request'
 config = require '../../../config.json'
 spec_version = 'application/vnd.kaizen+json'
 
-env = if process.env.ENV is 'dev' then 'dev' else 'prod'
-
-api_protocol = if env is 'dev' then config.product.api.dev.protocol else config.product.api.production.protocol
-api_domain = if env is 'dev' then config.product.api.dev.domain else config.product.api.production.domain
-api_version = if env is 'dev' then config.product.api.dev.version else config.product.api.production.version
-api_id = if env is 'dev' then config.product.api.dev.id else config.product.api.production.id
-api_token_endpoint = if env is 'dev' then config.product.api.dev.token else config.product.api.production.token
+switch process.env.ENV
+  when 'dev'
+    env = 'dev'
+    api_protocol = config.product.api.dev.protocol
+    api_domain = config.product.api.dev.domain
+    api_version = config.product.api.dev.version
+    api_id = config.product.api.dev.id
+    api_token_endpoint = config.product.api.dev.token
+  when 'staging'
+    env = 'prod'
+    api_protocol = config.product.api.staging.protocol
+    api_domain = config.product.api.staging.domain
+    api_version = config.product.api.staging.version
+    api_id = config.product.api.staging.id
+    api_token_endpoint = config.product.api.staging.token
+  else
+    env = 'prod'
+    api_protocol = config.product.api.production.protocol
+    api_domain = config.product.api.production.domain
+    api_version = config.product.api.production.version
+    api_id = config.product.api.production.id
+    api_token_endpoint = config.product.api.production.token
 
 router.get '/', (req, res) ->
   res.json
