@@ -4,7 +4,7 @@ request = require 'request'
 
 config = require '../../../config.json'
 
-env = if process.env.ENV is 'prod' then 'prod' else 'dev'
+env = if process.env.ENV is 'dev' then 'dev' else 'prod'
 
 push_protocol = if env is 'dev' then config.product.push.dev.protocol else config.product.push.production.protocol
 push_domain = if env is 'dev' then config.product.push.dev.domain else config.product.push.production.domain

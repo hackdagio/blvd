@@ -5,7 +5,7 @@ request = require 'request'
 config = require '../../../config.json'
 spec_version = 'application/vnd.kaizen+json'
 
-env = if process.env.ENV is 'prod' then 'prod' else 'dev'
+env = if process.env.ENV is 'dev' then 'dev' else 'prod'
 
 api_protocol = if env is 'dev' then config.product.api.dev.protocol else config.product.api.production.protocol
 api_domain = if env is 'dev' then config.product.api.dev.domain else config.product.api.production.domain
