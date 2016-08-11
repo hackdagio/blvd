@@ -52,27 +52,14 @@ router.put '*', (req, res) ->
   requester = null
   url = push_protocol + push_domain + '/' + push_id + req.url
 
-  isMultipart = JSON.stringify(req.headers).indexOf('multipart/form-data')
-
-  if isMultipart isnt -1
-    requester = request.put({
-      uri: url
-      formData : req.body
-      }, (error, response, body) ->
-      if error
-        console.error 'Refused connection ' + error.code
-        res.status(503).send({ error: 'Can\'t connect to Push' }).end
-      return)
-
-  else
-    requester = request.put({
-      uri: url
-      json: req.body
-      }, (error, response, body) ->
-      if error
-        console.error 'Refused connection ' + error.code
-        res.status(503).send({ error: 'Can\'t connect to Push' }).end
-      return)
+  requester = request.put({
+    uri: url
+    json: req.body
+    }, (error, response, body) ->
+    if error
+      console.error 'Refused connection ' + error.code
+      res.status(503).send({ error: 'Can\'t connect to Push' }).end
+    return)
 
   if env is 'dev'
     res.append 'x-api-endpoint', url
