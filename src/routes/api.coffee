@@ -13,13 +13,13 @@ switch process.env.ENV
     api_version = config.product.api.dev.version
     api_id = config.product.api.dev.id
     api_token_endpoint = config.product.api.dev.token
-  when 'staging'
-    env = 'prod'
-    api_protocol = config.product.api.staging.protocol
-    api_domain = config.product.api.staging.domain
-    api_version = config.product.api.staging.version
-    api_id = config.product.api.staging.id
-    api_token_endpoint = config.product.api.staging.token
+  when 'edge'
+    env = 'edge'
+    api_protocol = config.product.api.edge.protocol
+    api_domain = config.product.api.edge.domain
+    api_version = config.product.api.edge.version
+    api_id = config.product.api.edge.id
+    api_token_endpoint = config.product.api.edge.token
   else
     env = 'prod'
     api_protocol = config.product.api.production.protocol
@@ -80,11 +80,11 @@ router.post '*', (req, res) ->
         res.status(503).send({ error: 'Can\'t connect to Kaizen' }).end
       return)
 
-  if env is 'dev'
-    res.append 'x-api-endpoint', url
+  if env is 'prod'
+    res.append 'x-api-endpoint', api_id
     res.append 'x-api-version', version
   else
-    res.append 'x-api-endpoint', api_id
+    res.append 'x-api-endpoint', url
     res.append 'x-api-version', version
 
   req.pipe(requester).pipe res
@@ -136,11 +136,11 @@ router.put '*', (req, res) ->
         res.status(503).send({ error: 'Can\'t connect to Kaizen' }).end
       return)
 
-  if env is 'dev'
-    res.append 'x-api-endpoint', url
+  if env is 'prod'
+    res.append 'x-api-endpoint', api_id
     res.append 'x-api-version', version
   else
-    res.append 'x-api-endpoint', api_id
+    res.append 'x-api-endpoint', url
     res.append 'x-api-version', version
 
   req.pipe(requester).pipe res
@@ -165,11 +165,11 @@ router.get '*', (req, res) ->
       res.status(503).send({ error: 'Can\'t connect to Kaizen' }).end
     return)
 
-  if env is 'dev'
-    res.append 'x-api-endpoint', url
+  if env is 'prod'
+    res.append 'x-api-endpoint', api_id
     res.append 'x-api-version', version
   else
-    res.append 'x-api-endpoint', api_id
+    res.append 'x-api-endpoint', url
     res.append 'x-api-version', version
 
   req.pipe(requester).pipe res

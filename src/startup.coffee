@@ -1,10 +1,10 @@
 ###!
 # Boulevard
 # by Ignacio Trujillo <itrujillo@conceptogroup.cl, ignaces@ignac.es>
-# (c) 2015 - 2016 Concepto Group
+# (c) 2015 - 2017 Concepto Group
 #
 # http://www.conceptogroup.cl
-# https://github.com/gnaces
+# https://github.com/ignaces
 ###
 
 # some dependencies
@@ -31,6 +31,8 @@ app = module.exports = express()
 switch process.env.ENV
   when 'dev'
     port = config.port.dev
+  when 'edge'
+    port = config.port.edge
   else
     port = config.port.prod
 
@@ -75,16 +77,7 @@ process.on 'uncaughtException', (err) ->
   # exit with error
   return
 
-# development error handler
-# will print stacktrace
-if process.env.ENV is 'dev'
-  app.use (err, req, res, next) ->
-    res.status err.status or 500
-    res.render 'error',
-      message: err.message
-      error: err
-    return
-else
+if process.env.ENV is 'prod'
   # production error handler
   # no stacktraces leaked to user
   app.use (err, req, res, next) ->
@@ -92,6 +85,15 @@ else
     res.render 'error',
       message: err.message
       error: {}
+    return
+else
+  # development error handler
+  # will print stacktrace
+  app.use (err, req, res, next) ->
+    res.status err.status or 500
+    res.render 'error',
+      message: err.message
+      error: err
     return
 
 # starting up

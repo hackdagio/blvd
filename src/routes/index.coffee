@@ -16,6 +16,7 @@ exports.favicon = (req, res) ->
 exports.avenue = (req, res) ->
   res.render 'avenue'
   return
+
 exports.robots = (req, res) ->
   res.type 'text/plain'
   if process.env.ENV is 'dev'

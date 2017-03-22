@@ -4,11 +4,23 @@ request = require 'request'
 
 config = require '../../../config.json'
 
-env = if process.env.ENV is 'dev' then 'dev' else 'prod'
+switch process.env.ENV
+  when 'dev'
+    env = 'dev'
+    push_protocol = config.product.push.dev.protocol
+    push_domain = config.product.push.dev.domain
+    push_id = config.product.push.dev.id
+  when 'edge'
+    env = 'edge'
+    push_protocol = config.product.push.edge.protocol
+    push_domain = config.product.push.edge.domain
+    push_id = config.product.push.edge.id
+  else
+    env = 'prod'
+    push_protocol = config.product.push.production.protocol
+    push_domain = config.product.push.production.domain
+    push_id = config.product.push.production.id
 
-push_protocol = if env is 'dev' then config.product.push.dev.protocol else config.product.push.production.protocol
-push_domain = if env is 'dev' then config.product.push.dev.domain else config.product.push.production.domain
-push_id = if env is 'dev' then config.product.push.dev.id else config.product.push.production.id
 
 router.get '/', (req, res) ->
   res.json
