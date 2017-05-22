@@ -33,6 +33,8 @@ switch process.env.ENV
     port = config.port.dev
   when 'edge'
     port = config.port.edge
+  when 'beta'
+    port = config.port.beta
   else
     port = config.port.prod
 

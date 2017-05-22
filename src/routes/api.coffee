@@ -20,6 +20,13 @@ switch process.env.ENV
     api_version = config.product.api.edge.version
     api_id = config.product.api.edge.id
     api_token_endpoint = config.product.api.edge.token
+  when 'beta'
+    env = 'beta'
+    api_protocol = config.product.api.beta.protocol
+    api_domain = config.product.api.beta.domain
+    api_version = config.product.api.beta.version
+    api_id = config.product.api.beta.id
+    api_token_endpoint = config.product.api.beta.token
   else
     env = 'prod'
     api_protocol = config.product.api.production.protocol

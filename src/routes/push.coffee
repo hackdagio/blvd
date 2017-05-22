@@ -15,6 +15,11 @@ switch process.env.ENV
     push_protocol = config.product.push.edge.protocol
     push_domain = config.product.push.edge.domain
     push_id = config.product.push.edge.id
+  when 'beta'
+    env = 'beta'
+    push_protocol = config.product.push.beta.protocol
+    push_domain = config.product.push.beta.domain
+    push_id = config.product.push.beta.id
   else
     env = 'prod'
     push_protocol = config.product.push.production.protocol
