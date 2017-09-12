@@ -28,15 +28,7 @@ debug = require('debug')('express')
 app = module.exports = express()
 
 # defining port
-switch process.env.ENV
-  when 'dev'
-    port = config.port.dev
-  when 'edge'
-    port = config.port.edge
-  when 'beta'
-    port = config.port.beta
-  else
-    port = config.port.prod
+port = config.port[process.env.ENV]
 
 app.set 'port', port
 
