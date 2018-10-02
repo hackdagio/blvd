@@ -9,7 +9,7 @@ env = process.env.ENV
 api_protocol = config.product.api[env].protocol
 api_domain = config.product.api[env].domain
 api_version = config.product.api[env].version
-api_id = config.product.api[env].id
+api_id = if typeof config.product.api[env].id isnt 'undefined' and config.product.api[env].id? and config.product.api[env].id != "" then '/' + config.product.api[env].id else ''
 api_token_endpoint = config.product.api[env].token
 
 router.get '/', (req, res) ->
@@ -21,7 +21,7 @@ router.get '/', (req, res) ->
 router.post '*', (req, res) ->
 
   requester = null
-  url = api_protocol + api_domain + '/' + api_id + req.url
+  url = api_protocol + api_domain + api_id + req.url
   token = api_token_endpoint
 
   if req.get('Accept').indexOf(spec_version) > -1
@@ -77,7 +77,7 @@ router.post '*', (req, res) ->
 router.put '*', (req, res) ->
 
   requester = null
-  url = api_protocol + api_domain + '/' + api_id + req.url
+  url = api_protocol + api_domain + api_id + req.url
   token = api_token_endpoint
 
   if req.get('Accept').indexOf(spec_version) > -1
@@ -133,7 +133,7 @@ router.put '*', (req, res) ->
 router.get '*', (req, res) ->
 
   requester = null
-  url = api_protocol + api_domain + '/' + api_id + req.url
+  url = api_protocol + api_domain + api_id + req.url
 
   if req.get('Accept').indexOf(spec_version) > -1
     version = req.get('Accept')
@@ -142,6 +142,72 @@ router.get '*', (req, res) ->
 
   requester = request.get({
     uri: url
+    headers: Accept: version
+    }, (error, response, body) ->
+    if error
+      console.error 'Refused connection ' + error.code
+      res.status(503).send({ error: 'Can\'t connect to Kaizen' }).end
+    return)
+
+  if env is 'prod'
+    res.append 'x-api-endpoint', api_id
+    res.append 'x-api-version', version
+  else
+    res.append 'x-api-endpoint', url
+    res.append 'x-api-version', version
+
+  req.pipe(requester).pipe res
+  return
+
+router.delete '*', (req, res) ->
+
+  requester = null
+  url = api_protocol + api_domain + api_id + req.url
+  token = api_token_endpoint
+
+  if req.get('Accept').indexOf(spec_version) > -1
+    version = req.get('Accept')
+  else
+    version = api_version
+
+  isMultipart = JSON.stringify(req.headers).indexOf('multipart/form-data')
+
+  requester = request.delete({
+    uri: url
+    json: req.body
+    headers: Accept: version
+    }, (error, response, body) ->
+    if error
+      console.error 'Refused connection ' + error.code
+      res.status(503).send({ error: 'Can\'t connect to Kaizen' }).end
+    return)
+
+  if env is 'prod'
+    res.append 'x-api-endpoint', api_id
+    res.append 'x-api-version', version
+  else
+    res.append 'x-api-endpoint', url
+    res.append 'x-api-version', version
+
+  req.pipe(requester).pipe res
+  return
+
+router.patch '*', (req, res) ->
+
+  requester = null
+  url = api_protocol + api_domain + api_id + req.url
+  token = api_token_endpoint
+
+  if req.get('Accept').indexOf(spec_version) > -1
+    version = req.get('Accept')
+  else
+    version = api_version
+
+  isMultipart = JSON.stringify(req.headers).indexOf('multipart/form-data')
+
+  requester = request.patch({
+    uri: url
+    json: req.body
     headers: Accept: version
     }, (error, response, body) ->
     if error
